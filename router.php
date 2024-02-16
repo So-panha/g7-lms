@@ -12,6 +12,7 @@ $routes = [
     '/manages' => 'controllers/manages/manage.controller.php',
     '/profiles' => 'controllers/profiles/profile.controller.php',
     '/admin_employees' => 'controllers/admin/admin.eyployees.controller.php',
+    '/admin_employees_team' => 'controllers/admin/admin.employee.team.controller.php',
 ];
 
 if (array_key_exists($uri, $routes)) {
