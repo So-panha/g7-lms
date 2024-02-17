@@ -23,7 +23,17 @@
       <option value="">Role</option>
       <option value="employee">Employee</option>
       <option value="admin">Admin</option>
-      <option value="user">User</option>
+      <option value="manager">Manager</option>
+      <option value="supermanager">Super Manager</option>
+    </select>
+    <!-- Title job -->
+    <select class="possition">
+      <option value="">Possition</option>
+      <option value="it">IT</option>
+      <option value="english">English</option>
+      <option value="pl">PL</option>
+      <option value="tranning">Tranning</option>
+      <option value="socail development">Socail development</option>
     </select>
     <!-- place employee -->
     <input type="number" class="amount" id="amount" placeholder="Amount">
@@ -55,6 +65,6 @@
         <option value="svay rieng">Svay rieng</option>
       </select>
     <div class="button">
-      <button type="submit" class="btn">Add team member</button>
+      <button type="submit" class="btn">Add employee</button>
     </div>
   </form>

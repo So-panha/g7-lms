@@ -1814,13 +1814,13 @@ textarea.form-control {
 
 .form_add_employee{
 	background: rgb(236, 236, 231);
-    height: 68%;
+    height: 73%;
     width: 65%;
     padding: 20px 30px 3px 30px;
 	position: absolute;
 	right: 5%;
 	top: 20%;
-	margin-top: 22px;
+	margin-top: 30px;
 }
 
 .username{
@@ -1833,7 +1833,7 @@ textarea.form-control {
 	height: 5vh;
     width: 46%;
 }
-.email, .country, .roles, .amount, .place{
+.email, .country, .roles, .amount, .place,.possition{
     height: 5vh;
     width: 100%;
     margin-top: 15px;
