@@ -1,4 +1,4 @@
-<form class="form_add_employee">
+<form class="form_add_employee grow">
     <h2>Employment details</h2>
     <!-- username -->
     <div class="username">
