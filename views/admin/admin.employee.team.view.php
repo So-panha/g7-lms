@@ -28,23 +28,19 @@
             <div class="d-inline-block">
                 <h4 class="card-title mb-0">PHP</h4>
             </div>
-            <div class="d-inline-block float-right" data-toggle="modal" data-target="#editOffice">
-                    <span data-toggle="modal" data-target="#editNewTeam">
-                        <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></a>
+            <div class="d-inline-block float-right" data-toggle="modal">
+                    <span data-toggle="modal" >
+                        <a href="" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom" ><i class="fa fa-pencil"></i></a>
                     </span>
-                    <span data-toggle="modal" data-target="#delete">
-                        <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
+                    <span data-toggle="modal" >
+                        <a href="" class="btn btn-theme ctm-border-radius text-white"  data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
                     </span>
                 </div>
         </div>
         <div class="card-body">
             <h4 class="card-title">Leader</h4>
             <a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Danny Ward"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></span></a>
-            <a href="payroll-admin.html" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Add Members</a>
-        </div>
-        <div class="card-body">
-            <h4 class="card-title">Members</h4>
-            <a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Danny Ward"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></span></a>
+            <a href="payroll-admin.html" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Show All Members</a>
         </div>
 
     </div>
@@ -52,28 +48,28 @@
     <div class="card ctm-border-radius shadow-sm grow flex-fill">
         <div class="card-header">
             <div class="d-inline-block">
-                <h4 class="card-title mb-0">PHP</h4>
+                <h4 class="card-title mb-0">HTML</h4>
             </div>
-            <div class="d-inline-block float-right" data-toggle="modal" data-target="#editOffice">
-                    <span data-toggle="modal" data-target="#editNewTeam">
-                        <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></a>
+            <div class="d-inline-block float-right" data-toggle="modal">
+                    <span data-toggle="modal" >
+                        <a href="" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom" ><i class="fa fa-pencil"></i></a>
                     </span>
-                    <span data-toggle="modal" data-target="#delete">
-                        <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
+                    <span data-toggle="modal" >
+                        <a href="" class="btn btn-theme ctm-border-radius text-white"  data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
                     </span>
                 </div>
         </div>
         <div class="card-body">
             <h4 class="card-title">Leader</h4>
             <a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Danny Ward"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></span></a>
-            <a href="payroll-admin.html" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Add Members</a>
-        </div>
-        <div class="card-body">
-            <h4 class="card-title">Members</h4>
-            <a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Danny Ward"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></span></a>
+            <a href="payroll-admin.html" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Show All Members</a>
         </div>
 
     </div>
+    
+
+
+
 
 </div>
 
