@@ -1806,3 +1806,51 @@ textarea.form-control {
 		margin-bottom: 0;
 	}
 }
+
+
+
+
+/* code form add employee */
+
+.form_add_employee{
+	background: rgb(236, 236, 231);
+    height: 68%;
+    width: 65%;
+    padding: 20px 30px 3px 30px;
+	position: absolute;
+	right: 5%;
+	top: 20%;
+	margin-top: 22px;
+}
+
+.username{
+    width: 100%;
+    display: flex;
+	padding-top: 2%;
+    gap: 40px;
+}
+.fname, .lname {
+	height: 5vh;
+    width: 46%;
+}
+.email, .country, .roles, .amount, .place{
+    height: 5vh;
+    width: 100%;
+    margin-top: 15px;
+}
+.check{
+    margin-top: 23px;
+}
+.button{
+	display: flex;
+	justify-content: end;
+	padding: 15px 10px 0 0;
+}
+.btn{
+    height: 4vh;
+    width: 15%;
+    display: flex;
+	justify-content: center;
+    margin-top: 35px;
+	background-color: #e8d450;
+}
