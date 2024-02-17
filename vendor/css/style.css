@@ -1841,16 +1841,7 @@ textarea.form-control {
 .check{
     margin-top: 23px;
 }
-.button{
+.btnAdd{
 	display: flex;
-	justify-content: end;
-	padding: 15px 10px 0 0;
-}
-.btn{
-    height: 4vh;
-    width: 15%;
-    display: flex;
-	justify-content: center;
-    margin-top: 35px;
-	background-color: #e8d450;
+	flex-direction: row-reverse;
 }
