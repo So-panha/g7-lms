@@ -5,11 +5,20 @@
       <input type="text" class="fname" id="fname" placeholder="Fist name">
       <input type="text" class="lname" id="lname" placeholder="Last name">
     </div>
+    <!-- password -->
+    <input type="password" class="password" id="password" placeholder="Password">
     <!-- email -->
       <input type="email" class="email" id="email" placeholder="Email">
     <div class="checks">
       <input type="checkbox" class="check" id="check">
       <label class="check-1" for="check1">Send them an invite email so they can log in immediately</label>
+    </div>
+    <!-- gender -->
+    <div class="gender">
+      <input type="radio" id="gender" name="male" value="Male">
+      <label for="male">Male</label><br>
+      <input type="radio" id="gender" name="female" value="female">
+      <label for="female">Female</label><br>
     </div>
     <!-- employee from -->
     <select class="country">
