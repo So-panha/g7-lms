@@ -29,8 +29,13 @@
                 <h4 class="card-title mb-0">PHP</h4>
             </div>
             <div class="d-inline-block float-right" data-toggle="modal" data-target="#editOffice">
-                <a href="javascript:void(0)" class="btn btn-theme mt-2 text-white float-right ctm-border-radius" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i> </a>
-            </div>
+                    <span data-toggle="modal" data-target="#editNewTeam">
+                        <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></a>
+                    </span>
+                    <span data-toggle="modal" data-target="#delete">
+                        <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
+                    </span>
+                </div>
         </div>
         <div class="card-body">
             <h4 class="card-title">Leader</h4>
@@ -50,8 +55,13 @@
                 <h4 class="card-title mb-0">PHP</h4>
             </div>
             <div class="d-inline-block float-right" data-toggle="modal" data-target="#editOffice">
-                <a href="javascript:void(0)" class="btn btn-theme mt-2 text-white float-right ctm-border-radius" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i> </a>
-            </div>
+                    <span data-toggle="modal" data-target="#editNewTeam">
+                        <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></a>
+                    </span>
+                    <span data-toggle="modal" data-target="#delete">
+                        <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
+                    </span>
+                </div>
         </div>
         <div class="card-body">
             <h4 class="card-title">Leader</h4>
