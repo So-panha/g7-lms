@@ -14,6 +14,7 @@ $routes = [
     '/admin_employees' => 'controllers/admin/admin.eyployees.controller.php',
     '/admin_employees_team' => 'controllers/admin/admin.employee.team.controller.php',
     '/add_employee' => 'controllers/admin/admin.form.addEmployee.controller.php',
+    '/information_user' => 'controllers/admin/admin.show.user.information.controller.php',
 ];
 
 if (array_key_exists($uri, $routes)) {
