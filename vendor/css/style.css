@@ -1814,7 +1814,7 @@ textarea.form-control {
 
 .form_add_employee{
 	background: rgb(236, 236, 231);
-    height: 73%;
+    height: 83%;
     width: 65%;
     padding: 20px 30px 3px 30px;
 	position: absolute;
@@ -1841,8 +1841,13 @@ textarea.form-control {
 .check{
     margin-top: 23px;
 }
-
-.button{
+.gender{
 	display: flex;
-	flex-direction: row-reverse;
+	gap: 10px;
+}
+.button{
+	width: 100%;
+	display: flex;
+	justify-content: end;
+	margin-top: 40px;
 }

@@ -74,6 +74,6 @@
         <option value="svay rieng">Svay rieng</option>
       </select>
     <div class="button">
-      <button type="submit" class="btn">Add employee</button>
+      <button type="submit" class="btn btn-warning">Add employee</button>
     </div>
   </form>
