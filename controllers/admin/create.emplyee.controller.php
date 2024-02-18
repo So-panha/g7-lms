@@ -5,7 +5,7 @@ require "../../models/admin.model.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve the values from the form
     $fname = $_POST['fname'];
-    $Iname = $_POST['lname'];
+    $Iname = $_POST['Iname'];
     $password = $_POST['password'];
     $email = $_POST['email'];
     $sendInvite = isset($_POST['send_invite']) ? $_POST['send_invite'] : '';
