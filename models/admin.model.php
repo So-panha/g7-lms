@@ -52,12 +52,12 @@ function deletePost(int $id) : bool
 }
 function insertEmployee(string $fname, string $Iname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position, string $amount, string $place): bool {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO users (fname, Iname, password, email, sendInvite, gender, country, role, position, amount, place)
-    VALUES (:fname, :Iname, :password, :email, :sendInvite, :gender, :country, :role, :position, :amount, :place)");
+    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position, amount, place)
+    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position, :amount, :place)");
 
     $statement->execute([
         ':fname' => $fname,
-        ':Iname' => $Iname,
+        ':lname' => $Iname,
         ':password' => $password,
         ':email' => $email,
         ':sendInvite' => $sendInvite,
