@@ -1,4 +1,4 @@
-<form class="form_add_employee" method="POST" action="controllers/admin/create.emplyee.controller.php">
+<form class="form_add_employee grow" method="POST" action="controllers/admin/create.emplyee.controller.php">
   <h2>Employment details</h2>
   <!-- username -->
   <div class="username">

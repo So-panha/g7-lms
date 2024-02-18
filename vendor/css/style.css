@@ -1833,7 +1833,7 @@ textarea.form-control {
 	height: 5vh;
     width: 46%;
 }
-.password, .email, .country, .roles, .amount, .place,.possition{
+.password, .email, .country, .roles, .amount, .place,.position{
     height: 5vh;
     width: 100%;
     margin-top: 15px;
