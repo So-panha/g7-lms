@@ -21,7 +21,12 @@
 
     <!-- list of users -->
     <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none">
-
+        <?php
+        // $users = getUsers();
+        // foreach ($users as $user) {
+        //     echo "<h1>hello, " . $user . "</h1>";
+        // }
+        ?>
         <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
             <a href="/information_user">
                 <div class="user-info card-body" style="width:250px;">
@@ -36,45 +41,6 @@
                 </div>
         </div>
         </a>
-        <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
-            <div class="user-info card-body" style="width:250px;">
-                <div class="user-avatar mb-4">
-                    <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
-                </div>
-                <div class="user-details">
-                    <h4><b>Kim Leang</b></h4>
-                    <p>PHP Team Lead</p>
-                    <p>mariacotton@example.com</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
-            <div class="user-info card-body" style="width:250px;">
-                <div class="user-avatar mb-4">
-                    <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
-                </div>
-                <div class="user-details">
-                    <h4><b>Kim Leang</b></h4>
-                    <p>PHP Team Lead</p>
-                    <p>mariacotton@example.com</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
-            <div class="user-info card-body" style="width:250px;">
-                <div class="user-avatar mb-4">
-                    <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
-                </div>
-                <div class="user-details">
-                    <h4><b>Kim Leang</b></h4>
-                    <p>PHP Team Lead</p>
-                    <p>mariacotton@example.com</p>
-                </div>
-            </div>
-        </div>
 
 
 

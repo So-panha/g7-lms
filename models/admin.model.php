@@ -21,11 +21,10 @@ function getPost(int $id) : array
     return $statement->fetch();
 }
 
-function getPosts() : array
+function getUsers() : array
 {
     global $connection;
-    $statement = $connection->prepare("select * from posts");
-    $statement->execute();
+    $statement = $connection->prepare("select * from users");
     return $statement->fetchAll();
 }
 

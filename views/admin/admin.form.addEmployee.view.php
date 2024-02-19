@@ -19,7 +19,7 @@
     <label for="male">Male</label><br>
     <input type="radio" id="female" name="gender" value="Female">
     <label for="female">Female</label><br>
-  </div>
+  </div>z
   <!-- employee from -->
   <select class="country" name="country">
     <option selected>Country of employee</option>

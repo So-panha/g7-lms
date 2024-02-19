@@ -36,16 +36,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Insert employee data into the database
     $insert = insertEmployee($fname, $Iname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position, $amount, $place);
 
-    // Echo the captured values
-    echo "First Name: " . $fname . "<br>";
-    echo "Last Name: " . $Iname . "<br>";
-    echo "Password: " . $pwdEncript . "<br>";
-    echo "Email: " . $email . "<br>";
-    echo "Send Invite: " . $sendInvite . "<br>";
-    echo "Gender: " . $gender . "<br>";
-    echo "Country: " . $country . "<br>";
-    echo "Role: " . $role . "<br>";
-    echo "Position: " . $position . "<br>";
-    echo "Amount: " . $amount . "<br>";
-    echo "Place: " . $place . "<br>";
 }
