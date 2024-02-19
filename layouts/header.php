@@ -45,7 +45,7 @@
         <div class="dot"></div>
       </div>
     </div>
-
+    <?php if(!empty($_SESSION['user'])):?>
     <!-- Inner wrapper -->
     <div class="inner-wrapper">
       <!-- Header -->
@@ -140,7 +140,7 @@
                               </span>
                             </span>
                           </a>
-                          <a class="dropdown-item p-2" href="login.html">
+                          <a class="dropdown-item p-2" href="../controllers/logout/logout.controller.php">
                             <span class="media align-items-center">
                               <span class="lnr lnr-power-switch mr-3"></span>
                               <span class="media-body text-truncate">
@@ -162,5 +162,5 @@
                       id="open_navSidebar"
                     ></span>
                   </a>
-
+<?php endif; ?>
                  

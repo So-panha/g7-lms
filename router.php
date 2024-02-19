@@ -1,8 +1,12 @@
 <?php
+session_start();
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $page = "";
 $routes = [
     '/' => 'controllers/admin/admin.controller.php',
+    '/login' => 'controllers/login/login.controller.php',
+    '/logout' => 'controllers/logout/logout.controller.php',
+    '/check_role' => 'controllers/checkRole/check.role.controller.php',
     '/employees' => 'controllers/employees/employee.controller.php',
     '/companies' => 'controllers/companies/company.controller.php',
     '/calendars' => 'controllers/calendars/calendar.controller.php',
@@ -20,10 +24,33 @@ $routes = [
 if (array_key_exists($uri, $routes)) {
     $page = $routes[$uri];
 } else {
-   http_response_code(404);
-   $page = 'views/errors/404.php';
+    http_response_code(404);
+    $page = 'views/errors/404.php';
 }
-require "layouts/header.php";
-require "layouts/navbar.php";
-require $page;
-require "layouts/footer.php";
+
+// if not yet login 
+if (empty($_SESSION['user'])) {
+    if ($page === 'controllers/login/login.controller.php') {
+        session_destroy();
+        require "layouts/header.php";
+        require $page;
+        require "layouts/footer.php";
+    } else {
+        header("location: /login");
+    }
+} else {
+    // if already login
+    if ($page != 'controllers/login/login.controller.php') {
+        require "layouts/header.php";
+        require "layouts/navbar.php";
+        require $page;
+        require "layouts/footer.php";
+    }else{
+        header('location: /logout');
+    }
+}
+
+if(isset($_GET['page'])){
+    echo 1;
+}
+
