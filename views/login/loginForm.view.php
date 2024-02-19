@@ -1,9 +1,17 @@
-<div class="container " style="background-color:rebeccapurple;width:60%;height:70vh; margin:auto;  padding: 10px; border-radius: 20px;">
+<div class="container mt-5 " style="background-color:rebeccapurple;width:60%;height:70vh; margin:auto;  padding: 10px; border-radius: 20px;">
     <div class="title" style="text-align: center;color:white">
         <h2>LOGIN</h2>
     </div>
     <div class="card" style=" width: 100%; height: 58vh; text-align: center; font-family:Arial, Helvetica, sans-serif">
         <form action="controllers/login/check.login.controller.php" method="POST">
+            <?php if(isset($_SESSION['alert'])) { ?>
+                <?php
+                    $alert = 'alert-danger';
+                ?>
+            <div class="alert <?= $alert ?>">
+                <h5><?= $_SESSION['alert'] ?></h5>
+            </div> 
+            <?php } ?>
             <div class="form-group" style="margin-top: 30px; width: 90%; margin-left: auto; margin-right:auto;">
                 <input type="email" class="form-control" placeholder="Enter email" id="email" name="email" style="height: 10vh;">
             </div>
