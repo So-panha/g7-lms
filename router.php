@@ -5,7 +5,6 @@ $page = "";
 $routes = [
     '/' => 'controllers/admin/admin.controller.php',
     '/login' => 'controllers/login/login.controller.php',
-    '/logout' => 'controllers/logout/logout.controller.php',
     '/check_role' => 'controllers/checkRole/check.role.controller.php',
     '/employees' => 'controllers/employees/employee.controller.php',
     '/companies' => 'controllers/companies/company.controller.php',
@@ -26,9 +25,11 @@ if (array_key_exists($uri, $routes)) {
 } else {
     http_response_code(404);
     $page = 'views/errors/404.php';
+    die();
 }
 
-// if not yet login 
+
+// If not yet login 
 if (empty($_SESSION['user'])) {
     if ($page === 'controllers/login/login.controller.php') {
         session_destroy();
@@ -36,7 +37,8 @@ if (empty($_SESSION['user'])) {
         require $page;
         require "layouts/footer.php";
     } else {
-        header("location: /login");
+        // prevent when try access by path without login
+        header('location: /login');
     }
 } else {
     // if already login
@@ -45,12 +47,5 @@ if (empty($_SESSION['user'])) {
         require "layouts/navbar.php";
         require $page;
         require "layouts/footer.php";
-    }else{
-        header('location: /logout');
     }
 }
-
-if(isset($_GET['page'])){
-    echo 1;
-}
-
