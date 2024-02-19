@@ -1,7 +1,7 @@
 <?php
 
 $hostname = "localhost";
-$database = "lms_dbs_test";
+$database = "lms_db";
 $username = "root";
 $password = "";
 

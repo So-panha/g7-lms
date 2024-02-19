@@ -16,13 +16,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $amount = $_POST['amount'];
     $place = $_POST['place'];
 
+    // Project Script javaScript
+    $fname = htmlspecialchars($fname);
+    $Iname = htmlspecialchars($Iname);
+    $password = htmlspecialchars($password);
+    $email = htmlspecialchars($email);
+    $amount = htmlspecialchars($amount);
+
+    // trim space data from form
+    $fname = trim($fname);
+    $Iname = trim($Iname);
+    $password = trim($password);
+    $email = trim($email);
+    $amount = trim($amount);
+
+    // Encript password
+    $pwdEncript = password_hash($password,PASSWORD_BCRYPT);
+
     // Insert employee data into the database
-    $insert = insertEmployee($fname, $Iname, $password, $email, $sendInvite, $gender, $country, $role, $position, $amount, $place);
+    $insert = insertEmployee($fname, $Iname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position, $amount, $place);
 
     // Echo the captured values
     echo "First Name: " . $fname . "<br>";
     echo "Last Name: " . $Iname . "<br>";
-    echo "Password: " . $password . "<br>";
+    echo "Password: " . $pwdEncript . "<br>";
     echo "Email: " . $email . "<br>";
     echo "Send Invite: " . $sendInvite . "<br>";
     echo "Gender: " . $gender . "<br>";

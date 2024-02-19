@@ -22,32 +22,32 @@
   </div>
   <!-- employee from -->
   <select class="country" name="country">
-    <option value="">Country of employee</option>
+    <option selected>Country of employee</option>
     <option value="Cambodia">Cambodia</option>
     <option value="English">English</option>
     <option value="France">France</option>
   </select>
   <!-- role employees -->
   <select class="roles" name="role">
-    <option value="">Role</option>
-    <option value="employee">Employee</option>
+    <option selected>Role</option>
     <option value="admin">Admin</option>
-    <option value="manager">Manager</option>
     <option value="supermanager">Super Manager</option>
+    <option value="manager">Manager</option>
+    <option value="employee">Employee</option>
   </select>
   <!-- Title job -->
   <select class="position" name="position">
-    <option value="">Position</option>
-    <option value="IT">IT</option>
-    <option value="English">English</option>
-    <option value="PL">PL</option>
-    <option value="Training">Training</option>
-    <option value="Social Development">Social Development</option>
+    <option selected>Position</option>
+    <option value="1">IT</option>
+    <option value="2">PL</option>
+    <option value="3">English</option>
+    <option value="4">Training</option>
+    <option value="5">Social Development</option>
   </select>
   <!-- place employee -->
   <input type="number" class="amount" id="amount" name="amount" placeholder="Amount">
   <select class="place" name="place">
-    <option value="">Place</option>
+    <option selected>Place</option>
     <option value="Phnom Penh">Phnom Penh</option>
     <option value="Kampong Cham">Kampong Cham</option>
     <option value="Prey Veng">Prey Veng</option>
