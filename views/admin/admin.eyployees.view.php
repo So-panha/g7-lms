@@ -22,63 +22,47 @@
     <!-- list of users -->
     <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none">
 
-        <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
-            <a href="/information_user">
-                <div class="user-info card-body" style="width:250px;">
-                    <div class="user-avatar mb-4">
-                        <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
+        <?php
+        // Call the getusers function to retrieve the user data
+        $users = getusers();
+        $positions = getpositions();
+
+        // Loop through the user data and generate user cards
+        foreach ($users as $user) {
+            // Extract the user details from the current user data
+            $id = $user['user_id'];
+            $name = $user['fname'] . ' ' . $user['lname'];
+            $email = $user['email'];
+
+            // Find the position name based on the position ID
+            $positionName = '';
+            foreach ($positions as $position) {
+                if ($user['position_id'] == $position['position_id']) {
+                    $positionName = $position['position_name'];
+                    break;
+                }
+            }
+        ?>
+
+            <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
+                <a href="/information_user.php?email=<?php echo urlencode($email); ?>">
+                    <div class="user-info card-body" style="width:250px;">
+                        <div class="user-avatar mb-4">
+                            <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
+                        </div>
+                        <div class="user-details">
+                            <h4><b><?php echo $name; ?></b></h4>
+                            <p><?php echo $positionName; ?></p>
+                            <p><?php echo $email; ?></p>
+                            <input type="hidden" value="<?= $id ?>">
+                        </div>
                     </div>
-                    <div class="user-details">
-                        <h4><b>Kim Leang</b></h4>
-                        <p>PHP Team Lead</p>
-                        <p>mariacotton@example.com</p>
-                    </div>
-                </div>
-        </div>
-        </a>
-        <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
-            <div class="user-info card-body" style="width:250px;">
-                <div class="user-avatar mb-4">
-                    <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
-                </div>
-                <div class="user-details">
-                    <h4><b>Kim Leang</b></h4>
-                    <p>PHP Team Lead</p>
-                    <p>mariacotton@example.com</p>
-                </div>
+                </a>
             </div>
-        </div>
 
-        <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
-            <div class="user-info card-body" style="width:250px;">
-                <div class="user-avatar mb-4">
-                    <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
-                </div>
-                <div class="user-details">
-                    <h4><b>Kim Leang</b></h4>
-                    <p>PHP Team Lead</p>
-                    <p>mariacotton@example.com</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
-            <div class="user-info card-body" style="width:250px;">
-                <div class="user-avatar mb-4">
-                    <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
-                </div>
-                <div class="user-details">
-                    <h4><b>Kim Leang</b></h4>
-                    <p>PHP Team Lead</p>
-                    <p>mariacotton@example.com</p>
-                </div>
-            </div>
-        </div>
-
-
-
-
+        <?php
+        }
+        ?>
     </div>
 </div>
 </div>
