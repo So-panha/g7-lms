@@ -199,5 +199,8 @@
                      </div>
                      <!-- /Sidebar -->
 
-                 </aside>
-             </div>
+               <!-- When we switch into the calendar page it will be hide -->
+            <?php if($_SERVER['REQUEST_URI'] != '/calendars'):?>
+              </aside>
+              </div>
+            <?php endif ?>
