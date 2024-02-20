@@ -3,7 +3,7 @@
   <!-- username -->
   <div class="username">
     <input type="text" class="fname" id="fname" name="fname" placeholder="First name">
-    <input type="text" class="lname" id="lname" name="Iname" placeholder="Last name">
+    <input type="text" class="lname" id="lname" name="lname" placeholder="Last name">
   </div>
   <!-- password -->
   <input type="password" class="password" id="password" name="password" placeholder="Password">
@@ -19,7 +19,7 @@
     <label for="male">Male</label><br>
     <input type="radio" id="female" name="gender" value="Female">
     <label for="female">Female</label><br>
-  </div>z
+  </div>
   <!-- employee from -->
   <select class="country" name="country">
     <option selected>Country of employee</option>
