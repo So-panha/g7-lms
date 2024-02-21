@@ -16,6 +16,9 @@
     
 		<!-- Select2 CSS -->
 		<link rel="stylesheet" href="vendor/plugins/select2/select2.min.css">
+
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="vendor/plugins/fullcalendar/fullcalendar.min.css">">
     
 		<!-- Datetimepicker CSS -->
 		<link rel="stylesheet" href="vendor/css/bootstrap-datetimepicker.min.css">
