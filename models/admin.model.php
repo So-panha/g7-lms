@@ -50,13 +50,14 @@ function updatePost(string $title, string $description, int $id): bool
     return $statement->rowCount() > 0;
 }
 
-function deletePost(int $id): bool
+function deleteuser(int $user_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("delete from posts where id = :id");
-    $statement->execute([':id' => $id]);
+    $statement = $connection->prepare("DELETE FROM users WHERE user_id = :id");
+    $statement->execute([':id' => $user_id]);
     return $statement->rowCount() > 0;
 }
+
 function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place): bool
 {
     global $connection;
