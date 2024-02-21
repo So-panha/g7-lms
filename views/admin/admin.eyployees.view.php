@@ -45,16 +45,24 @@
         ?>
 
             <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
-                <a href="/information_user?email=<?php echo urlencode($email); ?>">
+                <a href="/information_user.php?email=<?php echo urlencode($email); ?>">
                     <div class="user-info card-body" style="width:250px;">
                         <div class="user-avatar mb-4">
                             <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
                         </div>
                         <div class="user-details">
-                            <h4><b><?php echo $name; ?></b></h4>
+                            <h5><b><?php echo $name; ?></b></h5>
                             <p><?php echo $positionName; ?></p>
                             <p><?php echo $email; ?></p>
                             <input type="hidden" value="<?= $id ?>">
+                            <div class="d-inline-block float-right" data-toggle="modal">
+                                <span data-toggle="modal">
+                                    <a href="" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom"><i class="fa fa-pencil"></i></a>
+                                </span>
+                                <span data-toggle="modal">
+                                    <a href="controllers/admin/admin.employee.delete.controler.php?id=<?php echo urlencode($id); ?>" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </a>

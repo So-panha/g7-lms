@@ -73,64 +73,96 @@
                 <div class="user-block d-none d-lg-block">
                   <div class="row align-items-center">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                      <div class="user-notification-block align-right d-inline-block">
-                        <!-- keep for add notification -->
+                      <div
+                        class="user-notification-block align-right d-inline-block"
+                      >
+                      <!-- keep for add notification -->
 
-                        <!-- User notification-->
-                        <div class="user-notification-block align-right d-inline-block">
-                          <ul class="list-inline m-0">
-                            <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Leave">
-                              <a href="leave.html" class="font-23 menu-style text-white align-middle">
-                                <span class="lnr lnr-briefcase position-relative"></span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <!-- /User notification-->
-
-                        <!-- user info-->
-                        <div class="user-info align-right dropdown d-inline-block header-dropdown">
-                          <a href="javascript:void(0)" data-toggle="dropdown" class="menu-style dropdown-toggle">
-                            <div class="user-avatar d-inline-block">
-                              <img src="assets/images/profiles/img-2.jpg" alt="user avatar" class="rounded-circle img-fluid" width="55" />
-                            </div>
-                          </a>
-
-                          <!-- Notifications -->
-                          <div class="dropdown-menu notification-dropdown-menu shadow-lg border-0 p-3 m-0 dropdown-menu-right">
-                            <a class="dropdown-item p-2" href="employment.html">
-                              <span class="media align-items-center">
-                                <span class="lnr lnr-user mr-3"></span>
-                                <span class="media-body text-truncate">
-                                  <span class="text-truncate"><a href="/profile_user">Profile</a></span>
-                                </span>
-                              </span>
+                      <!-- User notification-->
+                      <div
+                        class="user-notification-block align-right d-inline-block"
+                      >
+                        <ul class="list-inline m-0">
+                          <li
+                            class="list-inline-item"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                            data-original-title="Apply Leave"
+                          >
+                            <a
+                              href="leave.html"
+                              class="font-23 menu-style text-white align-middle"
+                            >
+                              <span
+                                class="lnr lnr-briefcase position-relative"
+                              ></span>
                             </a>
-                            <a class="dropdown-item p-2" href="settings.html">
-                              <span class="media align-items-center">
-                                <span class="lnr lnr-cog mr-3"></span>
-                                <span class="media-body text-truncate">
-                                  <span class="text-truncate">Settings</span>
-                                </span>
-                              </span>
-                            </a>
-                            <a class="dropdown-item p-2" href="../controllers/logout/logout.controller.php">
-                              <span class="media align-items-center">
-                                <span class="lnr lnr-power-switch mr-3"></span>
-                                <span class="media-body text-truncate">
-                                  <span class="text-truncate">Logout</span>
-                                </span>
-                              </span>
-                            </a>
-                          </div>
-                          <!-- Notifications -->
-                        </div>
-                        <!-- /User info-->
+                          </li>
+                        </ul>
                       </div>
+                      <!-- /User notification-->
+
+                      <!-- user info-->
+                      <div
+                        class="user-info align-right dropdown d-inline-block header-dropdown"
+                      >
+                        <a
+                          href="javascript:void(0)"
+                          data-toggle="dropdown"
+                          class="menu-style dropdown-toggle"
+                        >
+                          <div class="user-avatar d-inline-block">
+                            <img
+                              src="assets/images/profiles/img-2.jpg"
+                              alt="user avatar"
+                              class="rounded-circle img-fluid"
+                              width="55"
+                            />
+                          </div>
+                        </a>
+
+                        <!-- Notifications -->
+                        <div
+                          class="dropdown-menu notification-dropdown-menu shadow-lg border-0 p-3 m-0 dropdown-menu-right"
+                        >
+                          <a class="dropdown-item p-2" href="employment.html">
+                            <span class="media align-items-center">
+                              <span class="lnr lnr-user mr-3"></span>
+                              <span class="media-body text-truncate">
+                                <span class="text-truncate">Profile</span>
+                              </span>
+                            </span>
+                          </a>
+                          <a class="dropdown-item p-2" href="settings.html">
+                            <span class="media align-items-center">
+                              <span class="lnr lnr-cog mr-3"></span>
+                              <span class="media-body text-truncate">
+                                <span class="text-truncate">Settings</span>
+                              </span>
+                            </span>
+                          </a>
+                          <a class="dropdown-item p-2" href="../controllers/logout/logout.controller.php">
+                            <span class="media align-items-center">
+                              <span class="lnr lnr-power-switch mr-3"></span>
+                              <span class="media-body text-truncate">
+                                <span class="text-truncate">Logout</span>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <!-- Notifications -->
+                      </div>
+                      <!-- /User info-->
                     </div>
                   </div>
-                  <div class="d-block d-lg-none">
-                    <a href="javascript:void(0)">
-                      <span class="lnr lnr-user d-block display-5 text-white" id="open_navSidebar"></span>
-                    </a>
-                  <?php endif; ?>
+                </div>
+                <div class="d-block d-lg-none">
+                  <a href="javascript:void(0)">
+                    <span
+                      class="lnr lnr-user d-block display-5 text-white"
+                      id="open_navSidebar"
+                    ></span>
+                  </a>
+<?php endif; ?>
+                 
