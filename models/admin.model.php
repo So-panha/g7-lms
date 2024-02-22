@@ -13,12 +13,18 @@ function createPost(string $title, string $description): bool
     return $statement->rowCount() > 0;
 }
 
-function getPost(int $id): array
+function getUser(int $user_id): ?array
 {
     global $connection;
-    $statement = $connection->prepare("select * from users where id = :id");
-    $statement->execute([':id' => $id]);
-    return $statement->fetch();
+    $statement = $connection->prepare("SELECT * FROM users WHERE user_id = :id");
+    $statement->execute([':id' => $user_id]);
+    
+    $users = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($users) {
+        return $users;
+    }
+    
+    return null;
 }
 
 function getUsers(): array
