@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="vendor/plugins/select2/select2.min.css">
 
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="vendor/plugins/fullcalendar/fullcalendar.min.css">">
+		<link rel="stylesheet" href="vendor/plugins/fullcalendar/fullcalendar.min.css">
     
 		<!-- Datetimepicker CSS -->
 		<link rel="stylesheet" href="vendor/css/bootstrap-datetimepicker.min.css">
@@ -75,8 +75,7 @@
                   <div class="row align-items-center">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div
-                        class="user-notification-block align-right d-inline-block"
-                      >
+                        class="user-notification-block align-right d-inline-block">
                       <!-- keep for add notification -->
                      
                       <!-- User notification-->
