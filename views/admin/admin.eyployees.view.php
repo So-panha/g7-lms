@@ -12,9 +12,13 @@
 
     <!-- content -->
     <div class=" d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none">
-        <div class=" p-2 bg-light">7 People</div>
-        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add Person</a>
+        <?php
+        $users = getusers();
+        $numberEmployees = count($users);
+        ?>
 
+        <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Employees</div>
+        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add Employee</a>
     </div>
     <!-- content -->
 
@@ -32,7 +36,7 @@
             // Extract the user details from the current user data
             $id = $user['user_id'];
             $name = $user['fname'] . ' ' . $user['lname'];
-            $email = $user['email'];
+            $gender = $user['gender'];
 
             // Find the position name based on the position ID
             $positionName = '';
@@ -48,21 +52,17 @@
                 <a href="/information_user?id=<?php echo urlencode($id); ?>">
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
-                            <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
+                            <?php if ($gender == "Male") : ?>
+                                <img src="assets/images/profile/male.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="70">
+                            <?php else : ?>
+                                <img src="assets/images/profile/female.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="70">
+                            <?php endif; ?>
+
                         </div>
                         <div class="user-details">
-                            <h5><b><?php echo $name; ?></b></h5>
+                            <h5><b class=""><?php echo strtoupper($name); ?></b></h5>
                             <p><?php echo $positionName; ?></p>
-                            <p><?php echo $email; ?></p>
                             <input type="hidden" value="<?= $id ?>">
-                            <div class="d-inline-block float-right" data-toggle="modal">
-                                <span data-toggle="modal">
-                                    <a href="" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom"><i class="fa fa-pencil"></i></a>
-                                </span>
-                                <span data-toggle="modal">
-                                    <a href="controllers/admin/admin.employee.delete.controler.php?id=<?php echo urlencode($id); ?>" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
-                                </span>
-                            </div>
                         </div>
                     </div>
                 </a>

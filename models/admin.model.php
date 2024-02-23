@@ -13,13 +13,6 @@ function createPost(string $title, string $description): bool
     return $statement->rowCount() > 0;
 }
 
-function getPost(int $id): array
-{
-    global $connection;
-    $statement = $connection->prepare("select * from users where id = :id");
-    $statement->execute([':id' => $id]);
-    return $statement->fetch();
-}
 
 function getUsers(): array
 {
