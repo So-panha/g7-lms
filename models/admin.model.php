@@ -58,6 +58,21 @@ function deleteuser(int $user_id): bool
     return $statement->rowCount() > 0;
 }
 
+function getUser(int $user_id): ?array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE user_id = :id");
+    $statement->execute([':id' => $user_id]);
+    
+    $users = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($users) {
+        return $users;
+    }
+    
+    return null;
+}
+
+
 function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place): bool
 {
     global $connection;
