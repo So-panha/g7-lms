@@ -13,18 +13,12 @@ function createPost(string $title, string $description): bool
     return $statement->rowCount() > 0;
 }
 
-function getUser(int $user_id): ?array
+function getPost(int $id): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT * FROM users WHERE user_id = :id");
-    $statement->execute([':id' => $user_id]);
-
-    $users = $statement->fetch(PDO::FETCH_ASSOC);
-    if ($users) {
-        return $users;
-    }
-
-    return null;
+    $statement = $connection->prepare("select * from users where id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->fetch();
 }
 
 function getUsers(): array
@@ -63,6 +57,21 @@ function deleteuser(int $user_id): bool
     $statement->execute([':id' => $user_id]);
     return $statement->rowCount() > 0;
 }
+
+function getUser(int $user_id): ?array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE user_id = :id");
+    $statement->execute([':id' => $user_id]);
+    
+    $users = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($users) {
+        return $users;
+    }
+    
+    return null;
+}
+
 
 function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place): bool
 {
@@ -107,4 +116,17 @@ function updateEmployee(int $user_id, string $fname, string $lname, string $pass
     ]);
 
     return $statement->rowCount() > 0;
+}
+
+function getAmount() {
+    global $connection;
+    $statement = $connection->prepare("SELECT SUM(amount) AS total_amount FROM users;");
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    
+    if ($result && isset($result['total_amount'])) {
+        return $result['total_amount'];
+    } else {
+        return 0;
+    }
 }

@@ -1,17 +1,16 @@
 <!-- header -->
-<div class="col-xl-9 col-lg-8  col-md-12">
+<div class="col-xl-9 col-lg-8 col-md-12">
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white p-4 mb-4 card">
         <ul class="list-group list-group-horizontal-lg">
             <li class="list-group-item text-center active button-5"><a href="/admin_employees" class="text-white">All</a></li>
             <li class="list-group-item text-center button-6"><a href="/admin_employees_team" class="text-dark">Add Team</a></li>
             <li class="list-group-item text-center button-6"><a href="documents.html" class="text-dark">Add Office</a></li>
-
         </ul>
     </div>
     <!-- header -->
 
     <!-- content -->
-    <div class=" d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none">
+    <div class="d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none">
         <?php
         $users = getusers();
         $numberEmployees = count($users);
@@ -22,10 +21,8 @@
     </div>
     <!-- content -->
 
-
     <!-- list of users -->
     <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none">
-
         <?php
         // Call the getusers function to retrieve the user data
         $users = getusers();
@@ -47,7 +44,6 @@
                 }
             }
         ?>
-
             <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-2 ml-2 mt-4">
                 <a href="/information_user?id=<?php echo urlencode($id); ?>">
                     <div class="user-info card-body" style="width:260px;">
@@ -57,22 +53,24 @@
                             <?php else : ?>
                                 <img src="assets/images/profile/female.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="70">
                             <?php endif; ?>
-
                         </div>
                         <div class="user-details">
-                            <h5><b class=""><?php echo strtoupper($name); ?></b></h5>
+                            <h5><b><?php echo strtoupper($name); ?></b></h5>
                             <p><?php echo $positionName; ?></p>
                             <input type="hidden" value="<?= $id ?>">
+
+
                         </div>
                     </div>
+
+
                 </a>
             </div>
-
         <?php
         }
         ?>
     </div>
 </div>
-</div>
 <!--  -->
+</div>
 </div>
