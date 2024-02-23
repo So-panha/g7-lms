@@ -45,7 +45,7 @@
         ?>
 
             <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-4 mt-4">
-                <a href="/information_user.php?id=<?php echo urlencode($id); ?>">
+                <a href="/information_user?id=<?php echo urlencode($id); ?>">
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
                             <img src="assets/images/logo.png" alt="User Avatar" class="img-fluid rounded-circle" width="70">
