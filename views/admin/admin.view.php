@@ -4,7 +4,7 @@
 		<div class="alert alert-success alert-dismissible grow" id="alert">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong><?= $_SESSION['alert'] ?></strong>
-			
+
 			<!-- remove session alert -->
 			<?php unset($_SESSION['alert']) ?>
 		</div>
@@ -33,8 +33,12 @@
 						<i class="fa fa-users" aria-hidden="true"></i>
 					</div>
 					<div class="card-right">
+						<?php
+						$users = getusers();
+						$numberEmployees = count($users);
+						?>
 						<h4 class="card-title">Employees</h4>
-						<p class="card-text">700</p>
+						<p class="card-text"><?php echo $numberEmployees; ?></p>
 					</div>
 				</div>
 			</div>
@@ -73,7 +77,11 @@
 					</div>
 					<div class="card-right">
 						<h4 class="card-title">Salary</h4>
-						<p class="card-text">$5.8M</p>
+						<!-- call function for get sum amount -->
+						<?php
+						$sumAmount = getAmount();
+						?>
+						<p class="card-text"><?php echo $sumAmount; ?>$</p>
 					</div>
 				</div>
 			</div>

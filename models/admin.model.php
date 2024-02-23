@@ -117,3 +117,16 @@ function updateEmployee(int $user_id, string $fname, string $lname, string $pass
 
     return $statement->rowCount() > 0;
 }
+
+function getAmount() {
+    global $connection;
+    $statement = $connection->prepare("SELECT SUM(amount) AS total_amount FROM users;");
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    
+    if ($result && isset($result['total_amount'])) {
+        return $result['total_amount'];
+    } else {
+        return 0;
+    }
+}
