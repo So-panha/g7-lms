@@ -146,7 +146,7 @@
                         <div
                           class="dropdown-menu notification-dropdown-menu shadow-lg border-0 p-3 m-0 dropdown-menu-right"
                         >
-                          <a class="dropdown-item p-2" href="employment.html">
+                          <a class="dropdown-item p-2" href="/user_profile">
                             <span class="media align-items-center">
                               <span class="lnr lnr-user mr-3"></span>
                               <span class="media-body text-truncate">
