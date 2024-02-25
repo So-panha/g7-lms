@@ -50,8 +50,7 @@ $(function () {
 				}
 			});
 		}
-		// update pieChart
-		pieChart.update();
+
 
 
 		// lineCart
