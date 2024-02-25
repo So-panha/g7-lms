@@ -63,12 +63,12 @@ function getUser(int $user_id): ?array
     global $connection;
     $statement = $connection->prepare("SELECT * FROM users WHERE user_id = :id");
     $statement->execute([':id' => $user_id]);
-    
+
     $users = $statement->fetch(PDO::FETCH_ASSOC);
     if ($users) {
         return $users;
     }
-    
+
     return null;
 }
 
@@ -118,15 +118,27 @@ function updateEmployee(int $user_id, string $fname, string $lname, string $pass
     return $statement->rowCount() > 0;
 }
 
-function getAmount() {
+function getAmount()
+{
     global $connection;
     $statement = $connection->prepare("SELECT SUM(amount) AS total_amount FROM users;");
     $statement->execute();
     $result = $statement->fetch(PDO::FETCH_ASSOC);
-    
+
     if ($result && isset($result['total_amount'])) {
         return $result['total_amount'];
     } else {
         return 0;
     }
+}
+
+// get position of all user to diplay in form diagram
+function getPosition(): array {
+    global $connection;
+    $query = "select count(users.fname) as number_positions, position.position_name from users inner join position where users.position_id = position.position_id group by users.position_id";
+    $STMT = $connection->prepare($query);
+    $STMT->execute();
+
+    return $STMT->fetchAll();
+
 }
