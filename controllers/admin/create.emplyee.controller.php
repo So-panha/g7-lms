@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place);
 
     if ($insert) {
-        header("Location:/add_employee");
+        header("Location:/admin_employees");
     } else {
         echo "Failed to insert employee.";
     }

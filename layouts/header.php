@@ -80,68 +80,104 @@
                 <div class="user-block d-none d-lg-block">
                   <div class="row align-items-center">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                      <div class="user-notification-block align-right d-inline-block">
-                        <!-- keep for add notification -->
-
-                        <!-- User notification-->
-                        <div class="user-info align-right dropdown d-inline-block header-dropdown">
-                          <ul class="list-inline m-0">
-                            <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Leave">
-                              <a href="leave.html" class="font-23 menu-style text-white align-middle">
-                                <span class="lnr lnr-briefcase position-relative"></span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <!-- /User notification-->
-                        <div class="user-info align-right dropdown d-inline-block header-dropdown">
-                          <ul class="list-inline m-0">
-                            <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Notivicatiion">
-                              <a href="/view_alert" class="font-23 menu-style text-white align-middle">
-                                <div class="user-avatar d-inline-block">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope text-white " style="margin-right: 10px;" viewBox="0 0 16 16">
-                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-                                  </svg>
-                                </div>
-                              </a>
-                              <!-- Notifications -->
-                              <!-- user info-->
-                              <div class="user-info align-right dropdown d-inline-block header-dropdown">
-                                <a href="javascript:void(0)" data-toggle="dropdown" class="menu-style dropdown-toggle">
-                                  <div class="user-avatar d-inline-block">
-                                    <img src="assets/images/profiles/img-2.jpg" alt="user avatar" class="rounded-circle img-fluid" width="55" />
-                                  </div>
-                                </a>
-                                <!-- Notifications -->
-                                <div class="dropdown-menu notification-dropdown-menu shadow-lg border-0 p-3 m-0 dropdown-menu-right">
-                                  <a class="dropdown-item p-2" href="/user_profile">
-                                    <span class="media align-items-center">
-                                      <span class="lnr lnr-user mr-3"></span>
-                                      <span class="media-body text-truncate">
-                                        <span class="text-truncate">Profile</span>
-                                      </span>
-                                    </span>
-                                  </a>
-                                  <a class="dropdown-item p-2" href="settings.html">
-                                    <span class="media align-items-center">
-                                      <span class="lnr lnr-cog mr-3"></span>
-                                      <span class="media-body text-truncate">
-                                        <span class="text-truncate">Settings</span>
-                                      </span>
-                                    </span>
-                                  </a>
-                                  <a class="dropdown-item p-2" href="../controllers/logout/logout.controller.php">
-                                    <span class="media align-items-center">
-                                      <span class="lnr lnr-power-switch mr-3"></span>
-                                      <span class="media-body text-truncate">
-                                        <span class="text-truncate">Logout</span>
-                                      </span>
-                                    </span>
-                                  </a>
-                                </div>
-                                <!-- Notifications -->
-                              </div>
-                              <!-- /User info-->
+                      <div
+                        class="user-notification-block align-right d-inline-block"
+                      >
+                      <!-- keep for add notification -->
+                     
+                      <!-- User notification-->
+                      <div
+                          class="user-info align-right dropdown d-inline-block header-dropdown"
+                      >
+                      <ul class="list-inline m-0">
+                          <li
+                            class="list-inline-item"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                            data-original-title="Apply Leave"
+                          >
+                            <a
+                              href="leave.html"
+                              class="font-23 menu-style text-white align-middle"
+                            >
+                              <span
+                                class="lnr lnr-briefcase position-relative"
+                              ></span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- /User notification-->
+                      <div
+                          class="user-info align-right dropdown d-inline-block header-dropdown"
+                      >
+                      <ul class="list-inline m-0">
+                          <li
+                            class="list-inline-item"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                            data-original-title="View Notivicatiion"
+                          >
+                            <a
+                              href="/view_alert"
+                              class="font-23 menu-style text-white align-middle"
+                            >
+                          <div class="user-avatar d-inline-block" >
+                            <span class="badge badge-danger badge-counter" style="z-index: 1; position: absolute;left: 21%;top: 10%; border-radius:50%">7+</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" fill="currentColor" class="bi bi-envelope text-white"  viewBox="0 0 20 20" >
+                              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                            </svg>
+                          </div>
+                        </a>
+                      <!-- Notifications -->
+                      <!-- user info-->
+                      <div
+                        class="user-info align-right dropdown d-inline-block header-dropdown"
+                      >
+                        <a
+                          href="javascript:void(0)"
+                          data-toggle="dropdown"
+                          class="menu-style dropdown-toggle"
+                        >
+                          <div class="user-avatar d-inline-block">
+                            <img
+                              src="assets/images/profiles/img-2.jpg"
+                              alt="user avatar"
+                              class="rounded-circle img-fluid"
+                              width="55"
+                            />
+                          </div>
+                        </a>
+                        <!-- Notifications -->
+                        <div
+                          class="dropdown-menu notification-dropdown-menu shadow-lg border-0 p-3 m-0 dropdown-menu-right"
+                        >
+                          <a class="dropdown-item p-2" href="employment.html">
+                            <span class="media align-items-center">
+                              <span class="lnr lnr-user mr-3"></span>
+                              <span class="media-body text-truncate">
+                                <span class="text-truncate">Profile</span>
+                              </span>
+                            </span>
+                          </a>
+                          <a class="dropdown-item p-2" href="settings.html">
+                            <span class="media align-items-center">
+                              <span class="lnr lnr-cog mr-3"></span>
+                              <span class="media-body text-truncate">
+                                <span class="text-truncate">Settings</span>
+                              </span>
+                            </span>
+                          </a>
+                          <a class="dropdown-item p-2" href="../controllers/logout/logout.controller.php">
+                            <span class="media align-items-center">
+                              <span class="lnr lnr-power-switch mr-3"></span>
+                              <span class="media-body text-truncate">
+                                <span class="text-truncate">Logout</span>
+                              </span>
+                            </span>
+                          </a>
                         </div>
                       </div>
                     </div>
