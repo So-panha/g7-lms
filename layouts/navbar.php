@@ -4,20 +4,9 @@
      <div class="user-info align-center bg-theme text-center">
          <a href="javascript:void(0)" class="d-block menu-style text-white">
              <div class="user-avatar d-inline-block mr-3">
-
                  <img src="assets/images/profiles/img-2.jpg" alt="user avatar" class="rounded-circle img-fluid" width="55" />
              </div>
          </a>
-     </div>
-     <div class="user-notification-block align-center">
-         <div class="top-nav-search">
-             <form>
-                 <input type="text" class="form-control" placeholder="Search here" />
-                 <button class="btn" type="submit">
-                     <i class="fa fa-search"></i>
-                 </button>
-             </form>
-         </div>
      </div>
      <hr />
      <div class="user-menu-items px-3 m-0">
@@ -129,19 +118,13 @@
                  <aside class="sidebar sidebar-user">
                      <div class="row">
                          <div class="col-12">
-                             <div class="card ctm-border-radius shadow-sm grow">
+                             <div class="card ctm-border-radius shadow-sm grow bg-warning">
                                  <div class="card-body py-4">
                                      <div class="row">
                                          <div class="col-md-12 mr-auto text-left">
-                                             <div class="custom-search input-group">
-                                                 <div class="custom-breadcrumb">
-                                                     <ol class="breadcrumb no-bg-color d-inline-block p-0 m-0 mb-2">
-                                                         <li class="breadcrumb-item d-inline-block"><a href="index.html" class="text-dark">Home</a></li>
-                                                         <li class="breadcrumb-item d-inline-block active">Dashboard</li>
-                                                     </ol>
+                                                 <div class="custom-breadcrumb d-flex justify-content-center">
                                                      <h4 class="text-dark">Admin Dashboard</h4>
                                                  </div>
-                                             </div>
                                          </div>
                                      </div>
                                  </div>

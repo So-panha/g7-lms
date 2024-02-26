@@ -1,10 +1,7 @@
 <div class="col-xl-9 col-lg-8 col-md-12">
 							<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white card">
 									<div class="card-body">
-										<ul class="list-group list-group-horizontal-lg">
-											<li class="list-group-item text-center active button-5"><a href="manage.html" class="text-white">Account Roles</a></li>
-											<li class="list-group-item text-center button-6"><a class="text-dark" href="manage-leadership.html">Leadership Roles</a></li>
-										</ul>
+										<h3 class="text-center" style="font-weight: bold;">Account roles</h3>
 									</div>
 								</div>
 							<div class="row">
