@@ -1,7 +1,7 @@
 <?php
 require "../../database/database.php";
 require "../../models/admin.model.php";
-
+// catch data from POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve the values from the form
     $fname = $_POST['fname'];

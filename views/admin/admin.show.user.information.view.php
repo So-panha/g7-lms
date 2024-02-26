@@ -1,6 +1,7 @@
 <!-- form edit  information user by admin-->
 <div class="col-xl-9 col-lg-8  col-md-12 grow ">
     <div class="d-flex "  style="height:560px;">
+    <!-- Get all data of user -->
         <?php
         $user = getUser($user_id);
         $userPositionID = $user['position_id'];
@@ -12,15 +13,18 @@
                 <h3><?php echo strtoupper($user['fname'] . " " . $user['lname']); ?></h3>
             </div>
         </div>
+        <!-- fistname -->
         <div class="col-7" style="background-color:whitesmoke;">
             <div class="col mt-5">
                 <p>First Name: <?php echo $user['fname']; ?></p>
                 <hr>
             </div>
+            <!-- lastname -->
             <div class="col mt-5">
                 <p>Last Name: <?php echo $user['lname']; ?></p>
                 <hr>
             </div>
+            <!-- position -->
             <div class="col mt-5">
                 <p>Position:
                     <?php
@@ -33,10 +37,12 @@
                 </p>
                 <hr>
             </div>
+            <!-- province -->
             <div class="col mt-5">
                 <p>Province: <?php echo $user['place']; ?></p>
                 <hr>
             </div>
+            <!-- salary-->
             <div class="col mt-5">
                 <p>Salary: <?php echo $user['amount'] . "$"; ?></p>
                 <hr>

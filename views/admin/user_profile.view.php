@@ -2,10 +2,12 @@
 <div class="col-xl-9 col-lg-8  col-md-12 grow ">
     <div class="d-flex ">
         <?php
+        // call function for get data of user and position
         $user = getUser($user_id);
         $userPositionID = $user['position_id'];
         $positions = getpositions();
         ?>
+        <!-- first name , last name and image -->
         <div class="col" style="background-color: #ACABCC; text-align: center;">
             <img src="assets/images/profiles/img-2.jpg" alt="Lights" style="width:60%; height:40%; border-radius: 50%;" class="rounded-circle mt-5">
             <div class="caption mt-4  Font-weight: bold " style="color: black;">
@@ -28,6 +30,7 @@
                 <p></p>
                 <hr>
             </div>
+            <!-- loop for catch data position -->
             <div class="col mt-5">
                 <p>Position:
                     <?php
