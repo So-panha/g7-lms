@@ -10,7 +10,7 @@
     <!-- header -->
 
     <!-- content -->
-    <div class="d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none">
+    <div class="d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none grow">
         <?php
         $users = getusers();
         $numberEmployees = count($users);
@@ -22,7 +22,7 @@
     <!-- content -->
 
     <!-- list of users -->
-    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none">
+    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow">
         <?php
         // Call the getusers function to retrieve the user data
         $users = getusers();
