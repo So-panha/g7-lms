@@ -51,7 +51,7 @@
 					</div>
 					<div class="card-right">
 						<h4 class="card-title">Companies</h4>
-						<p class="card-text">30</p>
+						<p class="card-text">1</p>
 					</div>
 				</div>
 			</div>
