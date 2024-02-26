@@ -79,6 +79,6 @@
     <option value="Svay Rieng" <?php if ($user['place'] === 'Svay Rieng') echo 'selected'; ?>>Svay Rieng</option>
   </select>
   <div class="button">
-    <button type="submit" class="btn btn-warning">Add employee</button>
+    <button type="submit" class="btn btn-warning">Update</button>
   </div>
 </form>
