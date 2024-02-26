@@ -159,17 +159,27 @@
                              </div>
                          </div>
                      </div>
+                     <!-- splice php string for active_nabar -->
+                     <?php
+                        $mainUrl = $_SERVER['REQUEST_URI'];
+                        $URL = trim(substr($_SERVER['REQUEST_URI'], 0, -5));
+                        if ($URL === '/information_user') {
+                            $_SERVER['REQUEST_URI'] =  '/information_user';
+                        } else {
+                            $_SERVER['REQUEST_URI'] = $mainUrl;
+                        }
+                        ?>
                      <!-- Sidebar -->
                      <div class="sidebar-wrapper d-lg-block d-md-none d-none">
                          <div class="card ctm-border-radius shadow-sm border-none grow">
                              <div class="card-body">
                                  <div class="row no-gutters">
                                      <div class="col-6 align-items-center text-center">
-                                        <!-- active navbar -->
+                                         <!-- active navbar -->
                                          <a href="/" class="text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/') echo 'active'; ?>"><span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
                                      </div>
                                      <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/admin_employees" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/admin_employees') echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
+                                         <a href="/admin_employees" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/admin_employees' || $_SERVER['REQUEST_URI'] == '/information_user' || $_SERVER['REQUEST_URI'] == '/add_employee') echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
                                      </div>
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/companies" class="text-dark p-4 ctm-border-right ctm-border-left <?php if ($_SERVER['REQUEST_URI'] == '/companies') echo 'active'; ?>"><span class="lnr lnr-apartment pr-0 pb-lg-2 font-23"></span><span class="">Company</span></a>
@@ -190,7 +200,7 @@
                                          <a href="/manages" class="text-dark p-4 ctm-border-right <?php if ($_SERVER['REQUEST_URI'] == '/manages') echo 'active'; ?> "><span class="lnr lnr-sync pr-0 pb-lg-2 font-23"></span><span class="">Manage</span></a>
                                      </div>
                                      <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/profiles" class="text-dark p-4 last-slider-btn ctm-border-right <?php if ($_SERVER['REQUEST_URI'] == '/profiles') echo 'active'; ?>"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
+                                         <a href="/profiles" class="text-dark p-4 last-slider-btn ctm-border-right <?php if ($_SERVER['REQUEST_URI'] == '/profiles'  || $_SERVER['REQUEST_URI'] == '/user_profile') echo 'active'; ?>"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
                                      </div>
 
                                  </div>
