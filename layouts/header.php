@@ -179,18 +179,10 @@
                             </span>
                           </a>
                         </div>
-                        <!-- Notifications -->
                       </div>
-                      <!-- /User info-->
                     </div>
-                  </div>
-                </div>
-                <div class="d-block d-lg-none">
-                  <a href="javascript:void(0)">
-                    <span
-                      class="lnr lnr-user d-block display-5 text-white"
-                      id="open_navSidebar"
-                    ></span>
-                  </a>
-<?php endif; ?>
-                 
+                    <div class="d-block d-lg-none">
+                      <a href="javascript:void(0)">
+                        <span class="lnr lnr-user d-block display-5 text-white" id="open_navSidebar"></span>
+                      </a>
+                    <?php endif; ?>
