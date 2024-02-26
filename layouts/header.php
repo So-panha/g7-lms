@@ -1,51 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="vendor/img/favicon.png" />
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-   <!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="vendor/css/bootstrap.min.css">
-		
-		<!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="vendor/css/font-awesome.min.css">
-    
-		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="vendor/plugins/select2/select2.min.css">
-    
-		<!-- Datetimepicker CSS -->
-		<link rel="stylesheet" href="vendor/css/bootstrap-datetimepicker.min.css">
-    
-		<!-- Linearicon Font -->
-		<link rel="stylesheet" href="vendor/css/lnr-icon.css">
-				
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="vendor/css/style.css" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="vendor/img/favicon.png" />
 
-    <title>LMS SYSTEM</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="vendor/css/font-awesome.min.css">
+
+  <!-- Select2 CSS -->
+  <link rel="stylesheet" href="vendor/plugins/select2/select2.min.css">
+
+  <!-- Select2 CSS -->
+  <link rel="stylesheet" href="vendor/plugins/fullcalendar/fullcalendar.min.css">
+
+  <!-- Datetimepicker CSS -->
+  <link rel="stylesheet" href="vendor/css/bootstrap-datetimepicker.min.css">
+
+  <!-- Linearicon Font -->
+  <link rel="stylesheet" href="vendor/css/lnr-icon.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="vendor/css/style.css" />
+
+  <!-- script login password -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+
+  <title>LMS SYSTEM</title>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
       <script src="vendor/js/html5shiv.min.js"></script>
       <script src="vendor/js/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <!-- Loader -->
-    <div id="loader-wrapper">
-      <div class="loader">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
+</head>
+
+<body>
+  <!-- Loader -->
+  <div id="loader-wrapper">
+    <div class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
     </div>
-    <?php if(!empty($_SESSION['user'])):?>
+  </div>
+  <?php if (!empty($_SESSION['user'])) : ?>
     <!-- Inner wrapper -->
     <div class="inner-wrapper">
       <!-- Header -->

@@ -26,15 +26,16 @@
 </aside>
 </div>
 
-<div class="col-xl-9 col-lg-8  col-md-12 ">
+<div class="col-xl-9 col-lg-8 col-md-12 ">
 
 	<div class="card ctm-border-radius shadow-sm grow ">
-		<div class="card-bodyz  ">
+		<div class="card-body">
 			<div id="calendar"></div>
 		</div>
 	</div>
 </div>
 </div>
+
 </div>
 </div>
 <!--/Content-->
