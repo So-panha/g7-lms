@@ -1,6 +1,6 @@
 <?php
 require "../../database/database.php";
-
+// catch data from POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_POST['user_id'] ?? '';
     $fname = $_POST['fname'] ?? '';
