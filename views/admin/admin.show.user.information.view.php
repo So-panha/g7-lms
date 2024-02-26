@@ -47,11 +47,6 @@
                 <p></p>
                 <hr>
             </div>
-            <div class="col mt-3">
-                <p>Password: <?php echo $user['password']; ?></p>
-                <p></p>
-                <hr>
-            </div>
             <div class="d-flex justify-content-end pb-3 mr-4">
                 <a href="/edit_employee?id=<?php echo urlencode($user['user_id']); ?>"><button type="button" class="btn btn-primary mr-2 ml-2" style="width:80px;">Edit</button></a>
                 <a href="controllers/admin/admin.employee.delete.controler.php?id=<?php echo urlencode($user['user_id']); ?>"><button type="button" class="btn btn-danger mr-2 ml-2" style="width:80px;">Delete</button></a>
