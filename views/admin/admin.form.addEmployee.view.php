@@ -2,13 +2,13 @@
   <h2>Employment details</h2>
   <!-- username -->
   <div class="username">
-    <input type="text" class="fname" id="fname" name="fname" placeholder="First name">
-    <input type="text" class="lname" id="lname" name="lname" placeholder="Last name">
+    <input type="text" class="fname" id="fname" name="fname" placeholder="First name" require>
+    <input type="text" class="lname" id="lname" name="lname" placeholder="Last name" require>
   </div>
   <!-- password -->
-  <input type="password" class="password" id="password" name="password" placeholder="Password">
+  <input type="password" class="password" id="password" name="password" placeholder="Password" require>
   <!-- email -->
-  <input type="email" class="email" id="email" name="email" placeholder="Email">
+  <input type="email" class="email" id="email" name="email" placeholder="Email" require>
   <div class="checks">
     <input type="checkbox" class="check" id="check" name="send_invite">
     <label class="check-1" for="check1">Send them an invite email so they can log in immediately</label>
@@ -22,29 +22,32 @@
   </div>
   <!-- employee from -->
   <select class="country" name="country">
-    <option selected>Country of employee</option>
+    <option disabled>Country of employee</option>
     <option value="Cambodia">Cambodia</option>
     <option value="English">English</option>
     <option value="France">France</option>
   </select>
   <!-- role employees -->
   <select class="roles" name="role">
-    <option selected>Role</option>
-    <option value="1">Admin</option>
-    <option value="2">Super Manager</option>
-    <option value="3">Manager</option>
-    <option value="4">Employee</option>
+    <option disabled selected>Role</option>
+    <option value="manager">Manager</option>
+    <option value="employee">Employee</option>
   </select>
   <!-- Title job -->
   <select class="position" name="position">
-    <option selected>Position</option>
-    <option value="1">IT</option>
-    <option value="2">PL</option>
-    <option value="3">English</option>
-    <option value="4">Training</option>
-    <option value="5">Social Development</option>
+    <option disabled selected>Positions</option>
+    <?php for ($i = 0; $i < count($positions); $i++) : ?>
+      <option value="<?= $positions[$i]['position_id'] ?>"><?= $positions[$i]['position_name'] ?></option>
+    <?php endfor; ?>
   </select>
+
   <!-- place employee -->
+  <select class="manager" name="manager">
+    <option disabled selected>Manager</option>
+    <?php for ($i = 0; $i < count($managers); $i++) : ?>
+      <option value="<?= $managers[$i]['user_id'] ?>"><?= $managers[$i]['fname'] . " " . $managers[$i]['lname'] ?></option>
+    <?php endfor; ?>
+  </select>
   <input type="number" class="amount" id="amount" name="amount" placeholder="Amount">
   <select class="place" name="place">
     <option selected>Place</option>
