@@ -10,9 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $halfDay = $_POST['halfDay'];
     $reason = $_POST['reason'];
     $checked = "Pending";
+    $date_request = date("d-m-y");
     $user_id = $_POST['user_id'];
 
     //call function insert request leave
-    $insert = insertLeaveRequest($leaveType, $from, $to, $checked, $reason, $user_id);
+    $insert = insertLeaveRequest($leaveType, $from, $to, $checked, $reason,$date_request, $user_id);
     header('Location:/leaves');
 }
