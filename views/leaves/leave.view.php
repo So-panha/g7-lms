@@ -8,7 +8,7 @@
 				</div>
 				<div class="card-body">
 					<form method="POST" action="controllers/leaves/create_request_leave.php">
-						c:\Users\RIN.YOUERN\Downloads\lms_db.sql <!-- user_id -->
+					 <!-- user_id -->
 						<?php
 						$user = $_SESSION['user'];
 						?>
