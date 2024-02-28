@@ -84,6 +84,7 @@
 										</div>
 									</div>
 								</div>
+								<?php if($_SESSION['user']['role'] === 'manager') :?>
 								<div class="col-md-12">
 									<div class="card ctm-border-radius shadow-sm grow">
 										<div class="card-header">
@@ -205,6 +206,7 @@
 				</div>
 			</div>
 			<!--/Content-->
+			<?php endif;?>
 			
 		</div>
 		<!-- Inner Wrapper -->

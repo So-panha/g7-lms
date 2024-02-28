@@ -42,9 +42,10 @@ if (!empty($_SESSION['user'])) {
     } elseif ($_SESSION['user']['role'] === 'employee') {
         // employee's router
         $routes = [
-            '/' => 'controllers/users/employee/employee.controller.php',
+            '/' => 'controllers/employees/employee/employee.controller.php',
             '/calendars' => 'controllers/calendars/calendar.controller.php',
             '/companies' => 'controllers/companies/company.controller.php',
+            '/leaves' => 'controllers/leaves/leave.controller.php',
             '/reviews' => 'controllers/reviews/review.controller.php',
             '/user_profile' => 'controllers/user_profile/user_profile.controller.php',
         ];
