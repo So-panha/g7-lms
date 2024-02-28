@@ -65,7 +65,7 @@
             <div class="row align-items-center">
               <div class="col-lg-3 col-md-3 col-sm-3 col-6">
                 <div class="logo my-3 my-sm-0">
-                  <a href="index.html">
+                  <a href="/">
                     <!-- <img
                       src="assets/img/logo.png"
                       alt="logo image"
@@ -120,6 +120,8 @@
                             title=""
                             data-original-title="View Notivicatiion"
                           >
+                          <!-- Allow message only admin -->
+                          <?php if($_SESSION['user']['role'] === 'manager'): ?>
                             <a
                               href="/view_alert"
                               class="font-23 menu-style text-white align-middle"
@@ -131,6 +133,7 @@
                             </svg>
                           </div>
                         </a>
+                        <?php endif; ?>
                       <!-- Notifications -->
                       <!-- user info-->
                       <div
