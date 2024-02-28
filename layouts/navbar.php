@@ -106,7 +106,12 @@ if (!empty($_SESSION['user'])) {
                                             <a href="/profiles" class="text-dark p-4 last-slider-btn ctm-border-right <?php if ($_SERVER['REQUEST_URI'] == '/profiles'  || $_SERVER['REQUEST_URI'] == '/user_profile') echo 'active'; ?>"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
                                         </div>
                                     <?php endif; ?>
-
+                                    <?php if ($_SESSION['user']['role'] != 'admin') : ?>
+                                        <div class="col-6 align-items-center text-center">
+                                        <!-- active navbar -->
+                                        <a href="/history_request" class="text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/history_request') echo 'active'; ?>"><span class="lnr lnr-history pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

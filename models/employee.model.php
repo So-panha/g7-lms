@@ -1,10 +1,10 @@
 <?php
 //function for insert request
-function insertLeaveRequest(string $type_leave, string $start_leave, string $end_leave, string $checked, string $reason, string $user_id): bool
+function insertLeaveRequest(string $type_leave, string $start_leave, string $end_leave, string $checked, string $reason,string $date_request, string $user_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO request_leave (type_leave, start_leave, end_leave, checked, reason, user_id)
-    VALUES (:type_leave, :start_leave, :end_leave, :checked, :reason, :user_id)");
+    $statement = $connection->prepare("INSERT INTO request_leave (type_leave, start_leave, end_leave, checked, reason,date_request, user_id)
+    VALUES (:type_leave, :start_leave, :end_leave, :checked, :reason,:date_request, :user_id)");
 
     $statement->execute([
         ':type_leave' => $type_leave,
@@ -12,7 +12,8 @@ function insertLeaveRequest(string $type_leave, string $start_leave, string $end
         ':end_leave' => $end_leave,
         ':checked' => $checked,
         ':reason' => $reason,
-        ':user_id' => $user_id
+        ':user_id' => $user_id,
+        ':date_request' => $date_request
     ]);
 
     return $statement->rowCount() > 0;
@@ -26,10 +27,10 @@ function getPost(int $id) : array
     return $statement->fetch();
 }
 
-function getPosts() : array
+function getHistoryRequest(): array
 {
     global $connection;
-    $statement = $connection->prepare("select * from posts");
+    $statement = $connection->prepare("SELECT * FROM request_leave JOIN users ON users.user_id = request_leave.user_id");
     $statement->execute();
     return $statement->fetchAll();
 }
