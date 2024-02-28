@@ -76,6 +76,6 @@ if (empty($_SESSION['user'])) {
     require "layouts/navbar.php";
     require $page;
     require "layouts/footer.php";
-} else{
+} elseif($page === 'views/errors/404.php'){
     require $page;
 }
