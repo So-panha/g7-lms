@@ -1,49 +1,4 @@
 <div class="col-xl-9 col-lg-8  col-md-12">
-							<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white card">
-									<div class="card-body">
-										<ul class="list-group list-group-horizontal-lg">
-											<li class="list-group-item text-center active button-5"><a href="reports.html" class="text-white">Team Reports</a></li>
-											<li class="list-group-item text-center button-6"><a class="text-dark" href="leave-reports.html">Leave Reports</a></li>
-											<li class="list-group-item text-center button-6"><a class="text-dark" href="payroll-reports.html">Payroll Reports</a></li>
-											<li class="list-group-item text-center button-6"><a class="text-dark" href="contact-reports.html">Contact Reports</a></li>
-											<li class="list-group-item text-center button-6"><a class="text-dark" href="email-reports.html">Email Reports</a></li>
-											<li class="list-group-item text-center button-6"><a class="text-dark" href="security-reports.html">Security Reports</a></li>
-											<li class="list-group-item text-center button-6"><a class="text-dark" href="work-from-home-reports.html">Working From Home Reports</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="card shadow-sm ctm-border-radius grow">
-									<div class="card-body align-center">
-										<div class="row filter-row">
-											<div class="col-sm-6 col-md-6 col-lg-6 col-xl-3"> 
-												<div class="form-group mb-xl-0 mb-md-2 mb-sm-2">
-													<select class="form-control select">
-														<option selected>Start Date</option>
-														<option>Date Of Birth</option>
-														<option>Created At</option>
-														<option>Leaving Date</option>
-														<option>Visa Expiry Date</option>
-													</select>
-													
-												</div>
-											</div>
-											<div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">  
-												<div class="form-group mb-lg-0 mb-md-2 mb-sm-2">
-													<input type="text" class="form-control datetimepicker" placeholder="From">
-												</div>
-											</div>
-											<div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">  
-												<div class="form-group mb-lg-0 mb-md-0 mb-sm-0">
-													<input type="text" class="form-control datetimepicker" placeholder="To">
-												</div>
-											</div>
-											
-											<div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">  
-												<a href="#" class="btn btn-theme button-1 text-white btn-block p-2 mb-md-0 mb-sm-0 mb-lg-0 mb-0"> Apply Filter </a>  
-											</div>
-										</div>
-									</div>
-								</div>
 								<div class="card shadow-sm grow ctm-border-radius">
 									<div class="card-body align-center">
 										<ul class="nav flex-row nav-pills" id="pills-tab" role="tablist" >

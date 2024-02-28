@@ -30,10 +30,10 @@
   <!-- role employees -->
   <select class="roles" name="role">
     <option selected>Role</option>
-    <option value="admin">Admin</option>
-    <option value="supermanager">Super Manager</option>
-    <option value="manager">Manager</option>
-    <option value="employee">Employee</option>
+    <option value="1">Admin</option>
+    <option value="2">Super Manager</option>
+    <option value="3">Manager</option>
+    <option value="4">Employee</option>
   </select>
   <!-- Title job -->
   <select class="position" name="position">

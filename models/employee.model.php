@@ -1,13 +1,18 @@
 <?php
-
-function createPost(string $title, string $description) : bool
+//function for insert request
+function insertLeaveRequest(string $type_leave, string $start_leave, string $end_leave, string $checked, string $reason, string $user_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("insert into posts (title, description) values (:title, :description)");
-    $statement->execute([
-        ':title' => $title,
-        ':description' => $description
+    $statement = $connection->prepare("INSERT INTO request_leave (type_leave, start_leave, end_leave, checked, reason, user_id)
+    VALUES (:type_leave, :start_leave, :end_leave, :checked, :reason, :user_id)");
 
+    $statement->execute([
+        ':type_leave' => $type_leave,
+        ':start_leave' => $start_leave,
+        ':end_leave' => $end_leave,
+        ':checked' => $checked,
+        ':reason' => $reason,
+        ':user_id' => $user_id
     ]);
 
     return $statement->rowCount() > 0;
