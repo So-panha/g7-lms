@@ -49,7 +49,7 @@ if (!empty($_SESSION['user'])) {
                             <div class="user-details">
                                 <!-- show role of the page -->
                                 <h4><b>Welcome <?= $userRole; ?></b></h4>
-                                <p>Sun, 29 Nov 2019</p>
+                                <p><?=date("l, d-m-Y");?></p>
                             </div>
                         </div>
                     </div>

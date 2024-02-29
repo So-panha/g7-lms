@@ -8,14 +8,14 @@
 				</div>
 				<div class="card-body">
 					<form method="POST" action="controllers/leaves/create_request_leave.php">
-					 <!-- user_id -->
+						<!-- user_id -->
 						<?php
 						$user = $_SESSION['user'];
 						?>
 
 						<div class="row">
 							<input type="hidden" value="<?= $user['user_id'] ?>" name="user_id">
-							 <!-- type leave -->
+							<!-- type leave -->
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>Leave Type <span class="text-danger">*</span></label>
@@ -39,7 +39,7 @@
 								</div>
 							</div>
 						</div>
-						 <!-- date leave -->
+						<!-- date leave -->
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="form-group">
@@ -146,62 +146,40 @@
 											<th>Leave Type</th>
 											<th>From</th>
 											<th>To</th>
-											<th>Days</th>
-											<th>Remaining Days</th>
 											<th>Notes</th>
 											<th>Status</th>
 											<th class="text-right">Action</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<a href="employment.html" class="avatar"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></a>
-												<h2><a href="employment.html">Danny Ward</a></h2>
-											</td>
-											<td>Parental Leave</td>
-											<td>05 Dec 2019</td>
-											<td>07 Dec 2019</td>
-											<td>3</td>
-											<td>9</td>
-											<td>Parenting Leave</td>
-											<td><a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm">Approved</a></td>
-											<td class="text-right text-danger"><a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
-													<span class="lnr lnr-trash"></span> Delete
-												</a></td>
-										</tr>
-										<tr>
-											<td>
-												<a href="employment.html" class="avatar"><img src="assets/img/profiles/img-4.jpg" alt="Linda Craver" class="img-fluid"></a>
-												<h2><a href="employment.html">Linda Craver</a></h2>
-											</td>
-											<td>Sick Leave</td>
-											<td>05 Dec 2019</td>
-											<td>05 Dec 2019</td>
-											<td>1</td>
-											<td>11</td>
-											<td>Going to Hospital</td>
-											<td><a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm">Approved</a></td>
-											<td class="text-right text-danger"><a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
-													<span class="lnr lnr-trash"></span> Delete
-												</a></td>
-										</tr>
-										<tr>
-											<td>
-												<a href="employment.html" class="avatar"><img src="assets/img/profiles/img-3.jpg" alt="Jenni Sims" class="img-fluid"></a>
-												<h2><a href="employment.html">Jenni Sims</a></h2>
-											</td>
-											<td>Working From Home</td>
-											<td>05 Dec 2019</td>
-											<td>05 Dec 2019</td>
-											<td>1</td>
-											<td>11</td>
-											<td>Raining</td>
-											<td><a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm">Approved</a></td>
-											<td class="text-right text-danger"><a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
-													<span class="lnr lnr-trash"></span> Delete
-												</a></td>
-										</tr>
+									<tbody class="text-center">
+										<?php
+										$requests = requestLeave($manager_id);
+										foreach ($requests as $request) {
+										?>
+											<tr>
+												<td>
+													<a href="employment.html" class="avatar"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></a>
+													<h2><a href="employment.html"><?= $request['user_id'] ?></a></h2>
+												</td>
+												<td><?= $request['type_leave'] ?></td>
+												<td><?= $request['start_leave'] ?></td>
+												<td><?= $request['start_leave'] ?></< /td>
+												<td><?= $request['reason'] ?></< /</td>
+												<td>
+													<select>
+														<option selected>Pending</option>
+														<option>Approved</option>
+														<option>Rejected</option>
+													</select>
+												</td>
+												<td class="text-right text-danger"><a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
+														<span class="lnr lnr-trash"></span> Delete
+													</a></td>
+											</tr>
+										<?php
+										}
+										?>
+
 									</tbody>
 								</table>
 							</div>

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $position_id = $_POST['position'];
         $amount = $_POST['amount'];
         $place = $_POST['place'];
-        $$manager = $_POST['manager'];
+        $manager = $_POST['manager'];
 
         // Project Script javaScript
         $fname = htmlspecialchars($fname);

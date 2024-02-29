@@ -19,12 +19,15 @@ function insertLeaveRequest(string $type_leave, string $start_leave, string $end
     return $statement->rowCount() > 0;
 }
 
-function getPost(int $id) : array
+function requestLeave($manager_id): array
 {
     global $connection;
-    $statement = $connection->prepare("select * from posts where id = :id");
-    $statement->execute([':id' => $id]);
-    return $statement->fetch();
+    $statement = $connection->prepare("SELECT rl.leave_id, rl.type_leave, rl.start_leave, rl.end_leave, rl.checked, rl.reason, rl.date_request, rl.user_id 
+    FROM request_leave rl JOIN users u ON rl.user_id = u.user_id
+    WHERE u.manager = :manager_id");
+    $statement->bindParam(':manager_id', $manager_id, PDO::PARAM_INT);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function getHistoryRequest(): array
