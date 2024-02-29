@@ -73,11 +73,11 @@ function getUser(int $user_id): ?array
 }
 
 
-function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place): bool
+function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place, string $manager): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id, amount, place)
-    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :amount, :place)");
+    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id, amount, place, picture, manager)
+    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :amount, :place, :picture, :manager)");
 
     $statement->execute([
         ':fname' => $fname,
@@ -90,7 +90,9 @@ function insertEmployee(string $fname, string $lname, string $password, string $
         ':role' => $role,
         ':position_id' => $position_id,
         ':amount' => $amount,
-        ':place' => $place
+        ':place' => $place,
+        ':picture' => '',
+        ':manager' => $manager
     ]);
 
     return $statement->rowCount() > 0;
@@ -135,10 +137,30 @@ function getAmount()
 // get position of all user to diplay in form diagram
 function getPosition(): array {
     global $connection;
-    $query = "select count(users.fname) as number_positions, position.position_name from users inner join position where users.position_id = position.position_id group by users.position_id";
+    $query = "SELECT count(users.fname) AS number_positions, position.position_name FROM users INNER JOIN position WHERE users.position_id = position.position_id GROUP BY users.position_id";
     $STMT = $connection->prepare($query);
     $STMT->execute();
 
     return $STMT->fetchAll();
 
+}
+
+// Get positions
+function positions(): array{
+    global $connection;
+    $query = "SELECT * FROM position";
+    $STMT = $connection->prepare($query);
+    $STMT->execute();
+
+    return $STMT->fetchAll();
+}
+
+// Get managers
+function managers(): array{
+    global $connection;
+    $query = "SELECT user_id,fname,lname FROM users WHERE role = 'manager'";
+    $STMT = $connection->prepare($query);
+    $STMT->execute();
+
+    return $STMT->fetchAll();      
 }

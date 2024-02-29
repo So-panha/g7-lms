@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 04:58 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Feb 28, 2024 at 05:00 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,13 +46,19 @@ CREATE TABLE `position` (
   `position_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `position`
+--
+
 INSERT INTO `position` (`position_id`, `position_name`) VALUES
 (1, 'IT'),
 (2, 'PL'),
 (3, 'English'),
 (4, 'Training'),
 (5, 'Social Development');
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `request_leave`
 --
@@ -62,10 +68,19 @@ CREATE TABLE `request_leave` (
   `type_leave` int(11) NOT NULL,
   `start_leave` date NOT NULL,
   `end_leave` date NOT NULL,
-  `checked` tinyint(1) NOT NULL,
+  `checked` varchar(255) DEFAULT NULL,
   `reason` varchar(225) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `request_leave`
+--
+
+INSERT INTO `request_leave` (`leave_id`, `type_leave`, `start_leave`, `end_leave`, `checked`, `reason`, `user_id`) VALUES
+(3, 2, '0000-00-00', '0000-00-00', 'Pending', 'hello', 4),
+(4, 2, '0000-00-00', '0000-00-00', 'Pending', 'hello', 4),
+(5, 7, '0000-00-00', '0000-00-00', 'Pending', 'request', 4);
 
 -- --------------------------------------------------------
 
@@ -78,7 +93,10 @@ CREATE TABLE `type_leave` (
   `type_leave` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `type_leave`
+--
+
 INSERT INTO `type_leave` (`type_leave_id`, `type_leave`) VALUES
 (1, 'Vacation'),
 (2, 'Sick leave'),
@@ -87,6 +105,9 @@ INSERT INTO `type_leave` (`type_leave_id`, `type_leave`) VALUES
 (5, 'Paternity leave'),
 (6, 'Bereavement leave'),
 (7, 'Training leave');
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `users`
 --
@@ -108,9 +129,14 @@ CREATE TABLE `users` (
   `manager` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `users`
+--
 
 INSERT INTO `users` (`user_id`, `fname`, `lname`, `password`, `email`, `sendInvite`, `gender`, `country`, `role`, `position_id`, `amount`, `place`, `picture`, `manager`) VALUES
-(1, 'sopanha', 'sin', '$2y$10$k7n.pE8t91elY8dKMiROXOCOVEjlmOP/GlRtlOP44ZlWWC51Hes6e', 'sopanha@gmail.com', '', 'Male', 'Cambodia', 'admin', 1, '1000', 'Phnom Penh', '', '');
+(1, 'sopanha', 'sin', '$2y$10$k7n.pE8t91elY8dKMiROXOCOVEjlmOP/GlRtlOP44ZlWWC51Hes6e', 'sopanha@gmail.com', '', 'Male', 'Cambodia', 'admin', 1, '1000', 'Phnom Penh', '', 0),
+(2, 'rin', 'reamlly', '$2y$10$hp/YnmOGdHdLYFXpny7JSuem5zP2aZ7NIvSaPaHDX7N4ZCSTONwLG', 'rin@gmail.com', 'on', 'Male', 'Cambodia', 'manager', 1, '10000', 'Banteay Meanchey', '', 0),
+(4, 'phally', 'rin', '$2y$10$nl3114xMZJyW.VspBEwIWO/S7LAkGsjb8x7RNrTREKTcIawEzogz6', 'rineyblack@gmail.com', '1', 'male', 'Cambodia', 'employee', 1, '1000', 'Banteay Meanchey', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -164,25 +190,25 @@ ALTER TABLE `calendar`
 -- AUTO_INCREMENT for table `position`
 --
 ALTER TABLE `position`
-  MODIFY `position_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `position_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `request_leave`
 --
 ALTER TABLE `request_leave`
-  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `type_leave`
 --
 ALTER TABLE `type_leave`
-  MODIFY `type_leave_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `type_leave_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
