@@ -8,14 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         && !empty($_POST['lname'])
         && !empty($_POST['password'])
         && !empty($_POST['email'])
-        && !empty($_POST['send_invite'])
         && !empty($_POST['gender'])
         && !empty($_POST['country'])
         && !empty($_POST['role'])
         && !empty($_POST['position'])
         && !empty($_POST['amount'])
         && !empty($_POST['place'])
-        && !empty($_POST['manager'])
     ) {
         // Retrieve the values from the form
         $fname = $_POST['fname'];
@@ -29,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $position_id = $_POST['position'];
         $amount = $_POST['amount'];
         $place = $_POST['place'];
-        $$manager = $_POST['manager'];
+        $manager = $_POST['manager'];
 
         // Project Script javaScript
         $fname = htmlspecialchars($fname);
@@ -45,8 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = trim($email);
         $amount = trim($amount);
 
+        if($manager === null){
+            $manager = 0;
+        }
+
+
         // Encript password
         $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
+
 
         // Insert employee data into the database
         $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place, $manager);
