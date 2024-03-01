@@ -71,3 +71,34 @@ function alertMessage($manager_id) : array
 
     return $STMT->fetchAll();
 }
+
+// For manager
+//all users
+function getUsers(): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users");
+    $statement->execute();
+    return $statement->fetchAll();
+}
+// get member
+function getMember($managerId): array
+{
+    global $connection;
+    $quary = "select * from users where manager = $managerId";
+    $statement = $connection->prepare($quary);
+    $statement -> execute();
+
+    return $statement->fetchAll();
+}
+
+// get position of all user to diplay in form diagram
+function getpositions(): array {
+    global $connection;
+    $query = "SELECT count(users.fname) AS number_positions, position.position_name,position.position_id FROM users INNER JOIN position WHERE users.position_id = position.position_id GROUP BY users.position_id";
+    $STMT = $connection->prepare($query);
+    $STMT->execute();
+
+    return $STMT->fetchAll();
+
+}

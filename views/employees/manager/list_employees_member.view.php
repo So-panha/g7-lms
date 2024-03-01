@@ -4,32 +4,32 @@
         <ul class="list-group list-group-horizontal-lg">
             <li class="list-group-item text-center active button-5"><a href="/admin_employees" class="text-white" style="width:60px;">All</a></li>
         </ul>
-    </div>
-    <!-- header -->
+    </div> <!-- header -->
 
     <!-- content -->
     <div class="d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none grow">
 
-        <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Employees</div>
+        <div class="p-2 bg-light"><?php echo $numberOfMembers; ?> Employees</div>
     </div>
     <!-- content -->
 
     <!-- list of users -->
     <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow">
         <?php
-     
 
         // Loop through the user data and generate user cards
-        foreach ($users as $user) {
+        foreach ($allMembers as $members) {
             // Extract the user details from the current user data
-            $id = $user['user_id'];
-            $name = $user['fname'] . ' ' . $user['lname'];
-            $gender = $user['gender'];
+            $id = $members['user_id'];
+            $name = $members['fname'] . ' ' . $members['lname'];
+            $gender = $members['gender'];
+            $position_id = $members['position_id'];
 
             // Find the position name based on the position ID
             $positionName = '';
             foreach ($positions as $position) {
-                if ($user['position_id'] == $position['position_id']) {
+                
+                if ($position_id == $position['position_id']) {
                     $positionName = $position['position_name'];
                     break;
                 }
@@ -57,7 +57,4 @@
         }
         ?>
     </div>
-</div>
-<!--  -->
-</div>
-</div>
+</div> 
