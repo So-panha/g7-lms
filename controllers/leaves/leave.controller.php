@@ -1,7 +1,7 @@
 <?php
 require 'database/database.php';
 require 'models/employee.model.php';
-require 'models/admin.model.php';
+
 $type_requests = getTypeRequest();
 $users = getUsers();
 $user = $_SESSION['user'];
