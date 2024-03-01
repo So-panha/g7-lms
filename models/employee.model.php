@@ -38,18 +38,13 @@ function getHistoryRequest(): array
     return $statement->fetchAll();
 }
 
-function updatePost(string $title, string $description, int $id) : bool
+function getTypeRequest() : array
 {
     global $connection;
-    $statement = $connection->prepare("update posts set title = :title, description = :description where id = :id");
-    $statement->execute([
-        ':title' => $title,
-        ':description' => $description,
-        ':id' => $id
+    $statement = $connection->prepare("SELECT * FROM type_leave");
+    $statement->execute([]);
 
-    ]);
-
-    return $statement->rowCount() > 0;
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function deletePost(int $id) : bool
@@ -57,5 +52,18 @@ function deletePost(int $id) : bool
     global $connection;
     $statement = $connection->prepare("delete from posts where id = :id");
     $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
+function reactions(string $respond, int $user_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE request_leave SET checked = :respond where user_id =:id ");
+    $statement->execute([
+        ':respond' => $respond,
+        ':id' => $user_id
+
+    ]);
+
     return $statement->rowCount() > 0;
 }

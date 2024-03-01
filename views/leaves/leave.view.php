@@ -134,52 +134,75 @@
 			<div class="col-md-12">
 				<div class="card ctm-border-radius shadow-sm grow">
 					<div class="card-header">
-						<h4 class="card-title mb-0">Today Leaves</h4>
+						<h4 class="card-title mb-0">Request Leaves</h4>
 					</div>
 					<div class="card-body">
 						<div class="employee-office-table">
 							<div class="table-responsive">
-								<table class="table custom-table mb-0">
-									<thead>
+								<table class="d-flex-column table custom-table mb-0 align-content-center">
+									<thead class="text-center">
 										<tr>
 											<th>Employee</th>
 											<th>Leave Type</th>
 											<th>From</th>
 											<th>To</th>
-											<th>Notes</th>
+											<th>Reason</th>
 											<th>Status</th>
-											<th class="text-right">Action</th>
 										</tr>
 									</thead>
 									<tbody class="text-center">
-										<?php
-										$requests = requestLeave($manager_id);
-										foreach ($requests as $request) {
-										?>
-											<tr>
-												<td>
-													<a href="employment.html" class="avatar"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></a>
-													<h2><a href="employment.html"><?= $request['user_id'] ?></a></h2>
-												</td>
-												<td><?= $request['type_leave'] ?></td>
-												<td><?= $request['start_leave'] ?></td>
-												<td><?= $request['start_leave'] ?></< /td>
-												<td><?= $request['reason'] ?></< /</td>
-												<td>
-													<select>
-														<option selected>Pending</option>
-														<option>Approved</option>
-														<option>Rejected</option>
-													</select>
-												</td>
-												<td class="text-right text-danger"><a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
-														<span class="lnr lnr-trash"></span> Delete
-													</a></td>
-											</tr>
-										<?php
-										}
-										?>
+										<form method="POST" action="controllers/leaves/respond.controller.php">
+											<?php
+											//function type request
+											$type_requests = getTypeRequest();
+											// call funcion get all users
+											$users = getUsers();
+											//call function request 
+											$requests = requestLeave($manager_id);
 
+											foreach ($requests as $request) {
+											?>
+												<tr>
+													<!-- employee naem-->
+													<td>
+														<a href="employment.html" class="avatar"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></a>
+														<h2>
+															<?php foreach ($users as $user) : ?>
+																<?php if ($user['user_id'] === $request['user_id']) : ?>
+																	<a href="employment.html"><?php echo strtoupper($user['fname']); ?></a>
+																	<input type="hidden" name="user_id" value="<?php echo $request['user_id'] ?>">
+																<?php endif; ?>
+															<?php endforeach; ?>
+														</h2>
+													</td>
+													<!-- type request -->
+													<td>
+														<?php foreach ($type_requests as $type_request) : ?>
+															<?php if ($type_request['type_leave_id'] === $request['type_leave']) : ?>
+																<?php echo ($type_request['type_leave_name']); ?>
+															<?php endif; ?>
+														<?php endforeach; ?>
+													</td>
+
+													</td>
+													<!-- date start -->
+													<td><?= $request['start_leave'] ?></td>
+													<!-- date come back -->
+													<td><?= $request['start_leave'] ?></< /td>
+														<!-- reason -->
+													<td><?= $request['reason'] ?></< /</td>
+														<!-- respond -->
+
+													<td>
+														<button class="btn btn-primary" value="Approved" name="approved">Approved</button>
+														<button class="btn btn-danger" value="Rejected" name="rejected">Rejected</button>
+													</td>
+
+												</tr>
+											<?php
+											}
+											?>
+										</form>
 									</tbody>
 								</table>
 							</div>

@@ -36,14 +36,14 @@ function getpositions(): array
     return $statement->fetchAll();
 }
 
-function updatePost(string $title, string $description, int $id): bool
+function updatePost(string $title, string $description, int $uer_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("update posts set title = :title, description = :description where id = :id");
+    $statement = $connection->prepare("update posts set title = :title, description = :description where uer_id = :id");
     $statement->execute([
         ':title' => $title,
         ':description' => $description,
-        ':id' => $id
+        ':id' => $uer_id
 
     ]);
 
