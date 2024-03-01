@@ -29,12 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 // alert when password is wrong
                 header('location: /login');
-                $_SESSION['alert'] = 'Your password is wrong!';
+                $_SESSION['pwd'] = 'wrongPwd';
             }
         } else {
             // alert when email is wrong
             header('location: /login');
-            $_SESSION['alert'] = 'Your email is wrong!';
+            $_SESSION['email'] = 'wrongEmail';
         };
     } elseif (empty($_POST['email'])) {
         // alert when no have Email
