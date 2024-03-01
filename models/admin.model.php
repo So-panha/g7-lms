@@ -158,7 +158,7 @@ function positions(): array{
 // Get managers
 function managers(): array{
     global $connection;
-    $query = "SELECT user_id,fname,lname FROM users WHERE role = 'manager'";
+    $query = "SELECT users.user_id, users.fname, users.lname,users.role, users.picture, position.position_name FROM users INNER JOIN position WHERE users.position_id = position.position_id AND users.role = 'manager'";
     $STMT = $connection->prepare($query);
     $STMT->execute();
 
