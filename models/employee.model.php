@@ -71,3 +71,14 @@ function alertMessage($manager_id) : array
 
     return $STMT->fetchAll();
 }
+
+
+function personalHistoryOfRequest($employeeId){
+    global $connection;
+    $query = "SELECT * from request_leave where user_id = $employeeId";
+
+    $statement = $connection->prepare($query);
+    $statement->execute();
+
+    return $statement->fetchAll();
+}
