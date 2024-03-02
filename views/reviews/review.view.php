@@ -40,7 +40,7 @@
 									foreach ($personalHistoryRequest as $request) {
 
 
-										if ($request['checked'] == "Pending") {
+										if ($request['checked'] !== "Pending") {
 											if ($employeeId === $request['user_id']) {
 									?>
 
