@@ -49,7 +49,7 @@
             </div>
             <div class="d-flex justify-content-end mt-5 mr-4">
                 <a href="/eidt_infomation_members?id=<?php echo urlencode($user['user_id']); ?>"><button type="button" class="btn btn-primary mr-2 ml-2" style="width:80px;">Edit</button></a>
-                <a href="controllers/admin/admin.employee.delete.controler.php?id=<?php echo urlencode($user['user_id']); ?>"><button type="button" class="btn btn-danger mr-2 ml-2" style="width:80px;">Delete</button></a>
+                <a href="controllers/employees/manager/delete_member.controller.php?id=<?php echo urlencode($user['user_id']); ?>"><button type="button" class="btn btn-danger mr-2 ml-2" style="width:80px;">Delete</button></a>
             </div>
         </div>
 
