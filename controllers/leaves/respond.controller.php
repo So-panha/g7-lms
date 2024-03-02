@@ -5,18 +5,16 @@ require "../../models/employee.model.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["approved"])) {
         $approvedValue = $_POST["approved"];
-        $user_id = $_POST["user_id"];
+        $leave_id = $_POST["leave_id"];
 
-        echo "Approved value: " . $approvedValue;
-        echo "user id: " . $user_id;
-        $reaction= reactions($approvedValue,$user_id);
+        $reaction= reactions($approvedValue,$leave_id);
+        header('Location:/view_alert');
     } elseif (isset($_POST["rejected"])) {
         $rejectedValue = $_POST["rejected"];
-        $user_id = $_POST["user_id"];
+        $leave_id = $_POST["leave_id"];
 
-        echo "Rejected value: " . $rejectedValue;
-        echo "user id: " . $user_id;
-        $reaction= reactions($approvedValue,$user_id);
+        $reaction= reactions($rejectedValue,$leave_id);
+        header('Location:/view_alert');
     }
 }
 ?>

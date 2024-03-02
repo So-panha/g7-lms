@@ -56,12 +56,12 @@ function deletePost(int $id): bool
 }
 
 
-// Get alert depend on the employee members
+// Get alert depend on the employee members    
 function alertMessage($manager_id) : array
 {
     global $connection;
 
-    $query = "SELECT users.user_id, users.fname, users.lname, users.picture, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
+    $query = "SELECT users.user_id, users.fname, users.lname, users.picture, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
     INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = $manager_id AND request_leave.type_leave = type_leave.type_leave_id";
 
     $STMT = $connection->prepare($query);
@@ -99,13 +99,13 @@ function getpositions(): array {
 
     return $STMT->fetchAll();
 }
-function reactions(string $respond, int $user_id): bool
+function reactions(string $respond, int $leave_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("UPDATE request_leave SET checked = :respond where user_id =:id ");
+    $statement = $connection->prepare("UPDATE request_leave SET checked = :respond where leave_id =:id ");
     $statement->execute([
         ':respond' => $respond,
-        ':id' => $user_id
+        ':id' => $leave_id
 
     ]);
 
