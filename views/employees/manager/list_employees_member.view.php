@@ -36,7 +36,7 @@
             }
         ?>
             <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-2 ml-2 mt-4">
-                <a href="/information_user?id=<?php echo urlencode($id); ?>">
+                <a href="/infomation_members?id=<?php echo urlencode($id); ?>">
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
                             <?php if ($gender == "Male") : ?>

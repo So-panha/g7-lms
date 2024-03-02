@@ -39,6 +39,8 @@ if (!empty($_SESSION['user'])) {
             '/history_request' => 'controllers/history/history.controller.php',
             '/view_alert' => 'controllers/alert/alert.controller.php',
             '/members' => 'controllers/employees/manager/list_employee_member.controller.php',
+            '/infomation_members' => 'controllers/employees/manager/show.infotion.member.controller.php',
+            '/eidt_infomation_members' => 'controllers/employees/manager/edit.member.controller.php',
            
         ];
     } elseif ($_SESSION['user']['role'] === 'employee') {
