@@ -35,10 +35,13 @@ if (!empty($_SESSION['user'])) {
             '/calendars' => 'controllers/calendars/calendar.controller.php',
             '/companies' => 'controllers/companies/company.controller.php',
             '/leaves' => 'controllers/leaves/leave.controller.php',
-            '/admin_employees' => 'controllers/employees/manager/edit.member.controller.php',
             '/user_profile' => 'controllers/user_profile/user_profile.controller.php',
             '/history_request' => 'controllers/history/history.controller.php',
             '/view_alert' => 'controllers/alert/alert.controller.php',
+            '/members' => 'controllers/employees/manager/list_employee_member.controller.php',
+            '/infomation_members' => 'controllers/employees/manager/show.infotion.member.controller.php',
+            '/eidt_infomation_members' => 'controllers/employees/manager/edit.member.controller.php',
+           
         ];
     } elseif ($_SESSION['user']['role'] === 'employee') {
         // employee's router
@@ -82,4 +85,5 @@ if (empty($_SESSION['user'])) {
 } elseif($page === 'views/errors/404.php'){
     require $page;
 }
+
 

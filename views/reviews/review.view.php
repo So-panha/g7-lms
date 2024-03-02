@@ -23,8 +23,8 @@
 									<tr>
 										<th>type leave</th>
 										<th>date request</th>
-										<th>Begin On</th>
-										<th>Due By</th>
+										<th>Start leave</th>
+										<th>Back leave</th>
 										<th>Progressive</th>
 									</tr>
 								</thead>
@@ -34,18 +34,25 @@
 									
 									$employeeId = $_SESSION['user']['user_id'];
 
+									$typeRequests = getTypeRequest();
 									$personalHistoryRequest = personalHistoryOfRequest($employeeId);
 									// print_r($personalHistoryRequest);
 									foreach ($personalHistoryRequest as $request) {
-										
 
 
-										if ($request['checked'] !== "Pending") {
+										if ($request['checked'] == "Pending") {
 											if ($employeeId === $request['user_id']) {
 									?>
 
 												<tr>
-													<td><?php echo $request['type_leave']; ?></td>
+													<td>
+														<?php foreach ($typeRequests as $typeRequest){
+
+															if ($request['type_leave'] ===$typeRequest['type_leave_id']){
+																echo $typeRequest['type_leave_name'];
+															}
+														} ?>
+													</td>
 													<td>
 														<h2><?php echo $request['date_request']; ?></h2>
 													</td>

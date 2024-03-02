@@ -197,56 +197,27 @@
 			<!-- Team Leads List -->
 			<div class="card flex-fill team-lead shadow-sm grow">
 				<div class="card-header">
-					<h4 class="card-title mb-0 d-inline-block">Team Leads </h4>
+					<h4 class="card-title mb-0 d-inline-block">Manager</h4>
 					<a href="employees.html" class="dash-card float-right mb-0 text-primary">Manage Team </a>
 				</div>
 				<div class="card-body">
-					<div class="media mb-3">
-						<div class="e-avatar avatar-online mr-3"><img src="assets/images/profiles/img-2.jpg" alt="Maria Cotton" class="img-fluid"></div>
-						<div class="media-body">
-							<h6 class="m-0">Maria Cotton</h6>
-							<p class="mb-0 ctm-text-sm">PHP</p>
+					<?php for ($i = 0; $i < count($manager); $i++) : ?>
+						<div class="media mb-3">
+							<div class="e-avatar avatar-online mr-3"><img class="img-fluid" src="assets/images/profiles/img-2.jpg" alt="Linda Craver"></div>
+							<div class="media-body">
+								<h6 class="m-0"><?= $manager[$i]['fname'].' '.$manager[$i]['lname'] ?></h6>
+								<p class="mb-0 ctm-text-sm"><?= $manager[$i]['position_name'] ?></p>
+							</div>
 						</div>
-					</div>
-					<hr>
-					<div class="media mb-3">
-						<div class="e-avatar avatar-online mr-3"><img class="img-fluid" src="assets/images/profiles/img-2.jpg" alt="Linda Craver"></div>
-						<div class="media-body">
-							<h6 class="m-0">Danny Ward</h6>
-							<p class="mb-0 ctm-text-sm">Design</p>
-						</div>
-					</div>
-					<hr>
-					<div class="media mb-3">
-						<div class="e-avatar avatar-online mr-3"><img src="assets/images/profiles/img-2.jpg" alt="Linda Craver" class="img-fluid"></div>
-						<div class="media-body">
-							<h6 class="m-0">Linda Craver</h6>
-							<p class="mb-0 ctm-text-sm">IOS</p>
-						</div>
-					</div>
-					<hr>
-					<div class="media mb-3">
-						<div class="e-avatar avatar-online mr-3"><img class="img-fluid" src="assets/images/profiles/img-2.jpg" alt="Linda Craver"></div>
-						<div class="media-body">
-							<h6 class="m-0">Jenni Sims</h6>
-							<p class="mb-0 ctm-text-sm">Android</p>
-						</div>
-					</div>
-					<hr>
-					<div class="media">
-						<div class="e-avatar avatar-offline mr-3"><img class="img-fluid" src="assets/images/profiles/img-2.jpg" alt="Linda Craver"></div>
-						<div class="media-body">
-							<h6 class="m-0">John Gibbs</h6>
-							<p class="mb-0 ctm-text-sm">Business</p>
-						</div>
-					</div>
+						<hr>
+					<?php endfor; ?>
 				</div>
 			</div>
 		</div>
 
 		<div class="col-lg-6 col-md-12 d-flex">
-</div>
-</div>
+		</div>
+	</div>
 </div>
 </div>
 <!--/Content-->

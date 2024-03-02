@@ -2,10 +2,14 @@
 <?php
 if (!empty($_SESSION['user'])) {
     $userRole;
+    // $link  use for manager access to employee
+    $link;
     if ($_SESSION['user']['role'] === 'admin') {
         $userRole = 'Admin';
+        $link = 'admin_employees';
     } elseif ($_SESSION['user']['role'] === 'manager') {
         $userRole = 'Manager';
+        $link = 'members';
     } elseif ($_SESSION['user']['role'] === 'employee') {
         $userRole = 'Employee';
     }
@@ -49,7 +53,7 @@ if (!empty($_SESSION['user'])) {
                             <div class="user-details">
                                 <!-- show role of the page -->
                                 <h4><b>Welcome <?= $userRole; ?></b></h4>
-                                <p>Sun, 29 Nov 2019</p>
+                                <p><?=date("l, d-m-Y");?></p>
                             </div>
                         </div>
                     </div>
@@ -74,7 +78,7 @@ if (!empty($_SESSION['user'])) {
                                     </div>
                                     <?php if ($_SESSION['user']['role'] != 'employee') : ?>
                                         <div class="col-6 align-items-center shadow-none text-center">
-                                            <a href="/admin_employees" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/admin_employees' || $_SERVER['REQUEST_URI'] == '/information_user' || $_SERVER['REQUEST_URI'] == '/add_employee') echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
+                                            <a href="<?=$link?>" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top <?php if ( $_SERVER['REQUEST_URI'] == '/information_user' || $_SERVER['REQUEST_URI'] == '/add_employee'|| $_SERVER['REQUEST_URI'] == '/members'|| $_SERVER['REQUEST_URI'] == '/admin_employees' ) echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
                                         </div>
                                     <?php endif; ?>
                                     <div class="col-6 align-items-center shadow-none text-center">
@@ -109,7 +113,7 @@ if (!empty($_SESSION['user'])) {
                                     <?php if ($_SESSION['user']['role'] != 'admin') : ?>
                                         <div class="col-6 align-items-center text-center">
                                         <!-- active navbar -->
-                                        <a href="/history_request" class="text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/history_request') echo 'active'; ?>"><span class="lnr lnr-history pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
+                                        <a href="/history_request" class="text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/history_request') echo 'active'; ?>"><span class="lnr lnr-history pr-0 pb-lg-2 font-23"></span><span class="">History</span></a>
                                     </div>
                                     <?php endif; ?>
                                 </div>

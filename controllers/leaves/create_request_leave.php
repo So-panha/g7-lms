@@ -13,7 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date_request = date("d-m-y");
     $user_id = $_POST['user_id'];
 
-    //call function insert request leave
-    $insert = insertLeaveRequest($leaveType, $from, $to, $checked, $reason,$date_request, $user_id);
-    header('Location:/leaves');
+    // Call the insertLeaveRequest function
+    $insert = insertLeaveRequest($leaveType, $from, $to, $checked, $reason, $date_request, $user_id);
+
+    // Check if the leave request was successfully inserted
+    if ($insert) {
+        header('Location: /leaves');
+        exit;
+    } else {
+        echo "Failed to insert leave request.";
+    }
 }
