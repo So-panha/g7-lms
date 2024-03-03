@@ -52,6 +52,7 @@
 									<input type="text" class="form-control datetimepicker" name="to">
 								</div>
 							</div>
+							<input type="hidden" name="date" value="<?php echo date("d/m/Y"); ?>">
 						</div>
 						<!-- date comback -->
 						<div class="row">
@@ -96,33 +97,38 @@
 			<div class="col-md-12">
 				<div class="card ctm-border-radius shadow-sm grow">
 					<div class="card-header">
-						<h4 class="card-title mb-0">Leave Details</h4>
+						<h4 class="card-title mb-0">Leave Details Today</h4>
 					</div>
 					<div class="card-body">
 						<div class="employee-office-table">
 							<div class="table-responsive">
 								<table class="table custom-table mb-0">
-									<thead>
+									<thead class="text-center">
 										<tr>
 											<th>Date</th>
-											<th>Total Employees</th>
-											<th>First Half</th>
-											<th>Second Half</th>
-											<th>Working From Home</th>
-											<th>Absent</th>
-											<th>Today Aways</th>
+											<th>Name Employees</th>
+											<th>Type Leave</th>
+											<th>Strat Leave</th>
+											<th>End Leave</th>
+											<!-- <th>Absent</th>
+											<th>Today Aways</th> -->
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<td>05 May 2019</td>
-											<td>7</td>
-											<td>6</td>
-											<td>6</td>
-											<td>1</td>
-											<td>0</td>
-											<td>1</td>
-										</tr>
+									<tbody class="text-center">
+										<?php $_SESSION['message'] = count($members); ?>
+										<?php for ($i = 0; $i < count($members); $i++) : ?>
+											<?php if ($members[$i]['date_request'] === date("d/m/Y") && $members[$i]['checked'] != 'Pending') : ?>
+												<tr>
+													<td><?php echo date("d/m/Y"); ?></td>
+													<td><?= $members[$i]['fname'] . ' ' . $members[$i]['lname'] ?></td>
+													<td><?= $members[$i]['type_leave_name'] ?></td>
+													<td><?= $members[$i]['start_leave'] ?></td>
+													<td><?= $members[$i]['end_leave'] ?></td>
+													<!-- <td>0</td>
+													<td>1</td> -->
+												</tr>
+											<?php endif; ?>
+										<?php endfor; ?>
 									</tbody>
 								</table>
 							</div>
@@ -167,7 +173,7 @@
 													<td><?= $members[$i]['start_leave'] ?></td>
 													<td><?= $members[$i]['end_leave'] ?></td>
 													<td><?= $members[$i]['reason'] ?></td>
-													<td><?= $members[$i]['checked'] ?></</td>
+													<td><?= $members[$i]['checked'] ?></< /td>
 												</tr>
 											<?php endif; ?>
 										<?php endfor; ?>
