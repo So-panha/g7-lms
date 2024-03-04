@@ -2,10 +2,14 @@
 <?php
 if (!empty($_SESSION['user'])) {
     $userRole;
+    // $link  use for manager access to employee
+    $link;
     if ($_SESSION['user']['role'] === 'admin') {
         $userRole = 'Admin';
+        $link = 'admin_employees';
     } elseif ($_SESSION['user']['role'] === 'manager') {
         $userRole = 'Manager';
+        $link = 'members';
     } elseif ($_SESSION['user']['role'] === 'employee') {
         $userRole = 'Employee';
     }
@@ -74,7 +78,7 @@ if (!empty($_SESSION['user'])) {
                                     </div>
                                     <?php if ($_SESSION['user']['role'] != 'employee') : ?>
                                         <div class="col-6 align-items-center shadow-none text-center">
-                                            <a href="/admin_employees" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/admin_employees' || $_SERVER['REQUEST_URI'] == '/information_user' || $_SERVER['REQUEST_URI'] == '/add_employee') echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
+                                            <a href="<?=$link?>" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top <?php if ( $_SERVER['REQUEST_URI'] == '/information_user' || $_SERVER['REQUEST_URI'] == '/add_employee'|| $_SERVER['REQUEST_URI'] == '/members'|| $_SERVER['REQUEST_URI'] == '/admin_employees' ) echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
                                         </div>
                                     <?php endif; ?>
                                     <div class="col-6 align-items-center shadow-none text-center">
