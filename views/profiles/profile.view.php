@@ -1,15 +1,4 @@
 <div class="col-xl-9 col-lg-8  col-md-12">
-							<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white p-4 mb-4 card">
-									<ul class="list-group list-group-horizontal-lg">
-										<li class="list-group-item text-center active button-5"><a href="employment.html" class="text-white">Employement</a></li>
-										<li class="list-group-item text-center button-6"><a href="details.html" class="text-dark">Detail</a></li>
-										<li class="list-group-item text-center button-6"><a href="documents.html" class="text-dark">Document</a></li>
-										<li class="list-group-item text-center button-6"><a href="payroll.html" class="text-dark">Payroll</a></li>
-										<li class="list-group-item text-center button-6"><a href="time-off.html" class="text-dark">Timeoff</a></li>
-										<li class="list-group-item text-center button-6"><a href="profile-reviews.html" class="text-dark">Reviews</a></li>
-										<li class="list-group-item text-center button-6"><a class="text-dark" href="profile-settings.html">Settings</a></li>
-									</ul>
-								</div>
 							<div class="row">
 								<div class="col-md-6 col-sm-12 d-flex">
 									<div class="card add-team flex-fill ctm-border-radius shadow-sm grow">

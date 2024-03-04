@@ -1,5 +1,5 @@
 <?php
-require "../../database/database.php";
+require '../../../database/database.php';
 // catch data from POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_POST['user_id'] ?? '';
@@ -15,10 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $amount = $_POST['amount'] ?? '';
     $place = $_POST['place'] ?? '';
     $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
-    require "../../models/admin.model.php";
-
+    require '../../../models/admin.model.php';
+    
     updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place);
-    header('Location: /admin_employees');
+    header('Location: /members');
     exit;
 }
 
