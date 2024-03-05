@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $place = $_POST['place'] ?? '';
     $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
     require '../../../models/admin.model.php';
-
+    
     updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place);
     header('Location: /members');
     exit;

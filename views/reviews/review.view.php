@@ -31,7 +31,7 @@
 
 								<tbody class="text-center">
 									<?php
-									
+
 									$employeeId = $_SESSION['user']['user_id'];
 
 									$typeRequests = getTypeRequest();
@@ -41,14 +41,15 @@
 
 
 										if ($request['checked'] !== "Pending") {
+
 											if ($employeeId === $request['user_id']) {
 									?>
 
 												<tr>
 													<td>
-														<?php foreach ($typeRequests as $typeRequest){
+														<?php foreach ($typeRequests as $typeRequest) {
 
-															if ($request['type_leave'] ===$typeRequest['type_leave_id']){
+															if ($request['type_leave'] === $typeRequest['type_leave_id']) {
 																echo $typeRequest['type_leave_name'];
 															}
 														} ?>
@@ -58,7 +59,15 @@
 													</td>
 													<td><?php echo $request['start_leave']; ?></td>
 													<td><?php echo $request['end_leave']; ?></td>
-													<td><?php echo $request['checked']; ?></td>
+													<td>
+														<?php
+														if ($request['checked'] === "Approved") {
+															echo '<button  style="color:white; border:none; border-radius:10%; background:green; width: 45%;">' . $request['checked'] . '</button>';
+														}else{
+															echo '<button  style="color:white; border:none; border-radius:10%; background:red; width: 45%;">' . $request['checked'] . '</button>';
+														}
+														?>
+													</td>
 
 												</tr>
 
