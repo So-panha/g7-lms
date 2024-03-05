@@ -16,7 +16,7 @@
                     <div class="rightRound" style="background-color:blue; width:40px; height: 40px; border-radius:50%;
                         text-align:center; overflow:hidden; z-index: 1; position: absolute; margin-left:60%;top:33%; border: 3px solid #ACABCC  ">
                         <input type="file" name="image" id="fpicture" class="form-control-file" accept=".jpg,.jpeg,.png" style="position:absolute; transform:scale(2);opacity:0;">
-                        <i class="fa fa-camera" style="font-size:133%; padding:6px; color:white;" class="rounded-circle mt-5"></i>
+                        <i class="fa fa-camera" style="font-size:135%;  padding:6px; color:white;" class="rounded-circle mt-5"></i>
                     </div>
                 </div>
                 <button hidden id="upload" type="submit"></button>
@@ -71,7 +71,7 @@
                 </div>
             </div>
     </div>
-
+<!-- script for change picture of  user profile -->
 <script>
     $('#fpicture').change(function() {
         if ($('#fpicture') != null) {
@@ -85,16 +85,3 @@
     })
 </script>
 
-<!-- <script>
-    $(document).ready(function() {
-        $("input").click(function() {
-            let picture = $('input').val();
-            $.post("controllers/user_profile/update_profile.controller.php", {
-                    image: picture,
-                },
-                function(data, status) {
-                    alert("Data: " + data + "\nStatus: " + status);
-                });
-        })
-    });
-</> -->
