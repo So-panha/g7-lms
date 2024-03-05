@@ -23,9 +23,12 @@ if ($checkImageSize) {
         $newFileName = uniqid();
         $nameInDirectory = $directory . $newFileName . '.' . $imageExtension;
         $nameInDB = $newFileName . '.' . $imageExtension;
+
+        $_SESSION['user']['picture'] = $nameInDB;
+
         move_uploaded_file($_FILES["image"]["tmp_name"], $nameInDirectory);
-        header('location: /user_profile');
         addPicture($userID, $nameInDB);
+        header('location: /user_profile');
         $_SESSION['success'] = "Account successfully created";
     }
 
