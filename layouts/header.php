@@ -32,7 +32,11 @@
 
   <!-- script login password -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+
+  <!-- script query -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   <title>LMS SYSTEM</title>
 
@@ -145,12 +149,13 @@
                           data-toggle="dropdown"
                           class="menu-style dropdown-toggle"
                         >
-                          <div class="user-avatar d-inline-block">
+                          <div class="user-avatar d-inline-block" >
                             <img
-                              src="assets/images/profiles/img-2.jpg"
+                              src="assets/images/profiles/<?= $_SESSION['user']['picture'] ?>"
                               alt="user avatar"
                               class="rounded-circle img-fluid"
-                              width="55"
+                              width="55px"
+                              style="height: 55px;"
                             />
                           </div>
                         </a>

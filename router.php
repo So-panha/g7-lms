@@ -85,5 +85,3 @@ if (empty($_SESSION['user'])) {
 } elseif($page === 'views/errors/404.php'){
     require $page;
 }
-
-

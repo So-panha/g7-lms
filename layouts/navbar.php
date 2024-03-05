@@ -48,7 +48,7 @@ if (!empty($_SESSION['user'])) {
                     <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow">
                         <div class="user-info card-body">
                             <div class="user-avatar mb-4">
-                                <img src="assets/images/profiles/img-2.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="100">
+                                <img src="assets/images/profiles/<?= $_SESSION['user']['picture'] ?>" alt="User Avatar" class="img-fluid rounded-circle" width="100px" style="height: 100px;">
                             </div>
                             <div class="user-details">
                                 <!-- show role of the page -->
