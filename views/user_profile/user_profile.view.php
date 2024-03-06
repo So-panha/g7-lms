@@ -6,6 +6,8 @@
         $user = $_SESSION['user'];
         $userPositionID = $_SESSION['user']['position_id'];
         $positions = getpositions();
+
+
         ?>
         <div class="col" style="background-color: #ACABCC; text-align: center;">
             <img src="assets/images/profiles/img-2.jpg" alt="Lights" style="width:55%; height:32%; border-radius: 50%;" class="rounded-circle mt-5">
@@ -36,7 +38,7 @@
                 <p>Position :
                     <?php
                     foreach ($positions as $position) {
-                        if ($userPositionID === $position['position_id']) {
+                        if ($userPositionID == $position['position_id']) {
                             echo $position['position_name'];
                         }
                     }
@@ -56,7 +58,8 @@
             </div>
             <div class="d-flex justify-content-end pb-3 mr-4;">
                 <button type="button" class="btn btn-danger mr-3" style="width:80px;">Back</button>
-                <button type="button" class="btn btn-primary mr-3" style="width:80px;">Edit</button>
+                <a href="/edit_information"><button type="button" class="btn btn-primary mr-3" style="width:80px;">Edit</button></a>
+
             </div>
         </div>
     </div>

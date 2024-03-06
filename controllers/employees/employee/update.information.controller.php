@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../../database/database.php';
 // catch data from POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -16,9 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $place = $_POST['place'] ?? '';
     $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
     require '../../../models/admin.model.php';
+
+    $_SESSION['user']['fname'] = $fname;
+    $_SESSION['user']['lname'] = $lname;
+    $_SESSION['user']['password'] = $password;
+    $_SESSION['user']['email'] = $email;
+    $_SESSION['user']['sendInvite'] = $sendInvite;
+    $_SESSION['user']['gender'] = $gender;
+    $_SESSION['user']['country'] = $country;
+    $_SESSION['user']['role'] = $role;
+    $_SESSION['user']['position_id'] = $position_id;
+    $_SESSION['user']['amount'] = $amount;
+    $_SESSION['user']['place'] = $place;
     
     updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place);
-    header('Location: /members');
+    header('Location: /user_profile');
     exit;
 }
 

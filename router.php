@@ -39,8 +39,9 @@ if (!empty($_SESSION['user'])) {
             '/history_request' => 'controllers/history/history.controller.php',
             '/view_alert' => 'controllers/alert/alert.controller.php',
             '/members' => 'controllers/employees/manager/list_employee_member.controller.php',
-            '/infomation_members' => 'controllers/employees/manager/show.infotion.member.controller.php',
+            '/infomation_members' => 'controllers/employees/manager/show.information.member.controller.php',
             '/eidt_infomation_members' => 'controllers/employees/manager/edit.member.controller.php',
+            '/edit_information' => 'controllers/employees/employee/edit.information.controller.php',
            
         ];
     } elseif ($_SESSION['user']['role'] === 'employee') {
@@ -53,6 +54,7 @@ if (!empty($_SESSION['user'])) {
             '/reviews' => 'controllers/reviews/review.controller.php',
             '/user_profile' => 'controllers/user_profile/user_profile.controller.php',
             '/history_request' => 'controllers/history/history.controller.php',
+            '/edit_information' => 'controllers/employees/employee/edit.information.controller.php',
         ];
     }
 }
