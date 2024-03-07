@@ -7,11 +7,14 @@ if (!empty($_SESSION['user'])) {
     if ($_SESSION['user']['role'] === 'admin') {
         $userRole = 'Admin';
         $link = 'admin_employees';
+        $userName = $_SESSION['user']['fname'] ;
     } elseif ($_SESSION['user']['role'] === 'manager') {
         $userRole = 'Manager';
         $link = 'members';
+        $userName = $_SESSION['user']['fname'] ;
     } elseif ($_SESSION['user']['role'] === 'employee') {
         $userRole = 'Employee';
+        $userName = $_SESSION['user']['fname'] ;
     }
 }
 ?>
@@ -52,8 +55,8 @@ if (!empty($_SESSION['user'])) {
                             </div>
                             <div class="user-details">
                                 <!-- show role of the page -->
-                                <h4><b>Welcome <?= $userRole; ?></b></h4>
-                                <p><?=date("l, d-m-Y");?></p>
+                                <h4><b>Welcome <?= strtoupper($userName); ?></b></h4>
+                                <p><?=date("l, d/m/Y");?></p>
                             </div>
                         </div>
                     </div>
