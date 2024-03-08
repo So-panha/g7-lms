@@ -56,87 +56,33 @@
                     <a href="javascript:void(0)" class="d-inline-block float-right text-primary"><i class="lnr lnr-sync"></i></a>
                 </div>
                 <div class="card-body recent-activ">
-                    <div class="recent-comment">
-                        <a href="javascript:void(0)" class="dash-card text-dark">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon text-primary">
-                                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">No Birthdays Today</h6>
-                                </div>
-                            </div>
-                        </a>
-                        <hr />
-                        <a href="javascript:void(0)" class="dash-card text-dark">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon text-warning">
-                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">
-                                        Ralph Baker is off sick today
-                                    </h6>
-                                </div>
-                                <div class="dash-card-avatars">
-                                    <div class="e-avatar">
-                                        <img class="img-fluid" src="assets/img/profiles/img-9.jpg" alt="Avatar" />
+                    <div class="card-body recent-activ">
+                        <!-- call function -->
+                        <?php
+                        $typeLeave = typeLeaves();
+                        ?>
+                        <div class="recent-comment">
+                            <?php
+                            foreach ($typeLeave as $leave) {
+
+                            ?>
+                                <a href="javascript:void(0)" class="dash-card text-dark">
+                                    <div class="dash-card-container">
+                                        <div class="dash-card-content">
+                                            <h6 class="mb-0"><?php echo strtoupper($leave['fname']) . " is " . $leave['type_leave_name'] . " today "; ?></h6>
+                                        </div>
+                                        <div class="dash-card-avatars">
+                                            <!-- <div class="e-avatar"> -->
+                                            <img src="assets/images/profiles/<?= $leave['picture'] ?>" class="rounded-circle" width="40px" height="40px">
+                                            <!-- </div> -->
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr />
-                        <a href="javascript:void(0)" class="dash-card text-dark">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon text-success">
-                                    <i class="fa fa-child" aria-hidden="true"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">
-                                        Ralph Baker is parenting leave today
-                                    </h6>
-                                </div>
-                                <div class="dash-card-avatars">
-                                    <div class="e-avatar">
-                                        <img class="img-fluid" src="assets/img/profiles/img-9.jpg" alt="Avatar" />
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr />
-                        <a href="javascript:void(0)" class="dash-card text-dark">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon text-danger">
-                                    <i class="fa fa-suitcase"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">Danny ward is away today</h6>
-                                </div>
-                                <div class="dash-card-avatars">
-                                    <div class="e-avatar">
-                                        <img class="img-fluid" src="assets/img/profiles/img-5.jpg" alt="Avatar" />
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr />
-                        <a href="javascript:void(0)" class="dash-card text-dark">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon text-pink">
-                                    <i class="fa fa-home" aria-hidden="true"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">
-                                        John Gibbs is working from home today
-                                    </h6>
-                                </div>
-                                <div class="dash-card-avatars">
-                                    <div class="e-avatar">
-                                        <img class="img-fluid" src="assets/img/profiles/img-2.jpg" alt="John Gibbs" />
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                                </a>
+                                <hr>
+                            <?php
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>

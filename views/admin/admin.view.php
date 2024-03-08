@@ -124,22 +124,14 @@
 					<!-- call function -->
 					<?php
 					$typeLeave = typeLeaves();
-
 					?>
-
 					<div class="recent-comment">
 						<?php
 						foreach ($typeLeave as $leave) {
-							// if ($leave['type_leave_name'] === "Birthday") {
+							
 						?>
 							<a href="javascript:void(0)" class="dash-card text-dark">
 								<div class="dash-card-container">
-									<?php
-
-									?>
-									<!-- <div class="dash-card-icon text-primary">
-											<i class="fa fa-birthday-cake" aria-hidden="true"></i>
-										</div> -->
 									<div class="dash-card-content">
 										<h6 class="mb-0"><?php echo strtoupper($leave['fname']) . " is " . $leave['type_leave_name'] . " today "; ?></h6>
 									</div>
