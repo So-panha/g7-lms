@@ -161,7 +161,7 @@
 				<div class="card-body">
 					<?php for ($i = 0; $i < count($manager); $i++) : ?>
 						<div class="media mb-3">
-							<div class="e-avatar avatar-online mr-3"><img class="img-fluid" src="assets/images/profiles/img-2.jpg" alt="Linda Craver"></div>
+							<div class="e-avatar avatar-online mr-3"><img class="rounded-circle" width="40px" height="40px" class="img-fluid" src="assets/images/profiles/<?=$manager[$i]['picture']?>" alt="<?=$manager[$i]['lname']?>" ></div>
 							<div class="media-body">
 								<h6 class="m-0"><?= $manager[$i]['fname'] . ' ' . $manager[$i]['lname'] ?></h6>
 								<p class="mb-0 ctm-text-sm"><?= $manager[$i]['position_name'] ?></p>
