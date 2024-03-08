@@ -23,7 +23,7 @@ $(function () {
 				numberOfPosition[i] = data[i].number_positions;
 			}
 			// Pie Chart
-			var ctx = document.getElementById('pieChart').getContext('2d');
+			var ctx = document.getElementById('pieChart');
 			var pieChart = new Chart(ctx, {
 				type: 'pie',
 				data: {
@@ -51,10 +51,8 @@ $(function () {
 			});
 		}
 
-
-
 		// lineCart
-		var ctx = document.getElementById("lineChart").getContext('2d');
+		var ctx = document.getElementById("lineChart");
 		var lineChart = new Chart(ctx, {
 			type: 'line',
 			data: {
@@ -95,6 +93,3 @@ $(function () {
 	}
 });
 
-
-// document.addEventListener('DOMContentLoaded', function() {
-// call to ajax for using
