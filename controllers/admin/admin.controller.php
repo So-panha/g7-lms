@@ -8,5 +8,6 @@ $users = getUsers();
 $manager = managers();
 
 // Get all manager
+$typeLeave = typeLeaves();
 
 require "views/admin/admin.view.php";

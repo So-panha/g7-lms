@@ -91,7 +91,7 @@ function insertEmployee(string $fname, string $lname, string $password, string $
         ':position_id' => $position_id,
         ':amount' => $amount,
         ':place' => $place,
-        ':picture' => '',
+        ':picture' => 'user.jpg',
         ':manager' => $manager
     ]);
 
@@ -135,18 +135,19 @@ function getAmount()
 }
 
 // get position of all user to diplay in form diagram
-function getPosition(): array {
+function getPosition(): array
+{
     global $connection;
     $query = "SELECT count(users.fname) AS number_positions, position.position_name FROM users INNER JOIN position WHERE users.position_id = position.position_id GROUP BY users.position_id";
     $STMT = $connection->prepare($query);
     $STMT->execute();
 
     return $STMT->fetchAll();
-
 }
 
 // Get positions
-function positions(): array{
+function positions(): array
+{
     global $connection;
     $query = "SELECT * FROM position";
     $STMT = $connection->prepare($query);
@@ -156,11 +157,27 @@ function positions(): array{
 }
 
 // Get managers
-function managers(): array{
+function managers(): array
+{
     global $connection;
     $query = "SELECT users.user_id, users.fname, users.lname,users.role, users.picture, position.position_name FROM users INNER JOIN position WHERE users.position_id = position.position_id AND users.role = 'manager'";
     $STMT = $connection->prepare($query);
     $STMT->execute();
 
-    return $STMT->fetchAll();      
+    return $STMT->fetchAll();
+}
+
+//get type leave today
+function typeLeaves(): array
+{
+    global $connection;
+    $query = "SELECT users.user_id, users.fname, users.lname, users.picture, type_leave.type_leave_name, request_leave.start_leave, request_leave.checked
+    FROM request_leave
+    INNER JOIN type_leave ON request_leave.type_leave = type_leave.type_leave_id
+    INNER JOIN users ON users.user_id = request_leave.user_id 
+    WHERE request_leave.checked = 'Approved' && request_leave.start_leave = date('d/m/Y')";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+
+    return $statement->fetchAll();
 }

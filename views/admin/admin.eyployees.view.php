@@ -34,6 +34,7 @@
             $id = $user['user_id'];
             $name = $user['fname'] . ' ' . $user['lname'];
             $gender = $user['gender'];
+            $image = $user['picture'];
 
             // Find the position name based on the position ID
             $positionName = '';
@@ -49,9 +50,9 @@
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
                             <?php if ($gender == "Male") : ?>
-                                <img src="assets/images/profile/male.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="70">
+                                <img src="assets/images/profiles/<?= $image?>" alt="User Avatar" class="rounded-circle" width="100px" height="100px" >
                             <?php else : ?>
-                                <img src="assets/images/profile/female.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="70">
+                                <img src="assets/images/profiles/<?= $image?>" alt="User Avatar" class="rounded-circle" width="100px" height="100px" >
                             <?php endif; ?>
                         </div>
                         <div class="user-details">
