@@ -45,12 +45,19 @@
             });
             $this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
                 $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
-
+                    // catch event id 
+                    var event_id = calEvent._id;
+                    // Call to delete event in database
+                      $(document).ready(function () {
+                        $.post('controllers/calendars/delete.event.controller.php',
+                            {
+                                event_id: event_id,
+                            });
+                    });
                     return (ev._id == calEvent._id);
                 });
                 $this.$modal.modal('hide');
             });
-            console.log(1);
             $this.$modal.find('form').on('submit', function () {
                 calEvent.title = form.find("input[type=text]").val();
                 $this.$calendarObj.fullCalendar('updateEvent', calEvent);
@@ -89,19 +96,26 @@
                     // Set date and time for calendar
                     var startDateTime = start.format('YYYY-MM-DD HH:mm:ss');
                     var endDateTime = end.format('YYYY-MM-DD HH:mm:ss');
-              
+
                     // post data into SQL
                     $(document).ready(function () {
                         $.post('controllers/calendars/create.event.controller.php',
                             {
                                 title: title,
                                 start: startDateTime,
-                                end: endDateTime ,
-                                category: categoryClass
+                                end: endDateTime,
+                                category: categoryClass,
                             });
+                            // for mock up
+                            $this.$calendarObj.fullCalendar('renderEvent', {
+                                title: title,
+                                start:start,
+                                end: end,
+                                allDay: false,
+                                className: categoryClass
+                            }, true);  
                     });
 
-                    location.reload();
                     $this.$modal.modal('hide');
                 } else {
                     alert('You have to give a title to your event');
@@ -148,10 +162,12 @@
             success: function (response) {
                 // Parse the JSON response
                 var events = JSON.parse(response);
-
+                
                 // Iterate through the events and populate the allEvent array
                 events.forEach(function (event) {
+                    console.log(event.event_id);
                     allEvent.push({
+                        id: event.event_id,
                         title: event.event_name,
                         start: event.event_start_date,
                         end: event.event_end_date,

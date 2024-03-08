@@ -129,7 +129,7 @@
                             <a
                               href="/view_alert"
                               class="font-23 menu-style text-white align-middle"
-                            >
+                             >
                             <!-- Call the variable of the messages to show there -->
                           <div class="user-avatar d-inline-block" >
                             <span class="badge badge-danger badge-counter" style="z-index: 1; position: absolute;left: 21%;top: 10%; border-radius:50%"><?php if(!empty($_SESSION['message'])){ echo $_SESSION['message']; }?></span>

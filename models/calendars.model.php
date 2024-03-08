@@ -25,3 +25,16 @@ function events(): array
     $STMT->execute();
     return $STMT->fetchAll();
 }
+
+function deleteEvent(int $id): bool
+{
+    global $connection;
+    $query = 'DELETE FROM calendar WHERE event_id = :id';
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+
+        ':id' => $id,
+    ]);
+
+    return $STMT->rowCount() > 0;
+}
