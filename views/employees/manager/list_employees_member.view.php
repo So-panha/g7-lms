@@ -40,9 +40,9 @@
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
                             <?php if ($gender == "Male") : ?>
-                                <img src="assets/images/profile/male.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="70">
+                                <img src="assets/images/profiles/<?= $members['picture']?>"" alt="User Avatar" class="img-fluid rounded-circle" width="100px" height="100px">
                             <?php else : ?>
-                                <img src="assets/images/profile/female.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="70">
+                                <img src="assets/images/profiles/<?= $members['picture']?>"" alt="User Avatar" class="img-fluid rounded-circle" width="100px" height="100px">
                             <?php endif; ?>
                         </div>
                         <div class="user-details">

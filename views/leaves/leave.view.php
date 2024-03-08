@@ -27,6 +27,8 @@
 										<option value="5">Paternity leave</option>
 										<option value="6">Bereavement leave</option>
 										<option value="7">Training leave</option>
+										<option value="8">Birthday</option>
+										<option value="9">Work from home</option>
 									</select>
 								</div>
 							</div>
