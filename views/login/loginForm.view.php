@@ -1,83 +1,91 @@
-<div class="container mt-5 " style="background-color:rebeccapurple;width:60%;height:79vh; display:flex; flex-direction:column;  padding: 10px; border-radius: 20px;">
-    <div class="top" style="background-color:rebeccapurple; height: 100%; width: 100%; display:flex; flex-direction:column">
-        <div class="title" style="background-color:rebeccapurple; text-align: center; color:white; height: 14%; margin-bottom:-1%;">
-            <h2 class="h2" style="font-weight: bold; font-size: 50px; ">LOGIN</h2>
-        </div>
-        <div class="d-flex bg-white" style="height: 80%; width: 100%;">
-            <div class="border-right" style="height: 100%; width:50%; display:flex; justify-content:center; align-items:center; margin-right:1%">
-                <img src="/views/login/image/profile.png" class="img-circle" width="100%" height="100%">
-            </div>
-            <div class="" style=" background-color: white; height: 100%; width: 50%; ">
-                <form action="controllers/login/check.login.controller.php" method="POST" style="width: 100%;">
-                    <?php 
-                    $wrongPwd = '';
-                    $wrongEmail = '';
-                    //show the message error when wrong email
-                    if (isset($_SESSION['email'])){
-                        if($_SESSION['email'] === 'wrongEmail'){
-                            $wrongEmail = 'is-invalid';
-                        }
-                    }
-                    //show the message error when wrong password
-                    if(isset($_SESSION['pwd'])){
-                        if($_SESSION['pwd'] === 'wrongPwd'){
-                            $wrongPwd = 'is-invalid';
-                        };
-                    };
-                    ?>
-                    <div class="col-12 mt-5">
-                        <div class="form-group ">
-                            <input type="email" class="form-control <?= $wrongEmail ?>" placeholder="Enter email" id="email" name="email" style="height: 10vh; font-size:large;" required />
-                            <div class="invalid-feedback">
-                                <h6>Please try your email agian!</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 mt-1">
-                        <div class="form-group ">
-                            <div class="input-group">
-                                <input class="form-control password <?= $wrongPwd?> "id="password" class="block mt-1 w-full " placeholder="Enter Password" type="password" name="password" value="" style="height: 10vh; font-size:large;" required />
-                                <span class="input-group-text togglePassword" id="" style="margin-top: 3.40%; border-radius:0%">
-                                    <i data-feather="eye" style="cursor: pointer;"></i>
-                                </span>
-                                <div class="invalid-feedback">
-                                    <h6>Please try your password agian!</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<?php
+?>
 
-                    <button type="submit" class="btn btn-primary hover-btn d-flex justify-content-center align-items-center" style="width: 40%; height:7vh; font-size: 20px; margin:auto; margin-top: 8%; ">Login</button>
-                    <style>
-                        .hover-btn:hover {
-                            background-color: rebeccapurple;
-                        }
-                    </style>
-                    </button>
-                    <!-- script for change to see password or close password  -->
-                    <script>
-                        feather.replace({
-                            'aria-hidden': 'true'
-                        });
+<!DOCTYPE html>
+<html lang="en">
 
-                        $(".togglePassword").click(function(e) {
-                            e.preventDefault();
-                            var type = $(this).parent().parent().find(".password").attr("type");
-                            if (type == "password") {
-                                $("svg.feather.feather-eye").replaceWith(feather.icons["eye-off"].toSvg());
-                                $(this).parent().parent().find(".password").attr("type", "text");
-                            } else if (type == "text") {
-                                $("svg.feather.feather-eye-off").replaceWith(feather.icons["eye"].toSvg());
-                                $(this).parent().parent().find(".password").attr("type", "password");
-                            }
-                        });
-                    </script>
-                </form>
-                <hr>
-                <a href="" class="d-flex">
-                    <h5 class="" style="margin: auto;">Reset Password</h5>
-                </a>
-            </div>
-        </div>
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Login</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../vendor/css/login.css">
+    <!--Stylesheet-->
+
+</head>
+
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
     </div>
-</div>
+    <form action="controllers/login/check.login.controller.php" method="POST">
+        <h3>Login Here</h3>
+        <?php
+        $wrongPwd = '';
+        $wrongEmail = '';
+        //show the message error when wrong email
+        if (isset($_SESSION['email'])) {
+            if ($_SESSION['email'] === 'wrongEmail') {
+                $wrongEmail = 'is-invalid';
+            }
+        }
+        //show the message error when wrong password
+        if (isset($_SESSION['pwd'])) {
+            if ($_SESSION['pwd'] === 'wrongPwd') {
+                $wrongPwd = 'is-invalid';
+            };
+        };
+        ?>
+
+        <label for="username">Email</label>
+        <!-- <div class="col-12 mt-5"> -->
+        <input type="email" placeholder="Email" id="email" name="email" class="form-control <?= $wrongEmail ?>" required>
+        <div class="invalid-feedback">
+            <h6>Please try your email agian!</h6>
+        </div>
+        <!-- </div> -->
+
+        <label class="lablepwd" for="password">Password</label>
+        <div class="pwds">
+            <div class="child">
+                <input type="password" placeholder="Password" id="password" name="password" class="form-control password <?= $wrongPwd ?>" required>
+                <div class="invalid-feedback">
+                    <h6>Please try your password agian!</h6>
+                </div>
+            </div>
+            <div class=" togglePassword" id="eye">
+                <i class="icone" data-feather="eye"></i>
+            </div>
+        </div>
+
+        <button>Log In</button>
+        <a href="" class="social">
+            <p>Reset Password</p>
+        </a>
+
+        <!-- script for change to see password or close password  -->
+        <script>
+            feather.replace({
+                'aria-hidden': 'true'
+            });
+
+            $(".togglePassword").click(function(e) {
+                e.preventDefault();
+                var type = $(this).parent().parent().find(".password").attr("type");
+                if (type == "password") {
+                    $("svg.feather.feather-eye").replaceWith(feather.icons["eye-off"].toSvg());
+                    $(this).parent().parent().find(".password").attr("type", "text");
+                } else if (type == "text") {
+                    $("svg.feather.feather-eye-off").replaceWith(feather.icons["eye"].toSvg());
+                    $(this).parent().parent().find(".password").attr("type", "password");
+                }
+            });
+        </script>
+    </form>
+</body>
+
+</html>
