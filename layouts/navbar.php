@@ -7,11 +7,14 @@ if (!empty($_SESSION['user'])) {
     if ($_SESSION['user']['role'] === 'admin') {
         $userRole = 'Admin';
         $link = 'admin_employees';
+        $userName = $_SESSION['user']['fname'] ;
     } elseif ($_SESSION['user']['role'] === 'manager') {
         $userRole = 'Manager';
         $link = 'members';
+        $userName = $_SESSION['user']['fname'] ;
     } elseif ($_SESSION['user']['role'] === 'employee') {
         $userRole = 'Employee';
+        $userName = $_SESSION['user']['fname'] ;
     }
 }
 ?>
@@ -48,12 +51,12 @@ if (!empty($_SESSION['user'])) {
                     <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow">
                         <div class="user-info card-body">
                             <div class="user-avatar mb-4">
-                                <img src="assets/images/profiles/img-2.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="100">
+                                <img src="assets/images/profiles/<?= $_SESSION['user']['picture'] ?>" alt="User Avatar" class="img-fluid rounded-circle" width="100px" style="height: 100px;">
                             </div>
                             <div class="user-details">
                                 <!-- show role of the page -->
-                                <h4><b>Welcome <?= $userRole; ?></b></h4>
-                                <p><?=date("l, d-m-Y");?></p>
+                                <h4><b>Welcome <?= strtoupper($userName); ?></b></h4>
+                                <p><?=date("l, d/m/Y");?></p>
                             </div>
                         </div>
                     </div>

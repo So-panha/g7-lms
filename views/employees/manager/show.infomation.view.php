@@ -8,7 +8,7 @@
         $positions = getpositions();
         ?>
         <div class="col" style="background-color: #ACABCC; text-align: center;">
-            <img src="assets/images/profiles/img-2.jpg" alt="Lights" style="width: 225px; height:218px; border-radius: 52%;" class="rounded-circle mt-5">
+            <img src="assets/images/profiles/<?= $user['picture']?>" alt="Lights" style="width: 225px; height:218px; border-radius: 52%;" class="rounded-circle mt-5">
             <div class="caption mt-4  Font-weight: bold " style="color: black;">
                 <h3><?php echo strtoupper($user['fname'] . " " . $user['lname']); ?></h3>
             </div>

@@ -27,6 +27,8 @@
 										<option value="5">Paternity leave</option>
 										<option value="6">Bereavement leave</option>
 										<option value="7">Training leave</option>
+										<option value="8">Birthday</option>
+										<option value="9">Work from home</option>
 									</select>
 								</div>
 							</div>
@@ -38,8 +40,9 @@
 								</div>
 							</div>
 						</div>
-						<!-- date leave -->
+						<!-- date for request -->
 						<div class="row">
+
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>From</label>
@@ -52,10 +55,15 @@
 									<input type="text" class="form-control datetimepicker" name="to">
 								</div>
 							</div>
-							<input type="hidden" name="date" value="<?php echo date("d/m/Y"); ?>">
+
+
 						</div>
-						<!-- date comback -->
+
+						<!-- date today -->
+						<input type="hidden" name="date" value="<?php echo date("d/m/Y"); ?>">
+
 						<div class="row">
+							<!-- part time for leave -->
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>Half Day <span class="text-danger">*</span></label>
@@ -85,6 +93,9 @@
 						</div>
 						<!-- button for action -->
 						<div class="text-center">
+							<?php
+
+							?>
 							<button type="submit" class="btn btn-theme button-1 text-white ctm-border-radius mt-4">Apply</button>
 							<a href="/"> <button type="button" class="btn btn-danger text-white ctm-border-radius mt-4">Cancel</button></a>
 
