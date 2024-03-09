@@ -48,7 +48,7 @@
                     // catch event id 
                     var event_id = calEvent._id;
                     // Call to delete event in database
-                      $(document).ready(function () {
+                    $(document).ready(function () {
                         $.post('controllers/calendars/delete.event.controller.php',
                             {
                                 event_id: event_id,
@@ -58,9 +58,20 @@
                 });
                 $this.$modal.modal('hide');
             });
+            // Update form of event
             $this.$modal.find('form').on('submit', function () {
                 calEvent.title = form.find("input[type=text]").val();
                 $this.$calendarObj.fullCalendar('updateEvent', calEvent);
+                // catch event id 
+                var event_id = calEvent._id;
+                // Call to edit event in database
+                $(document).ready(function () {
+                    $.post('controllers/calendars/edit.event.controller.php',
+                        {
+                            event_id: event_id,
+                            calEvent: calEvent.title
+                        });
+                });
                 $this.$modal.modal('hide');
                 return false;
             });
@@ -106,14 +117,14 @@
                                 end: endDateTime,
                                 category: categoryClass,
                             });
-                            // for mock up
-                            $this.$calendarObj.fullCalendar('renderEvent', {
-                                title: title,
-                                start:start,
-                                end: end,
-                                allDay: false,
-                                className: categoryClass
-                            }, true);  
+                        // for mock up
+                        $this.$calendarObj.fullCalendar('renderEvent', {
+                            title: title,
+                            start: start,
+                            end: end,
+                            allDay: false,
+                            className: categoryClass
+                        }, true);
                     });
 
                     $this.$modal.modal('hide');
@@ -162,10 +173,9 @@
             success: function (response) {
                 // Parse the JSON response
                 var events = JSON.parse(response);
-                
+
                 // Iterate through the events and populate the allEvent array
                 events.forEach(function (event) {
-                    console.log(event.event_id);
                     allEvent.push({
                         id: event.event_id,
                         title: event.event_name,

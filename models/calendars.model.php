@@ -1,4 +1,5 @@
 <?php
+// Function for creating event in the calendar
 function CreateEvent($eventName, $eventStart, $eventEnd, $category, $userId): bool
 {
     global $connection;
@@ -16,7 +17,7 @@ function CreateEvent($eventName, $eventStart, $eventEnd, $category, $userId): bo
     return $STMT->rowCount() > 0;
 }
 
-
+// Function for calling all data of event
 function events(): array
 {
     global $connection;
@@ -26,6 +27,7 @@ function events(): array
     return $STMT->fetchAll();
 }
 
+// Function of deleting event
 function deleteEvent(int $id): bool
 {
     global $connection;
@@ -37,4 +39,19 @@ function deleteEvent(int $id): bool
     ]);
 
     return $STMT->rowCount() > 0;
+}
+
+// Function for editing event
+function editEvent(int $id, string $event_name):bool
+{
+    global $connection;
+    $query = 'UPDATE calendar SET event_name = :event_name WHERE event_id = :id';
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ':id' => $id,
+            ':event_name' => $event_name
+        ]
+        );
+    return $STMT->rowCount()  < 0;
 }
