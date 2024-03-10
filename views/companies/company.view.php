@@ -1,22 +1,26 @@
 <div class="col-xl-9 col-lg-8 col-md-12">
 
 	<div class="row">
-		<div class="col-md-7 d-flex">
+		<div class="col-md-12 d-flex">
 			<div class="card ctm-border-radius shadow-sm grow flex-fill">
 				<div class="card-header">
-					<h4 class="card-title mb-0">
-						Focus Technologies
-						<a href="javascript:void(0)" class="float-right text-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-					</h4>
+					<h3 class="card-title mb-0" style="font-weight: bold;font-family:'Times New Roman', Times, serif">
+						Information of the organization
+					</h3>
 				</div>
 				<div class="card-body">
 					<div class="row">
-						<div class="col-md-6">
-							<p><span class="text-primary">Company Name : </span>PNC</p>
+						<div class="col-md-3">
+							<img class="img-thumbnail" src="../../assets/images/PNC_logo.png" alt="PNC_logo" style="width: 200px;height:200px">
+						</div>
+						<div class="col-md-5">
+							<p><span class="text-primary">Company Name : </span>PNC (Passerelles numériques Cambodia)</p>
 							<p style="margin-top: 3%;"><span class="text-primary">Incorporation Date : </span>07 JAN 2005</p>
 							<p style="margin-top: 3%;"><span class="text-primary">Company Branch : </span>4</p>
+							<p style="margin-top: 3%;"><span class="text-primary">Tell : </span>023 995 500</p>
+							<p style="margin-top: 3%;"><span class="text-primary">Email : </span>cambodia@passerellesnumeriques.org</p>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<p>
 								<span class="text-primary">Address:</span><br>
 
@@ -30,54 +34,18 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-5 d-flex">
-			<div class="card ctm-border-radius shadow-sm grow flex-fill">
-				<div class="card-header">
-					<h4 class="card-title mb-0">
-						Contact
-					</h4>
-				</div>
-				<div class="card-body">
-					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="Contact" value="023 995 500">
-						<div class="input-group-append">
-							<button class="btn btn-theme text-white" type="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-						</div>
-					</div>
-					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="Passerelles" value="Passerelles numériques Cambodia">
-						<div class="input-group-append">
-							<button class="btn btn-theme text-white" type="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-						</div>
-					</div>
-					<div class="input-group mb-0">
-						<input type="email" class="form-control" placeholder=" " value="info.cambodia@passerellesnumeriques.org">
-						<div class="input-group-append">
-							<button class="btn btn-theme text-white" type="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="col-md-6 d-flex">
 			<div class="card ctm-border-radius shadow-sm grow flex-fill">
 				<div class="card-header">
 					<div class="d-inline-block">
-						<h4 class="card-title mb-0">Focus Technologies</h4>
-						<p class="mb-0 ctm-text-sm">Head Office</p>
-					</div>
-					<div class="d-inline-block float-right" data-toggle="modal" data-target="#editOffice">
-						<a href="javascript:void(0)" class="btn btn-theme mt-2 text-white float-right ctm-border-radius" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i> </a>
+						<h4 class="card-title mb-0" style="font-weight: bold;font-family:'Times New Roman', Times, serif">Members of header</h4>
 					</div>
 				</div>
 				<div class="card-body">
 					<h4 class="card-title">Members</h4>
-					<a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Danny Ward"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></span></a>
-					<a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Linda Craver"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-4.jpg"></span></a>
-					<a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Jenni Sims"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-3.jpg"></span></a>
-					<a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Maria Cotton"><img alt="avatar image" src="assets/img/profiles/img-6.jpg" class="img-fluid"></span></a>
-					<a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="John Gibbs"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-2.jpg"></span></a>
-					<a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Richard Wilson"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-10.jpg"></span></a>
+					<?php for($i = 0; $i < count($managers); $i++) :?>
+						<a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" style="width: 50px;height:50px"><img class='rounded-circle' style="width: 100%;height:100%" alt="<?=$managers[$i]['fname']?>" src="../../assets/images/profiles/<?=$managers[$i]['picture']?>" class="img-fluid" ></span></a>
+					<?php endfor; ?>
 				</div>
 			</div>
 		</div>
@@ -85,21 +53,21 @@
 			<div class="card shadow-sm grow ctm-border-radius flex-fill">
 				<div class="card-header">
 					<h4 class="card-title mb-0 d-inline-block">Overview </h4>
-					<a href="employees-team.html" class="float-right text-primary">Manage Teams</a>
+					<a href="/admin_employees_team" class="float-right text-primary">Manage Teams</a>
 				</div>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-md-6 col-6 text-center">
-							<h5 class="btn btn-outline-primary mt-3"><b>6</b></h5>
+							<h5 class="btn btn-outline-primary mt-3"><b><?= count($managers) ?></b></h5>
 							<p class="mb-3">Teams</p>
 						</div>
 						<div class="col-md-6 col-6 text-center">
-							<h5 class="btn btn-outline-primary mt-3"><b>30</b></h5>
+							<h5 class="btn btn-outline-primary mt-3"><b><?= count($employees) ?></b></h5>
 							<p class="mb-3">People</p>
 						</div>
 					</div>
 					<div class="text-center">
-						<a href="employees.html" class="btn btn-theme text-white ctm-border-radius mt-2 button-1">People Directory</a>
+						<a href="/admin_employees" class="btn btn-theme text-white ctm-border-radius mt-2 button-1">People Directory</a>
 					</div>
 				</div>
 			</div>
@@ -169,5 +137,3 @@
 		</div>
 	</div>
 </div>
-
-
