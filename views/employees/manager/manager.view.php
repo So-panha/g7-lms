@@ -1,9 +1,33 @@
 <div class="col-xl-9 col-lg-8 col-md-12">
+<!-- Show alert when success in login -->
+	<?php if (isset($_SESSION['alert'])) { ?>
+		<div class="alert alert-success alert-dismissible grow" id="alert">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong><?= $_SESSION['alert'] ?></strong>
+
+			<!-- remove session alert -->
+			<?php unset($_SESSION['alert']) ?>
+		</div>
+		<!-- remove message -->
+		<script>
+			let showALert = document.querySelector('.alert');
+			setTimeout(function() {
+				showALert.remove();
+			}, 5000);
+		</script>
+	<?php } ?>
+	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
+		<div class="card-body">
+			<ul class="list-group list-group-horizontal-lg">
+				<li class="list-group-item text-center active button-5"><a href="index.html" class="text-white">Employee Dashboard</a></li>
+			</ul>
+		</div>
+       <!-- Widget -->
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
         <div class="card-body">
             <ul class="list-group list-group-horizontal-lg">
                 <li class="list-group-item text-center active button-5">
-                    <a class="text-white" href="employees-dashboard.html">Employees Dashboard</a>
+                    <a class="text-white" href="employees-dashboard.html">Manager Dashboard</a>
                 </li>
             </ul>
         </div>
