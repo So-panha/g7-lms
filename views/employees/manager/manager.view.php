@@ -13,15 +13,9 @@
 			let showALert = document.querySelector('.alert');
 			setTimeout(function() {
 				showALert.remove();
-			}, 5000);
+			}, 3000);
 		</script>
 	<?php } ?>
-	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
-		<div class="card-body">
-			<ul class="list-group list-group-horizontal-lg">
-				<li class="list-group-item text-center active button-5"><a href="index.html" class="text-white">Employee Dashboard</a></li>
-			</ul>
-		</div>
        <!-- Widget -->
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
         <div class="card-body">

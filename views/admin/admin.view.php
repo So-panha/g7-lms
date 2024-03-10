@@ -13,7 +13,7 @@
 			let showALert = document.querySelector('.alert');
 			setTimeout(function() {
 				showALert.remove();
-			}, 5000);
+			}, 3000);
 		</script>
 	<?php } ?>
 	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
