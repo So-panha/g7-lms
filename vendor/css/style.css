@@ -1847,3 +1847,11 @@ textarea.form-control {
 	justify-content: end;
 	margin-top: 40px;
 }
+
+
+/* text for notification */
+.text-notification{
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	color: #606060;
+}
