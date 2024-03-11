@@ -1,13 +1,10 @@
 <div class="col-xl-9 col-lg-8  col-md-12">
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white p-1 grow">
         <div class="flex-row list-group list-group-horizontal-lg m-3 justify-content-between align-items-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <!-- List group -->
             <p style="text-transform: uppercase;">date request</p>
             <p style="text-transform: uppercase;">start leave</p>
             <p style="text-transform: uppercase;">end leave</p>
-
             <p style="text-transform: uppercase;">status</p>
-            <!-- <p style="text-transform: uppercase;">action</p> -->
         </div>
     </div>
     <?php

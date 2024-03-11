@@ -38,7 +38,7 @@ function getHistoryRequest(): array
     return $statement->fetchAll();
 }
 
-function getTypeRequest() : array
+function getTypeRequest(): array
 {
     global $connection;
     $statement = $connection->prepare("SELECT * FROM type_leave");
@@ -57,7 +57,7 @@ function deletePost(int $id): bool
 
 
 // Get alert depend on the employee members    
-function alertMessage($manager_id) : array
+function alertMessage($manager_id): array
 {
     global $connection;
 
@@ -72,8 +72,8 @@ function alertMessage($manager_id) : array
     return $STMT->fetchAll();
 }
 
-
-function personalHistoryOfRequest($employeeId){
+function personalHistoryOfRequest($employeeId)
+{
     global $connection;
     $query = "SELECT * from request_leave where user_id = $employeeId";
 
@@ -97,13 +97,14 @@ function getMember($managerId): array
     global $connection;
     $quary = "select * from users where manager = $managerId";
     $statement = $connection->prepare($quary);
-    $statement -> execute();
+    $statement->execute();
 
     return $statement->fetchAll();
 }
 
 // get position of all user to diplay in form diagram
-function getpositions(): array {
+function getpositions(): array
+{
     global $connection;
     $query = "SELECT count(users.fname) AS number_positions, position.position_name,position.position_id FROM users INNER JOIN position WHERE users.position_id = position.position_id GROUP BY users.position_id";
     $STMT = $connection->prepare($query);
@@ -135,6 +136,6 @@ function inforOfMember($memberId)
             ':id' => $memberId
         ]
     );
-    
+
     return $STMT->fetch();
 }

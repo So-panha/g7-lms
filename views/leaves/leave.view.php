@@ -135,8 +135,6 @@
 													<td><?= $members[$i]['type_leave_name'] ?></td>
 													<td><?= $members[$i]['start_leave'] ?></td>
 													<td><?= $members[$i]['end_leave'] ?></td>
-													<!-- <td>0</td>
-													<td>1</td> -->
 												</tr>
 											<?php endif; ?>
 										<?php endfor; ?>
@@ -184,7 +182,7 @@
 													<td><?= $members[$i]['start_leave'] ?></td>
 													<td><?= $members[$i]['end_leave'] ?></td>
 													<td><?= $members[$i]['reason'] ?></td>
-													<td><?= $members[$i]['checked'] ?></< /td>
+													<td><?= $members[$i]['checked'] ?>
 												</tr>
 											<?php endif; ?>
 										<?php endfor; ?>
