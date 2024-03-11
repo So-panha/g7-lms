@@ -18,13 +18,6 @@ if (!empty($_SESSION['user'])) {
     }
 }
 ?>
-<!-- /Offcanvas menu -->
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- /Top Header Section -->
 </header>
 <!-- /Header -->
 <!-- Content -->
