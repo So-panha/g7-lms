@@ -1,5 +1,33 @@
 <!-- header -->
 <div class="col-xl-9 col-lg-8 col-md-12">
+    <!-- Alert when it success for updating or not -->
+    <?php if (isset($_SESSION['update'])) { ?>
+        <?php if ($_SESSION['update'] == 'Success') { ?>
+            <div class="success alert-success alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><?= $_SESSION['update'].'for update information of your employee!' ?></strong>
+
+                <!-- remove session alert -->
+                <?php unset($_SESSION['update']) ?>
+            </div>
+        <?php } ?>
+        <?php if ($_SESSION['update'] == 'Unsuccess') { ?>
+            <div class="alert alert alert-danger alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><?= $_SESSION['update'].'for update information of your employee please fill form before you submit!' ?></strong>
+
+                <!-- remove session alert -->
+                <?php unset($_SESSION['update']) ?>
+            </div>
+            <!-- remove message -->
+        <?php } ?>
+        <script>
+            let showALert = document.querySelector('.alert');
+            setTimeout(function() {
+                showALert.remove();
+            }, 4000);
+        </script>
+    <?php } ?>
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white p-4 mb-4 card">
         <ul class="list-group list-group-horizontal-lg">
             <li class="list-group-item text-center active button-5"><a href="/admin_employees" class="text-white">All</a></li>
@@ -50,9 +78,9 @@
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
                             <?php if ($gender == "Male") : ?>
-                                <img src="assets/images/profiles/<?= $image?>" alt="User Avatar" class="rounded-circle" width="100px" height="100px" >
+                                <img src="assets/images/profiles/<?= $image ?>" alt="User Avatar" class="rounded-circle" width="100px" height="100px">
                             <?php else : ?>
-                                <img src="assets/images/profiles/<?= $image?>" alt="User Avatar" class="rounded-circle" width="100px" height="100px" >
+                                <img src="assets/images/profiles/<?= $image ?>" alt="User Avatar" class="rounded-circle" width="100px" height="100px">
                             <?php endif; ?>
                         </div>
                         <div class="user-details">
