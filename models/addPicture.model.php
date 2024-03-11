@@ -1,9 +1,10 @@
 <?php
 
 // Upload image
-function addPicture(int $userID,string $picture): bool{
+function addPicture(int $userID, string $picture): bool
+{
     global $connection;
-    echo $picture.' '.$userID;
+    echo $picture . ' ' . $userID;
     $query =  "UPDATE users  SET picture = :picture  WHERE user_id = :user_id";
     $statement = $connection->prepare($query);
     $update = [
@@ -14,4 +15,3 @@ function addPicture(int $userID,string $picture): bool{
     $statement->execute($update);
     return $statement->rowCount() > 0;
 }
-

@@ -30,7 +30,7 @@
 <?php endif; ?>
 <!-- If the user is not admin -->
 <?php if ($_SESSION['user']['role'] != 'admin') : ?>
-</div>
+	</div>
 <?php endif; ?>
 <div class="col-xl-9 col-lg-8 col-md-12 ">
 	<div class="card ctm-border-radius shadow-sm grow ">

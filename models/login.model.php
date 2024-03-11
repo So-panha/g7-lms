@@ -1,6 +1,6 @@
 <?php
 // Check user in database by email
-function checkUser(string $email) : array
+function checkUser(string $email): array
 {
     global $connection;
     $query = "SELECT * FROM users WHERE email=:email";

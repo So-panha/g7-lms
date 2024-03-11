@@ -2,7 +2,7 @@
   <?php
   $member = inforOfMember($memberId);
   ?>
-<h2>Employment details</h2>
+  <h2>Employment details</h2>
 
   <input type="hidden" value="<?php echo $member['user_id']; ?>" name="user_id">
   <!-- username -->

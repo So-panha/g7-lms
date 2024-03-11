@@ -30,8 +30,8 @@ if ($checkImageSize) {
         addPicture($userID, $nameInDB);
         header('location: /user_profile');
         $_SESSION['success'] = "Account successfully created";
+        
     }
-
 } else {
     $_SESSION['error'] = "Not Image file!";
     header('location: /user_profile');

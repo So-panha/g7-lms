@@ -7,24 +7,17 @@ if (!empty($_SESSION['user'])) {
     if ($_SESSION['user']['role'] === 'admin') {
         $userRole = 'Admin';
         $link = 'admin_employees';
-        $userName = $_SESSION['user']['fname'] ;
+        $userName = $_SESSION['user']['fname'];
     } elseif ($_SESSION['user']['role'] === 'manager') {
         $userRole = 'Manager';
         $link = 'members';
-        $userName = $_SESSION['user']['fname'] ;
+        $userName = $_SESSION['user']['fname'];
     } elseif ($_SESSION['user']['role'] === 'employee') {
         $userRole = 'Employee';
-        $userName = $_SESSION['user']['fname'] ;
+        $userName = $_SESSION['user']['fname'];
     }
 }
 ?>
-<!-- /Offcanvas menu -->
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- /Top Header Section -->
 </header>
 <!-- /Header -->
 <!-- Content -->
@@ -56,7 +49,7 @@ if (!empty($_SESSION['user'])) {
                             <div class="user-details">
                                 <!-- show role of the page -->
                                 <h4><b>Welcome <?= strtoupper($userName); ?></b></h4>
-                                <p><?=date("l, d/m/Y");?></p>
+                                <p><?= date("l, d/m/Y"); ?></p>
                             </div>
                         </div>
                     </div>
@@ -66,14 +59,13 @@ if (!empty($_SESSION['user'])) {
                     $URL = trim(substr($_SERVER['REQUEST_URI'], 0, -5));
                     if ($URL === '/information_user') {
                         $_SERVER['REQUEST_URI'] =  '/information_user';
-                    }elseif($URL === '/edit_employee'){
+                    } elseif ($URL === '/edit_employee') {
                         $_SERVER['REQUEST_URI'] =  '/information_user';
-                    }elseif($URL === '/infomation_members?'){
+                    } elseif ($URL === '/infomation_members?') {
                         $_SERVER['REQUEST_URI'] =  '/information_user';
-                    }elseif($URL === '/eidt_infomation_members?'){
+                    } elseif ($URL === '/eidt_infomation_members?') {
                         $_SERVER['REQUEST_URI'] =  '/information_user';
-                    }
-                     else {
+                    } else {
                         $_SERVER['REQUEST_URI'] = $mainUrl;
                     }
                     ?>
@@ -88,7 +80,7 @@ if (!empty($_SESSION['user'])) {
                                     </div>
                                     <?php if ($_SESSION['user']['role'] != 'employee') : ?>
                                         <div class="col-6 align-items-center shadow-none text-center">
-                                            <a href="<?=$link?>" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top <?php if ( $_SERVER['REQUEST_URI'] == '/information_user' || $_SERVER['REQUEST_URI'] == '/add_employee'|| $_SERVER['REQUEST_URI'] == '/members'|| $_SERVER['REQUEST_URI'] == '/admin_employees' ) echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
+                                            <a href="<?= $link ?>" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/information_user' || $_SERVER['REQUEST_URI'] == '/add_employee' || $_SERVER['REQUEST_URI'] == '/members' || $_SERVER['REQUEST_URI'] == '/admin_employees') echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
                                         </div>
                                     <?php endif; ?>
                                     <div class="col-6 align-items-center shadow-none text-center">
@@ -122,9 +114,9 @@ if (!empty($_SESSION['user'])) {
                                     <?php endif; ?>
                                     <?php if ($_SESSION['user']['role'] != 'admin') : ?>
                                         <div class="col-6 align-items-center text-center">
-                                        <!-- active navbar -->
-                                        <a href="/history_request" class="text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/history_request') echo 'active'; ?>"><span class="lnr lnr-history pr-0 pb-lg-2 font-23"></span><span class="">History</span></a>
-                                    </div>
+                                            <!-- active navbar -->
+                                            <a href="/history_request" class="text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/history_request') echo 'active'; ?>"><span class="lnr lnr-history pr-0 pb-lg-2 font-23"></span><span class="">History</span></a>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
                             </div>
