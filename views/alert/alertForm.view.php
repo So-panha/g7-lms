@@ -1,14 +1,12 @@
 <div class="card-body grow">
     <div class="table-responsive">
         <ul class="list-group ">
-            <!-- Count number of member message -->
-            <?php $_SESSION['message'] = count($members); ?>
             <?php for ($i = 0; $i < count($members); $i++) : ?>
                 <?php if ($members[$i]['checked'] === 'Pending') : ?>
                     <!-- count depend on the messages -->
                     <!-- Create message for the message based on team members -->
                     <li class="list-group-item  d-flex justify-content-between mb-2 align-items-center d-flex flex-row " style="height: 15vh; list-style-type: none;">
-                        <a href="<?= $members[$i]['user_id'] ?>"><img src="/assets/images/profiles/img-2.jpg" alt="Linda Craver" class="rounded-circle img-thumbnail shadow-sm" style="width: 60px; height: 60px; "></a>
+                        <a href="<?= $members[$i]['user_id'] ?>"><img src="/assets/images/profiles/<?= $members[$i]['picture'] ?>" alt="Linda Craver" class="rounded-circle img-thumbnail shadow-sm" style="width: 60px; height: 60px; "></a>
                         <a href="<?= $members[$i]['user_id'] ?>">
                             <h6 class="mr-0"><?= $members[$i]['fname'] . ' ' . $members[$i]['lname'] ?></h6>
                         </a>
@@ -22,9 +20,20 @@
                         </form>
 
                     </li>
-                    <!-- Set numbers of the message into the the global variable -->
                 <?php endif; ?>
             <?php endfor; ?>
         </ul>
     </div>
+    <!--Code for show title of no has notificaiont when the notification no has -->
+    <?php if (count($members) === 0) : ?>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row d-flex justify-content-center">
+                        <h2 class="text-notification"><?= 'Nothing on your notification' ?></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>

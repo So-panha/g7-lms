@@ -4,13 +4,37 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $page = "";
 
 // Router
-$routes = ['/login' => 'controllers/login/login.controller.php',];
+if (empty($_SESSION['user'])) {
+    if ($_SERVER['REQUEST_URI'] === '/') {
+        echo "<script>location.href = '/login';</script>";
+    }
+    // Start router
+    $routes = ['/login' => 'controllers/login/login.controller.php'];
+} elseif (!empty($_SESSION['user'])) {
+    if ($_SESSION['user']['role'] === 'admin') {
+        // Change router by role
+        if ($_SERVER['REQUEST_URI'] === '/') {
+            echo "<script>location.href = '/admin';</script>";
+        }
+    } elseif ($_SESSION['user']['role'] === 'manager') {
+        if ($_SERVER['REQUEST_URI'] === '/') {
+            echo "<script>location.href = '/manager';</script>";
+        }
+    } elseif ($_SESSION['user']['role'] === 'employee') {
+        // Change router by role
+        if ($_SERVER['REQUEST_URI'] === '/') {
+            echo "<script>location.href = '/employee';</script>";
+        }
+    }
+}
+
+
 // Divide router of the user
 if (!empty($_SESSION['user'])) {
     if ($_SESSION['user']['role'] === 'admin') {
         // admin's router
         $routes = [
-            '/' => 'controllers/admin/admin.controller.php',
+            '/admin' => 'controllers/admin/admin.controller.php',
             '/login' => 'controllers/login/login.controller.php',
             '/check_role' => 'controllers/checkRole/check.role.controller.php',
             '/employees' => 'controllers/employees/employee.controller.php',
@@ -31,7 +55,7 @@ if (!empty($_SESSION['user'])) {
     } elseif ($_SESSION['user']['role'] === 'manager') {
         // manager's router
         $routes = [
-            '/' => 'controllers/employees/manager/manager.controller.php',
+            '/manager' => 'controllers/employees/manager/manager.controller.php',
             '/calendars' => 'controllers/calendars/calendar.controller.php',
             '/companies' => 'controllers/companies/company.controller.php',
             '/leaves' => 'controllers/leaves/leave.controller.php',
@@ -42,12 +66,12 @@ if (!empty($_SESSION['user'])) {
             '/infomation_members' => 'controllers/employees/manager/show.information.member.controller.php',
             '/eidt_infomation_members' => 'controllers/employees/manager/edit.member.controller.php',
             '/edit_information' => 'controllers/employees/employee/edit.information.controller.php',
-           
+
         ];
     } elseif ($_SESSION['user']['role'] === 'employee') {
         // employee's router
         $routes = [
-            '/' => 'controllers/employees/employee/employee.controller.php',
+            '/employee' => 'controllers/employees/employee/employee.controller.php',
             '/calendars' => 'controllers/calendars/calendar.controller.php',
             '/companies' => 'controllers/companies/company.controller.php',
             '/leaves' => 'controllers/leaves/leave.controller.php',
@@ -59,6 +83,8 @@ if (!empty($_SESSION['user'])) {
     }
 }
 
+
+
 if (array_key_exists($uri, $routes)) {
     $page = $routes[$uri];
 } else {
@@ -69,7 +95,7 @@ if (array_key_exists($uri, $routes)) {
 
 // If not yet login 
 if (empty($_SESSION['user'])) {
-    if ($page === 'controllers/login/login.controller.php') {
+    if ($_SERVER['REQUEST_URI'] === "/login") {
         session_destroy();
         require "layouts/header.php";
         require $page;
@@ -78,12 +104,25 @@ if (empty($_SESSION['user'])) {
         // prevent when try access by path without login
         require $page;
     }
-} elseif ($page != 'controllers/login/login.controller.php' && $page != 'views/errors/404.php') {
+} elseif (!empty($_SESSION['user'])) {
     // if already login
-    require "layouts/header.php";
-    require "layouts/navbar.php";
-    require $page;
-    require "layouts/footer.php";
-} elseif($page === 'views/errors/404.php'){
-    require $page;
+    if ($_SERVER['REQUEST_URI'] != "/login") {
+        require "layouts/header.php";
+        require "layouts/navbar.php";
+        require $page;
+        require "layouts/footer.php";
+    }else {
+        require $page;
+    }
 }
+
+// If user back using sign back in browser
+if(!empty($_SESSION['user'])){
+    if ($_SERVER['REQUEST_URI'] === "/login") {
+        session_destroy();
+        require "layouts/header.php";
+        require "views/login/loginForm.view.php";
+        require "layouts/footer.php";
+    }
+}
+

@@ -1,9 +1,27 @@
 <div class="col-xl-9 col-lg-8 col-md-12">
+<!-- Show alert when success in login -->
+	<?php if (isset($_SESSION['alert'])) { ?>
+		<div class="alert alert-success alert-dismissible grow" id="alert">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong><?= $_SESSION['alert'] ?></strong>
+
+			<!-- remove session alert -->
+			<?php unset($_SESSION['alert']) ?>
+		</div>
+		<!-- remove message -->
+		<script>
+			let showALert = document.querySelector('.alert');
+			setTimeout(function() {
+				showALert.remove();
+			}, 3000);
+		</script>
+	<?php } ?>
+       <!-- Widget -->
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
         <div class="card-body">
             <ul class="list-group list-group-horizontal-lg">
                 <li class="list-group-item text-center active button-5">
-                    <a class="text-white" href="employees-dashboard.html">Employees Dashboard</a>
+                    <a class="text-white" href="employees-dashboard.html">Manager Dashboard</a>
                 </li>
             </ul>
         </div>
@@ -64,6 +82,8 @@
                         <div class="recent-comment">
                             <?php
                             foreach ($typeLeave as $leave) {
+                                // print_r($leave['start_leave']);
+                                if ($leave['start_leave']== date('d/m/Y')){
 
                             ?>
                                 <a href="javascript:void(0)" class="dash-card text-dark">
@@ -80,6 +100,7 @@
                                 </a>
                                 <hr>
                             <?php
+                                }
                             }
                             ?>
                         </div>
@@ -90,64 +111,23 @@
         <div class="col-lg-6 col-md-12 d-flex">
             <!-- Team Leads List -->
             <div class="card flex-fill team-lead shadow-sm grow">
-                <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">Team Leads</h4>
-                    <a href="employees-team.html" class="dash-card d-inline-block float-right mb-0 text-primary">Manage Team
-                    </a>
-                </div>
-                <div class="card-body">
-                    <div class="media mb-3">
-                        <div class="e-avatar avatar-online mr-3">
-                            <img src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" class="img-fluid" />
-                        </div>
-                        <div class="media-body">
-                            <h6 class="m-0">Maria Cotton</h6>
-                            <p class="mb-0 ctm-text-sm">PHP</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="media mb-3">
-                        <div class="e-avatar avatar-online mr-3">
-                            <img class="img-fluid" src="assets/img/profiles/img-5.jpg" alt="Linda Craver" />
-                        </div>
-                        <div class="media-body">
-                            <h6 class="m-0">Danny Ward</h6>
-                            <p class="mb-0 ctm-text-sm">Design</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="media mb-3">
-                        <div class="e-avatar avatar-online mr-3">
-                            <img src="assets/img/profiles/img-4.jpg" alt="Linda Craver" class="img-fluid" />
-                        </div>
-                        <div class="media-body">
-                            <h6 class="m-0">Linda Craver</h6>
-                            <p class="mb-0 ctm-text-sm">IOS</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="media mb-3">
-                        <div class="e-avatar avatar-online mr-3">
-                            <img class="img-fluid" src="assets/img/profiles/img-3.jpg" alt="Linda Craver" />
-                        </div>
-                        <div class="media-body">
-                            <h6 class="m-0">Jenni Sims</h6>
-                            <p class="mb-0 ctm-text-sm">Android</p>
-                        </div>
-                    </div>
-                    <hr />
-
-                    <div class="media">
-                        <div class="e-avatar avatar-offline mr-3">
-                            <img class="img-fluid" src="assets/img/profiles/img-8.jpg" alt="Linda Craver" />
-                        </div>
-                        <div class="media-body">
-                            <h6 class="m-0">Stacey Linville</h6>
-                            <p class="mb-0 ctm-text-sm">Testing</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+				<div class="card-header">
+					<h4 class="card-title mb-0 d-inline-block">Manager</h4>
+					<a href="" class="dash-card float-right mb-0 text-primary">Manage Team </a>
+				</div>
+				<div class="card-body">
+					<?php for ($i = 0; $i < count($manager); $i++) : ?>
+						<div class="media mb-3">
+							<div class=" mr-3"><img class="rounded-circle" width="40px" height="40px" class="img-fluid" src="assets/images/profiles/<?=$manager[$i]['picture']?>" alt="<?=$manager[$i]['lname']?>" ></div>
+							<div class="media-body">
+								<h6 class="m-0"><?= $manager[$i]['fname'] . ' ' . $manager[$i]['lname'] ?></h6>
+								<p class="mb-0 ctm-text-sm"><?= $manager[$i]['position_name'] ?></p>
+							</div>
+						</div>
+						<hr>
+					<?php endfor; ?>
+				</div>
+			</div>
         </div>
         <div class="col-lg-6 col-md-12 d-flex">
             <!-- Recent Activities -->

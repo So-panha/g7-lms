@@ -13,7 +13,7 @@
 			let showALert = document.querySelector('.alert');
 			setTimeout(function() {
 				showALert.remove();
-			}, 5000);
+			}, 3000);
 		</script>
 	<?php } ?>
 	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
@@ -123,29 +123,32 @@
 				<div class="card-body recent-activ">
 					<!-- call function -->
 					<?php
-					$typeLeave = typeLeaves();
-					?>
-					<div class="recent-comment">
-						<?php
-						foreach ($typeLeave as $leave) {
-							
-						?>
-							<a href="javascript:void(0)" class="dash-card text-dark">
-								<div class="dash-card-container">
-									<div class="dash-card-content">
-										<h6 class="mb-0"><?php echo strtoupper($leave['fname']) . " is " . $leave['type_leave_name'] . " today "; ?></h6>
-									</div>
-									<div class="dash-card-avatars">
-										<!-- <div class="e-avatar"> -->
-										<img src="assets/images/profiles/<?= $leave['picture']?>" class="rounded-circle" width="40px" height="40px">
-										<!-- </div> -->
-									</div>
-								</div>
-							</a>
-							<hr>
-						<?php
-						}
-						?>
+                        $typeLeave = typeLeaves();
+                        ?>
+                        <div class="recent-comment">
+                            <?php
+                            foreach ($typeLeave as $leave) {
+                                // print_r($leave['start_leave']);
+                                if ($leave['start_leave']== date('d/m/Y')){
+
+                            ?>
+                                <a href="javascript:void(0)" class="dash-card text-dark">
+                                    <div class="dash-card-container">
+                                        <div class="dash-card-content">
+                                            <h6 class="mb-0"><?php echo strtoupper($leave['fname']) . " is " . $leave['type_leave_name'] . " today "; ?></h6>
+                                        </div>
+                                        <div class="dash-card-avatars">
+                                            <!-- <div class="e-avatar"> -->
+                                            <img src="assets/images/profiles/<?= $leave['picture'] ?>" class="rounded-circle" width="40px" height="40px">
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                </a>
+                                <hr>
+                            <?php
+                                }
+                            }
+                            ?>
 					</div>
 				</div>
 			</div>
@@ -156,12 +159,12 @@
 			<div class="card flex-fill team-lead shadow-sm grow">
 				<div class="card-header">
 					<h4 class="card-title mb-0 d-inline-block">Manager</h4>
-					<a href="employees.html" class="dash-card float-right mb-0 text-primary">Manage Team </a>
+					<a href="" class="dash-card float-right mb-0 text-primary">Manage Team </a>
 				</div>
 				<div class="card-body">
 					<?php for ($i = 0; $i < count($manager); $i++) : ?>
 						<div class="media mb-3">
-							<div class="e-avatar avatar-online mr-3"><img class="img-fluid" src="assets/images/profiles/img-2.jpg" alt="Linda Craver"></div>
+							<div class=" mr-3"><img class="rounded-circle" width="40px" height="40px" class="img-fluid" src="assets/images/profiles/<?=$manager[$i]['picture']?>" alt="<?=$manager[$i]['lname']?>" ></div>
 							<div class="media-body">
 								<h6 class="m-0"><?= $manager[$i]['fname'] . ' ' . $manager[$i]['lname'] ?></h6>
 								<p class="mb-0 ctm-text-sm"><?= $manager[$i]['position_name'] ?></p>
