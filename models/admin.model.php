@@ -175,7 +175,8 @@ function typeLeaves(): array
     FROM request_leave
     INNER JOIN type_leave ON request_leave.type_leave = type_leave.type_leave_id
     INNER JOIN users ON users.user_id = request_leave.user_id 
-    WHERE request_leave.checked = 'Approved' && request_leave.start_leave = date('d/m/Y')";
+    WHERE request_leave.checked = 'Approved';";
+    
     $statement = $connection->prepare($query);
     $statement->execute();
 
