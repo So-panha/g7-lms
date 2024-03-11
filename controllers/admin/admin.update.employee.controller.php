@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         && !empty($_POST['country'])
         && !empty($_POST['role'])
         && !empty($_POST['position_id'])
-        && !empty($_POST['amount'])
         && !empty($_POST['place'])
     ) {
         // Set up variable

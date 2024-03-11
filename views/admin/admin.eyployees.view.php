@@ -3,24 +3,20 @@
     <!-- Alert when it success for updating or not -->
     <?php if (isset($_SESSION['update'])) { ?>
         <?php if ($_SESSION['update'] == 'Success') { ?>
-            <div class="success alert-success alert-dismissible grow" id="alert">
+            <div class="alert alert-success alert-dismissible grow" id="alert">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong><?= $_SESSION['update'].'for update information of your employee!' ?></strong>
-
-                <!-- remove session alert -->
-                <?php unset($_SESSION['update']) ?>
+                <strong><?= $_SESSION['update'] . ' for update information of your employee!' ?></strong>
             </div>
         <?php } ?>
         <?php if ($_SESSION['update'] == 'Unsuccess') { ?>
-            <div class="alert alert alert-danger alert-dismissible grow" id="alert">
+            <div class="alert alert-danger alert-dismissible grow" id="alert">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong><?= $_SESSION['update'].'for update information of your employee please fill form before you submit!' ?></strong>
-
-                <!-- remove session alert -->
-                <?php unset($_SESSION['update']) ?>
+                <strong><?= $_SESSION['update'] . ' for update information of your employee please fill form before you submit!' ?></strong>
             </div>
-            <!-- remove message -->
         <?php } ?>
+        <!-- remove session alert -->
+        <?php unset($_SESSION['update']) ?>
+        <!-- remove message -->
         <script>
             let showALert = document.querySelector('.alert');
             setTimeout(function() {
