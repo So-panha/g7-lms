@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = trim($email);
         $amount = trim($amount);
 
-        if($manager === null){
+        if ($manager === null) {
             $manager = 0;
         }
 
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "Failed to insert employee.";
         }
-    }else{
+    } else {
         header("Location:/add_employee");
     }
 }

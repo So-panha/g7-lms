@@ -6,8 +6,7 @@ require "../../database/database.php";
 require "../../models/admin.model.php";
 // catch data from POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (
-        !empty($_POST['user_id'])
+    if (!empty($_POST['user_id'])
         && !empty($_POST['fname'])
         && !empty($_POST['lname'])
         && !empty($_POST['email'])

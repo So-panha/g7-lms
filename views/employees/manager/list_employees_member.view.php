@@ -8,7 +8,6 @@
 
     <!-- content -->
     <div class="d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none grow">
-
         <div class="p-2 bg-light"><?php echo $numberOfMembers; ?> Employees</div>
     </div>
     <!-- content -->
@@ -28,7 +27,7 @@
             // Find the position name based on the position ID
             $positionName = '';
             foreach ($positions as $position) {
-                
+
                 if ($position_id == $position['position_id']) {
                     $positionName = $position['position_name'];
                     break;
@@ -40,9 +39,9 @@
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
                             <?php if ($gender == "Male") : ?>
-                                <img src="assets/images/profiles/<?= $members['picture']?>"" alt="User Avatar" class=" rounded-circle" width="100px" height="100px">
+                                <img src="assets/images/profiles/<?= $members['picture'] ?>"" alt=" User Avatar" class=" rounded-circle" width="100px" height="100px">
                             <?php else : ?>
-                                <img src="assets/images/profiles/<?= $members['picture']?>"" alt="User Avatar" class=" rounded-circle" width="100px" height="100px">
+                                <img src="assets/images/profiles/<?= $members['picture'] ?>"" alt=" User Avatar" class=" rounded-circle" width="100px" height="100px">
                             <?php endif; ?>
                         </div>
                         <div class="user-details">
@@ -57,4 +56,4 @@
         }
         ?>
     </div>
-</div> 
+</div>

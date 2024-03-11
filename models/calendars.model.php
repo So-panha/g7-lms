@@ -42,7 +42,7 @@ function deleteEvent(int $id): bool
 }
 
 // Function for editing event
-function editEvent(int $id, string $event_name):bool
+function editEvent(int $id, string $event_name): bool
 {
     global $connection;
     $query = 'UPDATE calendar SET event_name = :event_name WHERE event_id = :id';
@@ -52,6 +52,6 @@ function editEvent(int $id, string $event_name):bool
             ':id' => $id,
             ':event_name' => $event_name
         ]
-        );
+    );
     return $STMT->rowCount()  < 0;
 }

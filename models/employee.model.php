@@ -22,7 +22,7 @@ function insertLeaveRequest(string $type_leave, string $start_leave, string $end
 function requestLeave($manager_id): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT rl.leave_id, rl.type_leave, rl.start_leave, rl.end_leave, rl.checked, rl.reason, rl.date_request, rl.user_id 
+    $statement = $connection->prepare("SELECT rl.leave_id, rl.type_leave, rl.start_leave, rl.end_leave, rl.checked, rl.reason, rl.date_request, rl.user_id, u.fname,u.lname
     FROM request_leave rl JOIN users u ON rl.user_id = u.user_id
     WHERE u.manager = :manager_id");
     $statement->bindParam(':manager_id', $manager_id, PDO::PARAM_INT);
@@ -38,7 +38,7 @@ function getHistoryRequest(): array
     return $statement->fetchAll();
 }
 
-function getTypeRequest() : array
+function getTypeRequest(): array
 {
     global $connection;
     $statement = $connection->prepare("SELECT * FROM type_leave");
@@ -57,7 +57,7 @@ function deletePost(int $id): bool
 
 
 // Get alert depend on the employee members    
-function alertMessage($manager_id) : array
+function alertMessage($manager_id): array
 {
     global $connection;
 
@@ -71,9 +71,23 @@ function alertMessage($manager_id) : array
 
     return $STMT->fetchAll();
 }
+function memberRequest($manager_id) : array
+{
+    global $connection;
 
+    $query = "SELECT users.user_id, users.fname, users.lname, users.picture, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
+    INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id";
 
-function personalHistoryOfRequest($employeeId){
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+        ":manager" => $manager_id,
+    ]);
+
+    return $STMT->fetchAll();
+}
+
+function personalHistoryOfRequest($employeeId)
+{
     global $connection;
     $query = "SELECT * from request_leave where user_id = $employeeId";
 
@@ -97,13 +111,14 @@ function getMember($managerId): array
     global $connection;
     $quary = "select * from users where manager = $managerId";
     $statement = $connection->prepare($quary);
-    $statement -> execute();
+    $statement->execute();
 
     return $statement->fetchAll();
 }
 
 // get position of all user to diplay in form diagram
-function getpositions(): array {
+function getpositions(): array
+{
     global $connection;
     $query = "SELECT count(users.fname) AS number_positions, position.position_name,position.position_id FROM users INNER JOIN position WHERE users.position_id = position.position_id GROUP BY users.position_id";
     $STMT = $connection->prepare($query);
@@ -135,6 +150,6 @@ function inforOfMember($memberId)
             ':id' => $memberId
         ]
     );
-    
+
     return $STMT->fetch();
 }

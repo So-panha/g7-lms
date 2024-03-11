@@ -28,7 +28,6 @@ if (empty($_SESSION['user'])) {
     }
 }
 
-
 // Divide router of the user
 if (!empty($_SESSION['user'])) {
     if ($_SESSION['user']['role'] === 'admin') {
