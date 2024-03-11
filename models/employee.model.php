@@ -22,7 +22,7 @@ function insertLeaveRequest(string $type_leave, string $start_leave, string $end
 function requestLeave($manager_id): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT rl.leave_id, rl.type_leave, rl.start_leave, rl.end_leave, rl.checked, rl.reason, rl.date_request, rl.user_id 
+    $statement = $connection->prepare("SELECT rl.leave_id, rl.type_leave, rl.start_leave, rl.end_leave, rl.checked, rl.reason, rl.date_request, rl.user_id, u.fname,u.lname
     FROM request_leave rl JOIN users u ON rl.user_id = u.user_id
     WHERE u.manager = :manager_id");
     $statement->bindParam(':manager_id', $manager_id, PDO::PARAM_INT);
@@ -63,6 +63,20 @@ function alertMessage($manager_id) : array
 
     $query = "SELECT users.user_id, users.fname, users.lname, users.picture, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
     INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id AND request_leave.checked = 'Pending'";
+
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+        ":manager" => $manager_id,
+    ]);
+
+    return $STMT->fetchAll();
+}
+function memberRequest($manager_id) : array
+{
+    global $connection;
+
+    $query = "SELECT users.user_id, users.fname, users.lname, users.picture, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
+    INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id";
 
     $STMT = $connection->prepare($query);
     $STMT->execute([
