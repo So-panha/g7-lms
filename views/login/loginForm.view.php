@@ -5,7 +5,6 @@
 <html lang="en">
 
 <head>
-    <!-- Design by foolishdeveloper.com -->
     <title>Login</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -13,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../vendor/css/login.css">
-    <!--Stylesheet-->
+
 
 </head>
 
@@ -42,12 +41,10 @@
         ?>
 
         <label for="username">Email</label>
-        <!-- <div class="col-12 mt-5"> -->
         <input type="email" placeholder="Email" id="email" name="email" class="form-control <?= $wrongEmail ?>" required>
         <div class="invalid-feedback">
             <h6>Please try your email agian!</h6>
         </div>
-        <!-- </div> -->
 
         <label class="lablepwd" for="password">Password</label>
         <div class="pwds">

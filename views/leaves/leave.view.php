@@ -126,18 +126,17 @@
 										</tr>
 									</thead>
 									<tbody class="text-center">
-										<?php $_SESSION['message'] = count($members); ?>
-										<?php for ($i = 0; $i < count($members); $i++) : ?>
-											<?php if ($members[$i]['date_request'] === date("d/m/Y") && $members[$i]['checked'] != 'Pending') : ?>
-												<tr>
-													<td><?php echo date("d/m/Y"); ?></td>
-													<td><?= $members[$i]['fname'] . ' ' . $members[$i]['lname'] ?></td>
-													<td><?= $members[$i]['type_leave_name'] ?></td>
-													<td><?= $members[$i]['start_leave'] ?></td>
-													<td><?= $members[$i]['end_leave'] ?></td>
-													<!-- <td>0</td>
-													<td>1</td> -->
-												</tr>
+										<?php for ($i = 0; $i < count($members_request); $i++) : ?>
+											<?php if ($members_request[$i]['start_leave'] == date('d/m/Y')) : ?>
+												<?php if ($members_request[$i]['checked'] == "Approved") : ?>
+													<tr>
+														<td><?php echo date('d/m/Y'); ?></td>
+														<td><?php echo $members_request[$i]['fname'] . ' ' . $members_request[$i]['lname']; ?></td>
+														<td><?php echo $members_request[$i]['type_leave_name']; ?></td>
+														<td><?php echo $members_request[$i]['start_leave']; ?></td>
+														<td><?php echo $members_request[$i]['end_leave']; ?></td>
+													</tr>
+												<?php endif; ?>
 											<?php endif; ?>
 										<?php endfor; ?>
 									</tbody>
@@ -153,46 +152,37 @@
 						<h4 class="card-title mb-0">Request Leaves</h4>
 					</div>
 					<div class="card-body">
-						<div class="employee-office-table">
-							<div class="table-responsive">
-								<table class="table custom-table mb-0">
-									<thead class="text-center">
-										<tr>
-											<th>Employee</th>
-											<th>Leave Type</th>
-											<th>From</th>
-											<th>To</th>
-											<th>Notes</th>
-											<th>Status</th>
-										</tr>
-									</thead>
-									<tbody class="text-center">
 
-										<?php $_SESSION['message'] = count($members); ?>
-										<?php for ($i = 0; $i < count($members); $i++) : ?>
-											<?php if ($members[$i]['checked'] != 'Pending') : ?>
-												<tr>
+						<ul class="list-group ">
+							<?php for ($i = 0; $i < count($members); $i++) : ?>
+								<?php if ($members[$i]['checked'] === 'Pending') : ?>
+									<!-- count depend on the messages -->
+									<!-- Create message for the message based on team members -->
+									<li class="d-flex justify-content-between mb-2 align-items-center d-flex flex-row " style="height: 15vh; list-style-type: none;">
+										<a href="<?= $members[$i]['user_id'] ?>"><img src="/assets/images/profiles/<?= $members[$i]['picture'] ?>" alt="Linda Craver" class="rounded-circle img-thumbnail shadow-sm" style="width: 60px; height: 60px; "></a>
+										<h6 class="mr-0"><?= strtoupper($members[$i]['fname'] . ' ' . $members[$i]['lname']) ?></h6>
+										<h6 class="mr-0">Leave-Time : <?= $members[$i]['start_leave'] . " - " . $members[$i]['end_leave'] ?></h6>
+										<h6 class="mr-0"><?= $members[$i]['type_leave_name'] ?></h6>
+										<h6 class="mr-0"><?= $members[$i]['date_request'] ?></h6>
+										<form method="post" action="controllers/leaves/respond.controller.php">
+											<input type="hidden" value="<?= $members[$i]['leave_id'] ?>" name="leave_id">
+											<button class="btn btn-outline-primary btn-sm" style="margin-left: 20px;" value="Approved" name="approved">Approved</button>
+											<button class="btn btn-outline-danger btn-sm" value="Rejected" name="rejected">Rejected</button>
+										</form>
 
-
-													<td>
-														<a href="employment.html" class="avatar">
-															<img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid">
-														</a>
-														<h2><?= $members[$i]['fname'] . ' ' . $members[$i]['lname'] ?></h2>
-													</td>
-													<td><?= $members[$i]['type_leave_name'] ?></td>
-													<td><?= $members[$i]['start_leave'] ?></td>
-													<td><?= $members[$i]['end_leave'] ?></td>
-													<td><?= $members[$i]['reason'] ?></td>
-													<td><?= $members[$i]['checked'] ?></< /td>
-												</tr>
-											<?php endif; ?>
-										<?php endfor; ?>
-
-									</tbody>
-								</table>
+									</li>
+								<?php endif; ?>
+							<?php endfor; ?>
+						</ul>
+						<?php if (count($members) === 0) : ?>
+							<div class="container">
+								<div class="card-body">
+									<div class="row d-flex justify-content-center">
+										<h2 class="text-notification"><?= 'Nothing on your notification' ?></h2>
+									</div>
+								</div>
 							</div>
-						</div>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>

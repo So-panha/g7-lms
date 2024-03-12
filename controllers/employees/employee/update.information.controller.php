@@ -29,9 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['user']['position_id'] = $position_id;
     $_SESSION['user']['amount'] = $amount;
     $_SESSION['user']['place'] = $place;
-    
+
     updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place);
     header('Location: /user_profile');
     exit;
 }
-

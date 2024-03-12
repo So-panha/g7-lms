@@ -82,7 +82,6 @@
                         <div class="recent-comment">
                             <?php
                             foreach ($typeLeave as $leave) {
-                                // print_r($leave['start_leave']);
                                 if ($leave['start_leave']== date('d/m/Y')){
 
                             ?>
@@ -92,9 +91,7 @@
                                             <h6 class="mb-0"><?php echo strtoupper($leave['fname']) . " is " . $leave['type_leave_name'] . " today "; ?></h6>
                                         </div>
                                         <div class="dash-card-avatars">
-                                            <!-- <div class="e-avatar"> -->
                                             <img src="assets/images/profiles/<?= $leave['picture'] ?>" class="rounded-circle" width="40px" height="40px">
-                                            <!-- </div> -->
                                         </div>
                                     </div>
                                 </a>
