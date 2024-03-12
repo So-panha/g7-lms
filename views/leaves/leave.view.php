@@ -121,6 +121,7 @@
 											<th>Type Leave</th>
 											<th>Strat Leave</th>
 											<th>End Leave</th>
+											<th>Reason</th>
 											<!-- <th>Absent</th>
 											<th>Today Aways</th> -->
 										</tr>
@@ -135,6 +136,7 @@
 														<td><?php echo $members_request[$i]['type_leave_name']; ?></td>
 														<td><?php echo $members_request[$i]['start_leave']; ?></td>
 														<td><?php echo $members_request[$i]['end_leave']; ?></td>
+														<td><?php echo $members_request[$i]['reason']; ?></td>
 													</tr>
 												<?php endif; ?>
 											<?php endif; ?>
@@ -147,7 +149,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<div class="card ctm-border-radius shadow-sm grow">
+			<div class="card ctm-border-radius shadow-sm grow">
 					<div class="card-header">
 						<h4 class="card-title mb-0">Request Leaves</h4>
 					</div>
@@ -160,10 +162,11 @@
 									<!-- Create message for the message based on team members -->
 									<li class="d-flex justify-content-between mb-2 align-items-center d-flex flex-row " style="height: 15vh; list-style-type: none;">
 										<a href="<?= $members[$i]['user_id'] ?>"><img src="/assets/images/profiles/<?= $members[$i]['picture'] ?>" alt="Linda Craver" class="rounded-circle img-thumbnail shadow-sm" style="width: 60px; height: 60px; "></a>
-										<h6 class="mr-0"><?= strtoupper($members[$i]['fname'] . ' ' . $members[$i]['lname']) ?></h6>
-										<h6 class="mr-0">Leave-Time : <?= $members[$i]['start_leave'] . " - " . $members[$i]['end_leave'] ?></h6>
+										<h6 class="mr-0"><?= strtoupper($members[$i]['fname']) ?></h6>
+										<h6 class="mr-0"><?= $members[$i]['start_leave'] . " - " . $members[$i]['end_leave'] ?></h6>
 										<h6 class="mr-0"><?= $members[$i]['type_leave_name'] ?></h6>
 										<h6 class="mr-0"><?= $members[$i]['date_request'] ?></h6>
+										<h6 class="mr-0"><?= $members[$i]['reason'] ?></h6>
 										<form method="post" action="controllers/leaves/respond.controller.php">
 											<input type="hidden" value="<?= $members[$i]['leave_id'] ?>" name="leave_id">
 											<button class="btn btn-outline-primary btn-sm" style="margin-left: 20px;" value="Approved" name="approved">Approved</button>
