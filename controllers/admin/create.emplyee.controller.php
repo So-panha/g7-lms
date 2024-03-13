@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $amount = $_POST['amount'];
         $place = $_POST['place'];
         $manager = $_POST['manager'];
+        $day_can_leave= 2;
 
         // Project Script javaScript
         $fname = htmlspecialchars($fname);
@@ -53,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         // Insert employee data into the database
-        $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place, $manager);
+        $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place, $manager,$day_can_leave);
 
         if ($insert) {
             header("Location:/admin_employees");

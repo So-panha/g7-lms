@@ -9,7 +9,8 @@
 					<form method="POST" action="controllers/leaves/create_request_leave.php">
 						<!-- user_id -->
 						<?php
-						$user = $_SESSION['user'];
+						$users = getUser($user['user_id']);
+						$day = $users['day_can_leave'];
 						?>
 
 						<div class="row">
@@ -36,7 +37,17 @@
 							<div class="col-sm-6 leave-col">
 								<div class="form-group">
 									<label>Remaining Leaves</label>
-									<input type="text" class="form-control" placeholder="10" disabled>
+									<?php
+									$firstDayOfNextMonth = new DateTime(date('Y-m-t', strtotime('first day of next month')));
+									$day = $users['day_can_leave']; // Example value for remaining leaves
+
+									if (new DateTime() == $firstDayOfNextMonth) {
+										$remainingLeaves = $day+2;
+									} else {
+										$remainingLeaves = $day;
+									}
+									?>
+									<input type="text" class="form-control" value="<?= $remainingLeaves ?>" name="day">
 								</div>
 							</div>
 						</div>
@@ -149,7 +160,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-			<div class="card ctm-border-radius shadow-sm grow">
+				<div class="card ctm-border-radius shadow-sm grow">
 					<div class="card-header">
 						<h4 class="card-title mb-0">Request Leaves</h4>
 					</div>
