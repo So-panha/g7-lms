@@ -94,7 +94,7 @@ function memberRequest($manager_id) : array
 {
     global $connection;
 
-    $query = "SELECT users.user_id, users.fname, users.lname, users.picture, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
+    $query = "SELECT users.user_id, users.fname, users.lname, users.picture,users.day_can_leave, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
     INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id";
 
     $STMT = $connection->prepare($query);
@@ -127,6 +127,13 @@ function getUsers(): array
     $statement->execute();
     return $statement->fetchAll();
 }
+function getUser($id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users where user_id = $id");
+    $statement->execute();
+    return $statement->fetch();
+}
 // get member
 function getMember($managerId): array
 {
@@ -155,6 +162,18 @@ function reactions(string $respond, int $leave_id): bool
     $statement->execute([
         ':respond' => $respond,
         ':id' => $leave_id
+
+    ]);
+
+    return $statement->rowCount() > 0;
+}
+function days(string $day, int $user_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET day_can_leave = :day where user_id =:id ");
+    $statement->execute([
+        ':day' => $day,
+        ':id' => $user_id
 
     ]);
 
