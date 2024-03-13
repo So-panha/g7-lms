@@ -73,11 +73,11 @@ function getUser(int $user_id): ?array
 }
 
 
-function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place, string $manager): bool
+function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place, string $manager, int $day_can_leave): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id, amount, place, picture, manager)
-    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :amount, :place, :picture, :manager)");
+    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id, amount, place, picture, manager,day_can_leave)
+    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :amount, :place, :picture, :manager,:day_can_leave)");
 
     $statement->execute([
         ':fname' => $fname,
@@ -92,7 +92,8 @@ function insertEmployee(string $fname, string $lname, string $password, string $
         ':amount' => $amount,
         ':place' => $place,
         ':picture' => 'user.jpg',
-        ':manager' => $manager
+        ':manager' => $manager,
+        ':day_can_leave' => $day_can_leave,
     ]);
 
     return $statement->rowCount() > 0;
