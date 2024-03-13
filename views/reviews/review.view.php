@@ -1,3 +1,4 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <div class="col-xl-9 col-lg-8  col-md-12">
 	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
 		<div class="card-body">
@@ -40,7 +41,7 @@
 									foreach ($personalHistoryRequest as $request) {
 
 
-										if ($request['checked'] == "Pending") {
+										if ($request['checked'] == "Pending" && $request['process'] == "progress") {
 
 											if ($employeeId === $request['user_id']) {
 									?>
@@ -63,14 +64,28 @@
 														<?php
 														if ($request['checked'] === "Approved") {
 															echo '<button  style="color:white; border:none; border-radius:10%; background:green; width: 45%;">' . $request['checked'] . '</button>';
-														}else{
+														} else {
 															echo '<button  style="color:white; border:none; border-radius:10%; background:red; width: 45%;">' . $request['checked'] . '</button>';
 														}
 														?>
 													</td>
+													<td>
+														<button class="btn-danger btn-cancel" style="color:white; border:none; border-radius:10%;" data-btn-id=<?= $request['leave_id'] ?>>Cancel</button>
+													</td>
 
 												</tr>
 
+												<!-- Script for button cancel -->
+												<script>
+													let cancen_btn = document.querySelectorAll('.btn-cancel');
+													cancen_btn.forEach(btn => {
+														btn.addEventListener('click', function(e) {
+															let leaveID = this.getAttribute('data-btn-id');
+															let tr = e.target.closest("tr");
+															showModal(leaveID,tr)
+														})
+													});
+												</script>
 									<?php
 											}
 										}
@@ -83,6 +98,7 @@
 					</div>
 				</div>
 				<!--/Tab 1-->
+
 
 				<!-- Tab2-->
 				<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -209,6 +225,53 @@
 
 			</div>
 		</div>
+
+		<!-- dalog to comfirm for concel -->
+		<!-- The Modal -->
+		<div class="modal" id="myModal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header d-flex justify-content-center bg-danger">
+						<h4 class="modal-title text-white">Are you sure to concel you leaving?</h4>
+						<button style="position:absolute;right:20px;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<p class="text-center">Click on button confirm to remove your leaving</p>
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" data-bs-toggle="modal" class="btn btn-danger d-flex justify-content-center confirm-btn">Confirm</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- Script for cancel leave -->
+		<script>
+			function showModal(leaveID,tr) {
+				// Open modal for confirm
+				$("#myModal").modal('show');
+				// Catch button confirm
+				let cancel_btn = document.querySelector(".confirm-btn");
+				// Add action to button confirm
+				cancel_btn.addEventListener('click', function() {
+					// Function for call to back-end to remove
+					$(document).ready(() => {
+						$.post("../../controllers/reviews/concel.controller.php", {
+							leave: leaveID,
+						});
+					});
+					// Remove main leave
+					tr.remove();
+				});
+			}
+		</script>
+		<!--  -->
 	</div>
 </div>
 </div>

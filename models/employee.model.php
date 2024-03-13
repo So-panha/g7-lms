@@ -3,14 +3,15 @@
 function insertLeaveRequest(string $type_leave, string $start_leave, string $end_leave, string $checked, string $reason, string $date_request, string $user_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO request_leave (type_leave, start_leave, end_leave, checked, reason,date_request, user_id)
-    VALUES (:type_leave, :start_leave, :end_leave, :checked, :reason,:date_request, :user_id)");
+    $statement = $connection->prepare("INSERT INTO request_leave (type_leave, start_leave, end_leave, checked,process, reason,date_request, user_id)
+    VALUES (:type_leave, :start_leave, :end_leave, :checked, :process, :reason,:date_request, :user_id)");
 
     $statement->execute([
         ':type_leave' => $type_leave,
         ':start_leave' => $start_leave,
         ':end_leave' => $end_leave,
         ':checked' => $checked,
+        ':process' => "progress",
         ':reason' => $reason,
         ':user_id' => $user_id,
         ':date_request' => $date_request
@@ -19,6 +20,22 @@ function insertLeaveRequest(string $type_leave, string $start_leave, string $end
     return $statement->rowCount() > 0;
 }
 
+// Cancel leaving
+function cancelLeave($leaveID) : bool
+{
+    global $connection;
+    $query = "UPDATE request_leave SET process = :process WHERE leave_id = :id";
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+        ':id' => $leaveID,
+        ':process' => 'cancel'
+    ]);
+
+    return $STMT->rowCount() > 0;
+}
+
+
+// request leave
 function requestLeave($manager_id): array
 {
     global $connection;
@@ -38,6 +55,7 @@ function getHistoryRequest(): array
     return $statement->fetchAll();
 }
 
+// Get types of request leave
 function getTypeRequest(): array
 {
     global $connection;
@@ -47,6 +65,7 @@ function getTypeRequest(): array
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// Delete post
 function deletePost(int $id): bool
 {
     global $connection;
@@ -96,7 +115,10 @@ function personalHistoryOfRequest($employeeId)
 
     return $statement->fetchAll();
 }
+
+
 // For manager
+
 //all users
 function getUsers(): array
 {

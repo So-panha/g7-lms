@@ -38,6 +38,9 @@
   <!-- script query -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+  <!-- scrip boostrap for dialog -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <title>LMS SYSTEM</title>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
