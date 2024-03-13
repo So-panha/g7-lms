@@ -30,7 +30,7 @@
       <label for="female">Female</label><br>
     </div>
     <!-- employee from -->
-    <label for="country">Country:</label>
+    <label for="country">Place Born:</label>
     <select class="country">
       <option value="">Country of employee</option>
       <option value="Cambodia">Cambodia</option>
@@ -48,7 +48,7 @@
     </select>
     <!-- Title job -->
     <label for="position">Position:</label>
-    <select class="possition">
+    <select class="position">
       <option value="">Possition</option>
       <option value="it">IT</option>
       <option value="english">English</option>
@@ -86,6 +86,6 @@
         <option value="svay rieng">Svay rieng</option>
       </select>
     <div class="button">
-      <button type="submit" class="btn">Add employee</button>
+      <button type="submit" class="btn-form">Add employee</button>
     </div>
   </form>
