@@ -4,6 +4,7 @@
             <p style="text-transform: uppercase;">date request</p>
             <p style="text-transform: uppercase;">start leave</p>
             <p style="text-transform: uppercase;">end leave</p>
+            <p style="text-transform: uppercase;">Reason</p>
             <p style="text-transform: uppercase;">status</p>
         </div>
     </div>
@@ -12,6 +13,7 @@
     $historyRequest = getHistoryRequest();
     foreach ($historyRequest as $history) {
         if ($user['user_id'] === $history['user_id']) {
+            if ($history['checked'] !="Pending"){
     ?>
             <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white m-2  grow">
                 <div class="flex-row list-group list-group-horizontal-lg p-3 justify-content-between align-items-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -20,6 +22,7 @@
                     <p><?php echo $history['date_request']; ?></p>
                     <p><?php echo $history['start_leave']; ?></p>
                     <p><?php echo $history['end_leave']; ?></p>
+                    <p><?php echo $history['reason']; ?></p>
 
                     <p>
                         <?php
@@ -35,6 +38,7 @@
             </div>
 
     <?php
+            }
         }
     }
     ?>
