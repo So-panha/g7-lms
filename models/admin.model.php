@@ -73,11 +73,11 @@ function getUser(int $user_id): ?array
 }
 
 
-function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place, string $manager): bool
+function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place, string $manager, int $day_can_leave): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id, amount, place, picture, manager)
-    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :amount, :place, :picture, :manager)");
+    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id, amount, place, picture, manager,day_can_leave)
+    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :amount, :place, :picture, :manager,:day_can_leave)");
 
     $statement->execute([
         ':fname' => $fname,
@@ -92,7 +92,8 @@ function insertEmployee(string $fname, string $lname, string $password, string $
         ':amount' => $amount,
         ':place' => $place,
         ':picture' => 'user.jpg',
-        ':manager' => $manager
+        ':manager' => $manager,
+        ':day_can_leave' => $day_can_leave,
     ]);
 
     return $statement->rowCount() > 0;
@@ -181,4 +182,18 @@ function typeLeaves(): array
     $statement->execute();
 
     return $statement->fetchAll();
+}
+function memberRequest($manager_id) : array
+{
+    global $connection;
+
+    $query = "SELECT users.user_id, users.fname, users.lname, users.picture,users.day_can_leave, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
+    INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id AND request_leave.checked = 'Approved'";
+
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+        ":manager" => $manager_id,
+    ]);
+
+    return $STMT->fetchAll();
 }
