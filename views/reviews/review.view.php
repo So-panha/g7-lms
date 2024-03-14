@@ -1,4 +1,3 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <div class="col-xl-9 col-lg-8  col-md-12">
 	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
 		<div class="card-body">
@@ -225,7 +224,7 @@
 
 			</div>
 		</div>
-
+		
 		<!-- dalog to comfirm for concel -->
 		<!-- The Modal -->
 		<div class="modal" id="myModal">
@@ -235,7 +234,7 @@
 					<!-- Modal Header -->
 					<div class="modal-header d-flex justify-content-center bg-danger">
 						<h4 class="modal-title text-white">Are you sure to concel you leaving?</h4>
-						<button style="position:absolute;right:20px;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						<button style="position:absolute;right:20px;border:none" type="button" class="btn-close bg-danger" data-bs-dismiss="modal"><i class="fa fa-close text-white" style="font-size:20px"></i></button>
 					</div>
 
 					<!-- Modal body -->
