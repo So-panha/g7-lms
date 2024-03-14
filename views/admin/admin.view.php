@@ -29,7 +29,7 @@
 			<div class="card dash-widget ctm-border-radius shadow-sm grow">
 				<div class="card-body">
 					<div class="card-icon bg-primary">
-						<i class="fa fa-users" aria-hidden="true"></i>
+					<i class="fa fa-user-plus" aria-hidden="true"></i>
 					</div>
 					<div class="card-right">
 						<?php
@@ -46,11 +46,11 @@
 			<div class="card dash-widget ctm-border-radius shadow-sm grow">
 				<div class="card-body">
 					<div class="card-icon bg-warning">
-						<i class="fa fa-building-o"></i>
+						<i class="fa fa-user"></i>
 					</div>
 					<div class="card-right">
-						<h4 class="card-title">Companies</h4>
-						<p class="card-text">1</p>
+						<h4 class="card-title">Manager</h4>
+						<p class="card-text"> <?php echo count(($manager)) ?></p>
 					</div>
 				</div>
 			</div>
@@ -72,15 +72,12 @@
 			<div class="card dash-widget ctm-border-radius shadow-sm grow">
 				<div class="card-body">
 					<div class="card-icon bg-success">
-						<i class="fa fa-money" aria-hidden="true"></i>
+						<i class="fa fa-users" aria-hidden="true"></i>
 					</div>
 					<div class="card-right">
-						<h4 class="card-title">Salary</h4>
+						<h4 class="card-title">Team</h4>
 						<!-- call function for get sum amount -->
-						<?php
-						$sumAmount = getAmount();
-						?>
-						<p class="card-text"><?php echo $sumAmount; ?>$</p>
+						<p class="card-text"><?php echo count($manager); ?></p>
 					</div>
 				</div>
 			</div>
