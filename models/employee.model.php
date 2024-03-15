@@ -145,12 +145,25 @@ function reactions(string $respond, int $leave_id): bool
 
     return $statement->rowCount() > 0;
 }
+// days can leave
 function days(string $day, int $user_id): bool
 {
     global $connection;
     $statement = $connection->prepare("UPDATE users SET day_can_leave = :day where user_id =:id ");
     $statement->execute([
         ':day' => $day,
+        ':id' => $user_id
+
+    ]);
+
+    return $statement->rowCount() > 0;
+}
+function taken(string $taken, int $user_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET taken = :taken where user_id =:id ");
+    $statement->execute([
+        ':taken' => $taken,
         ':id' => $user_id
 
     ]);

@@ -8,4 +8,8 @@ $users = getUsers();
 $manager = managers();
 // Get all type leave
 $typeLeave = typeLeaves();
+//id user
+$id = $_SESSION['user']['user_id'];
+//get all respond
+$responds = getChecked($id);
 require 'views/employees/employee/employee.view.php';
