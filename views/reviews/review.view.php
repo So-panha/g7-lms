@@ -1,3 +1,5 @@
+<!-- scrip boostrap for dialog -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <div class="col-xl-9 col-lg-8  col-md-12">
 	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
 		<div class="card-body">

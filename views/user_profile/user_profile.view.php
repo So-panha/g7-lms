@@ -1,3 +1,5 @@
+<!-- scrip boostrap for dialog -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- form information user_profile and can edit -->
 <div class="col-xl-9 col-lg-8  col-md-12 grow ">
     <!-- catch data from database get all use-->
