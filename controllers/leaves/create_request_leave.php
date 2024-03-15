@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../database/database.php';
 require '../../models/employee.model.php';
 
@@ -23,9 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Calculate the difference in days
     $dayDifference = floor(($timestampTo - $timestampFrom) / (60 * 60 * 24));
-
+   
     // Check if the 'to' date is earlier than the 'from' date
     if ($timestampTo < $timestampFrom) {
+        //session alert for request leave error 
+        $_SESSION['leave'] ='Unsuccess'; 
         header('Location: /leaves');
     } else {
 
@@ -34,10 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Check if the leave request was successfully inserted
         if ($insert) {
+            // session alert when request successfully
+            $_SESSION['leave'] = 'Success';
             header('Location: /leaves');
             exit;
-        } else {
-            echo "Failed to insert leave request.";
         }
     }
 }

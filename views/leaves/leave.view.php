@@ -1,4 +1,30 @@
 <div class="col-xl-9 col-lg-8 col-md-12">
+	 <!-- Alert when it success for leave -->
+	 <?php if (isset($_SESSION['leave'])) { ?>
+        <?php if ($_SESSION['leave'] == 'Success') { ?>
+            <div class="alert alert-success alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><?= $_SESSION['leave'] . ' for request leave!' ?></strong>
+            </div>
+        <?php } ?>
+		<!-- alert when request Unsuccess for leave -->
+        <?php if ($_SESSION['leave'] == 'Unsuccess') { ?>
+            <div class="alert alert-danger alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><?= $_SESSION['leave'] . ' for request leave!' ?></strong>
+            </div>
+        <?php } ?>
+        <!-- remove session alert -->
+        <?php unset($_SESSION['leave']) ?>
+        <!-- remove message -->
+        <script>
+            let showALert = document.querySelector('.alert');
+            setTimeout(function() {
+                showALert.remove();
+            }, 4000);
+        </script>
+    <?php } ?>
+
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card ctm-border-radius shadow-sm grow">
