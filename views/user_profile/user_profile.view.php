@@ -69,7 +69,7 @@
                 <hr>
             </div>
             <div class="d-flex justify-content-end pb-3 mr-4;">
-                <button type="button" class="btn btn-danger mr-3" style="width:80px;">Back</button>
+                <a href="/"><button type="button" class="btn btn-danger mr-3" style="width:80px;">Back</button></a>
                 <a href="/edit_information"><button type="button" class="btn btn-primary mr-3" style="width:80px;">Edit</button></a>
 
             </div>
