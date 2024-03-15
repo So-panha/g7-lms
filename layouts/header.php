@@ -91,7 +91,7 @@
                         <div class="user-info align-right dropdown d-inline-block header-dropdown">
                           <ul class="list-inline m-0">
                             <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Leave">
-                              <a href="leave.html" class="font-23 menu-style text-white align-middle">
+                              <a href="/leaves" class="font-23 menu-style text-white align-middle">
                                 <span class="lnr lnr-briefcase position-relative"></span>
                               </a>
                             </li>
