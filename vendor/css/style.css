@@ -2196,7 +2196,6 @@ textarea.form-control {
 .form_add_employee {
 	background: rgb(236, 236, 231);
 	width: 65%;
-	
 	padding: 20px 30px 3px 30px;
 	position: absolute;
 	right: 5%;
@@ -2229,7 +2228,7 @@ textarea.form-control {
 .roles,
 .amount,
 .place,
-.possition {
+.position {
 	height: 5vh;
 	width: 100%;
 	margin-bottom: 5px;
@@ -2252,7 +2251,7 @@ textarea.form-control {
 	right: 5%;
 }
 
-.btn {
+.btn-form {
 	height: 5vh;
 	width: 15%;
 	display: flex;
@@ -2260,5 +2259,7 @@ textarea.form-control {
 	align-items: center;
 	margin-top: 13px;
 	margin-bottom: 25px;
+	border: none;
+	border-radius: 8px;
 	background-color: #e8d450;
 }

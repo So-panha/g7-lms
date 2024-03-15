@@ -30,18 +30,34 @@
         <div class="col-lg-6 col-md-12 d-flex">
             <div class="card shadow-sm flex-fill grow">
                 <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">Permission</h4>
+                    <h4 class="card-title mb-0 d-inline-block">Show from request</h4>
                     <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
                 </div>
                 <div class="card-body text-center">
+                    <?php
+                    $coundApproved = 0;
+                    $coundRejected = 0;
+                    $dayCanLeave = 0;
+                    $taken = 0;
+                    $responds = getChecked($id);
+                    foreach ($responds as $respond) {
+                        if ($respond['checked'] == 'Approved') {
+                            $coundApproved += 1;
+                        } else {
+                            $coundRejected += 1;
+                        }
+                        $dayCanLeave = $respond['day_can_leave'];
+                        $taken = $respond['taken'];
+                    }
+                    ?>
                     <div class="time-list">
                         <div class="dash-stats-list">
-                            <span class="btn btn-outline-primary">9.00 Hrs</span>
+                            <span class="btn btn-outline-primary"><?php echo $coundApproved ?></span>
                             <p class="mb-0">Approved</p>
                         </div>
                         <div class="dash-stats-list">
-                            <span class="btn btn-outline-primary">10.00 Hrs</span>
-                            <p class="mb-0">Remaining</p>
+                            <span class="btn btn-outline-primary"><?php echo $coundRejected ?></span>
+                            <p class="mb-0">Rejected</p>
                         </div>
                     </div>
                 </div>
@@ -56,17 +72,18 @@
                 <div class="card-body text-center">
                     <div class="time-list">
                         <div class="dash-stats-list">
-                            <span class="btn btn-outline-primary">4.5 Days</span>
+                            <span class="btn btn-outline-primary"><?php echo $taken ." Days" ?></span>
                             <p class="mb-0">Taken</p>
                         </div>
                         <div class="dash-stats-list">
-                            <span class="btn btn-outline-primary">7.5 Days</span>
+                            <span class="btn btn-outline-primary"><?php echo $dayCanLeave ." Days" ?></span>
                             <p class="mb-0">Remaining</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-lg-6 d-flex">
             <div class="card shadow-sm flex-fill grow">
                 <div class="card-header">
@@ -83,16 +100,16 @@
                             <?php
                             foreach ($typeLeave as $leave) {
                                 if ($leave['start_leave'] == date('d/m/Y')) {
-
                             ?>
                                     <a href="javascript:void(0)" class="dash-card text-dark">
                                         <div class="dash-card-container">
+                                            <div class="dash-card-content mr-2">
+                                                <img src="assets/images/profiles/<?= $leave['picture'] ?>" class="rounded-circle" width="40px" height="40px">
+                                            </div>
                                             <div class="dash-card-content">
                                                 <h6 class="mb-0"><?php echo strtoupper($leave['fname']) . " is " . $leave['type_leave_name'] . " today "; ?></h6>
                                             </div>
-                                            <div class="dash-card-avatars">
-                                                <img src="assets/images/profiles/<?= $leave['picture'] ?>" class="rounded-circle" width="40px" height="40px">
-                                            </div>
+
                                         </div>
                                     </a>
                                     <hr>
@@ -207,67 +224,40 @@
             <div class="card flex-fill today-list shadow-sm grow">
                 <div class="card-header">
                     <h4 class="card-title mb-0 d-inline-block">
-                        Your Upcoming Leave
+                        Date Leave
                     </h4>
                     <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
                 </div>
                 <div class="card-body recent-activ">
                     <div class="recent-comment">
-                        <a href="javascript:void(0)" class="dash-card text-danger">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon">
-                                    <i class="fa fa-suitcase"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">Mon, 16 Dec 2019</h6>
-                                </div>
-                            </div>
-                        </a>
-                        <hr />
-                        <a href="javascript:void(0)" class="dash-card text-primary">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon">
-                                    <i class="fa fa-suitcase"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">Mon, 23 Dec 2019</h6>
-                                </div>
-                            </div>
-                        </a>
+                        <?php
+                        $allRequests = memberRequest($manager_id);
+                        foreach ($allRequests as $request) {
 
-                        <hr />
-                        <a href="javascript:void(0)" class="dash-card text-primary">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon">
-                                    <i class="fa fa-suitcase"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">Wed, 25 Dec 2019</h6>
-                                </div>
-                            </div>
-                        </a>
-                        <hr />
-                        <a href="javascript:void(0)" class="dash-card text-primary">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon">
-                                    <i class="fa fa-suitcase"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">Fri, 27 Dec 2019</h6>
-                                </div>
-                            </div>
-                        </a>
-                        <hr />
-                        <a href="javascript:void(0)" class="dash-card text-primary">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon">
-                                    <i class="fa fa-suitcase"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">Tue, 31 Dec 2019</h6>
-                                </div>
-                            </div>
-                        </a>
+                            if ($request['start_leave'] > date('d/m/Y')) {
+                                // print_r($request['start_leave']);
+                        ?>
+                                <a href="javascript:void(0)" class="dash-card text-danger">
+                                    <div class="dash-card-container">
+                                        <div class="dash-card-content mr-2">
+                                            <img src="assets/images/profiles/<?= $request['picture'] ?>"" alt=" User Avatar" class=" rounded-circle" width="40px" height="40px">
+                                        </div>
+                                        <div class="dash-card-content mr-2">
+                                            <h6 class="mb-0"><?php echo strtoupper($request['fname']) ?></h6>
+                                        </div>
+                                        <div class="dash-card-content">
+                                            <h6 class="mb-0"><?php echo "will leave on " . $request['start_leave'] ?></h6>
+                                        </div>
+                                    </div>
+                                </a>
+                                <hr />
+                        <?php
+                            }
+                        }
+                        ?>
+
+
+
                     </div>
                 </div>
             </div>

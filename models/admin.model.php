@@ -183,3 +183,29 @@ function typeLeaves(): array
 
     return $statement->fetchAll();
 }
+function memberRequest($manager_id): array
+{
+    global $connection;
+
+    $query = "SELECT users.user_id, users.fname, users.lname, users.picture,users.day_can_leave, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
+    INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id AND request_leave.checked = 'Approved'";
+
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+        ":manager" => $manager_id,
+    ]);
+
+    return $STMT->fetchAll();
+}
+
+function getChecked($id): array
+{
+    global $connection;
+    $query = "SELECT request_leave.checked, users.day_can_leave,users.taken
+              FROM request_leave 
+              INNER JOIN users ON request_leave.user_id = users.user_id 
+              WHERE users.user_id = :user_id AND request_leave.checked != 'Pending'";
+    $STMT = $connection->prepare($query);
+    $STMT->execute([":user_id" => $id]);
+    return $STMT->fetchAll(PDO::FETCH_ASSOC);
+}

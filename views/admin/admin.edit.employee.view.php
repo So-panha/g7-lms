@@ -1,18 +1,26 @@
 <form class="form_add_employee grow" method="POST" action="controllers/admin/admin.update.employee.controller.php">
-  <h2>Employment details</h2>
+  <h2 style="font-family: 'Times New Roman', Times, serif; font-weight:bold;">Employment details</h2>
   <?php
   $user = getUser($user_id);
   ?>
   <input type="hidden" value="<?php echo $user['user_id']; ?>" name="user_id">
   <!-- username -->
   <div class="username">
-    <input type="text" class="fname" value="<?php echo $user['fname']; ?>" id="fname" name="fname" placeholder="First name">
-    <input type="text" class="lname" value="<?php echo $user['lname']; ?>" id="lname" name="lname" placeholder="Last name">
+    <div class="firstname">
+      <label for="fname">First name:</label>
+      <input type="text" class="fname" value="<?php echo $user['fname']; ?>" id="fname" name="fname" placeholder="First name">
+    </div>
+    <div class="lastname">
+      <label for="fname">Last name:</label>
+      <input type="text" class="lname" value="<?php echo $user['lname']; ?>" id="lname" name="lname" placeholder="Last name">
+    </div>
   </div>
   <!-- password -->
+  <label for="passwork">Password:</label>
   <input type="password" hidden name="oldPwd" value="<?= $user['password'] ?>">
   <input type="password" class="password" value="" id="password" name="password" placeholder="Password">
   <!-- email -->
+  <label for="email">Email:</label>
   <input type="email" class="email" value="<?php echo $user['email']; ?>" id="email" name="email" placeholder="Email">
   <!-- sendinvite -->
   <div class="checks">
@@ -21,12 +29,14 @@
   </div>
   <!-- gender -->
   <div class="gender">
-    <input type="radio" id="male" name="gender" value="male" <?php if ($user['gender'] == 'male') echo 'checked'; ?>>
+    <label for="gender">Gender:</label>
+    <input type="radio" id="male" name="gender" value="male" <?php if ($user['gender'] === 'Male') echo 'checked'; ?>>
     <label for="male">Male</label><br>
-    <input type="radio" id="female" name="gender" value="female" <?php if ($user['gender'] == 'female') echo 'checked'; ?>>
+    <input type="radio" id="female" name="gender" value="female" <?php if ($user['gender'] === 'Female') echo 'checked'; ?>>
     <label for="female">Female</label><br>
   </div>
   <!-- employee from -->
+  <label for="country">Place Born:</label>
   <select class="country" name="country">
     <option disabled selected>Country of employee</option>
     <option value="Cambodia" <?php if ($user['country'] === 'Cambodia') echo 'selected'; ?>>Cambodia</option>
@@ -34,15 +44,16 @@
     <option value="France" <?php if ($user['country'] === 'France') echo 'selected'; ?>>France</option>
   </select>
   <!-- role employees -->
+  <label for="role">Role:</label>
   <select class="roles" name="role">
-    <option disabled selected>Role</option>
-    <?php if($_SESSION['user']['role'] === 'admin') : ?>
-    <option value="admin" <?php if ($user['role'] === 'admin') echo 'selected'; ?>>Admin</option>
+    <?php if ($_SESSION['user']['role'] === 'admin') : ?>
+      <option value="admin" <?php if ($user['role'] === 'admin') echo 'selected'; ?>>Admin</option>
     <?php endif; ?>
     <option value="manager" <?php if ($user['role'] === 'manager') echo 'selected'; ?>>Manager</option>
     <option value="employee" <?php if ($user['role'] === 'employee') echo 'selected'; ?>>Employee</option>
   </select>
   <!-- Title job -->
+  <label for="position">Position:</label>
   <select class="position" name="position_id">
     <option disabled selected>Position</option>
     <option value="1" <?php if ($user['position_id'] === 1) echo 'selected'; ?>>IT</option>
@@ -52,7 +63,7 @@
     <option value="5" <?php if ($user['position_id'] === 5) echo 'selected'; ?>>Social Development</option>
   </select>
   <!-- place employee -->
-  <input type="number" class="amount" id="amount" name="amount" value="<?php echo $user['amount']; ?>" placeholder="Amount">
+  <label for="place">Place:</label>
   <select class="place" name="place">
     <option disabled selected>Place</option>
     <option value="Phnom Penh" <?php if ($user['place'] === 'Phnom Penh') echo 'selected'; ?>>Phnom Penh</option>
@@ -81,6 +92,6 @@
     <option value="Svay Rieng" <?php if ($user['place'] === 'Svay Rieng') echo 'selected'; ?>>Svay Rieng</option>
   </select>
   <div class="button">
-    <button type="submit" class="btn btn-warning">Update</button>
+    <button type="submit" class="btn-form btn-warning">Update</button>
   </div>
 </form>
