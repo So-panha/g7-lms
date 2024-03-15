@@ -2,6 +2,7 @@
   <h2 style="font-family: 'Times New Roman', Times, serif; font-weight:bold;">Employment details</h2>
   <?php
   $user = getUser($user_id);
+
   ?>
   <input type="hidden" value="<?php echo $user['user_id']; ?>" name="user_id">
   <!-- username -->
@@ -18,7 +19,7 @@
   <!-- password -->
   <label for="passwork">Password:</label>
   <input type="password" hidden name="oldPwd" value="<?= $user['password'] ?>">
-  <input type="password" class="password" value="" id="password" name="password" placeholder="Password">
+  <input type="password" class="password" value="<?= $user['password'] ?>" id="password" name="password" placeholder="Password">
   <!-- email -->
   <label for="email">Email:</label>
   <input type="email" class="email" value="<?php echo $user['email']; ?>" id="email" name="email" placeholder="Email">
