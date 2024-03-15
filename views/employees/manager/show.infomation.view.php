@@ -1,57 +1,67 @@
 <!-- form edit  information user by admin-->
-<div class="col-xl-9 col-lg-8  col-md-12 grow ">
-    <div class="d-flex " style="height:560px;">
-        <!-- Get all data of user -->
-        <?php
-        $user = getUser($user_id);
-        $userPositionID = $user['position_id'];
-        $positions = getpositions();
-        ?>
-        <div class="col" style="background-color: #ACABCC; text-align: center;">
-            <img src="assets/images/profiles/<?= $user['picture'] ?>" alt="Lights" style="width: 225px; height:218px; border-radius: 52%;" class="rounded-circle mt-5">
-            <div class="caption mt-4  Font-weight: bold " style="color: black;">
-                <h3><?php echo strtoupper($user['fname'] . " " . $user['lname']); ?></h3>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="vendor/css/form_user.css">
+
+</head>
+
+<body>
+    <?php
+    $users = getUser($user_id);
+    $userPositionID = $users['position_id'];
+    $positions = getpositions();
+    ?>
+    <div class="user_profile grow">
+        <div class="background">
         </div>
-        <!-- fistname -->
-        <div class="col-7" style="background-color:whitesmoke;">
-            <div class="col mt-5">
-                <p>First Name: <?php echo $user['fname']; ?></p>
-                <hr>
+        <div class="form">
+            <div class="c-profile">
+                <img class="profile" style="width: 225px; height:218px; border-radius: 52%;" class="rounded-circle mt-5" src="assets/images/profiles/<?= $users['picture'] ?>" alt="">
+                <div class="text">
+                    <h4><?= strtoupper($users['fname'] . " " . $users['lname']) ?></h4>
+                </div>
             </div>
-            <!-- lastname -->
-            <div class="col mt-5">
-                <p>Last Name: <?php echo $user['lname']; ?></p>
-                <hr>
+            <div class="form-1">
+                <div class="logo-1">
+                    <img src="../../assets/images/profiles/pnc.png" alt="">
+                </div>
+                <div class="information">
+                    <div class="infor_left">
+                        <p>Position:</p>
+                        <p>Role:</p>
+                        <p>Gmail:</p>
+                        <p>Current Place:</p>
+                        <p>Country:</p>
+                    </div>
+                    <div class="infor_right">
+                        <p>
+                            <?php
+                            foreach ($positions as $position) {
+                                if ($userPositionID === $position['position_id']) {
+                                    echo $position['position_name'];
+                                }
+                            }?></p>
+                        <p><?= $users['role'] ?></p>
+                        <p><?= $users['email'] ?></p>
+                        <p><?= $users['place'] ?></p>
+                        <p><?= $users['country'] ?></p>
+
+                    </div>
+                </div>
             </div>
-            <!-- position -->
-            <div class="col mt-5">
-                <p>Position:
-                    <?php
-                    foreach ($positions as $position) {
-                        if ($userPositionID === $position['position_id']) {
-                            echo $position['position_name'];
-                        }
-                    }
-                    ?>
-                </p>
-                <hr>
-            </div>
-            <!-- province -->
-            <div class="col mt-5">
-                <p>Province: <?php echo $user['place']; ?></p>
-                <hr>
-            </div>
-            <!-- salary-->
-            <div class="col mt-5">
-                <p>Salary: <?php echo $user['amount'] . "$"; ?></p>
-                <hr>
-            </div>
-            <div class="d-flex justify-content-end mt-5 mr-4">
-                <a href="/eidt_infomation_members?id=<?php echo urlencode($user['user_id']); ?>"><button type="button" class="btn btn-primary mr-2 ml-2" style="width:80px;">Edit</button></a>
-                <a href="controllers/employees/manager/delete_member.controller.php?id=<?php echo urlencode($user['user_id']); ?>"><button type="button" class="btn btn-danger mr-2 ml-2" style="width:80px;">Delete</button></a>
+            <div class="main_btn">
+                <a href="controllers/admin/admin.employee.delete.controler.php?id=<?php echo urlencode($users['user_id']); ?>"><button type="button" class="btn-btn1 mr-2 ml-2" style="width:80px;">Delete</button></a>
+                <a href="/eidt_infomation_members?id=<?php echo urlencode($users['user_id']); ?>">
+                    <button type="button" class="mr-2 ml-2 text-center center-btn" style="width:80px;">Edit</button>
+                </a>
             </div>
         </div>
 
-    </div>
-</div>
+</body>
+
+</html>
