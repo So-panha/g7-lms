@@ -2379,3 +2379,57 @@ textarea.form-control {
 	gap: 5%;
 	margin: 0 0 10% 15%;
 }
+
+
+/* View team */
+
+.title-team{
+	/* padding: 2%; */
+	font-size: 40px;
+	font-family: 'Times New Roman', Times, serif;
+	text-align: center;
+	color: white;
+	background-color: #570689;
+}
+
+.table,.tbody{
+	/* margin-top: 2%; */
+	padding: 2%;
+}
+
+.img-team{
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+}
+
+.board-table{
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	background-color: white;
+	width: 100%;
+	height: 500px;
+	overflow: scroll;
+}
+
+.table{
+	width: 90%;
+	height: 50%;
+	font-weight: bold;
+}
+
+.tbody{
+	border: 1px solid;
+}
+
+thead{
+	text-align: center;
+}
+
+
+td{
+	background-color: white;
+	border-bottom: 1px solid;
+	text-align: center;
+}

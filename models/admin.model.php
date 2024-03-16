@@ -198,6 +198,7 @@ function memberRequest($manager_id): array
     return $STMT->fetchAll();
 }
 
+// Check id
 function getChecked($id): array
 {
     global $connection;
@@ -208,4 +209,34 @@ function getChecked($id): array
     $STMT = $connection->prepare($query);
     $STMT->execute([":user_id" => $id]);
     return $STMT->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+// Get team and members
+function groupPeople($managerId):array
+{
+    global $connection;
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role, position.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND manager=:manager';
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ':manager' => $managerId
+        ]
+    );
+
+    return $STMT->fetchAll();
+}
+
+function Groupmanager($managerId):array
+{
+    global $connection;
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role, position.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND user_id=:user_id';
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ':user_id' => $managerId
+        ]
+    );
+
+    return $STMT->fetch();
 }
