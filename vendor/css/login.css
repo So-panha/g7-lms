@@ -14,7 +14,7 @@ body {
 .background {
 
     width:40%;
-    height: 80vh;
+    height: 75vh;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -23,7 +23,7 @@ body {
 
  
 form {
-    height: 80vh;
+    height: 75vh;
     width: 40%;
     background-color: rgba(24, 21, 72, 0.442);
     position: absolute;
@@ -63,14 +63,14 @@ h3 {
 
 .shape:first-child {
     background: linear-gradient(#1845ad, #23a2f6);
-    left: -80px;
-    top: -40px;
+    left: -20%;
+    top: -20%;
 }
 
 .shape:last-child {
     background: linear-gradient(to right, #d28a7c, #f09819);
-    right: -80px;
-    bottom: -30px;
+    right: -20%;
+    bottom: -15%;
 }
 
 label {
@@ -142,8 +142,8 @@ label {
 .btn_login {
     width: 40%;
     height: 6vh;
-    background-color: #ffffff;
-    color: #080710;
+    background-color: #492cdc;
+    color: #f4ecec;
     font-size: 18px;
     text-align: center;
     align-items: center;
@@ -153,6 +153,7 @@ label {
 }
 button:hover{
     background-color: #f09819;
+    color: black;
 }
 .social {
     justify-content: center;
