@@ -19,7 +19,7 @@
 	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
 		<div class="card-body">
 			<ul class="list-group list-group-horizontal-lg">
-				<li class="list-group-item text-center active button-5"><a href="index.html" class="text-white">Admin Dashboard</a></li>
+				<li class="list-group-item text-center active button-5"><p  class="text-white">Admin Dashboard</p></li>
 			</ul>
 		</div>
 	</div>
