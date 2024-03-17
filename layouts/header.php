@@ -107,12 +107,15 @@
 
                                   <!-- Call the variable of the messages to show there -->
                                   <script>
-                                    $(document).ready(() => {
-                                      var notification = document.getElementById('notification');
-                                      $.get("../controllers/alert/notification.controller.php", function(data) {
-                                        notification.textContent = data;
+                                    setInterval(displayHello, 2000);
+                                    function displayHello() {
+                                      $(document).ready(() => {
+                                        var notification = document.getElementById('notification');
+                                        $.get("../controllers/alert/notification.controller.php", function(data) {
+                                          notification.textContent = data;
+                                        })
                                       })
-                                    })
+                                    }
                                   </script>
 
                                   <div class="user-avatar d-inline-block">
