@@ -51,6 +51,7 @@ if (!empty($_SESSION['user'])) {
             '/user_profile' => 'controllers/user_profile/user_profile.controller.php',
             '/edit_employee' => 'controllers/admin/admin.edit.employee.controller.php',
             '/views_group' => 'controllers/admin/admin.view.team.controller.php',
+            '/report_detail' => 'controllers/reports/detail.report.conroller.php',
         ];
     } elseif ($_SESSION['user']['role'] === 'manager') {
         // manager's router
