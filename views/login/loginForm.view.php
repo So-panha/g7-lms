@@ -49,7 +49,7 @@
         <label class="lablepwd" for="password">Password</label>
         <div class="pwds">
             <div class="child">
-                <input type="password" placeholder="Password" id="password" name="password" class="form-control password <?= $wrongPwd ?>" required>
+                <input type="password" placeholder="Password" id="passwords" name="password" class="form-control password <?= $wrongPwd ?>" required>
                 <div class="invalid-feedback">
                     <h6>Please try your password agian!</h6>
                 </div>

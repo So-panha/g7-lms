@@ -64,13 +64,13 @@ h3 {
 .shape:first-child {
     background: linear-gradient(#1845ad, #23a2f6);
     left: -80px;
-    top: -30px;
+    top: -60px;
 }
 
 .shape:last-child {
     background: linear-gradient(to right, #d28a7c, #f09819);
     right: -80px;
-    bottom: -30px;
+    bottom: 10px;
 }
 
 label {
@@ -86,35 +86,36 @@ label {
 input {
     display: block;
     height: 50px;
-    width: 90%;
+    width: 80%;
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
 }
+.child #passwords{
+    width: 150%;
+    height: 45px;
+}
 
 .pwds {
     display: flex;
     justify-content:space-between;
+    margin-top: 8px;
 }
 
-#password {
-    height: 45px;
-    width: 417px;
-}
 .invalid-feedback h6{
     color: red;
 }
 
 #eye{
     background-color: #555080;
-    width: 60px;
+    width: 20%;
     height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 8px;
     border-radius: 0px 5px 5px 0px;
 }
 
@@ -124,12 +125,12 @@ input {
 
 button  {
     display: flex;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 40%;
     height: 6vh;
     background-color: #ffffff;
     color: #080710;
-    margin-left: 145px;
+    margin-left: 130px;
     font-size: 18px;
     text-align: center;
     justify-content: center;
@@ -141,7 +142,7 @@ button:hover{
 }
 .social {
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 15px;
     display: flex;
 }
 

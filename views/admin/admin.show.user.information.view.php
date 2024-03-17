@@ -17,7 +17,7 @@
     $positions = getpositions();
     ?>
     <div class="user_profile grow">
-        <div class="background">
+        <div class="background_admin">
         </div>
         <div class="form">
             <div class="c-profile">
