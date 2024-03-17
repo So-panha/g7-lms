@@ -83,21 +83,30 @@ label {
    margin-bottom: -10px;
 }
 
-input {
+#email_login{
     display: block;
-    height: 50px;
-    width: 80%;
+    height:8vh;
+    width: 100%;
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 8px;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 400;
 }
-.child #passwords{
-    width: 150%;
-    height: 45px;
+#password_login{
+    display: block;
+    height: 8vh;
+    width: 100%;
+    border-radius: 3px 0px  0px 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 400;
 }
 
+.child{
+    width: 100%;
+}
 .pwds {
     display: flex;
     justify-content:space-between;
@@ -110,7 +119,7 @@ input {
 
 #eye{
     background-color: #555080;
-    width: 20%;
+    width: 15%;
     height: 45px;
     display: flex;
     justify-content: center;
@@ -125,7 +134,7 @@ input {
 
 button  {
     display: flex;
-    margin-top: 30px;
+    margin-top: 40px;
     width: 40%;
     height: 6vh;
     background-color: #ffffff;

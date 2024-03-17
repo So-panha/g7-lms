@@ -41,7 +41,7 @@
         ?>
 
         <label for="username">Email</label>
-        <input type="email" placeholder="Email" id="email" name="email" class="form-control <?= $wrongEmail ?>" required>
+        <input type="email" placeholder="Email" id="email_login" name="email" class="form-control <?= $wrongEmail ?>" required>
         <div class="invalid-feedback">
             <h6>Please try your email agian!</h6>
         </div>
@@ -49,7 +49,7 @@
         <label class="lablepwd" for="password">Password</label>
         <div class="pwds">
             <div class="child">
-                <input type="password" placeholder="Password" id="passwords" name="password" class="form-control password <?= $wrongPwd ?>" required>
+                <input type="password" placeholder="Password" id="password_login" name="password" class="form-control password <?= $wrongPwd ?>" required>
                 <div class="invalid-feedback">
                     <h6>Please try your password agian!</h6>
                 </div>
@@ -60,9 +60,7 @@
         </div>
 
         <button>Log In</button>
-        <a href="" class="social">
-            <p>Reset Password</p>
-        </a>
+       
 
         <!-- script for change to see password or close password  -->
         <script>
