@@ -2,7 +2,8 @@
 require "database/database.php";
 require "models/admin.model.php";
 // call function from database
-$sumAmount = getAmount();
+
+// Get all user
 $users = getUsers();
 // Get managers
 $manager = managers();
