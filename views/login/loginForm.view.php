@@ -58,8 +58,9 @@
                 <i class="icone" data-feather="eye"></i>
             </div>
         </div>
-
-        <button>Log In</button>
+        <div class="login_btn">
+            <button  class="btn_login">Log In</button>
+        </div>
        
 
         <!-- script for change to see password or close password  -->
