@@ -105,6 +105,6 @@
     <option value="Svay Rieng" <?php if ($user['place'] === 'Svay Rieng') echo 'selected'; ?>>Svay Rieng</option>
   </select>
   <div class="button">
-    <button type="submit" class="btn-form btn-warning">Update</button>
+    <button type="submit" class="btn-form btn-warning" id="update_btn">Update</button>
   </div>
 </form>
