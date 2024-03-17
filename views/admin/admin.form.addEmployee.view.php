@@ -1,37 +1,37 @@
-<form class="form_add_employee grow">
+<form class="form_add_employee grow" action="../../controllers/admin/create.emplyee.controller.php" method="post">
     <h2 style="font-family: 'Times New Roman', Times, serif; font-weight:bold;">Employment details</h2>
     <!-- username -->
     <div class="username">
       <div class="firstname">
         <label for="fname">First name:</label>
-        <input type="text" class="fname" id="fname" placeholder="Fist name">
+        <input type="text" class="fname" id="fname" name="fname" placeholder="Fist name">
       </div>
       <div class="lastname">
         <label for="fname">Last name:</label>
-        <input type="text" class="lname" id="lname" placeholder="Last name">
+        <input type="text" class="lname" id="lname" name="lname" placeholder="Last name">
       </div>
     </div>
     <!-- password -->
     <label for="password">Password:</label>
-    <input type="password" class="password" id="password" placeholder="Password">
+    <input type="password" class="password" id="password" name="password" placeholder="Password">
     <!-- email -->
     <label for="email">Email:</label>
-      <input type="email" class="email" id="email" placeholder="Email">
+      <input type="email" class="email" id="email" name="email" placeholder="Email">
     <div class="checks">
-      <input type="checkbox" class="check" id="check">
+      <input type="checkbox" class="check" id="check" name="send_invite">
       <label class="check-1" for="check1">Send them an invite email so they can log in immediately</label>
     </div>
     <!-- gender -->
     <div class="gender">
     <label for="">Gender:</label>
-      <input type="radio" id="gender" name="male" value="Male">
+      <input type="radio" id="gender" name="gender" value="Male">
       <label for="male">Male</label><br>
-      <input type="radio" id="gender" name="female" value="female">
+      <input type="radio" id="gender" name="gender" value="female">
       <label for="female">Female</label><br>
     </div>
     <!-- employee from -->
     <label for="country">Place Born:</label>
-    <select class="country">
+    <select class="country" name="country">
       <option value="">Country of employee</option>
       <option value="Cambodia">Cambodia</option>
       <option value="English">English</option>
@@ -39,7 +39,7 @@
     </select>
     <!-- role employees -->
     <label for="role">Role:</label>
-    <select class="roles">
+    <select class="roles" name="role">
       <option value="">Role</option>
       <option value="employee">Employee</option>
       <option value="admin">Admin</option>
@@ -48,17 +48,17 @@
     </select>
     <!-- Title job -->
     <label for="position">Position:</label>
-    <select class="position">
+    <select class="position" name="position">
       <option value="">Possition</option>
-      <option value="it">IT</option>
-      <option value="english">English</option>
-      <option value="pl">PL</option>
-      <option value="tranning">Tranning</option>
-      <option value="socail development">Socail development</option>
+      <option value="1">IT</option>
+      <option value="2">PL</option>
+      <option value="3">English</option>
+      <option value="4">Tranning</option>
+      <option value="5">Socail development</option>
     </select>
     <!-- place employee -->
     <label for="place">Place:</label>
-      <select class="roles">
+      <select class="roles" name="place">
         <option value="">Place</option>
         <option value="phnom Penh">Phnom Penh</option>
         <option value="kampong cham">Kampong Cham</option>

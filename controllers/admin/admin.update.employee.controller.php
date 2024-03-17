@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $country = $_POST['country'];
         $role = $_POST['role'];
         $position_id = $_POST['position_id'];
-        $amount = $_POST['amount'];
         $place = $_POST['place'];
 
         // Set new password
@@ -39,13 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Encrpt password
             $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
             // Update password
-            updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place);
+            updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place);
             $_SESSION['update'] = 'Success';
             header('Location: /admin_employees');
             exit;
         } else {
             // Update but still keep old password
-            updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place);
+            updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $place);
             $_SESSION['update'] = 'Success';
             header('Location: /admin_employees');
             exit;

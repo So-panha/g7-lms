@@ -76,7 +76,7 @@
 					</div>
 					<div class="card-right">
 						<h4 class="card-title">Team</h4>
-						<!-- call function for get sum amount -->
+						<!-- call function for get sum $manager -->
 						<p class="card-text"><?php echo count($manager); ?></p>
 					</div>
 				</div>
