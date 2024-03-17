@@ -156,7 +156,7 @@
 			<div class="card flex-fill team-lead shadow-sm grow">
 				<div class="card-header">
 					<h4 class="card-title mb-0 d-inline-block">Manager</h4>
-					<a href="" class="dash-card float-right mb-0 text-primary">Manage Team </a>
+					<a href="/admin_employees_team" class="dash-card float-right mb-0 text-primary">Manage Team </a>
 				</div>
 				<div class="card-body">
 					<?php for ($i = 0; $i < count($manager); $i++) : ?>
