@@ -2251,7 +2251,7 @@ textarea.form-control {
 	right: 5%;
 }
 
-/* .btn {
+.btn {
 	height: 5vh;
 	width: 15%;
 	display: flex;
@@ -2262,7 +2262,19 @@ textarea.form-control {
 	border: none;
 	border-radius: 8px;
 	background-color: #e8d450;
-} */
+}
+.btn-form {
+	height: 5vh;
+	width: 15%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 13px;
+	margin-bottom: 25px;
+	border: none;
+	border-radius: 8px;
+	background-color: #e8d450;
+}
 
 /* Profile */
 .user_profile {
