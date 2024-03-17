@@ -51,7 +51,6 @@
     <option value="5" <?php if ($member['position_name']) echo 'selected'; ?>>Social Development</option>
   </select>
   <!-- place employee -->
-  <input type="number" class="amount" id="amount" name="amount" value="<?php echo $member['amount']; ?>" placeholder="Amount">
   <select class="place" name="place">
     <option disabled selected>Place</option>
     <option value="Phnom Penh" <?php if ($member['place'] === 'Phnom Penh') echo 'selected'; ?>>Phnom Penh</option>

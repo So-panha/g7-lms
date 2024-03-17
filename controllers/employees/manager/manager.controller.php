@@ -1,7 +1,6 @@
 <?php
 require "database/database.php";
 require "models/admin.model.php";
-$sumAmount = getAmount();
 $users = getUsers();
 // Get managers
 $manager = managers();

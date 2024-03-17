@@ -71,10 +71,6 @@
       <option value="5" <?php if ($user['position_id'] == 5) echo 'selected'; ?>>Social Development</option>
     </select>
   <?php endif; ?>
-  <!-- amount -->
-  <?php if ($user['role'] !== 'admin') : ?>
-    <input type="number" class="amount" id="amount" name="amount" value="<?php echo $user['amount']; ?>" placeholder="Amount">
-  <?php endif; ?>
   <!-- place employee -->
   <label for="passwork">​Current Place:</label>
   <select class="place" name="place">
