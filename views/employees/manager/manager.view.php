@@ -126,16 +126,15 @@
             <!-- Team Leads List -->
             <div class="card flex-fill team-lead shadow-sm grow">
                 <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">Manager</h4>
+                    <h4 class="card-title mb-0 d-inline-block">Members</h4>
                     <p class="dash-card float-right mb-0 text-primary">Team member</p>
                 </div>
                 <div class="card-body">
-                    <?php for ($i = 0; $i < count($manager); $i++) : ?>
+                    <?php for ($i = 0; $i < count($members); $i++) : ?>
                         <div class="media mb-3">
-                            <div class=" mr-3"><img class="rounded-circle" width="40px" height="40px" class="img-fluid" src="assets/images/profiles/<?= $manager[$i]['picture'] ?>" alt="<?= $manager[$i]['lname'] ?>"></div>
+                            <div class=" mr-3"><img class="rounded-circle" width="40px" height="40px" class="img-fluid" src="assets/images/profiles/<?= $members[$i]['picture'] ?>" alt="<?= $members[$i]['lname'] ?>"></div>
                             <div class="media-body">
-                                <h6 class="m-0"><?= $manager[$i]['fname'] . ' ' . $manager[$i]['lname'] ?></h6>
-                                <p class="mb-0 ctm-text-sm"><?= $manager[$i]['position_name'] ?></p>
+                                <h6 class="m-0"><?= $members[$i]['fname'] . ' ' . $members[$i]['lname'] ?></h6>
                             </div>
                         </div>
                         <hr>
@@ -143,125 +142,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <!-- Recent Activities -->
-            <div class="card recent-acti flex-fill shadow-sm grow">
-                <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">
-                        Recent Activities
-                    </h4>
-                    <a href="javascript:void(0)" class="d-inline-block float-right text-primary"><i class="lnr lnr-sync"></i></a>
-                </div>
-                <div class="card-body recent-activ admin-activ">
-                    <div class="recent-comment">
-                        <div class="notice-board">
-                            <div class="table-img">
-                                <div class="e-avatar mr-3">
-                                    <img class="img-fluid" src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" />
-                                </div>
-                            </div>
-                            <div class="notice-body">
-                                <h6 class="mb-0">Lorem ipsum dolor sit amet.</h6>
-                                <span class="ctm-text-sm">Maria Cotton | 1 hour ago</span>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="notice-board">
-                            <div class="table-img">
-                                <div class="e-avatar mr-3">
-                                    <img class="img-fluid" src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" />
-                                </div>
-                            </div>
-                            <div class="notice-body">
-                                <h6 class="mb-0">Lorem ipsum dolor sit amet.</h6>
-                                <span class="ctm-text-sm">Maria Cotton | 2 hour ago</span>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="notice-board">
-                            <div class="table-img">
-                                <div class="e-avatar mr-3">
-                                    <img class="img-fluid" src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" />
-                                </div>
-                            </div>
-                            <div class="notice-body">
-                                <h6 class="mb-0">Lorem ipsum dolor sit amet.</h6>
-                                <span class="ctm-text-sm">Maria Cotton | 3 hour ago</span>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="notice-board">
-                            <div class="table-img">
-                                <div class="e-avatar mr-3">
-                                    <img class="img-fluid" src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" />
-                                </div>
-                            </div>
-                            <div class="notice-body">
-                                <h6 class="mb-0">Lorem ipsum dolor sit amet.</h6>
-                                <span class="ctm-text-sm">Maria Cotton | 4 hour ago</span>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="notice-board">
-                            <div class="table-img">
-                                <div class="e-avatar mr-3">
-                                    <img class="img-fluid" src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" />
-                                </div>
-                            </div>
-                            <div class="notice-body">
-                                <h6 class="mb-0">Lorem ipsum dolor sit amet.</h6>
-                                <span class="ctm-text-sm">Maria Cotton | 5 hour ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- / Recent Activities -->
 
-        <div class="col-lg-6 col-md-12 d-flex">
-            <!-- Today -->
-            <div class="card flex-fill today-list shadow-sm grow">
-                <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">
-                        Date Leave
-                    </h4>
-                    <p class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></p>
-                </div>
-                <div class="card-body recent-activ">
-                    <div class="recent-comment">
-                        <?php
-                        $allRequests = memberRequest($manager_id);
-                        foreach ($allRequests as $request) {
-
-                            if ($request['start_leave'] > date('d/m/Y')) {
-                                // print_r($request['start_leave']);
-                        ?>
-                                <p href="javascript:void(0)" class="dash-card text-danger">
-                                    <div class="dash-card-container">
-                                        <div class="dash-card-content mr-2">
-                                            <img src="assets/images/profiles/<?= $request['picture'] ?>"" alt=" User Avatar" class=" rounded-circle" width="40px" height="40px">
-                                        </div>
-                                        <div class="dash-card-content mr-2">
-                                            <h6 class="mb-0"><?php echo strtoupper($request['fname']) ?></h6>
-                                        </div>
-                                        <div class="dash-card-content">
-                                            <h6 class="mb-0"><?php echo "will leave on " . $request['start_leave'] ?></h6>
-                                        </div>
-                                    </div>
-                                </a>
-                                <hr />
-                        <?php
-                            }
-                        }
-                        ?>
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 </div>
