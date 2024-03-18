@@ -90,7 +90,16 @@
 									btn.addEventListener('click', function(e) {
 										let leaveID = this.getAttribute('data-btn-id');
 										let tr = e.target.closest("tr");
-										showModal(leaveID, tr)
+										let dayStart = tr.children[2].textContent;
+										let dayEnd = tr.children[3].textContent;
+										// find index
+										let indexStart = dayStart.search('/');
+										let indexEnd = dayStart.search('/');
+
+										// Call the day leave back
+										let dayLeave = Number(dayEnd.slice(0,indexEnd) - Number(dayStart.slice(0,indexStart)));
+										// Call model
+										showModal(leaveID, tr, dayLeave)
 									})
 								});
 							</script>
@@ -252,7 +261,9 @@
 		</div>
 		<!-- Script for cancel leave -->
 		<script>
-			function showModal(leaveID, tr) {
+			function showModal(leaveID, tr, dayLeave) {
+				let mainLeave = tr;
+				let backDay = dayLeave;
 				// Open modal for confirm
 				$("#myModal").modal('show');
 				// Catch button confirm
@@ -260,15 +271,15 @@
 				// Add action to button confirm
 				cancel_btn.addEventListener('click', function() {
 					// Function for call to back-end to remove
-					$(document).ready(() => {
 						$.post("../../controllers/reviews/concel.controller.php", {
 							leave: leaveID,
+							backDay: backDay
 						});
-					});
 					// Remove main leave
-					tr.remove();
+					mainLeave.remove();
 					// Reset tr
-					tr = '';
+					mainLeave = '';
+					backDay = 0;
 				});
 			}
 		</script>

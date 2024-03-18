@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the 'to' date is earlier than the 'from' date
     if ($timestampTo < $timestampFrom) {
         //session alert for request leave error 
-        $_SESSION['leave'] ='Unsuccess'; 
+        $_SESSION['leave'] = 'Unsuccess'; 
         header('Location: /leaves');
     } else {
 

@@ -34,6 +34,20 @@ function cancelLeave($leaveID) : bool
     return $STMT->rowCount() > 0;
 }
 
+// Remove day leave when the employees cancel
+function removeDayLeave($dayLeave,$dayTaken,$userId) : bool
+{
+    global $connection;
+    $query = 'UPDATE users SET day_can_leave = :day_can_leave, taken = :taken WHERE user_id = :id';
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+        ':id' => $userId,
+        ':day_can_leave' => $dayLeave,
+        ':taken' => $dayTaken
+    ]);
+
+    return $STMT->rowCount() > 0;
+}
 
 // request leave
 function requestLeave($manager_id): array
@@ -108,10 +122,11 @@ function memberRequest($manager_id) : array
 function personalHistoryOfRequest($employeeId)
 {
     global $connection;
-    $query = "SELECT * from request_leave where user_id = $employeeId";
-
+    $query = "SELECT * from request_leave where user_id = :id";
     $statement = $connection->prepare($query);
-    $statement->execute();
+    $statement->execute([
+        'id' => $employeeId
+    ]);
 
     return $statement->fetchAll();
 }
@@ -162,7 +177,6 @@ function reactions(string $respond, int $leave_id): bool
     $statement->execute([
         ':respond' => $respond,
         ':id' => $leave_id
-
     ]);
 
     return $statement->rowCount() > 0;
@@ -175,7 +189,6 @@ function days(string $day, int $user_id): bool
     $statement->execute([
         ':day' => $day,
         ':id' => $user_id
-
     ]);
 
     return $statement->rowCount() > 0;
