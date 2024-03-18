@@ -168,6 +168,8 @@ function typeLeaves(): array
 
     return $statement->fetchAll();
 }
+
+// Function memebers request
 function memberRequest($manager_id): array
 {
     global $connection;
