@@ -21,7 +21,7 @@
         <div class="card-body">
             <ul class="list-group list-group-horizontal-lg">
                 <li class="list-group-item text-center active button-5">
-                    <a class="text-white" href="employees-dashboard.html">Manager Dashboard</a>
+                    <p class="text-white" >Manager Dashboard</p>
                 </li>
             </ul>
         </div>
@@ -127,7 +127,7 @@
             <div class="card flex-fill team-lead shadow-sm grow">
                 <div class="card-header">
                     <h4 class="card-title mb-0 d-inline-block">Manager</h4>
-                    <a href="" class="dash-card float-right mb-0 text-primary">Manage Team </a>
+                    <p class="dash-card float-right mb-0 text-primary">Team member</p>
                 </div>
                 <div class="card-body">
                     <?php for ($i = 0; $i < count($manager); $i++) : ?>
@@ -237,7 +237,7 @@
                             if ($request['start_leave'] > date('d/m/Y')) {
                                 // print_r($request['start_leave']);
                         ?>
-                                <a href="javascript:void(0)" class="dash-card text-danger">
+                                <p href="javascript:void(0)" class="dash-card text-danger">
                                     <div class="dash-card-container">
                                         <div class="dash-card-content mr-2">
                                             <img src="assets/images/profiles/<?= $request['picture'] ?>"" alt=" User Avatar" class=" rounded-circle" width="40px" height="40px">

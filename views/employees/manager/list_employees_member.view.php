@@ -2,7 +2,7 @@
 <div class="col-xl-9 col-lg-8 col-md-12">
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white p-4 mb-4 card">
         <ul class="list-group list-group-horizontal-lg">
-            <li class="list-group-item text-center active button-5"><a href="/admin_employees" class="text-white" style="width:60px;">All</a></li>
+            <li class="list-group-item text-center active button-5"><p class="text-white" style="width:60px;">All</p></li>
         </ul>
     </div> <!-- header -->
 
