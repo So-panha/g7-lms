@@ -73,7 +73,7 @@
 										$remainingLeaves = $day;
 									}
 									?>
-									<input type="text" class="form-control" value="<?= $remainingLeaves ?>" name="day">
+									<input type="text" class="form-control" value="<?= $remainingLeaves ?>" name="day" disabled>
 								</div>
 							</div>
 						</div>
