@@ -34,6 +34,20 @@ function cancelLeave($leaveID) : bool
     return $STMT->rowCount() > 0;
 }
 
+// Remove day leave when the employees cancel
+function removeDayLeave($dayLeave,$dayTaken,$userId) : bool
+{
+    global $connection;
+    $query = 'UPDATE users SET day_can_leave = :day_can_leave, taken = :taken WHERE user_id = :id';
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+        ':id' => $userId,
+        ':day_can_leave' => $dayLeave,
+        ':taken' => $dayTaken
+    ]);
+
+    return $STMT->rowCount() > 0;
+}
 
 // request leave
 function requestLeave($manager_id): array
@@ -81,7 +95,7 @@ function alertMessage($manager_id): array
     global $connection;
 
     $query = "SELECT users.user_id, users.fname, users.lname, users.picture, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
-    INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id AND request_leave.checked = 'Pending'";
+    INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id AND request_leave.checked = 'Pending' AND process = 'progress'";
 
     $STMT = $connection->prepare($query);
     $STMT->execute([
@@ -108,10 +122,11 @@ function memberRequest($manager_id) : array
 function personalHistoryOfRequest($employeeId)
 {
     global $connection;
-    $query = "SELECT * from request_leave where user_id = $employeeId";
-
+    $query = "SELECT * from request_leave where user_id = :id";
     $statement = $connection->prepare($query);
-    $statement->execute();
+    $statement->execute([
+        'id' => $employeeId
+    ]);
 
     return $statement->fetchAll();
 }
@@ -162,7 +177,6 @@ function reactions(string $respond, int $leave_id): bool
     $statement->execute([
         ':respond' => $respond,
         ':id' => $leave_id
-
     ]);
 
     return $statement->rowCount() > 0;
@@ -175,7 +189,6 @@ function days(string $day, int $user_id): bool
     $statement->execute([
         ':day' => $day,
         ':id' => $user_id
-
     ]);
 
     return $statement->rowCount() > 0;

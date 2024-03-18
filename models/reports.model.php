@@ -8,6 +8,15 @@ function employee(): array
     $STMT->execute();
     return $STMT->fetchAll();
 }
+function employees($id): array
+{
+    global $connection;
+    $query = "SELECT * FROM users WHERE role != 'Admin' AND user_id = :id";
+    $STMT = $connection->prepare($query);
+    $STMT->bindParam(':id', $id);
+    $STMT->execute();
+    return $STMT->fetch();
+}
 function employeeLeave($id): array
 {
     global $connection;

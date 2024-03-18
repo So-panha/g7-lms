@@ -35,7 +35,6 @@
 									<?php
 
 									$employeeId = $_SESSION['user']['user_id'];
-
 									$typeRequests = getTypeRequest();
 									$personalHistoryRequest = personalHistoryOfRequest($employeeId);
 									// print_r($personalHistoryRequest);
@@ -75,18 +74,6 @@
 													</td>
 
 												</tr>
-
-												<!-- Script for button cancel -->
-												<script>
-													let cancen_btn = document.querySelectorAll('.btn-cancel');
-													cancen_btn.forEach(btn => {
-														btn.addEventListener('click', function(e) {
-															let leaveID = this.getAttribute('data-btn-id');
-															let tr = e.target.closest("tr");
-															showModal(leaveID,tr)
-														})
-													});
-												</script>
 									<?php
 											}
 										}
@@ -95,11 +82,31 @@
 
 								</tbody>
 							</table>
+
+							<!-- Script for button cancel -->
+							<script>
+								let cancen_btn = document.querySelectorAll('.btn-cancel');
+								cancen_btn.forEach(btn => {
+									btn.addEventListener('click', function(e) {
+										let leaveID = this.getAttribute('data-btn-id');
+										let tr = e.target.closest("tr");
+										let dayStart = tr.children[2].textContent;
+										let dayEnd = tr.children[3].textContent;
+										// find index
+										let indexStart = dayStart.search('/');
+										let indexEnd = dayStart.search('/');
+
+										// Call the day leave back
+										let dayLeave = Number(dayEnd.slice(0,indexEnd) - Number(dayStart.slice(0,indexStart)));
+										// Call model
+										showModal(leaveID, tr, dayLeave)
+									})
+								});
+							</script>
 						</div>
 					</div>
 				</div>
 				<!--/Tab 1-->
-
 
 				<!-- Tab2-->
 				<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -226,7 +233,7 @@
 
 			</div>
 		</div>
-		
+
 		<!-- dalog to comfirm for concel -->
 		<!-- The Modal -->
 		<div class="modal" id="myModal">
@@ -254,7 +261,9 @@
 		</div>
 		<!-- Script for cancel leave -->
 		<script>
-			function showModal(leaveID,tr) {
+			function showModal(leaveID, tr, dayLeave) {
+				let mainLeave = tr;
+				let backDay = dayLeave;
 				// Open modal for confirm
 				$("#myModal").modal('show');
 				// Catch button confirm
@@ -262,13 +271,15 @@
 				// Add action to button confirm
 				cancel_btn.addEventListener('click', function() {
 					// Function for call to back-end to remove
-					$(document).ready(() => {
 						$.post("../../controllers/reviews/concel.controller.php", {
 							leave: leaveID,
+							backDay: backDay
 						});
-					});
 					// Remove main leave
-					tr.remove();
+					mainLeave.remove();
+					// Reset tr
+					mainLeave = '';
+					backDay = 0;
 				});
 			}
 		</script>

@@ -107,7 +107,10 @@
 
                                   <!-- Call the variable of the messages to show there -->
                                   <script>
-                                    setInterval(displayHello, 2000);
+                                    // Call function first before call setInterval for alert
+                                    displayHello();
+                                    // Find a new notificaions of the leaving of employees
+                                    setInterval(displayHello,8000);
                                     function displayHello() {
                                       $(document).ready(() => {
                                         var notification = document.getElementById('notification');
