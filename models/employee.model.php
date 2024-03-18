@@ -104,6 +104,7 @@ function alertMessage($manager_id): array
 
     return $STMT->fetchAll();
 }
+
 function memberRequest($manager_id) : array
 {
     global $connection;
@@ -219,4 +220,35 @@ function inforOfMember($memberId)
     );
 
     return $STMT->fetch();
+}
+
+// Check id
+function getChecked($id): array
+{
+    global $connection;
+    $query = "SELECT request_leave.checked, users.day_can_leave,users.taken
+              FROM request_leave 
+              INNER JOIN users ON request_leave.user_id = users.user_id 
+              WHERE users.user_id = :user_id AND request_leave.checked != 'Pending'";
+    $STMT = $connection->prepare($query);
+    $STMT->execute([":user_id" => $id]);
+    return $STMT->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Function leaveType
+
+//get type leave today
+function typeLeaves(): array
+{
+    global $connection;
+    $query = "SELECT users.user_id, users.fname, users.lname, users.picture, type_leave.type_leave_name, request_leave.start_leave, request_leave.checked
+    FROM request_leave
+    INNER JOIN type_leave ON request_leave.type_leave = type_leave.type_leave_id
+    INNER JOIN users ON users.user_id = request_leave.user_id 
+    WHERE request_leave.checked = 'Approved';";
+
+    $statement = $connection->prepare($query);
+    $statement->execute();
+
+    return $statement->fetchAll();
 }
