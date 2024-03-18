@@ -6,10 +6,10 @@
                     <!-- count depend on the messages -->
                     <!-- Create message for the message based on team members -->
                     <li class="list-group-item  d-flex justify-content-between mb-2 align-items-center d-flex flex-row " style="height: 15vh; list-style-type: none;">
-                        <a href="<?= $members[$i]['user_id'] ?>"><img src="/assets/images/profiles/<?= $members[$i]['picture'] ?>" alt="Linda Craver" class="rounded-circle img-thumbnail shadow-sm" style="width: 60px; height: 60px; "></a>
-                        <a href="<?= $members[$i]['user_id'] ?>">
+                        <p href="<?= $members[$i]['user_id'] ?>"><img src="/assets/images/profiles/<?= $members[$i]['picture'] ?>" alt="Linda Craver" class="rounded-circle img-thumbnail shadow-sm" style="width: 60px; height: 60px; "></p>
+                        <p href="<?= $members[$i]['user_id'] ?>">
                             <h6 class="mr-0"><?= $members[$i]['fname'] ?></h6>
-                        </a>
+                        </p>
                         <h6 class="mr-0"><?= $members[$i]['start_leave'] . " - " . $members[$i]['end_leave'] ?></h6>
                         <h6 class="mr-0"><?= $members[$i]['type_leave_name'] ?></h6>
                         <h6 class="mr-0"><?= $members[$i]['date_request'] ?></h6>

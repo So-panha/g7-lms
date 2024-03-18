@@ -31,7 +31,7 @@
             <div class="card shadow-sm flex-fill grow">
                 <div class="card-header">
                     <h4 class="card-title mb-0 d-inline-block">Show from request</h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
+                    <p class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></p>
                 </div>
                 <div class="card-body text-center">
                     <?php
@@ -67,7 +67,7 @@
             <div class="card shadow-sm flex-fill grow">
                 <div class="card-header">
                     <h4 class="card-title mb-0 d-inline-block">Leave</h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
+                    <p class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></p>
                 </div>
                 <div class="card-body text-center">
                     <div class="time-list">
@@ -226,7 +226,7 @@
                     <h4 class="card-title mb-0 d-inline-block">
                         Date Leave
                     </h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
+                    <p class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></p>
                 </div>
                 <div class="card-body recent-activ">
                     <div class="recent-comment">
