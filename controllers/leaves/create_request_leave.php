@@ -23,6 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = $_POST['user_id'];
         $day = $_POST['day'];
 
+        // Convert code protect script
+        $reason = htmlspecialchars($reason);
+        // Trim text for clean
+        $reason = trim($reason);
 
         // Convert dates to DateTime objects
         $dateFrom = DateTime::createFromFormat('d/m/Y', $from);
