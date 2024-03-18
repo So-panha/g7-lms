@@ -35,7 +35,6 @@
 									<?php
 
 									$employeeId = $_SESSION['user']['user_id'];
-
 									$typeRequests = getTypeRequest();
 									$personalHistoryRequest = personalHistoryOfRequest($employeeId);
 									// print_r($personalHistoryRequest);
@@ -75,18 +74,6 @@
 													</td>
 
 												</tr>
-
-												<!-- Script for button cancel -->
-												<script>
-													let cancen_btn = document.querySelectorAll('.btn-cancel');
-													cancen_btn.forEach(btn => {
-														btn.addEventListener('click', function(e) {
-															let leaveID = this.getAttribute('data-btn-id');
-															let tr = e.target.closest("tr");
-															showModal(leaveID,tr)
-														})
-													});
-												</script>
 									<?php
 											}
 										}
@@ -95,11 +82,22 @@
 
 								</tbody>
 							</table>
+
+							<!-- Script for button cancel -->
+							<script>
+								let cancen_btn = document.querySelectorAll('.btn-cancel');
+								cancen_btn.forEach(btn => {
+									btn.addEventListener('click', function(e) {
+										let leaveID = this.getAttribute('data-btn-id');
+										let tr = e.target.closest("tr");
+										showModal(leaveID, tr)
+									})
+								});
+							</script>
 						</div>
 					</div>
 				</div>
 				<!--/Tab 1-->
-
 
 				<!-- Tab2-->
 				<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -226,7 +224,7 @@
 
 			</div>
 		</div>
-		
+
 		<!-- dalog to comfirm for concel -->
 		<!-- The Modal -->
 		<div class="modal" id="myModal">
@@ -254,7 +252,7 @@
 		</div>
 		<!-- Script for cancel leave -->
 		<script>
-			function showModal(leaveID,tr) {
+			function showModal(leaveID, tr) {
 				// Open modal for confirm
 				$("#myModal").modal('show');
 				// Catch button confirm
@@ -269,6 +267,8 @@
 					});
 					// Remove main leave
 					tr.remove();
+					// Reset tr
+					tr = '';
 				});
 			}
 		</script>
