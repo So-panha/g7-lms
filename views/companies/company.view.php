@@ -44,7 +44,7 @@
 				<div class="card-body">
 					<h4 class="card-title">Members</h4>
 					<?php for($i = 0; $i < count($managers); $i++) :?>
-						<p	 href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" style="width: 50px;height:50px"><img class='rounded-circle' style="width: 100%;height:100%" alt="<?=$managers[$i]['fname']?>" src="../../assets/images/profiles/<?=$managers[$i]['picture']?>" class="img-fluid" ></span></p>
+						<a href="#"><span class="avatar" data-toggle="tooltip" data-placement="top" style="width: 50px;height:50px"><img class='rounded-circle' style="width: 100%;height:100%" alt="<?=$managers[$i]['fname']?>" src="../../assets/images/profiles/<?=$managers[$i]['picture']?>" class="img-fluid" ></span></a>
 					<?php endfor; ?>
 				</div>
 			</div>
