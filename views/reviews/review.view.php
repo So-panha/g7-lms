@@ -46,7 +46,7 @@
 											if ($employeeId === $request['user_id']) {
 									?>
 
-												<tr>
+												<tr id="list">
 													<td>
 														<?php foreach ($typeRequests as $typeRequest) {
 
