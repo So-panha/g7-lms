@@ -11,7 +11,7 @@ body {
 
 }
 
-.background {
+.background_login{
 
     width:40%;
     height: 75vh;
@@ -54,7 +54,7 @@ h3 {
     margin-top: auto;
 }
 
-.background .shape {
+.background_login .shape {
     height: 200px;
     width: 200px;
     position: absolute;

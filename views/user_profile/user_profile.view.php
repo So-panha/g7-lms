@@ -13,7 +13,7 @@
 
 <body>
     <div class="user_profile grow ">
-        <div class="background_admin">
+        <div class="background">
         </div>
         <?php
         $user = $_SESSION['user'];

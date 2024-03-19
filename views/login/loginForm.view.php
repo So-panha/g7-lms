@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="background">
+    <div class="background_login">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
