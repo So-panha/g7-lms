@@ -2226,6 +2226,7 @@ textarea.form-control {
 .email,
 .country,
 .roles,
+.manager,
 .amount,
 .place,
 .position {
@@ -2243,7 +2244,15 @@ textarea.form-control {
 	flex-direction: row;
 	gap: 10px;
 }
-
+.card-body{
+	margin-left: -20px;
+	margin-top: -15px;
+}
+.list-group-item{
+	height: 5vh;
+	display: flex;
+	align-items: center;
+}
 .button {
 	display: flex;
 	justify-content: end;
