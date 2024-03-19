@@ -9,14 +9,14 @@
     <!-- header -->
 
     <!-- content -->
-    <div class="d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none">
+    <div class="d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none grow">
         <div class=" p-2 bg-light"><?= "Numbers of Team ".count($mangers) ?></div>
         <button type="button" class="btn btn-theme text-white ctm-border-radius float-right button-1">List Team</button>
     </div>
     <!-- content -->
 
     <!-- list of team -->
-    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none">
+    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow">
 
     <!-- Create team for show -->
     <?php foreach($mangers as $manger):?>
