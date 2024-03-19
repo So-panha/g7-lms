@@ -20,7 +20,7 @@
 
     <!-- Create team for show -->
     <?php foreach($mangers as $manger):?>
-        <div class="card ctm-border-radius shadow-sm grow flex-fill">
+        <div class="card ctm-border-radius shadow-sm grow flex-fill ml-3">
             <div class="card-header">
                 <div class="d-inline-block">
                     <h4 class="card-title mb-0"><?= $manger['position_name'] ?></h4>
@@ -32,7 +32,6 @@
                 <a href="/views_group?id=<?= $manger['user_id']?>" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Show All Members</a>
             </div>
         </div>
-    </div>
     <?php endforeach; ?>
     <!--list of team  -->
 </div>
