@@ -2247,7 +2247,7 @@ textarea.form-control {
 .card-positon{
 	margin-bottom: 15px;
 }
-.list-group-item{
+#v-pills-home-tab{
 	height: 5vh;
 	display: flex;
 	align-items: center;
