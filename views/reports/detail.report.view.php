@@ -7,7 +7,7 @@
                         <div class="table-responsive">
                             <table id="reportTable" class="table custom-table" style="width: 100%;">
                                 <thead>
-                                    <tr>
+                                    <tr class="bg-warning">
                                         <th>Date Request</th>
                                         <th>Date Leave</th>
                                         <th>Date Comback</th>
