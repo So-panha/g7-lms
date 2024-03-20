@@ -60,7 +60,7 @@
     <!-- content -->
 
     <!-- list of users -->
-    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow">
+    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow" id="main-hole-card">
         <?php
         // Call the getusers function to retrieve the user data
         $users = getusers();
@@ -107,31 +107,44 @@
         <?php
         }
         ?>
+    <h2 style="display: none;" class="noData">No have data of the user</h2>
     </div>
 </div>
 <!-- Script search bar and select -->
 <script>
     var users = document.querySelectorAll("#main_card_user");
     document.getElementById('search-employees').addEventListener('input', (e) => {
+        var countCard = 0;
         users.forEach(user => {
             var name = document.getElementById('search-employees').value.toLocaleLowerCase();
             let userName = user.children[0].children[0].children[1].children[0].children[0].textContent.toLowerCase();
             if (userName.includes(name) === true) {
                 user.style.display = 'block';
+                document.querySelector('.noData').style.display = 'none';
             } else {
+                countCard += 1;
                 user.style.display = 'none';
+                if(countCard == users.length){
+                    document.querySelector('.noData').style.display = 'block';
+                }
             }
         });
     });
     
     document.getElementById('select-role').addEventListener('change',(e)=>{
+        countCard = 0;
         users.forEach(user => {
             var roles = document.getElementById('select-role').value.toLocaleLowerCase();
             let userName = user.children[0].children[0].children[1].children[1].value.toLocaleLowerCase();
             if (userName.includes(roles) === true) {
                 user.style.display = 'block';
+                document.querySelector('.noData').style.display = 'none';
             } else {
                 user.style.display = 'none';
+                countCard += 1;
+                if(countCard == roles.length){
+                    document.querySelector('.noData').style.display = 'block';
+                }
             }
         });
     });
