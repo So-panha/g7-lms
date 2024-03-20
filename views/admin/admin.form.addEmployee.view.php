@@ -48,26 +48,37 @@
   </select>
   <!-- manager -->
   <label for="Manager">Manager</label><br>
-  <div class="card-position">
-    <div class="flex-row list-group list-group-horizontal-lg" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="active list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">IT</a>
-        <a class="list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">PL</a>
-        <a class="list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-english" role="tab" aria-controls="v-pills-english" aria-selected="false">English</a>
-        <a class="list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-trainer" role="tab" aria-controls="v-pills-trainer" aria-selected="false">Trainer</a>
-        <a class="list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false">Social Development</a>
-    </div>
+<div class="card-position">
+  <div class="flex-row list-group list-group-horizontal-lg" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <a class="active list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" onclick="filterManagers('IT')">IT</a>
+    <a class="list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="filterManagers('PL')">PL</a>
+    <a class="list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-english" role="tab" aria-controls="v-pills-english" aria-selected="false" onclick="filterManagers('English')">English</a>
+    <a class="list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-trainer" role="tab" aria-controls="v-pills-trainer" aria-selected="false" onclick="filterManagers('Training')">Training</a>
+    <a class="list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false" onclick="filterManagers('Social Development')">Social Development</a>
+  </div>
 </div>
 
-    
+<select class="manager" name="manager" id="manager">
+  <option disabled selected>Manager</option>
+</select>
 
-			
+<script>
+  function filterManagers(position) {
+    var managers = <?php echo json_encode($managers); ?>;
+    var select = document.getElementById('manager');
+    select.innerHTML = '<option disabled selected>Manager</option>';
+    for (var i = 0; i < managers.length; i++) {
+      if (managers[i]['position_name'] === position) {
+        var option = document.createElement('option');
+        option.value = managers[i]['user_id'];
+        option.textContent = managers[i]['fname'] + ' ' + managers[i]['lname'];
+        option.style.textTransform = 'uppercase';
+        select.appendChild(option);
+      }
+    }
+  }
+</script>
 
-  <select class="manager" name="manager">
-    <option disabled selected>Manager</option>
-    <?php for ($i = 0; $i < count($managers); $i++) : ?>
-      <option value="<?= $managers[$i]['user_id'] ?>"><?= $managers[$i]['fname'] . " " . $managers[$i]['lname'] ?></option>
-    <?php endfor; ?>
-  </select>
   <!-- Title job -->
   <label for="position">Position:</label>
   <select class="position" name="position">
