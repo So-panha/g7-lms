@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $role = $_POST['role'];
         $position_id = $_POST['position'];
         $place = $_POST['place'];
-        // $manager = $_POST['manager'];
+        $manager = $_POST['manager'];
         $day_can_leave = 2;
 
         // Project Script javaScript
@@ -51,10 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = trim($email);
 
         // if account no have manager
-        // if ($manager === null) {
-        //     $manager = 0;
-        // }
-        $manager = 0;
+        if ($manager === null) {
+            $manager = 0;
+        }
+        // $manager = 0;
 
         // Encript password
         $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
