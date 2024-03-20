@@ -48,7 +48,7 @@
   </select>
   <!-- manager -->
   <label for="Manager">Manager</label><br>
-    <div class="card-body">
+    <div class="card-positon">
 			<div class="flex-row list-group list-group-horizontal-lg" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 				<a class=" active list-group-item" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">IT</a>
 				<a class="list-group-item" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">PL</a>

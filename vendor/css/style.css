@@ -2244,14 +2244,14 @@ textarea.form-control {
 	flex-direction: row;
 	gap: 10px;
 }
-.card-body{
-	margin-left: -20px;
-	margin-top: -15px;
+.card-positon{
+	margin-bottom: 15px;
 }
 .list-group-item{
 	height: 5vh;
 	display: flex;
 	align-items: center;
+	margin-bottom: 15px;
 }
 .button {
 	display: flex;
