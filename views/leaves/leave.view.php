@@ -73,7 +73,7 @@
 										$remainingLeaves = $day;
 									}
 									?>
-									<input type="text" class="form-control" value="<?= $remainingLeaves ?>" name="day" disabled>
+									<input type="text" class="form-control" value="<?= $remainingLeaves ?>" name="day">
 								</div>
 							</div>
 						</div>
@@ -100,22 +100,12 @@
 						<input type="hidden" name="date" value="<?php echo date("d/m/Y"); ?>">
 
 						<div class="row">
-							<!-- part time for leave -->
-							<div class="col-sm-6">
+		
+							<!-- days have leave -->
+							<div class="col-sm-12 leave-col">
 								<div class="form-group">
-									<label>Half Day <span class="text-danger">*</span></label>
-									<select class="form-control select" name="halfDay">
-										<option value="">Select</option>
-										<option value="First Half">First Half</option>
-										<option value="Second Half">Second Half</option>
-									</select>
-								</div>
-							</div>
-							<!-- days can leave -->
-							<div class="col-sm-6 leave-col">
-								<div class="form-group">
-									<label>Number of Days Leave</label>
-									<input type="text" class="form-control" placeholder="2" disabled>
+									<label>Days have spent</label>
+									<input type="text" class="form-control" placeholder= <?= $user['taken'] ?> >
 								</div>
 							</div>
 						</div>
