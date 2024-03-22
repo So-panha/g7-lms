@@ -55,12 +55,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $manager = 0;
         }
         // $manager = 0;
+        if ($gender == "Male"){
+            $picture = "man.png";
+        }else{
+            $picture = "female.jpg";
+        }
 
         // Encript password
         $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
 
         // Insert employee data into the database
-        $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager,$day_can_leave);
+        $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager,$day_can_leave,$picture);
 
         // send to email by Gmail
         //Create an instance; passing `true` enables exceptions

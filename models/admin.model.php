@@ -73,7 +73,7 @@ function getUser(int $user_id): ?array
 }
 
 
-function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $place, string $manager, int $day_can_leave): bool
+function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $place, string $manager, int $day_can_leave,string $picture): bool
 {
     global $connection;
     $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id,place , picture, manager, day_can_leave)
@@ -90,7 +90,7 @@ function insertEmployee(string $fname, string $lname, string $password, string $
         ':role' => $role,
         ':position_id' => $position_id,
         ':place' => $place,
-        ':picture' => 'user.jpg',
+        ':picture' => $picture,
         ':manager' => $manager,
         ':day_can_leave' => $day_can_leave,
     ]);

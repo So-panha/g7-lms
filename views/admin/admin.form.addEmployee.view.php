@@ -1,4 +1,5 @@
-<form class="form_add_employee grow" action="../../controllers/admin/create.emplyee.controller.php" method="post">
+<div class="col-xl-9 col-lg-8 col-md-12">
+<form class="form_add_employee ctm-border-radius shadow-sm grow" action="../../controllers/admin/create.emplyee.controller.php" method="post">
   <h2 style="font-family: 'Times New Roman', Times, serif; font-weight:bold;">Employment details</h2>
   <!-- username -->
   <div class="username">
@@ -123,6 +124,7 @@
     <option value="svay rieng">Svay rieng</option>
   </select>
   <div class="button">
-    <button type="submit" class="btn-form" id="update_btn">Add employee</button>
+    <button type="submit" class="btn-form btn-warning" id="update_btn">Add employee</button>
   </div>
 </form>
+</div>
