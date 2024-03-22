@@ -16,10 +16,10 @@
     $userPositionID = $users['position_id'];
     $positions = getpositions();
     ?>
-    <div class="user_profile grow">
+    <div class=" col-xl-9 col-lg-8 col-md-12 grow">
         <div class="background">
         </div>
-        <div class="form">
+        <div class="form_add_employee bg-white form ctm-border-radius">
             <div class="c-profile">
                 <img class="profile" style="width: 225px; height:218px; border-radius: 52%;" class="rounded-circle mt-5" src="assets/images/profiles/<?= $users['picture'] ?>" alt="">
                 <div class="text">
@@ -45,7 +45,7 @@
                                 if ($userPositionID === $position['position_id']) {
                                     echo $position['position_name'];
                                 }
-                            }?></p>
+                            } ?></p>
                         <p><?= $users['role'] ?></p>
                         <p><?= $users['email'] ?></p>
                         <p><?= $users['place'] ?></p>
@@ -57,10 +57,12 @@
             <div class="main_btn">
                 <a href="controllers/admin/admin.employee.delete.controler.php?id=<?php echo urlencode($users['user_id']); ?>"><button type="button" class="btn-btn1 mr-2 ml-2" style="width:80px;">Delete</button></a>
                 <a href="/edit_employee?id=<?php echo urlencode($users['user_id']); ?>">
-                    <button type="button" class="mr-2 ml-2 text-center center-btn" style="width:80px;">Edit</button>
+                    <button type="button" class="mr-4 ml-2 text-center center-btn" style="width:80px;">Edit</button>
                 </a>
             </div>
         </div>
+    </div>
 
 </body>
+
 </html>

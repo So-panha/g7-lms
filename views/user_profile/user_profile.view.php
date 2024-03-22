@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="user_profile grow ">
+    <div class=" grow col-xl-9 col-lg-8 col-md-12 grow ">
         <div class="background">
         </div>
         <?php
@@ -20,8 +20,8 @@
         $userPositionID = $_SESSION['user']['position_id'];
         $positions = getpositions();
         ?>
-        <form action="../../controllers/user_profile/update_profile.controller.php" method="post" enctype="multipart/form-data">
-            <div class="c-profile">
+        <form class="form_add_employee bg-white form ctm-border-radius" action="../../controllers/user_profile/update_profile.controller.php" method="post" enctype="multipart/form-data">
+            <div class="c-profile ">
                 <img class="profile" style="width: 225px; height:218px; border-radius: 52%;" class="rounded-circle mt-5" src="assets/images/profiles/<?= $_SESSION['user']['picture'] ?>" alt="Preview Image" style="width:200px; height:200px; border-radius: 50%;" id="profile" class="rounded-circle mt-5">
                 <div class="rightRound" style="background-color:blue; width:40px; height: 40px; border-radius:50%; border:3px solid #ACABCC;margin-left:20%; margin-top:-7% ;">
                     <input type="file" name="image" id="fpicture" class="form-control-file" accept=".jpg,.jpeg,.png" style="transform:scale(2);opacity:0;">
@@ -138,6 +138,7 @@
 
                 </div>
             </div>
+        </div>
 </body>
 
 </html>

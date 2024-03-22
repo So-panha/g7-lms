@@ -16,10 +16,10 @@
     $userPositionID = $users['position_id'];
     $positions = getpositions();
     ?>
-    <div class="user_profile grow">
+    <div class=" col-xl-9 col-lg-8 col-md-12 grow">
         <div class="background">
         </div>
-        <div class="form">
+        <div class="form_add_employee form bg-white">
             <div class="c-profile">
                 <img class="profile" style="width: 225px; height:218px; border-radius: 52%;" class="rounded-circle mt-5" src="assets/images/profiles/<?= $users['picture'] ?>" alt="">
                 <div class="text">

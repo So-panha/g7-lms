@@ -67,17 +67,13 @@
         <div class="top-header-section">
           <div class="container-fluid">
             <div class="row align-items-center">
-              <div class="col-lg-3 col-md-3 col-sm-3 col-6">
+              <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="logo my-3 my-sm-0">
-                  <a href="/">
-                    <!-- <img
-                      src="assets/img/logo.png"
-                      alt="logo image"
-                      class="img-fluid"
-                      width="100"
-                    /> -->
-                    <h3 class="text-white">LOGO</h3>
+                  <a class="d-flex item-centent-center" style="width: 300px;" href="/companies">
+                    <img style="width: 60px;" src="assets/images/profiles/pncc.png" />
+                    <h6 class="text-white ml-2 mt-3">Passerelles numériques Cambodia</h6>
                   </a>
+
                 </div>
               </div>
               <div class="col-lg-9 col-md-9 col-sm-9 col-6 text-right">
@@ -110,7 +106,8 @@
                                     // Call function first before call setInterval for alert
                                     displayHello();
                                     // Find a new notificaions of the leaving of employees
-                                    setInterval(displayHello,8000);
+                                    setInterval(displayHello, 8000);
+
                                     function displayHello() {
                                       $(document).ready(() => {
                                         var notification = document.getElementById('notification');

@@ -11,7 +11,7 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-md-3">
-							<img class="img-thumbnail" src="../../assets/images/PNC_logo.png" alt="PNC_logo" style="width: 200px;height:200px">
+							<img class="img-thumbnail" src="assets/images/profiles/pnc.png" alt="PNC_logo" style="width: 200px;height:200px">
 						</div>
 						<div class="col-md-5">
 							<p><span class="text-primary">Company Name : </span>PNC (Passerelles numériques Cambodia)</p>
