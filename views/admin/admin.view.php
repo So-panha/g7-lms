@@ -19,7 +19,7 @@
 	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
 		<div class="card-body">
 			<ul class="list-group list-group-horizontal-lg">
-				<li class="list-group-item text-center active button-5"><a href="index.html" class="text-white">Admin Dashboard</a></li>
+				<li class="list-group-item text-center active button-5"><p  class="text-white">Admin Dashboard</p></li>
 			</ul>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 			<div class="card dash-widget ctm-border-radius shadow-sm grow">
 				<div class="card-body">
 					<div class="card-icon bg-primary">
-						<i class="fa fa-users" aria-hidden="true"></i>
+					<i class="fa fa-user-plus" aria-hidden="true"></i>
 					</div>
 					<div class="card-right">
 						<?php
@@ -46,11 +46,11 @@
 			<div class="card dash-widget ctm-border-radius shadow-sm grow">
 				<div class="card-body">
 					<div class="card-icon bg-warning">
-						<i class="fa fa-building-o"></i>
+						<i class="fa fa-user"></i>
 					</div>
 					<div class="card-right">
-						<h4 class="card-title">Companies</h4>
-						<p class="card-text">1</p>
+						<h4 class="card-title">Manager</h4>
+						<p class="card-text"> <?php echo count(($manager)) ?></p>
 					</div>
 				</div>
 			</div>
@@ -72,15 +72,12 @@
 			<div class="card dash-widget ctm-border-radius shadow-sm grow">
 				<div class="card-body">
 					<div class="card-icon bg-success">
-						<i class="fa fa-money" aria-hidden="true"></i>
+						<i class="fa fa-users" aria-hidden="true"></i>
 					</div>
 					<div class="card-right">
-						<h4 class="card-title">Salary</h4>
-						<!-- call function for get sum amount -->
-						<?php
-						$sumAmount = getAmount();
-						?>
-						<p class="card-text"><?php echo $sumAmount; ?>$</p>
+						<h4 class="card-title">Team</h4>
+						<!-- call function for get sum $manager -->
+						<p class="card-text"><?php echo count($manager); ?></p>
 					</div>
 				</div>
 			</div>
@@ -159,7 +156,7 @@
 			<div class="card flex-fill team-lead shadow-sm grow">
 				<div class="card-header">
 					<h4 class="card-title mb-0 d-inline-block">Manager</h4>
-					<a href="" class="dash-card float-right mb-0 text-primary">Manage Team </a>
+					<a href="/admin_employees_team" class="dash-card float-right mb-0 text-primary">Manage Team </a>
 				</div>
 				<div class="card-body">
 					<?php for ($i = 0; $i < count($manager); $i++) : ?>

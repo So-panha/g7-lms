@@ -1,4 +1,5 @@
-<form class="form_add_employee grow" method="POST" action="controllers/employees/manager/update.infomation.member.controller.php">
+<div class="grow col-xl-9 col-lg-8 col-md-12">
+<form class="form_add_employee bg-white form ctm-border-radius grow" method="POST" action="controllers/employees/manager/update.infomation.member.controller.php">
   <?php
   $member = inforOfMember($memberId);
   ?>
@@ -51,7 +52,6 @@
     <option value="5" <?php if ($member['position_name']) echo 'selected'; ?>>Social Development</option>
   </select>
   <!-- place employee -->
-  <input type="number" class="amount" id="amount" name="amount" value="<?php echo $member['amount']; ?>" placeholder="Amount">
   <select class="place" name="place">
     <option disabled selected>Place</option>
     <option value="Phnom Penh" <?php if ($member['place'] === 'Phnom Penh') echo 'selected'; ?>>Phnom Penh</option>
@@ -80,6 +80,7 @@
     <option value="Svay Rieng" <?php if ($member['place'] === 'Svay Rieng') echo 'selected'; ?>>Svay Rieng</option>
   </select>
   <div class="button">
-    <button type="submit" class="btn btn-warning">Update</button>
+    <button type="submit" class="btn btn-warning" id="update_btn">Update</button>
   </div>
 </form>
+</div>

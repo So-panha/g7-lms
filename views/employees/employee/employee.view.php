@@ -21,7 +21,7 @@
         <div class="card-body">
             <ul class="list-group list-group-horizontal-lg">
                 <li class="list-group-item text-center active button-5">
-                    <a class="text-white" href="employees-dashboard.html">Employees Dashboard</a>
+                    <p class="text-white" href="employees-dashboard.html">Employees Dashboard</class=></p>
                 </li>
             </ul>
         </div>
@@ -31,7 +31,7 @@
             <div class="card shadow-sm flex-fill grow">
                 <div class="card-header">
                     <h4 class="card-title mb-0 d-inline-block">Show from request</h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
+                    <p class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></p>
                 </div>
                 <div class="card-body text-center">
                     <?php
@@ -68,7 +68,7 @@
             <div class="card shadow-sm flex-fill grow">
                 <div class="card-header">
                     <h4 class="card-title mb-0 d-inline-block">Leave</h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
+                    <p class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></p>
                 </div>
                 <div class="card-body text-center">
                     <div class="time-list">
@@ -127,7 +127,7 @@
             <div class="card flex-fill team-lead shadow-sm grow">
 				<div class="card-header">
 					<h4 class="card-title mb-0 d-inline-block">Manager</h4>
-					<a href="" class="dash-card float-right mb-0 text-primary">Manage Team </a>
+					<p href="" class="dash-card float-right mb-0 text-primary">Manage Team </p>
 				</div>
 				<div class="card-body">
 					<?php for ($i = 0; $i < count($manager); $i++) : ?>

@@ -2,67 +2,36 @@
 <div class="col-xl-9 col-lg-8  col-md-12">
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white p-4 mb-4 card">
         <ul class="list-group list-group-horizontal-lg">
-            <li class="list-group-item text-center active button-5"><a href="/admin_employees" class="text-white">All</a></li>
-            <li class="list-group-item text-center button-6"><a href="/admin_employees_team" class="text-dark">Add Team</a></li>
-            <li class="list-group-item text-center button-6"><a href="documents.html" class="text-dark">Add Office</a></li>
-
+            <li class="list-group-item text-center button-6"><a href="admin_employees" class="text-dark">All</a></li>
+            <li class="list-group-item text-center button-5 active"><a href="" class="text-white">Add Team</a></li>
         </ul>
     </div>
     <!-- header -->
 
     <!-- content -->
-    <div class="d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none">
-        <div class=" p-2 bg-light">7 People</div>
-        <button type="button" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add Team</button>
-
+    <div class="d-flex justify-content-between bg-secondary bg-light mb-3 p-3 ctm-border-radius shadow-sm border-none grow">
+        <div class=" p-2 bg-light"><?= "Numbers of Team ".count($mangers) ?></div>
+        <button type="button" class="btn btn-theme text-white ctm-border-radius float-right button-1">List Team</button>
     </div>
     <!-- content -->
 
     <!-- list of team -->
-    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none">
+    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow">
 
-        <div class="card ctm-border-radius shadow-sm grow flex-fill">
+    <!-- Create team for show -->
+    <?php foreach($mangers as $manger):?>
+        <div class="card ctm-border-radius shadow-sm grow flex-fill ml-3">
             <div class="card-header">
                 <div class="d-inline-block">
-                    <h4 class="card-title mb-0">PHP</h4>
-                </div>
-                <div class="d-inline-block float-right" data-toggle="modal">
-                    <span data-toggle="modal">
-                        <a href="" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom"><i class="fa fa-pencil"></i></a>
-                    </span>
-                    <span data-toggle="modal">
-                        <a href="" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
-                    </span>
+                    <h4 class="card-title mb-0"><?= $manger['position_name'] ?></h4>
                 </div>
             </div>
             <div class="card-body">
-                <h4 class="card-title">Leader</h4>
-                <a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Danny Ward"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></span></a>
-                <a href="payroll-admin.html" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Show All Members</a>
-            </div>
-
-        </div>
-
-        <div class="card ctm-border-radius shadow-sm grow flex-fill">
-            <div class="card-header">
-                <div class="d-inline-block">
-                    <h4 class="card-title mb-0">HTML</h4>
-                </div>
-                <div class="d-inline-block float-right" data-toggle="modal">
-                    <span data-toggle="modal">
-                        <a href="" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom"><i class="fa fa-pencil"></i></a>
-                    </span>
-                    <span data-toggle="modal">
-                        <a href="" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
-                    </span>
-                </div>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">Leader</h4>
-                <a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" title="Danny Ward"><img alt="avatar image" src="assets/img/profiles/img-5.jpg" class="img-fluid"></span></a>
-                <a href="payroll-admin.html" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Show All Members</a>
+                <h4 class="card-title">Manager</h4>
+                <a href="#"><span class="avatar" data-toggle="tooltip" data-placement="top" style="width: 50px;height:50px"><img class='rounded-circle' style="width: 100%;height:100%" alt="avatar image" src="assets/images/profiles/<?= $manger['picture'] ?>" class="img-fluid"></span></a>
+                <a href="/views_group?id=<?= $manger['user_id']?>" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Show All Members</a>
             </div>
         </div>
-    </div>
+    <?php endforeach; ?>
     <!--list of team  -->
 </div>

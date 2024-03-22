@@ -3,14 +3,15 @@
 function insertLeaveRequest(string $type_leave, string $start_leave, string $end_leave, string $checked, string $reason, string $date_request, string $user_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO request_leave (type_leave, start_leave, end_leave, checked, reason,date_request, user_id)
-    VALUES (:type_leave, :start_leave, :end_leave, :checked, :reason,:date_request, :user_id)");
+    $statement = $connection->prepare("INSERT INTO request_leave (type_leave, start_leave, end_leave, checked,process, reason,date_request, user_id)
+    VALUES (:type_leave, :start_leave, :end_leave, :checked, :process, :reason,:date_request, :user_id)");
 
     $statement->execute([
         ':type_leave' => $type_leave,
         ':start_leave' => $start_leave,
         ':end_leave' => $end_leave,
         ':checked' => $checked,
+        ':process' => "progress",
         ':reason' => $reason,
         ':user_id' => $user_id,
         ':date_request' => $date_request
@@ -19,6 +20,36 @@ function insertLeaveRequest(string $type_leave, string $start_leave, string $end
     return $statement->rowCount() > 0;
 }
 
+// Cancel leaving
+function cancelLeave($leaveID) : bool
+{
+    global $connection;
+    $query = "UPDATE request_leave SET process = :process WHERE leave_id = :id";
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+        ':id' => $leaveID,
+        ':process' => 'cancel'
+    ]);
+
+    return $STMT->rowCount() > 0;
+}
+
+// Remove day leave when the employees cancel
+function removeDayLeave($dayLeave,$dayTaken,$userId) : bool
+{
+    global $connection;
+    $query = 'UPDATE users SET day_can_leave = :day_can_leave, taken = :taken WHERE user_id = :id';
+    $STMT = $connection->prepare($query);
+    $STMT->execute([
+        ':id' => $userId,
+        ':day_can_leave' => $dayLeave,
+        ':taken' => $dayTaken
+    ]);
+
+    return $STMT->rowCount() > 0;
+}
+
+// request leave
 function requestLeave($manager_id): array
 {
     global $connection;
@@ -38,6 +69,7 @@ function getHistoryRequest(): array
     return $statement->fetchAll();
 }
 
+// Get types of request leave
 function getTypeRequest(): array
 {
     global $connection;
@@ -47,6 +79,7 @@ function getTypeRequest(): array
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// Delete post
 function deletePost(int $id): bool
 {
     global $connection;
@@ -62,7 +95,7 @@ function alertMessage($manager_id): array
     global $connection;
 
     $query = "SELECT users.user_id, users.fname, users.lname, users.picture, request_leave.start_leave, request_leave.end_leave, request_leave.reason, request_leave.date_request,request_leave.leave_id,request_leave.checked, type_leave.type_leave_name FROM ((request_leave INNER JOIN users)
-    INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id AND request_leave.checked = 'Pending'";
+    INNER JOIN type_leave) WHERE request_leave.user_id = users.user_id AND manager = :manager AND request_leave.type_leave = type_leave.type_leave_id AND request_leave.checked = 'Pending' AND process = 'progress'";
 
     $STMT = $connection->prepare($query);
     $STMT->execute([
@@ -71,6 +104,7 @@ function alertMessage($manager_id): array
 
     return $STMT->fetchAll();
 }
+
 function memberRequest($manager_id) : array
 {
     global $connection;
@@ -89,14 +123,18 @@ function memberRequest($manager_id) : array
 function personalHistoryOfRequest($employeeId)
 {
     global $connection;
-    $query = "SELECT * from request_leave where user_id = $employeeId";
-
+    $query = "SELECT * from request_leave where user_id = :id";
     $statement = $connection->prepare($query);
-    $statement->execute();
+    $statement->execute([
+        'id' => $employeeId
+    ]);
 
     return $statement->fetchAll();
 }
+
+
 // For manager
+
 //all users
 function getUsers(): array
 {
@@ -140,7 +178,6 @@ function reactions(string $respond, int $leave_id): bool
     $statement->execute([
         ':respond' => $respond,
         ':id' => $leave_id
-
     ]);
 
     return $statement->rowCount() > 0;
@@ -153,7 +190,6 @@ function days(string $day, int $user_id): bool
     $statement->execute([
         ':day' => $day,
         ':id' => $user_id
-
     ]);
 
     return $statement->rowCount() > 0;
@@ -184,4 +220,35 @@ function inforOfMember($memberId)
     );
 
     return $STMT->fetch();
+}
+
+// Check id
+function getChecked($id): array
+{
+    global $connection;
+    $query = "SELECT request_leave.checked, users.day_can_leave,users.taken
+              FROM request_leave 
+              INNER JOIN users ON request_leave.user_id = users.user_id 
+              WHERE users.user_id = :user_id AND request_leave.checked != 'Pending'";
+    $STMT = $connection->prepare($query);
+    $STMT->execute([":user_id" => $id]);
+    return $STMT->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Function leaveType
+
+//get type leave today
+function typeLeaves(): array
+{
+    global $connection;
+    $query = "SELECT users.user_id, users.fname, users.lname, users.picture, type_leave.type_leave_name, request_leave.start_leave, request_leave.checked
+    FROM request_leave
+    INNER JOIN type_leave ON request_leave.type_leave = type_leave.type_leave_id
+    INNER JOIN users ON users.user_id = request_leave.user_id 
+    WHERE request_leave.checked = 'Approved';";
+
+    $statement = $connection->prepare($query);
+    $statement->execute();
+
+    return $statement->fetchAll();
 }

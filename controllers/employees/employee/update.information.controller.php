@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $country = $_POST['country'] ?? '';
     $role = $_POST['role'] ?? '';
     $position_id = $_POST['position_id'] ?? '';
-    $amount = $_POST['amount'] ?? '';
     $place = $_POST['place'] ?? '';
     $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
     require '../../../models/admin.model.php';
@@ -27,10 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['user']['country'] = $country;
     $_SESSION['user']['role'] = $role;
     $_SESSION['user']['position_id'] = $position_id;
-    $_SESSION['user']['amount'] = $amount;
     $_SESSION['user']['place'] = $place;
 
-    updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $amount, $place);
+    updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place);
     header('Location: /user_profile');
     exit;
 }

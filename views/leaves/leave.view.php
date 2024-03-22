@@ -1,4 +1,30 @@
 <div class="col-xl-9 col-lg-8 col-md-12">
+	 <!-- Alert when it success for leave -->
+	 <?php if (isset($_SESSION['leave'])) { ?>
+        <?php if ($_SESSION['leave'] == 'Success') { ?>
+            <div class="alert alert-success alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><?= $_SESSION['leave'] . ' for request leave!' ?></strong>
+            </div>
+        <?php } ?>
+		<!-- alert when request Unsuccess for leave -->
+        <?php if ($_SESSION['leave'] == 'Unsuccess') { ?>
+            <div class="alert alert-danger alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><?= $_SESSION['leave'] . ' for request leave!' ?></strong>
+            </div>
+        <?php } ?>
+        <!-- remove session alert -->
+        <?php unset($_SESSION['leave']) ?>
+        <!-- remove message -->
+        <script>
+            let showALert = document.querySelector('.alert');
+            setTimeout(function() {
+                showALert.remove();
+            }, 4000);
+        </script>
+    <?php } ?>
+
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card ctm-border-radius shadow-sm grow">
@@ -74,22 +100,12 @@
 						<input type="hidden" name="date" value="<?php echo date("d/m/Y"); ?>">
 
 						<div class="row">
-							<!-- part time for leave -->
-							<div class="col-sm-6">
+		
+							<!-- days have leave -->
+							<div class="col-sm-12 leave-col">
 								<div class="form-group">
-									<label>Half Day <span class="text-danger">*</span></label>
-									<select class="form-control select" name="halfDay">
-										<option value="">Select</option>
-										<option value="First Half">First Half</option>
-										<option value="Second Half">Second Half</option>
-									</select>
-								</div>
-							</div>
-							<!-- days can leave -->
-							<div class="col-sm-6 leave-col">
-								<div class="form-group">
-									<label>Number of Days Leave</label>
-									<input type="text" class="form-control" placeholder="2" disabled>
+									<label>Days have spent</label>
+									<input type="text" class="form-control" placeholder= <?= $user['taken'] ?> >
 								</div>
 							</div>
 						</div>

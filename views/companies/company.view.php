@@ -11,7 +11,7 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-md-3">
-							<img class="img-thumbnail" src="../../assets/images/PNC_logo.png" alt="PNC_logo" style="width: 200px;height:200px">
+							<img class="img-thumbnail" src="assets/images/profiles/pnc.png" alt="PNC_logo" style="width: 200px;height:200px">
 						</div>
 						<div class="col-md-5">
 							<p><span class="text-primary">Company Name : </span>PNC (Passerelles numériques Cambodia)</p>
@@ -44,7 +44,7 @@
 				<div class="card-body">
 					<h4 class="card-title">Members</h4>
 					<?php for($i = 0; $i < count($managers); $i++) :?>
-						<a href="employment.html"><span class="avatar" data-toggle="tooltip" data-placement="top" style="width: 50px;height:50px"><img class='rounded-circle' style="width: 100%;height:100%" alt="<?=$managers[$i]['fname']?>" src="../../assets/images/profiles/<?=$managers[$i]['picture']?>" class="img-fluid" ></span></a>
+						<a href="#"><span class="avatar" data-toggle="tooltip" data-placement="top" style="width: 50px;height:50px"><img class='rounded-circle' style="width: 100%;height:100%" alt="<?=$managers[$i]['fname']?>" src="../../assets/images/profiles/<?=$managers[$i]['picture']?>" class="img-fluid" ></span></a>
 					<?php endfor; ?>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 			<div class="card shadow-sm grow ctm-border-radius flex-fill">
 				<div class="card-header">
 					<h4 class="card-title mb-0 d-inline-block">Overview </h4>
-					<a href="/admin_employees_team" class="float-right text-primary">Manage Teams</a>
+					<p href="/admin_employees_team" class="float-right text-primary">Manage Teams</p>
 				</div>
 				<div class="card-body">
 					<div class="row">
@@ -66,9 +66,11 @@
 							<p class="mb-3">People</p>
 						</div>
 					</div>
+					<?php if($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role']=='manager' ) :?>
 					<div class="text-center">
-						<a href="/admin_employees" class="btn btn-theme text-white ctm-border-radius mt-2 button-1">People Directory</a>
+						<a href="/admin_employees" class="btn btn-theme text-white ctm-border-radius mt-2 button-1"> People Directory</a>
 					</div>
+					<?php endif; ?>
 				</div>
 			</div>
 

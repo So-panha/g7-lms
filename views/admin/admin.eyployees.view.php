@@ -26,9 +26,23 @@
     <?php } ?>
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white p-4 mb-4 card">
         <ul class="list-group list-group-horizontal-lg">
-            <li class="list-group-item text-center active button-5"><a href="/admin_employees" class="text-white">All</a></li>
+            <!-- <li class="list-group-item text-center button-5"><a href="" class="text-white">All</a></li> -->
+            <li class="list-group-item text-center button-5 active"><a href="" class="text-white">All</a></li>
             <li class="list-group-item text-center button-6"><a href="/admin_employees_team" class="text-dark">Add Team</a></li>
-            <li class="list-group-item text-center button-6"><a href="documents.html" class="text-dark">Add Office</a></li>
+
+            <form action="" style="position: absolute;right:320px;">
+                <select class="form-control me-2" id="select-role">
+                    <option disabled selected>Employees Roles</option>
+                    <option value="">All</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Employee">Employees</option>
+                </select>
+            </form>
+
+            <form class="d-flex" style="position: absolute;right: 1.5%;">
+                <input class="form-control me-2" type="text" placeholder="Search" id="search-employees">
+                <button class="btn btn-warning" type="button">Search</button>
+            </form>
         </ul>
     </div>
     <!-- header -->
@@ -46,7 +60,7 @@
     <!-- content -->
 
     <!-- list of users -->
-    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow">
+    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow" id="main-hole-card">
         <?php
         // Call the getusers function to retrieve the user data
         $users = getusers();
@@ -69,7 +83,7 @@
                 }
             }
         ?>
-            <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow mr-2 ml-2 mt-4">
+            <div class="user-card card shadow-sm bg-white text-center ctm-border-radius mr-2 ml-2 mt-4" id="main_card_user">
                 <a href="/information_user?id=<?php echo urlencode($id); ?>">
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
@@ -81,10 +95,9 @@
                         </div>
                         <div class="user-details">
                             <h5><b><?php echo strtoupper($name); ?></b></h5>
+                            <input hidden type="text" value="<?= $user['role']; ?>">
                             <p><?php echo $positionName; ?></p>
                             <input type="hidden" value="<?= $id ?>">
-
-
                         </div>
                     </div>
 
@@ -94,8 +107,48 @@
         <?php
         }
         ?>
+    <h2 style="display: none;" class="noData">No have data of the user</h2>
     </div>
 </div>
+<!-- Script search bar and select -->
+<script>
+    var users = document.querySelectorAll("#main_card_user");
+    document.getElementById('search-employees').addEventListener('input', (e) => {
+        var countCard = 0;
+        users.forEach(user => {
+            var name = document.getElementById('search-employees').value.toLocaleLowerCase();
+            let userName = user.children[0].children[0].children[1].children[0].children[0].textContent.toLowerCase();
+            if (userName.includes(name) === true) {
+                user.style.display = 'block';
+                document.querySelector('.noData').style.display = 'none';
+            } else {
+                countCard += 1;
+                user.style.display = 'none';
+                if(countCard == users.length){
+                    document.querySelector('.noData').style.display = 'block';
+                }
+            }
+        });
+    });
+    
+    document.getElementById('select-role').addEventListener('change',(e)=>{
+        countCard = 0;
+        users.forEach(user => {
+            var roles = document.getElementById('select-role').value.toLocaleLowerCase();
+            let userName = user.children[0].children[0].children[1].children[1].value.toLocaleLowerCase();
+            if (userName.includes(roles) === true) {
+                user.style.display = 'block';
+                document.querySelector('.noData').style.display = 'none';
+            } else {
+                user.style.display = 'none';
+                countCard += 1;
+                if(countCard == roles.length){
+                    document.querySelector('.noData').style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
 <!--  -->
 </div>
 </div>

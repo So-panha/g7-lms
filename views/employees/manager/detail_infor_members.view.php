@@ -30,11 +30,6 @@
                 <p>Province: <?= $member['place']; ?></p>
                 <hr>
             </div>
-            <!-- salary-->
-            <div class="col mt-5">
-                <p>Salary: <?= $member['amount'] . "$"; ?></p>
-                <hr>
-            </div>
             <div class="d-flex justify-content-end mt-5 mr-4">
                 <a href="/edit_employee?id=<?php echo urlencode($member['user_id']); ?>"><button type="button" class="btn btn-primary mr-2 ml-2" style="width:80px;">Edit</button></a>
                 <a href="controllers/admin/admin.employee.delete.controler.php?id=<?php echo urlencode($member['user_id']); ?>"><button type="button" class="btn btn-danger mr-2 ml-2" style="width:80px;">Delete</button></a>

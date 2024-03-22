@@ -73,11 +73,11 @@ function getUser(int $user_id): ?array
 }
 
 
-function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $amount, string $place, string $manager, int $day_can_leave): bool
+function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $place, string $manager, int $day_can_leave): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id, amount, place, picture, manager,day_can_leave)
-    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :amount, :place, :picture, :manager,:day_can_leave)");
+    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id,place , picture, manager, day_can_leave)
+    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :place, :picture, :manager, :day_can_leave)");
 
     $statement->execute([
         ':fname' => $fname,
@@ -89,7 +89,6 @@ function insertEmployee(string $fname, string $lname, string $password, string $
         ':country' => $country,
         ':role' => $role,
         ':position_id' => $position_id,
-        ':amount' => $amount,
         ':place' => $place,
         ':picture' => 'user.jpg',
         ':manager' => $manager,
@@ -99,10 +98,10 @@ function insertEmployee(string $fname, string $lname, string $password, string $
     return $statement->rowCount() > 0;
 }
 
-function updateEmployee(int $user_id, string $fname, string $lname, string $password, string $email, bool $sendInvite, string $gender, string $country, string $role, int $position_id, float $amount, string $place): bool
+function updateEmployee(int $user_id, string $fname, string $lname, string $password, string $email, bool $sendInvite, string $gender, string $country, string $role, int $position_id, string $place): bool
 {
     global $connection;
-    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, sendInvite = :sendInvite, gender = :gender, country = :country, role = :role, position_id = :position_id, amount = :amount, place = :place WHERE user_id = :id");
+    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, sendInvite = :sendInvite, gender = :gender, country = :country, role = :role, position_id = :position_id, place = :place WHERE user_id = :id");
     $statement->execute([
         ':fname' => $fname,
         ':lname' => $lname,
@@ -113,7 +112,6 @@ function updateEmployee(int $user_id, string $fname, string $lname, string $pass
         ':country' => $country,
         ':role' => $role,
         ':position_id' => $position_id,
-        ':amount' => $amount,
         ':place' => $place,
         ':id' => $user_id
     ]);
@@ -121,19 +119,6 @@ function updateEmployee(int $user_id, string $fname, string $lname, string $pass
     return $statement->rowCount() > 0;
 }
 
-function getAmount()
-{
-    global $connection;
-    $statement = $connection->prepare("SELECT SUM(amount) AS total_amount FROM users;");
-    $statement->execute();
-    $result = $statement->fetch(PDO::FETCH_ASSOC);
-
-    if ($result && isset($result['total_amount'])) {
-        return $result['total_amount'];
-    } else {
-        return 0;
-    }
-}
 
 // get position of all user to diplay in form diagram
 function getPosition(): array
@@ -183,6 +168,8 @@ function typeLeaves(): array
 
     return $statement->fetchAll();
 }
+
+// Function memebers request
 function memberRequest($manager_id): array
 {
     global $connection;
@@ -198,6 +185,7 @@ function memberRequest($manager_id): array
     return $STMT->fetchAll();
 }
 
+// Check id
 function getChecked($id): array
 {
     global $connection;
@@ -208,4 +196,34 @@ function getChecked($id): array
     $STMT = $connection->prepare($query);
     $STMT->execute([":user_id" => $id]);
     return $STMT->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+// Get team and members
+function groupPeople($managerId):array
+{
+    global $connection;
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role, position.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND manager=:manager';
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ':manager' => $managerId
+        ]
+    );
+
+    return $STMT->fetchAll();
+}
+
+function Groupmanager($managerId):array
+{
+    global $connection;
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role, position.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND user_id=:user_id';
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ':user_id' => $managerId
+        ]
+    );
+
+    return $STMT->fetch();
 }
