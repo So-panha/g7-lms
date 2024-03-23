@@ -9,7 +9,10 @@ if (empty($_SESSION['user'])) {
         echo "<script>location.href = '/login';</script>";
     }
     // Start router
-    $routes = ['/login' => 'controllers/login/login.controller.php'];
+    $routes = [
+        '/login' => 'controllers/login/login.controller.php',
+        '/reset_password' => 'views/login/reset.view.php'
+    ];
 } elseif (!empty($_SESSION['user'])) {
     if ($_SESSION['user']['role'] === 'admin') {
         // Change router by role
@@ -113,13 +116,13 @@ if (empty($_SESSION['user'])) {
         require "layouts/navbar.php";
         require $page;
         require "layouts/footer.php";
-    }else {
+    } else {
         require $page;
     }
 }
 
 // If user back using sign back in browser
-if(!empty($_SESSION['user'])){
+if (!empty($_SESSION['user'])) {
     if ($_SERVER['REQUEST_URI'] === "/login") {
         session_destroy();
         require "layouts/header.php";
@@ -127,4 +130,3 @@ if(!empty($_SESSION['user'])){
         require "layouts/footer.php";
     }
 }
-
