@@ -251,3 +251,19 @@ function checkAcc(string $email) :bool
         );
     return $STMT->rowCount() > 0;
 }
+
+
+// Get admin
+// Check account when create a new
+function getAdmin() :array
+{
+    global $connection;
+    $query = "SELECT * FROM users WHERE role = :role";
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ":role" => "admin"
+        ]
+        );
+    return $STMT->fetchAll();
+}
