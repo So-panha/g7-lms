@@ -76,6 +76,7 @@
                 $('#fpicture').change(function() {
                     // Check if file is already upload
                     if ($('#fpicture') != null) {
+
                         // Check type of file that upload
                         if (this.files && this.files[0] && this.files[0].name.match(/\.(jpg|jpeg|png|gif)$/)) {
                             // Check size of file 
@@ -98,7 +99,7 @@
 
                 // Button cancel
                 $("#cancel").click(() => {
-                    $("#myModal").modal("hide");
+                    $("#myModal").moda("hide");
                 });
 
                 // Button confirm
@@ -109,6 +110,10 @@
                         })
                     }
                 })
+            }
+            //clear picture when cancel 
+            function clearInput(){
+                document.getElementById('fpicture').value = '';
             }
         </script>
 
@@ -132,7 +137,7 @@
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" data-bs-toggle="modal" id="cancel" class="btn btn-danger d-flex justify-content-center confirm-btn">Cancel</button>
+                        <button type="button" data-bs-toggle="modal" id="cancel" class="btn btn-danger d-flex justify-content-center confirm-btn" onclick="clearInput()">Cancel</button>
                         <button type="button" data-bs-toggle="modal" id="confirm" class="btn btn-primary d-flex justify-content-center confirm-btn">Confirm</button>
                     </div>
 
