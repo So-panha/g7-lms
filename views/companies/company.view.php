@@ -57,6 +57,9 @@
 					<?php if($_SESSION['user']['role'] == 'admin'):?>
 					<p href="/admin_employees_team" class="float-right text-primary">Manage Teams</p>
 					<?php endif?>
+					<?php if($_SESSION['user']['role'] == 'manager'):?>
+					<p href="/admin_employees_team" class="float-right text-primary">All member</p>
+					<?php endif?>
 				</div>
 				<div class="card-body">
 					<div class="row">

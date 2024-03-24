@@ -165,7 +165,7 @@
                                 <a href="javascript:void(0)" class="dash-card text-danger">
                                     <div class="dash-card-container">
                                         <div class="dash-card-content mr-2">
-                                            <img src="assets/images/profiles/<?= $request['picture'] ?>"" alt=" User Avatar" class=" rounded-circle" width="40px" height="40px">
+                                            <img src="assets/images/profiles/<?= $request['picture'] ?>"alt=" User Avatar" class=" rounded-circle" width="40px" height="40px">
                                         </div>
                                         <div class="dash-card-content mr-2">
                                             <h6 class="mb-0"><?php echo strtoupper($request['fname']) ?></h6>
