@@ -21,7 +21,7 @@
     </div>
     <!-- password -->
     <label for="password">Password:</label>
-    <input type="password" hidden name="oldPwd">
+    <input type="password" value="<?= $user['password'] ?>" hidden name="oldPwd">
     <input type="password" class="password" value="" id="password" name="newPwd" placeholder="Password">
     <!-- email -->
     <label for="email">Email:</label>
