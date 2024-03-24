@@ -84,19 +84,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $mail->isSMTP();  //Send using SMTP
                     $mail->Host       = 'smtp.gmail.com'; //Set the SMTP server to send through
                     $mail->SMTPAuth   = true; //Enable SMTP authentication
-                    $mail->Username = "johnchoan047@gmail.com"; //SMTP Username
-                    $mail->Password   = 'tjehlqvinosbzgkm';  //SMTP password
+                    $mail->Username = "Sopanha0328@gmail.com"; //SMTP Username
+                    $mail->Password   = 'oqkk yndz lmin mmkd';  //SMTP password
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
                     $mail->Port       = 465;  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
                     //Recipients
-                    $mail->setFrom('johnchoan047@gmail.com', 'LMS System');
+                    $mail->setFrom('Sopanha0328@gmail.com', 'LMS System');
                     $mail->addAddress($email, $fname . ' ' . $Iname); //Add a recipient
     
                     //Content
                     $mail->isHTML(true); //Set email format to HTML
                     $mail->Subject = 'Here is the the link for login with your account';
-                    $mail->Body    = "Link for go into login your account";
+                    $mail->Body    = "Link for go into login your account please Click link to login your account";
                     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
                     // Sent to the Gmail
                     $mail->send();

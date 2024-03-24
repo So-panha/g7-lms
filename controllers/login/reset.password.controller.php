@@ -33,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $mail->isSMTP();  //Send using SMTP
                 $mail->Host       = 'smtp.gmail.com'; //Set the SMTP server to send through
                 $mail->SMTPAuth   = true; //Enable SMTP authentication
-                $mail->Username = "johnchoan047@gmail.com"; //SMTP Username
-                $mail->Password   = 'tjehlqvinosbzgkm';  //SMTP password
+                $mail->Username = "Sopanha0328@gmail.com"; //SMTP Username
+                $mail->Password   = 'oqkk yndz lmin mmkd';  //SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
                 $mail->Port = 465;  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
                 //Recipients
-                $mail->setFrom('johnchoan047@gmail.com', 'LMS System');
+                $mail->setFrom('Sopanha0328@gmail.com', 'LMS System');
                 $mail->addAddress($email,"user"); //Add a recipient
 
                 // $mail->addAttachment('../../assets/document/Company List.xlsx', 'Company Name');    //Optional name
