@@ -19,7 +19,9 @@
 	<div class="quicklink-sidebar-menu ctm-border-radius shadow-sm bg-white card grow">
 		<div class="card-body">
 			<ul class="list-group list-group-horizontal-lg">
-				<li class="list-group-item text-center active button-5"><p  class="text-white">Admin Dashboard</p></li>
+				<li class="list-group-item text-center active button-5">
+					<p class="text-white">Admin Dashboard</p>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -29,7 +31,7 @@
 			<div class="card dash-widget ctm-border-radius shadow-sm grow">
 				<div class="card-body">
 					<div class="card-icon bg-primary">
-					<i class="fa fa-user-plus" aria-hidden="true"></i>
+						<i class="fa fa-user-plus" aria-hidden="true"></i>
 					</div>
 					<div class="card-right">
 						<?php
@@ -109,7 +111,9 @@
 		</div>
 	</div>
 	<!-- / Chart -->
-
+	<script src="vendor/js/Chart.min.js"></script>
+	<script src="vendor/js/chart.js"></script>
+	
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="card ctm-border-radius shadow-sm grow">
@@ -120,32 +124,32 @@
 				<div class="card-body recent-activ">
 					<!-- call function -->
 					<?php
-                        $typeLeave = typeLeaves();
-                        ?>
-                        <div class="recent-comment">
-                            <?php
-                            foreach ($typeLeave as $leave) {
-                                // print_r($leave['start_leave']);
-                                if ($leave['start_leave']== date('d/m/Y')){
+					$typeLeave = typeLeaves();
+					?>
+					<div class="recent-comment">
+						<?php
+						foreach ($typeLeave as $leave) {
+							// print_r($leave['start_leave']);
+							if ($leave['start_leave'] == date('d/m/Y')) {
 
-                            ?>
-                                <a href="javascript:void(0)" class="dash-card text-dark">
-                                    <div class="dash-card-container">
-                                        <div class="dash-card-content">
-                                            <h6 class="mb-0"><?php echo strtoupper($leave['fname']) . " is " . $leave['type_leave_name'] . " today "; ?></h6>
-                                        </div>
-                                        <div class="dash-card-avatars">
-                                            <!-- <div class="e-avatar"> -->
-                                            <img src="assets/images/profiles/<?= $leave['picture'] ?>" class="rounded-circle" width="40px" height="40px">
-                                            <!-- </div> -->
-                                        </div>
-                                    </div>
-                                </a>
-                                <hr>
-                            <?php
-                                }
-                            }
-                            ?>
+						?>
+								<a href="javascript:void(0)" class="dash-card text-dark">
+									<div class="dash-card-container">
+										<div class="dash-card-content">
+											<h6 class="mb-0"><?php echo strtoupper($leave['fname']) . " is " . $leave['type_leave_name'] . " today "; ?></h6>
+										</div>
+										<div class="dash-card-avatars">
+											<!-- <div class="e-avatar"> -->
+											<img src="assets/images/profiles/<?= $leave['picture'] ?>" class="rounded-circle" width="40px" height="40px">
+											<!-- </div> -->
+										</div>
+									</div>
+								</a>
+								<hr>
+						<?php
+							}
+						}
+						?>
 					</div>
 				</div>
 			</div>
@@ -161,7 +165,7 @@
 				<div class="card-body">
 					<?php for ($i = 0; $i < count($manager); $i++) : ?>
 						<div class="media mb-3">
-							<div class=" mr-3"><img class="rounded-circle" width="40px" height="40px" class="img-fluid" src="assets/images/profiles/<?=$manager[$i]['picture']?>" alt="<?=$manager[$i]['lname']?>" ></div>
+							<div class=" mr-3"><img class="rounded-circle" width="40px" height="40px" class="img-fluid" src="assets/images/profiles/<?= $manager[$i]['picture'] ?>" alt="<?= $manager[$i]['lname'] ?>"></div>
 							<div class="media-body">
 								<h6 class="m-0"><?= $manager[$i]['fname'] . ' ' . $manager[$i]['lname'] ?></h6>
 								<p class="mb-0 ctm-text-sm"><?= $manager[$i]['position_name'] ?></p>

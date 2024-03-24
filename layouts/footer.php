@@ -7,9 +7,6 @@
 		<script src="vendor/js/popper.min.js"></script>
 		<script src="vendor/js/bootstrap.min.js"></script>
 				
-        		<!-- Chart JS -->
-		<script src="vendor/js/Chart.min.js"></script>
-		<script src="vendor/js/chart.js"></script>
 		
 		<!-- Datetimepicker JS -->
 		<script src="vendor/plugins/select2/moment.min.js"></script>
