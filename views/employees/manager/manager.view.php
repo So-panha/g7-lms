@@ -124,7 +124,7 @@
         </div>
 
         <div class="col-lg-6 d-flex">
-            <!-- Team Leads List -->
+            <!-- Team members List -->
             <div class="card flex-fill team-lead shadow-sm grow">
                 <div class="card-header">
                     <h4 class="card-title mb-0 d-inline-block">Members</h4>

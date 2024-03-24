@@ -123,27 +123,26 @@
             </div>
         </div>
         <div class="col-lg-6 col-md-12 d-flex">
-            <!-- Team Leads List -->
-            <div class="card flex-fill team-lead shadow-sm grow">
-				<div class="card-header">
-					<h4 class="card-title mb-0 d-inline-block">Manager</h4>
-                    <?php if($_SESSION["user"]["role"] == "admin") :?>
-					<p href="" class="dash-card float-right mb-0 text-primary">Manage Team </p>
+             <!-- Team members List -->
+             <div class="card flex-fill team-lead shadow-sm grow">
+                <div class="card-header">
+                    <h4 class="card-title mb-0 d-inline-block">Members</h4>
+                    <?php if($_SESSION["user"]["role"] == "admin"):?>
+                    <p class="dash-card float-right mb-0 text-primary">Team member</p>
                     <?php endif;?>
-				</div>
-				<div class="card-body">
-					<?php for ($i = 0; $i < count($manager); $i++) : ?>
-						<div class="media mb-3">
-							<div class="mr-3"><img class="rounded-circle" width="40px" height="40px" src="assets/images/profiles/<?=$manager[$i]['picture']?>" alt="<?=$manager[$i]['lname']?>" ></div>
-							<div class="media-body">
-								<h6 class="m-0"><?= $manager[$i]['fname'] . ' ' . $manager[$i]['lname'] ?></h6>
-								<p class="mb-0 ctm-text-sm"><?= $manager[$i]['position_name'] ?></p>
-							</div>
-						</div>
-						<hr>
-					<?php endfor; ?>
-				</div>
-			</div>
+                </div>
+                <div class="card-body">
+                    <?php for ($i = 0; $i < count($members); $i++) : ?>
+                        <div class="media mb-3">
+                            <div class=" mr-3"><img class="rounded-circle" width="40px" height="40px" class="img-fluid" src="assets/images/profiles/<?= $members[$i]['picture'] ?>" alt="<?= $members[$i]['lname'] ?>"></div>
+                            <div class="media-body">
+                                <h6 class="m-0"><?= $members[$i]['fname'] . ' ' . $members[$i]['lname'] ?></h6>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php endfor; ?>
+                </div>
+            </div>
         </div>
 </div>
 </div>
