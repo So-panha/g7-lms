@@ -94,8 +94,9 @@ $(function () {
 				let yearNow = today.getFullYear();
 				let yearLeave = date.slice(6, date.length);
 				let mouth = date.slice(date.search('/') + 1, 5);
+				let permission = data[i].checked;
 
-				if (yearLeave == yearNow) {
+				if (yearLeave == yearNow && permission == 'Approved') {
 
 					if (mouth == '01') {
 						Jan += 1;
@@ -149,7 +150,7 @@ $(function () {
 				data: {
 					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
 					datasets: [{
-						label: 'Developer',
+						label: 'Leave total',
 						data: leaveAllMouths,
 						fill: false,
 						borderColor: '#373651',
