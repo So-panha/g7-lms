@@ -232,7 +232,7 @@ function Groupmanager($managerId):array
 // Get total leave in each month
 function totalLeave(){
     global $connection;
-    $query = 'SELECT start_leave FROM request_leave';
+    $query = 'SELECT start_leave, checked FROM request_leave';
     $STMT = $connection->prepare($query);
     $STMT->execute();
     return $STMT->fetchAll();
