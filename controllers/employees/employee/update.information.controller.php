@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../../../database/database.php';
+require '../../../models/admin.model.php';
 // catch data from POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_POST['user_id'] ?? '';
@@ -14,8 +15,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $role = $_POST['role'] ?? '';
     $position_id = $_POST['position_id'] ?? '';
     $place = $_POST['place'] ?? '';
-    $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
-    require '../../../models/admin.model.php';
+    $newPwd = $_POST['newPwd'] ?? '';
+    $oldPwd = $_POST['oldPwd'] ?? '';
+    $manager = $_POST['manager'] ?? '';
+
+
+    function cleanData($data)
+    {
+        $data = htmlspecialchars($data);
+        $data = trim($data);
+        return $data;
+    }
+
+    $fname = cleanData($fname);
+    $lname = cleanData($lname);
+    $password = cleanData($password);
+    $email = cleanData($email);
+
+
 
     $_SESSION['user']['fname'] = $fname;
     $_SESSION['user']['lname'] = $lname;
@@ -28,7 +45,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['user']['position_id'] = $position_id;
     $_SESSION['user']['place'] = $place;
 
-    updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place);
+
+    // Set new password
+    if ($newPwd != '') {
+        // Encrypt password
+        $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
+        // Update but still keep old password
+        // Update password
+        updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
+        $_SESSION['update'] = 'Success';
+        header('Location: /user_profile');
+    } else {
+        // Update password
+        updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
+        $_SESSION['update'] = 'Success';
+        header('Location: /user_profile');
+    }
+} else {
+    $_SESSION['update'] = 'Unsuccess';
     header('Location: /user_profile');
-    exit;
 }

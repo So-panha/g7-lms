@@ -32,8 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $manager = $_POST['manager'];
         $oldManager = $_POST['oldmanager'];
 
-        echo $oldManager;
-
         // Set new password
         if ($newPwd != '') {
             // Prepare password
