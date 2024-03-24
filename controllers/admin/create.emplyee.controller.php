@@ -2,6 +2,9 @@
 require "../../database/database.php";
 require "../../models/admin.model.php";
 
+// Start session
+session_start();
+
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
@@ -64,46 +67,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Encript password
         $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
 
+        // Check acount already has or not
+        $isHasAcc = checkAcc($email);
+        
         // Insert employee data into the database
-        $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager, $day_can_leave, $picture);
+        if(!$isHasAcc){
+            $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager, $day_can_leave, $picture);
 
-        // send to email by Gmail
-        //Create an instance; passing `true` enables exceptions
-        if ($_POST['send_invite'] == true) {
-            $mail = new PHPMailer(true);
-
-            try {
-                //Server settings
-                $mail->isSMTP();  //Send using SMTP
-                $mail->Host       = 'smtp.gmail.com'; //Set the SMTP server to send through
-                $mail->SMTPAuth   = true; //Enable SMTP authentication
-                $mail->Username = "johnchoan047@gmail.com"; //SMTP Username
-                $mail->Password   = 'tjehlqvinosbzgkm';  //SMTP password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
-                $mail->Port       = 465;  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-                //Recipients
-                $mail->setFrom('johnchoan047@gmail.com', 'LMS System');
-                $mail->addAddress($email, $fname . ' ' . $Iname); //Add a recipient
-
-                //Content
-                $mail->isHTML(true); //Set email format to HTML
-                $mail->Subject = 'Here is the the link for login with your account';
-                $mail->Body    = "Link for go into login your account";
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-                // Sent to the Gmail
-                $mail->send();
-                echo 'Message has been sent';
-            } catch (Exception $e) {
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            // send to email by Gmail
+            //Create an instance; passing `true` enables exceptions
+            if ($_POST['send_invite'] == true) {
+                $mail = new PHPMailer(true);
+    
+                try {
+                    //Server settings
+                    $mail->isSMTP();  //Send using SMTP
+                    $mail->Host       = 'smtp.gmail.com'; //Set the SMTP server to send through
+                    $mail->SMTPAuth   = true; //Enable SMTP authentication
+                    $mail->Username = "johnchoan047@gmail.com"; //SMTP Username
+                    $mail->Password   = 'tjehlqvinosbzgkm';  //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
+                    $mail->Port       = 465;  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    
+                    //Recipients
+                    $mail->setFrom('johnchoan047@gmail.com', 'LMS System');
+                    $mail->addAddress($email, $fname . ' ' . $Iname); //Add a recipient
+    
+                    //Content
+                    $mail->isHTML(true); //Set email format to HTML
+                    $mail->Subject = 'Here is the the link for login with your account';
+                    $mail->Body    = "Link for go into login your account";
+                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                    // Sent to the Gmail
+                    $mail->send();
+                    echo 'Message has been sent';
+                } catch (Exception $e) {
+                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
+                $_SESSION['create'] = true;
             }
-        }
-
-        // Back into to old place
-        if ($insert) {
-            header("Location:/admin_employees");
-        } else {
-            echo "Failed to insert employee.";
+            // Back into to old place
+            if ($insert) {
+                header("Location:/admin_employees");
+            } else {
+                echo "Failed to insert employee.";
+                $_SESSION['create'] = true;
+            }
+        }else {
+            $_SESSION['create'] = false;
+            header("Location:/add_employee");
         }
     } else {
         header("Location:/add_employee");

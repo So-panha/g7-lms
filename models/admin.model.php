@@ -236,3 +236,17 @@ function totalLeave(){
     $STMT->execute();
     return $STMT->fetchAll();
 }
+
+// Check account when create a new
+function checkAcc(string $email) :bool
+{
+    global $connection;
+    $query = "SELECT user_id FROM users WHERE email = :email";
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ":email" => $email
+        ]
+        );
+    return $STMT->rowCount() > 0;
+}
