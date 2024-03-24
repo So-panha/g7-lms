@@ -2285,9 +2285,14 @@ textarea.form-control {
 .background{
 
 	border-radius: 10px 10px 0px 0px;
-	background-image: url(/assets/images/profiles/65f3a42541a06.jpg);
+	background-image: url(/assets/images/profiles/bgProfile.jpg);
 	height: 28%;
 	border: none;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position-y:center;
+
+
 }
 
 .profile {
