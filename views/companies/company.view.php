@@ -53,7 +53,10 @@
 			<div class="card shadow-sm grow ctm-border-radius flex-fill">
 				<div class="card-header">
 					<h4 class="card-title mb-0 d-inline-block">Overview </h4>
+					<!-- only show Manage Teams is admin -->
+					<?php if($_SESSION['user']['role'] == 'admin'):?>
 					<p href="/admin_employees_team" class="float-right text-primary">Manage Teams</p>
+					<?php endif?>
 				</div>
 				<div class="card-body">
 					<div class="row">
@@ -66,9 +69,16 @@
 							<p class="mb-3">People</p>
 						</div>
 					</div>
-					<?php if($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role']=='manager' ) :?>
+					<!-- only admin can see this button -->
+					<?php if($_SESSION['user']['role'] == 'admin' ) :?>
 					<div class="text-center">
 						<a href="/admin_employees" class="btn btn-theme text-white ctm-border-radius mt-2 button-1"> People Directory</a>
+					</div>
+					<?php endif; ?>
+					<!-- only manager can see  this button -->
+					<?php if( $_SESSION['user']['role']=='manager' ) :?>
+					<div class="text-center">
+						<a href="/members" class="btn btn-theme text-white ctm-border-radius mt-2 button-1"> People Directory </a>
 					</div>
 					<?php endif; ?>
 				</div>
