@@ -54,12 +54,6 @@
                     </div>
                 </div>
             </div>
-            <div class="main_btn">
-                <a href="controllers/admin/admin.employee.delete.controler.php?id=<?php echo urlencode($users['user_id']); ?>"><button type="button" class="btn-btn1 mr-2 ml-2" style="width:80px;">Delete</button></a>
-                <a href="/eidt_infomation_members?id=<?php echo urlencode($users['user_id']); ?>">
-                    <button type="button" class="mr-2 ml-2 text-center center-btn" style="width:80px;">Edit</button>
-                </a>
-            </div>
         </div>
 
 </body>
