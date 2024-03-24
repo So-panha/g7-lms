@@ -4,63 +4,82 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div class="employee-office-table">
+                        <div class="text-center mb-3">
+                            <h3>Reports of Request</h3>
+                        </div>
+                        <div class="mb-3">
+                            <form class="d-flex">
+                                <input class="form-control me-2 mr-1" type="text" placeholder="Search" id="search-employees">
+                                <button class="btn btn-warning" type="button">Search</button>
+                            </form>
+                        </div>
                         <div class="table-responsive">
                             <table id="reportTable" class="table custom-table" style="width: 100%;">
                                 <thead>
                                     <tr class="bg-warning">
                                         <th>Date Request</th>
                                         <th>Date Leave</th>
-                                        <th>Date Comback</th>
+                                        <th>Date Comeback</th>
                                         <th>Reason</th>
                                         <th>Type Leave</th>
                                         <th>Status</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-
                                     $users = employeeLeave($id);
                                     $typeLeave = typeLeave();
                                     foreach ($users as $report) {
-
                                     ?>
                                         <tr>
-                                            <td>
-                                                <h5><?php echo ($report['date_request']) ?><h5>
-                                            </td>
-                                            <td>
-                                                <h5><?php echo ($report['start_leave']) ?><h5>
-                                            </td>
-                                            <td>
-                                                <h5><?php echo ($report['end_leave']) ?><h5>
-                                            </td>
-                                            <td>
-                                                <h5><?php echo ($report['reason']) ?><h5>
-                                            </td>
+                                            <td><?php echo $report['date_request']; ?></td>
+                                            <td><?php echo $report['start_leave']; ?></td>
+                                            <td><?php echo $report['end_leave']; ?></td>
+                                            <td><?php echo $report['reason']; ?></td>
                                             <td>
                                                 <?php
-                                                $typeLeaves = typeLeave();
-                                                foreach ($typeLeaves as $typeLeave) {
-                                                    if ($typeLeave['type_leave_id'] == $report['type_leave']) {
-                                                        echo "<h5>" . $typeLeave['type_leave_name'] . "</h5>";
+                                                foreach ($typeLeave as $leave) {
+                                                    if ($leave['type_leave_id'] == $report['type_leave']) {
+                                                        echo $leave['type_leave_name'];
+                                                        break; // Once found, no need to continue looping
                                                     }
                                                 }
                                                 ?>
                                             </td>
                                             <td>
                                                 <?php if ($report['checked'] == "Approved") : ?>
-                                                    <h5 style="background-color: green; padding: 2px; width: 90px;color:white;"><?php echo $report['checked']; ?></h5>
+                                                    <span style="background-color: green; padding: 2px; width: 90px;color:white;"><?php echo $report['checked']; ?></span>
                                                 <?php else : ?>
-                                                    <h5 style="background-color: red; padding: 2px; width: 90px;color:white;"><?php echo $report['checked']; ?></h5>
+                                                    <span style="background-color: red; padding: 2px; width: 90px;color:white;"><?php echo $report['checked']; ?></span>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php } ?>
-
                                 </tbody>
                             </table>
                         </div>
+                        <script>
+                            document.getElementById('search-employees').addEventListener('input', (e) => {
+                                var searchText = e.target.value.toLowerCase();
+                                var rows = document.querySelectorAll('#reportTable tbody tr');
+
+                                rows.forEach(row => {
+                                    var dateRequest = row.cells[0].textContent.trim().toLowerCase();
+                                    var dateLeave = row.cells[1].textContent.trim().toLowerCase();
+                                    var dateComeback = row.cells[2].textContent.trim().toLowerCase();
+                                    var reason = row.cells[3].textContent.trim().toLowerCase();
+                                    var typeLeave = row.cells[4].textContent.trim().toLowerCase();
+                                    var status = row.cells[5].textContent.trim().toLowerCase();
+
+                                    if (dateRequest.includes(searchText) || dateLeave.includes(searchText) || dateComeback.includes(searchText) || reason.includes(searchText) || typeLeave.includes(searchText) || status.includes(searchText)) {
+                                        row.style.display = 'table-row';
+                                    } else {
+                                        row.style.display = 'none';
+                                    }
+                                });
+                            });
+                        </script>
+
                         <!-- DownLaod button -->
                         <div class="text-center mt-3">
                             <a href="javascript:void(0)" id="downloadButton" class="btn btn-theme button-1 ctm-border-radius text-white">Download Report</a>
