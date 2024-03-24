@@ -127,7 +127,9 @@
             <div class="card flex-fill team-lead shadow-sm grow">
 				<div class="card-header">
 					<h4 class="card-title mb-0 d-inline-block">Manager</h4>
+                    <?php if($_SESSION["user"]["role"] == "admin") :?>
 					<p href="" class="dash-card float-right mb-0 text-primary">Manage Team </p>
+                    <?php endif;?>
 				</div>
 				<div class="card-body">
 					<?php for ($i = 0; $i < count($manager); $i++) : ?>
