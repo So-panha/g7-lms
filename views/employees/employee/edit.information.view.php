@@ -50,8 +50,8 @@
     </select>
     <!-- role employees -->
     <?php if ($user['role'] !== 'admin') : ?>
-      <label for="passwork">Role:</label>
-      <select class="roles" name="role">
+      <label hidden for="passwork">Role:</label>
+      <select hidden class="roles" name="role">
         <option disabled selected>Role</option>
         <option value="admin" <?php if ($user['role'] === 'admin') echo 'selected'; ?>>Admin</option>
         <option value="supermanager" <?php if ($user['role'] === 'supermanager') echo 'selected'; ?>>Super Manager</option>
@@ -62,8 +62,8 @@
 
     <!-- Title job -->
     <?php if ($user['role'] !== 'admin') : ?>
-      <label for="passwork">Position:</label>
-      <select class="position" name="position_id">
+      <label hidden for="passwork">Position:</label>
+      <select hidden class="position" name="position_id">
         <option disabled selected>Position</option>
         <option value="1" <?php if ($user['position_id'] == 1) echo 'selected'; ?>>IT</option>
         <option value="2" <?php if ($user['position_id'] == 2) echo 'selected'; ?>>PL</option>
