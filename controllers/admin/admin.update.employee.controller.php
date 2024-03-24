@@ -29,6 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $role = $_POST['role'];
         $position_id = $_POST['position_id'];
         $place = $_POST['place'];
+        $manager = $_POST['manager'];
+        $oldManager = $_POST['oldmanager'];
+
+        echo $oldManager;
 
         // Set new password
         if ($newPwd != '') {
@@ -37,17 +41,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $password = trim($password);
             // Encrpt password
             $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
-            // Update password
-            updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place);
-            $_SESSION['update'] = 'Success';
-            header('Location: /admin_employees');
-            exit;
+            
+            if($manager != ''){
+                // Update password
+                updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
+                $_SESSION['update'] = 'Success';
+                header('Location: /admin_employees');
+                exit;
+            }else{
+                // Update password
+                updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $oldManager);
+                $_SESSION['update'] = 'Success';
+                header('Location: /admin_employees');
+                exit;
+            }
+            
         } else {
             // Update but still keep old password
-            updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $place);
-            $_SESSION['update'] = 'Success';
-            header('Location: /admin_employees');
-            exit;
+            if($manager != ''){
+                // Update password
+                updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
+                $_SESSION['update'] = 'Success';
+                header('Location: /admin_employees');
+            }else{
+                // Update password
+                updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $oldManager);
+                $_SESSION['update'] = 'Success';
+                header('Location: /admin_employees');
+            }
         }
     }
     else{

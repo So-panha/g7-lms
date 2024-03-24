@@ -20,7 +20,7 @@
     <!-- password -->
     <label for="passwork">Password:</label>
     <input type="password" hidden name="oldPwd" value="<?= $user['password'] ?>">
-    <input type="password" class="password" value="<?= $user['password'] ?>" id="password" name="password" placeholder="Password">
+    <input type="password" class="password"  id="password" name="password" placeholder="Password">
     <!-- email -->
     <label for="email">Email:</label>
     <input type="email" class="email" value="<?php echo $user['email']; ?>" id="email" name="email" placeholder="Email">
@@ -55,7 +55,7 @@
       <option value="employee" <?php if ($user['role'] === 'employee') echo 'selected'; ?>>Employee</option>
     </select>
     <!-- manager -->
-    <?php if ($user['role'] !== 'admind') : ?>
+    <?php if ($user['role'] !== 'admin') : ?>
       <label for="Manager">Manager</label><br>
       <div class="card-position">
         <div class="flex-row list-group list-group-horizontal-lg" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -71,6 +71,9 @@
         <option disabled selected>Manager</option>
       </select>
 
+      <input type="number" name="oldmanager" hidden value="<?php echo $user['manager'] ?>">
+
+  
       <script>
         window.onload = function() {
           filterManagers('IT');
@@ -105,7 +108,7 @@
     <!-- place employee -->
     <label for="place">Place:</label>
     <select class="place" name="place">
-      <option disabled selected>Place</option>
+      <option disabled>Place</option>
       <option value="Phnom Penh" <?php if ($user['place'] === 'Phnom Penh') echo 'selected'; ?>>Phnom Penh</option>
       <option value="Kampong Cham" <?php if ($user['place'] === 'Kampong Cham') echo 'selected'; ?>>Kampong Cham</option>
       <option value="Prey Veng" <?php if ($user['place'] === 'Prey Veng') echo 'selected'; ?>>Prey Veng</option>
