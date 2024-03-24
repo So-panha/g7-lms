@@ -55,9 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $manager = 0;
         }
         // $manager = 0;
-        if ($gender == "Male"){
+        if ($gender == "Male") {
             $picture = "man.png";
-        }else{
+        } else {
             $picture = "female.jpg";
         }
 
@@ -65,39 +65,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
 
         // Insert employee data into the database
-        $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager,$day_can_leave,$picture);
+        $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager, $day_can_leave, $picture);
 
         // send to email by Gmail
         //Create an instance; passing `true` enables exceptions
-        $mail = new PHPMailer(true);
+        if ($_POST['send_invite'] == true) {
+            $mail = new PHPMailer(true);
 
-        try {
-            //Server settings
-            $mail->isSMTP();  //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com'; //Set the SMTP server to send through
-            $mail->SMTPAuth   = true; //Enable SMTP authentication
-            $mail->Username = "johnchoan047@gmail.com"; //SMTP Username
-            $mail->Password   = 'tjehlqvinosbzgkm';  //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
-            $mail->Port       = 465;  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            try {
+                //Server settings
+                $mail->isSMTP();  //Send using SMTP
+                $mail->Host       = 'smtp.gmail.com'; //Set the SMTP server to send through
+                $mail->SMTPAuth   = true; //Enable SMTP authentication
+                $mail->Username = "johnchoan047@gmail.com"; //SMTP Username
+                $mail->Password   = 'tjehlqvinosbzgkm';  //SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
+                $mail->Port       = 465;  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-            //Recipients
-            $mail->setFrom('johnchoan047@gmail.com', 'LMS System');
-            $mail->addAddress($email, $fname.' '.$Iname); //Add a recipient
-        
-            // $mail->addAttachment('../../assets/document/Company List.xlsx', 'Company Name');    //Optional name
-            // $mail->addAttachment('../../assets/images/testing_image.png', 'Image Test');    //Optional name
+                //Recipients
+                $mail->setFrom('johnchoan047@gmail.com', 'LMS System');
+                $mail->addAddress($email, $fname . ' ' . $Iname); //Add a recipient
 
-            //Content
-            $mail->isHTML(true); //Set email format to HTML
-            $mail->Subject = 'Here is the the link for login with your account';
-            $mail->Body    = "Link for go into login your account";
-            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-            // Sent to the Gmail
-            $mail->send();
-            echo 'Message has been sent';
-        } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                //Content
+                $mail->isHTML(true); //Set email format to HTML
+                $mail->Subject = 'Here is the the link for login with your account';
+                $mail->Body    = "Link for go into login your account";
+                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                // Sent to the Gmail
+                $mail->send();
+                echo 'Message has been sent';
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
         }
 
         // Back into to old place
