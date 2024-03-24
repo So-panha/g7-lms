@@ -9,10 +9,28 @@
                         </div>
                         <div class="mb-3">
                             <form class="d-flex">
-                                <input class="form-control me-2 mr-1" type="text" placeholder="Search" id="search-employees">
-                                <button class="btn btn-warning" type="button">Search</button>
+
+                                <select class="form-control me-2 mr-1" id="search-employees">
+                                    <option value="">All Months</option>
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+
+                                <input class="form-control me-2 mr-1" type="text" placeholder="Search" id="search-report">
                             </form>
+
                         </div>
+
                         <div class="table-responsive">
                             <table id="reportTable" class="table custom-table" style="width: 100%;">
                                 <thead>
@@ -30,36 +48,59 @@
                                     $users = employeeLeave($id);
                                     $typeLeave = typeLeave();
                                     foreach ($users as $report) {
+                                        if ($report['checked'] == "Approved") {
+
+
                                     ?>
-                                        <tr>
-                                            <td><?php echo $report['date_request']; ?></td>
-                                            <td><?php echo $report['start_leave']; ?></td>
-                                            <td><?php echo $report['end_leave']; ?></td>
-                                            <td><?php echo $report['reason']; ?></td>
-                                            <td>
-                                                <?php
-                                                foreach ($typeLeave as $leave) {
-                                                    if ($leave['type_leave_id'] == $report['type_leave']) {
-                                                        echo $leave['type_leave_name'];
-                                                        break; // Once found, no need to continue looping
+                                            <tr>
+                                                <td><?php echo $report['date_request']; ?></td>
+                                                <td><?php echo $report['start_leave']; ?></td>
+                                                <td><?php echo $report['end_leave']; ?></td>
+                                                <td><?php echo $report['reason']; ?></td>
+                                                <td>
+                                                    <?php
+                                                    foreach ($typeLeave as $leave) {
+                                                        if ($leave['type_leave_id'] == $report['type_leave']) {
+                                                            echo $leave['type_leave_name'];
+                                                            break;
+                                                        }
                                                     }
-                                                }
-                                                ?>
-                                            </td>
-                                            <td>
-                                                <?php if ($report['checked'] == "Approved") : ?>
-                                                    <span style="background-color: green; padding: 2px; width: 90px;color:white;"><?php echo $report['checked']; ?></span>
-                                                <?php else : ?>
-                                                    <span style="background-color: red; padding: 2px; width: 90px;color:white;"><?php echo $report['checked']; ?></span>
-                                                <?php endif; ?>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php if ($report['checked'] == "Approved") : ?>
+                                                        <span style="background-color: green; padding: 2px; width: 90px;color:white;"><?php echo $report['checked']; ?></span>
+                                                    <?php else : ?>
+                                                        <span style="background-color: red; padding: 2px; width: 90px;color:white;"><?php echo $report['checked']; ?></span>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                    <?php
+                                        }
+                                    } ?>
                                 </tbody>
                             </table>
                         </div>
                         <script>
-                            document.getElementById('search-employees').addEventListener('input', (e) => {
+                            document.getElementById('search-employees').addEventListener('change', (e) => {
+                                var selectedOption = e.target.value.toLowerCase();
+                                var rows = document.querySelectorAll('#reportTable tbody tr');
+
+                                rows.forEach(row => {
+                                    var dateLeave = row.cells[1].textContent.trim().toLowerCase();
+                                    var extractedDate = dateLeave.substr(3, 2); // Extracts the characters at index 3 and 4 (0-based index)
+
+                                    if (extractedDate === selectedOption) {
+                                        row.style.display = 'table-row';
+                                    } else {
+                                        row.style.display = 'none';
+                                    }
+                                });
+                            });
+                        </script>
+
+                        <script>
+                            document.getElementById('search-report').addEventListener('input', (e) => {
                                 var searchText = e.target.value.toLowerCase();
                                 var rows = document.querySelectorAll('#reportTable tbody tr');
 
