@@ -16,18 +16,18 @@
     <!-- content -->
 
     <!-- list of team -->
-    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow">
+    <div class="d-flex flex-wrap justify-content-center bg-secondary bg-light mb-5 p-3 ctm-border-radius shadow-sm border-none grow ">
 
     <!-- Create team for show -->
     <?php foreach($mangers as $manger):?>
-        <div class="card ctm-border-radius shadow-sm grow flex-fill ml-3">
+        <div class="card ctm-border-radius shadow-sm grow flex-fill col-5 mx-3">
             <div class="card-header">
                 <div class="d-inline-block">
                     <h4 class="card-title mb-0"><?= $manger['position_name'] ?></h4>
                 </div>
             </div>
             <div class="card-body">
-                <h4 class="card-title">Manager</h4>
+                <h4 class="card-title">Manager <?= $manger['fname']." ".$manger['lname'] ?></h4>
                 <a href="#"><span class="avatar" data-toggle="tooltip" data-placement="top" style="width: 50px;height:50px"><img class='rounded-circle' style="width: 100%;height:100%" alt="avatar image" src="assets/images/profiles/<?= $manger['picture'] ?>" class="img-fluid"></span></a>
                 <a href="/views_group?id=<?= $manger['user_id']?>" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Show All Members</a>
             </div>
