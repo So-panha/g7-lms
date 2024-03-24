@@ -1,6 +1,8 @@
 <?php
 require '../../database/database.php';
 require '../../models/admin.model.php';
-$datas = getPosition();
-echo json_encode($datas);
+
+// // Catch all leave 
+$dataLeave = totalLeave();
+echo json_encode($dataLeave);
 

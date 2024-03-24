@@ -39,14 +39,14 @@ function checkMail(string $email) : bool
 
 
 // Set opt
-function OPT(string $email, int $OPT) : bool
+function OPT(string $email, int $OTP) : bool
 {
     global $connection;
     $query = "UPDATE users SET otp = :otp WHERE email = :email";
     $STMT = $connection->prepare($query);
     $STMT->execute([
         ':email' => $email,
-        ':otp' => $OPT
+        ':otp' => $OTP
     ]);
 
     return $STMT->rowCount() > 0;
