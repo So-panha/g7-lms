@@ -126,16 +126,9 @@ if (!empty($_SESSION['user'])) {
                                         </div>
                                         <div class="col-6 align-items-center shadow-none text-center">
                                     </div>
-                                    <?php endif; ?>
-                                    
-                                        <div class="col-6 align-items-center text-center">
-                                            <!-- active navbar -->
-                                            <a href="/user_profile" class="text-dark p-4 ctm-border-right ctm-border-left  <?php if ($_SERVER['REQUEST_URI'] == '/user_profile') echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
-                                        </div>
+                                    <?php endif; ?>                    
                                         <div class="col-6 align-items-center shadow-none text-center">
-                                    </div>
-                                    
-                                    
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
