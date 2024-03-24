@@ -82,14 +82,16 @@ if (!empty($_SESSION['user'])) {
                                     </div>
                                     <?php if ($_SESSION['user']['role'] != 'employee') : ?>
                                         <div class="col-6 align-items-center shadow-none text-center">
-                                            <a href="<?= $link ?>" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/information_user' || $_SERVER['REQUEST_URI'] == '/add_employee' || $_SERVER['REQUEST_URI'] == '/members' || $_SERVER['REQUEST_URI'] == '/admin_employees' || $_SERVER['REQUEST_URI'] == '/admin_employees_team' || $_SERVER['REQUEST_URI'] == '/information_user?id=' . (isset($_GET['id']) ? $_GET['id'] : null)) echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
+                                            <a href="<?= $link ?>" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-left ctm-border-top  <?php if ($_SERVER['REQUEST_URI'] == '/information_user' || $_SERVER['REQUEST_URI'] == '/add_employee' || $_SERVER['REQUEST_URI'] == '/members' || $_SERVER['REQUEST_URI'] == '/admin_employees' || $_SERVER['REQUEST_URI'] == '/admin_employees_team' || $_SERVER['REQUEST_URI'] == '/information_user?id=' . (isset($_GET['id']) ? $_GET['id'] : null)) echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
                                         </div>
                                     <?php endif; ?>
+                                    <?php if ($_SESSION['user']['role'] === 'employee' || $_SESSION['user']['role']!= 'manger') : ?>
                                     <div class="col-6 align-items-center shadow-none text-center">
-                                        <a href="/companies" class="text-dark p-4 ctm-border-right ctm-border-left <?php if ($_SERVER['REQUEST_URI'] == '/companies') echo 'active'; ?>"><span class="lnr lnr-apartment pr-0 pb-lg-2 font-23"></span><span class="">Company</span></a>
+                                        <a href="/companies" class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-left <?php if ($_SERVER['REQUEST_URI'] == '/companies') echo 'active'; ?>"><span class="lnr lnr-apartment pr-0 pb-lg-2 font-23"></span><span class="">Company</span></a>
                                     </div>
+                                    <?php endif; ?>
                                     <div class="col-6 align-items-center shadow-none text-center">
-                                        <a href="/calendars" class="text-dark p-4 ctm-border-right <?php if ($_SERVER['REQUEST_URI'] == '/calendars') echo 'active'; ?>"><span class="lnr lnr-calendar-full pr-0 pb-lg-2 font-23"></span><span class="">Calendar</span></a>
+                                        <a href="/calendars" class="text-dark p-4  ctm-border-right ctm-border-left  <?php if ($_SERVER['REQUEST_URI'] == '/calendars') echo 'active'; ?>"><span class="lnr lnr-calendar-full pr-0 pb-lg-2 font-23"></span><span class="">Calendar</span></a>
                                     </div>
                                     <!-- Allow for all users -->
                                     <?php if ($_SESSION['user']['role'] != 'admin') :?>
@@ -100,7 +102,7 @@ if (!empty($_SESSION['user'])) {
                                     <!-- Allow for employees -->
                                     <?php if ($_SESSION['user']['role'] === 'employee') : ?>
                                         <div class="col-6 align-items-center shadow-none text-center">
-                                            <a href="/reviews" class="text-dark p-4 last-slider-btn ctm-border-right <?php if ($_SERVER['REQUEST_URI'] == '/reviews') echo 'active'; ?>"><span class="lnr lnr-star pr-0 pb-lg-2 font-23"></span><span class="">Reviews</span></a>
+                                            <a href="/reviews" class="text-dark p-4 ctm-border-right ctm-border-left  <?php if ($_SERVER['REQUEST_URI'] == '/reviews') echo 'active'; ?>"><span class="lnr lnr-star pr-0 pb-lg-2 font-23"></span><span class="">Reviews</span></a>
                                         </div>
                                     <?php endif; ?>
 
@@ -120,11 +122,19 @@ if (!empty($_SESSION['user'])) {
                                     <?php if ($_SESSION['user']['role'] != 'admin') : ?>
                                         <div class="col-6 align-items-center text-center">
                                             <!-- active navbar -->
-                                            <a href="/history_request" class="text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top <?php if ($_SERVER['REQUEST_URI'] == '/history_request') echo 'active'; ?>"><span class="lnr lnr-history pr-0 pb-lg-2 font-23"></span><span class="">History</span></a>
+                                            <a href="/history_request" class="text-dark p-4 ctm-border-right ctm-border-left  <?php if ($_SERVER['REQUEST_URI'] == '/history_request') echo 'active'; ?>"><span class="lnr lnr-history pr-0 pb-lg-2 font-23"></span><span class="">History</span></a>
                                         </div>
                                         <div class="col-6 align-items-center shadow-none text-center">
                                     </div>
                                     <?php endif; ?>
+                                    
+                                        <div class="col-6 align-items-center text-center">
+                                            <!-- active navbar -->
+                                            <a href="/user_profile" class="text-dark p-4 ctm-border-right ctm-border-left  <?php if ($_SERVER['REQUEST_URI'] == '/user_profile') echo 'active'; ?>"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
+                                        </div>
+                                        <div class="col-6 align-items-center shadow-none text-center">
+                                    </div>
+                                    
                                     
                                 </div>
                             </div>
