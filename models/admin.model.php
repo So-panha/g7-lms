@@ -98,10 +98,10 @@ function insertEmployee(string $fname, string $lname, string $password, string $
     return $statement->rowCount() > 0;
 }
 
-function updateEmployee(int $user_id, string $fname, string $lname, string $password, string $email, bool $sendInvite, string $gender, string $country, string $role, int $position_id, string $place): bool
+function updateEmployee(int $user_id, string $fname, string $lname, string $password, string $email, bool $sendInvite, string $gender, string $country, string $role, int $position_id, string $place, string $manager): bool
 {
     global $connection;
-    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, sendInvite = :sendInvite, gender = :gender, country = :country, role = :role, position_id = :position_id, place = :place WHERE user_id = :id");
+    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, sendInvite = :sendInvite, gender = :gender, country = :country, role = :role, position_id = :position_id, place = :place, manager = :manager WHERE user_id = :id");
     $statement->execute([
         ':fname' => $fname,
         ':lname' => $lname,
@@ -113,6 +113,7 @@ function updateEmployee(int $user_id, string $fname, string $lname, string $pass
         ':role' => $role,
         ':position_id' => $position_id,
         ':place' => $place,
+        ':manager' => $manager,
         ':id' => $user_id
     ]);
 
