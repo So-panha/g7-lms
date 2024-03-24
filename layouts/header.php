@@ -144,7 +144,7 @@
                                       </span>
                                     </span>
                                   </a>
-                                  <a class="dropdown-item p-2" href="settings.html">
+                                  <a class="dropdown-item p-2" href="/user_profile">
                                     <span class="media align-items-center">
                                       <span class="lnr lnr-cog mr-3"></span>
                                       <span class="media-body text-truncate">
