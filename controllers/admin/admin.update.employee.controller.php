@@ -6,15 +6,16 @@ require "../../database/database.php";
 require "../../models/admin.model.php";
 // catch data from POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['user_id'])
+    if (
+        !empty($_POST['user_id'])
         && !empty($_POST['fname'])
         && !empty($_POST['lname'])
         && !empty($_POST['email'])
         && !empty($_POST['gender'])
-        && !empty($_POST['country'])
         && !empty($_POST['role'])
-        && !empty($_POST['position_id'])
-        && !empty($_POST['place'])
+        && !empty($_POST['department'])
+        && !empty($_POST['position'])
+        // && !empty($_POST['department'])
     ) {
         // Set up variable
         $user_id = $_POST['user_id'];
@@ -23,14 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $newPwd = $_POST['password'];
         $oldPwd = $_POST['oldPwd'];
         $email = $_POST['email'];
-        $sendInvite = $_POST['sendInvite'] ?? '';
         $gender = $_POST['gender'];
-        $country = $_POST['country'];
         $role = $_POST['role'];
-        $position_id = $_POST['position_id'];
-        $place = $_POST['place'];
+        $position_id = $_POST['department'];
+        $position_name = $_POST['position'];
         $manager = $_POST['manager'];
         $oldManager = $_POST['oldmanager'];
+        $picture = '';
+        // $department = $_POST['department'];
 
         // Set new password
         if ($newPwd != '') {
@@ -39,39 +40,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $password = trim($password);
             // Encrpt password
             $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
-            
-            if($manager != ''){
+
+            if ($manager != '') {
                 // Update password
-                updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
+                updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $gender, $country, $role, $position_id, $place, $manager, $position_name);
                 $_SESSION['update'] = 'Success';
                 header('Location: /admin_employees');
                 exit;
-            }else{
+            } else {
                 // Update password
-                updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $oldManager);
+                updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $gender, $role, $position_id, $oldManager, $position_name);
                 $_SESSION['update'] = 'Success';
                 header('Location: /admin_employees');
                 exit;
             }
-            
         } else {
             // Update but still keep old password
-            if($manager != ''){
+            if ($manager != '') {
                 // Update password
-                updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
+                updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $gender, $role, $position_id, $manager, $position_name);
                 $_SESSION['update'] = 'Success';
                 header('Location: /admin_employees');
-            }else{
+            } elseif ($oldPwd != '') {
                 // Update password
-                updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $oldManager);
+                updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $gender, $role, $position_id, $oldManager, $position_name);
+                $_SESSION['update'] = 'Success';
+                header('Location: /admin_employees');
+            } else {
+                updateHeaderManager($user_id, $fname, $lname, $oldPwd, $email, $gender, $role, $position_id, $position_name);
                 $_SESSION['update'] = 'Success';
                 header('Location: /admin_employees');
             }
         }
-    }
-    else{
+    } else {
         $_SESSION['update'] = 'Unsuccess';
         header('Location: /admin_employees');
     }
-    
 }

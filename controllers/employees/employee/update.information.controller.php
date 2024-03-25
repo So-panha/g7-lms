@@ -52,12 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
         // Update but still keep old password
         // Update password
-        updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
+        updateOwnAcc($user_id, $fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
         $_SESSION['update'] = 'Success';
         header('Location: /user_profile');
     } else {
         // Update password
-        updateEmployee($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
+        updateOwnAcc($user_id, $fname, $lname, $oldPwd, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager);
         $_SESSION['update'] = 'Success';
         header('Location: /user_profile');
     }
