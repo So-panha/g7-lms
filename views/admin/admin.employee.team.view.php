@@ -20,10 +20,10 @@
 
     <!-- Create team for show -->
     <?php foreach($mangers as $manger):?>
-        <div class="card ctm-border-radius shadow-sm grow flex-fill col-5 mx-3">
+        <div class="card ctm-border-radius shadow-sm grow flex-fill col-5 mx-3" style="background-color: <?php if($manger['manager'] == 0){echo "lightgrey";} ?>;">
             <div class="card-header">
                 <div class="d-inline-block">
-                    <h4 class="card-title mb-0"><?= $manger['position_name'] ?></h4>
+                    <h4 class="card-title mb-0"><?= $manger['position_name'] ?><?php if($manger['manager'] == 0){echo " Header";} ?></h4>
                 </div>
             </div>
             <div class="card-body">

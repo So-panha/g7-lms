@@ -187,7 +187,7 @@ function positions(): array
 function managers(): array
 {
     global $connection;
-    $query = "SELECT users.user_id, users.fname, users.lname,users.role, users.picture, position.position_name FROM users INNER JOIN position WHERE users.position_id = position.position_id AND users.role = 'manager'";
+    $query = "SELECT users.user_id, users.fname, users.lname,users.role, users.picture, users.manager, position.position_name FROM users INNER JOIN position WHERE users.position_id = position.position_id AND users.role = 'manager'";
     $STMT = $connection->prepare($query);
     $STMT->execute();
 
@@ -244,7 +244,21 @@ function getChecked($id): array
 function groupPeople($managerId):array
 {
     global $connection;
-    $query = 'SELECT users.fname, users.lname,users.picture, users.role, position.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND manager=:manager';
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role,users.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND users.role != "manager" AND manager=:manager';
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ':manager' => $managerId
+        ]
+    );
+
+    return $STMT->fetchAll();
+}
+// Get team and members
+function groupPeopleManager($managerId):array
+{
+    global $connection;
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role, users.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND users.role != "employee" AND manager=:manager';
     $STMT = $connection->prepare($query);
     $STMT->execute(
         [
@@ -258,7 +272,7 @@ function groupPeople($managerId):array
 function Groupmanager($managerId):array
 {
     global $connection;
-    $query = 'SELECT users.fname, users.lname,users.picture, users.role, position.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND user_id=:user_id';
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role, users.position_name, users.manager FROM users INNER JOIN position WHERE position.position_id = users.position_id AND user_id=:user_id';
     $STMT = $connection->prepare($query);
     $STMT->execute(
         [

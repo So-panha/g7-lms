@@ -8,6 +8,8 @@ if(isset($_GET['id'])){
     // Get id user
     $managerId = $_GET['id'];
     // team memebers
+    $groupMemberManager =  groupPeopleManager($managerId);
+    // team memebers
     $groupMembers =  groupPeople($managerId);
     // Manager team
     $manager = Groupmanager($managerId);
