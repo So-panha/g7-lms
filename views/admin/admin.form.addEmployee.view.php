@@ -41,8 +41,8 @@
 
 
      <!-- Title job -->
-     <label for="position">Department:</label>
-    <select class="position" name="department">
+     <label for="department">Department:</label>
+    <select class="department" name="department">
       <option value="" disabled selected>Department</option>
       <option value="1">IT</option>
       <option value="2">PL</option>

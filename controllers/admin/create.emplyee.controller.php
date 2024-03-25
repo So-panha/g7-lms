@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         && !empty($_POST['email'])
         && !empty($_POST['gender'])
         && !empty($_POST['role'])
-        && !empty($_POST['position'])
         && !empty($_POST['department'])
+        && !empty($_POST['position'])
     ) {
         // Retrieve the values from the form
         $fname = $_POST['fname'];
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Insert employee data into the database
         if(!$isHasAcc){
-            $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $role, $depament_id, $manager, $day_can_leave, $picture);
+            $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $role, $depament_id, $manager, $day_can_leave, $picture,$position);
 
             // send to email by Gmail
             //Create an instance; passing `true` enables exceptions

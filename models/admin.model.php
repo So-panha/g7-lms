@@ -73,11 +73,11 @@ function getUser(int $user_id): ?array
 }
 
 
-function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $role, string $position_id, string $manager, int $day_can_leave,string $picture): bool
+function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $role, string $position_id, string $manager, int $day_can_leave,string $picture, string $position_name): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, role, position_id , picture, manager, day_can_leave)
-    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :role, :position_id, :picture, :manager, :day_can_leave)");
+    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, role, position_id , picture, manager, day_can_leave, position_name)
+    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :role, :position_id, :picture, :manager, :day_can_leave, :position_name)");
 
     $statement->execute([
         ':fname' => $fname,
@@ -88,6 +88,7 @@ function insertEmployee(string $fname, string $lname, string $password, string $
         ':gender' => $gender,
         ':role' => $role,
         ':position_id' => $position_id,
+        ':position_name' => $position_name,
         ':picture' => $picture,
         ':manager' => $manager,
         ':day_can_leave' => $day_can_leave,
@@ -96,7 +97,7 @@ function insertEmployee(string $fname, string $lname, string $password, string $
     return $statement->rowCount() > 0;
 }
 
-function updateEmployee(int $user_id, string $fname, string $lname, string $password, string $email, bool $sendInvite, string $gender, string $country, string $role, int $position_id, string $place, string $manager): bool
+function updateOwnAcc(int $user_id, string $fname, string $lname, string $password, string $email, bool $sendInvite, string $gender, string $country, string $role, int $position_id, string $place, string $manager): bool
 {
     global $connection;
     $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, sendInvite = :sendInvite, gender = :gender, country = :country, role = :role, position_id = :position_id, place = :place, manager = :manager WHERE user_id = :id");
@@ -112,6 +113,47 @@ function updateEmployee(int $user_id, string $fname, string $lname, string $pass
         ':position_id' => $position_id,
         ':place' => $place,
         ':manager' => $manager,
+        ':id' => $user_id
+    ]);
+
+    return $statement->rowCount() > 0;
+}
+
+
+
+function updateEmployee(int $user_id, string $fname, string $lname, string $password, string $email, string $gender, string $role, int $position_id, string $manager, string $position_name): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, gender = :gender, role = :role, position_id = :position_id, manager = :manager, position_name = :position_name WHERE user_id = :id");
+    $statement->execute([
+        ':fname' => $fname,
+        ':lname' => $lname,
+        ':password' => $password,
+        ':email' => $email,
+        ':gender' => $gender,
+        ':role' => $role,
+        ':position_id' => $position_id,
+        ':manager' => $manager,
+        ':position_name' => $position_name,
+        ':id' => $user_id
+    ]);
+
+    return $statement->rowCount() > 0;
+}
+
+function updateHeaderManager(int $user_id, string $fname, string $lname, string $password, string $email, string $gender, string $role, int $position_id, string $position_name): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, gender = :gender, role = :role, position_id = :position_id, position_name = :position_name WHERE user_id = :id");
+    $statement->execute([
+        ':fname' => $fname,
+        ':lname' => $lname,
+        ':password' => $password,
+        ':email' => $email,
+        ':gender' => $gender,
+        ':role' => $role,
+        ':position_id' => $position_id,
+        ':position_name' => $position_name,
         ':id' => $user_id
     ]);
 

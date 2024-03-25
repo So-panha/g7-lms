@@ -122,8 +122,8 @@
                         <div class="user-details">
                             <h5><b><?php echo strtoupper($name); ?></b></h5>
                             <input hidden type="text" value="<?= $user['role']; ?>">
-                            <p><?php echo $positionName; ?></p>
                             <p><?php echo strtoupper($user['role']); ?></p>
+                            <p><?php echo $positionName; ?></p>
                             <input type="hidden" value="<?= $id ?>">
                         </div>
                     </div>
