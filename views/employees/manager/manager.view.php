@@ -153,7 +153,7 @@
                     <h4 class="card-title mb-0 d-inline-block">
                         Date Leave
                     </h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
+                    <a  href="#/" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
                 </div>
                 <div class="card-body recent-activ">
                     <div class="recent-comment">
