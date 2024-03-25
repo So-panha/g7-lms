@@ -27,7 +27,7 @@
     <label for="email">Email:</label>
     <input type="email" class="email" value="<?php echo $user['email']; ?>" id="email" name="email" placeholder="Email">
     <!-- sendinvite -->
-    <div class="checks">
+    <div hidden class="checks">
       <input type="checkbox" class="check" id="check" name="sendInvite" <?php if ($user['sendInvite']) echo 'checked'; ?>>
       <label class="check-1" for="check">Send them an invite email so they can log in immediately</label>
     </div>
