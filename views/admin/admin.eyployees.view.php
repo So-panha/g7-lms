@@ -81,7 +81,7 @@
         ?>
 
         <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Employees</div>
-        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add Employee</a>
+        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add New Stuff</a>
     </div>
     <!-- content -->
 
@@ -164,12 +164,12 @@
             let userName = user.children[0].children[0].children[1].children[1].value.toLocaleLowerCase();
             if (userName.includes(roles) === true) {
                 user.style.display = 'block';
-                document.querySelector('.noData').style.display = 'none';
+                document.querySelector('.noData').style.display = 'block';
             } else {
                 user.style.display = 'none';
                 countCard += 1;
                 if (countCard == roles.length) {
-                    document.querySelector('.noData').style.display = 'block';
+                    document.querySelector('.noData').style.display = 'none';
                 }
             }
         });
