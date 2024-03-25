@@ -81,7 +81,7 @@
         ?>
 
         <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Employees</div>
-        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add New Stuff</a>
+        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add Employee</a>
     </div>
     <!-- content -->
 
@@ -160,16 +160,16 @@
     document.getElementById('select-role').addEventListener('change', (e) => {
         countCard = 0;
         users.forEach(user => {
-            var roles = document.getElementById('select-role').value.toLocaleLowerCase();
-            let userName = user.children[0].children[0].children[1].children[1].value.toLocaleLowerCase();
+            var roles = document.getElementById('select-role').value.toLowerCase();
+            let userName = user.children[0].children[0].children[1].children[1].value.toLowerCase();
             if (userName.includes(roles) === true) {
                 user.style.display = 'block';
-                document.querySelector('.noData').style.display = 'block';
+                document.querySelector('.noData').style.display = 'none';
             } else {
                 user.style.display = 'none';
                 countCard += 1;
-                if (countCard == roles.length) {
-                    document.querySelector('.noData').style.display = 'none';
+                if (countCard == users.length) {
+                    document.querySelector('.noData').style.display = 'block';
                 }
             }
         });
