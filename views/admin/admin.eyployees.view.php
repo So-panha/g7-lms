@@ -24,6 +24,32 @@
             }, 4000);
         </script>
     <?php } ?>
+
+    <!--  Show if can create or not -->
+    <!-- Alert when it success for updating or not -->
+    <?php if (isset($_SESSION['createNew'])) { ?>
+        <?php if ($_SESSION['createNew'] == 'done') { ?>
+            <div class="alert alert-success alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Create account successfully</strong>
+            </div>
+        <?php } ?>
+        <?php if ($_SESSION['createNew'] == 'notDone') { ?>
+            <div class="alert alert-danger alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Your email have been used already</strong>
+            </div>
+        <?php } ?>
+        <!-- remove session alert -->
+        <?php unset($_SESSION['createNew']) ?>
+        <!-- remove message -->
+        <script>
+            let createAlert = document.querySelector('.alert');
+            setTimeout(function() {
+                createAlert.remove();
+            }, 4000);
+        </script>
+    <?php } ?>
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white p-4 mb-4 card">
         <ul class="list-group list-group-horizontal-lg">
             <!-- <li class="list-group-item text-center button-5"><a href="" class="text-white">All</a></li> -->
@@ -107,7 +133,7 @@
         <?php
         }
         ?>
-    <h2 style="display: none;" class="noData">No have data of the user</h2>
+        <h2 style="display: none;" class="noData">No have data of the user</h2>
     </div>
 </div>
 <!-- Script search bar and select -->
@@ -124,14 +150,14 @@
             } else {
                 countCard += 1;
                 user.style.display = 'none';
-                if(countCard == users.length){
+                if (countCard == users.length) {
                     document.querySelector('.noData').style.display = 'block';
                 }
             }
         });
     });
-    
-    document.getElementById('select-role').addEventListener('change',(e)=>{
+
+    document.getElementById('select-role').addEventListener('change', (e) => {
         countCard = 0;
         users.forEach(user => {
             var roles = document.getElementById('select-role').value.toLocaleLowerCase();
@@ -142,7 +168,7 @@
             } else {
                 user.style.display = 'none';
                 countCard += 1;
-                if(countCard == roles.length){
+                if (countCard == roles.length) {
                     document.querySelector('.noData').style.display = 'block';
                 }
             }

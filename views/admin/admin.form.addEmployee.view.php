@@ -1,29 +1,4 @@
 <div class="col-xl-9 col-lg-8 col-md-12">
-  <!--  Show if can create or not -->
-  <!-- Alert when it success for updating or not -->
-  <?php if (isset($_SESSION['create'])) { ?>
-    <?php if ($_SESSION['create'] == true) { ?>
-      <div class="alert alert-success alert-dismissible grow" id="alert">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Create account successfully</strong>
-      </div>
-    <?php } ?>
-    <?php if ($_SESSION['create'] == false) { ?>
-      <div class="alert alert-danger alert-dismissible grow" id="alert">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Your email have been used already</strong>
-      </div>
-    <?php } ?>
-    <!-- remove session alert -->
-    <?php unset($_SESSION['create']) ?>
-    <!-- remove message -->
-    <script>
-      let showALert = document.querySelector('.alert');
-      setTimeout(function() {
-        showALert.remove();
-      }, 4000);
-    </script>
-  <?php } ?>
   <form class="form_add_employee ctm-border-radius shadow-sm grow" action="../../controllers/admin/create.emplyee.controller.php" method="post">
     <h2 style="font-family: 'Times New Roman', Times, serif; font-weight:bold;">Employment details</h2>
     <!-- username -->

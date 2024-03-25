@@ -104,17 +104,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } catch (Exception $e) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 }
-                $_SESSION['create'] = true;
+                $_SESSION['createNew'] = 'done';
             }
             // Back into to old place
             if ($insert) {
                 header("Location:/admin_employees");
+                $_SESSION['createNew'] = 'done';
             } else {
                 echo "Failed to insert employee.";
-                $_SESSION['create'] = true;
+                $_SESSION['createNew'] = 'notDone';
             }
         }else {
-            $_SESSION['create'] = false;
+            $_SESSION['createNew'] = 'notDone';
             header("Location:/add_employee");
         }
     } else {

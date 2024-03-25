@@ -1,6 +1,3 @@
-<?php
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,16 +19,12 @@
         <div class="shape"></div>
     </div>
     <form style="height: 65%;" action="../../controllers/login/change.password.controller.php" method="POST">
-        <h3>Add Your New Password</h3>
-        <?php
-        session_start();
-        ?>
 
         <label class="lablepwd" for="password">Your New Password</label>
         <div class="pwds">
             <div class="child">
                 <input style="height: 8vh;width: 98%;margin-top: 10px;color: black;padding: 0 10px;" type="password" placeholder="New Password" name="new_password" class="form-control password <?= $wrongPwd ?>" required>
-                <?php if (isset($_SESSION['failed'])) : ?>
+                <?php if (isset($test)) : ?>
                     <?php if ($_SESSION['failed'] === 'fail') : ?>
                         <div class="invalid-feedback">
                             <h6>Please your password is not match!</h6>
@@ -54,7 +47,7 @@
                 <?php endif; ?>
             </div>
         </div>
-        <div style="display: flex;justify-content: center;margin-top: 5px;">
+        <div style="display: flex;justify-content: center;margin-top: 50px;">
             <button class="btn_login">Confirm</button>
         </div>
     </form>

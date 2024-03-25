@@ -3,6 +3,7 @@ require '../../database/database.php';
 require '../../models/login.model.php';
 // Start session
 session_start();
+$test = '';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(!empty($_POST['new_password']) && !empty($_POST['confirm_password'])){
@@ -46,6 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_SESSION['failed'] = 'success';
             }else{
                 $_SESSION['failed'] = 'fail';
+                $test = 'fail';
                 header('location: /views/login/change.pwd.view.php');
             }
         }else{
