@@ -35,7 +35,7 @@
                         <p>Position:</p>
                         <p>Role:</p>
                         <p>Gmail:</p>
-                        <p>Current Place:</p>
+                        <p>Place:</p>
                         <p>Country:</p>
                     </div>
                     <div class="infor_right">
@@ -47,10 +47,10 @@
                                 }
                             } ?>
                         </p>
-                        <p><?= $users['role'] ?></p>
-                        <p><?= $users['email'] ?></p>
-                        <p><?= $users['place'] ?></p>
-                        <p><?= $users['country'] ?></p>
+                        <p><?php echo $users['role']; ?></p>
+                        <p><?php echo $users['email']; ?></p>
+                        <p> <?php echo $country = (!empty($users['place'])) ? $users['place'] : "---------"; ?></p>
+                        <p> <?php echo $country = (!empty($users['country'])) ? $users['country'] : "---------"; ?></p>
                     </div>
                 </div>
             </div>

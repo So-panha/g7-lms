@@ -62,7 +62,7 @@
                 </div>
                 <div class="information">
                     <div class="infor_left">
-                        <p>Position:</p>
+                        <p>Department:</p>
                         <p>Role:</p>
                         <p>Gmail:</p>
                         <p>Place:</p>
@@ -78,8 +78,8 @@
                             } ?></p>
                         <p><?php echo $user['role']; ?></p>
                         <p><?php echo $user['email']; ?></p>
-                        <p><?php echo $user['place']; ?></p>
-                        <p><?php echo $user['country']; ?></p>
+                        <p> <?php echo $country = (!empty($user['place'])) ? $user['place'] : "---------"; ?></p>
+                        <p> <?php echo $country = (!empty($user['country'])) ? $user['country'] : "---------"; ?></p>
 
                     </div>
                 </div>
