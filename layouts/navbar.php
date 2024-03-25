@@ -115,10 +115,12 @@ if (!empty($_SESSION['user'])) {
                                             </a>
 
                                         </div>
+                                    <?php endif; ?>
+                                        <?php if ($_SESSION['user']['role'] != 'admin'  && $_SESSION['user']['role'] != 'manager'  && $_SESSION['user']['role'] != 'employee'): ?>
                                         <div class="col-6 align-items-center shadow-none text-center">
                                             <a href="/manages" class="text-dark p-4 ctm-border-right <?php if ($_SERVER['REQUEST_URI'] == '/manages') echo 'active'; ?> "><span class="lnr lnr-sync pr-0 pb-lg-2 font-23"></span><span class="">Manage</span></a>
                                         </div>
-                                    <?php endif; ?>
+                                        <?php endif; ?>
                                     <?php if ($_SESSION['user']['role'] != 'admin') : ?>
                                         <div class="col-6 align-items-center text-center">
                                             <!-- active navbar -->
