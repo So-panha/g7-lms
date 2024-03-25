@@ -32,13 +32,15 @@
                 </div>
                 <div class="information">
                     <div class="infor_left">
-                        <p>Position:</p>
                         <p>Role:</p>
+                        <p>Department:</p>
+                        <p>Position:</p>
                         <p>Gmail:</p>
                         <p>Place:</p>
                         <p>Country:</p>
                     </div>
                     <div class="infor_right">
+                        <p><?php echo $users['role']; ?></p>
                         <p>
                             <?php
                             foreach ($positions as $position) {
@@ -47,7 +49,7 @@
                                 }
                             } ?>
                         </p>
-                        <p><?php echo $users['role']; ?></p>
+                        <p><?php echo $position = (!empty($users['position_name'])) ?  $users['position_name'] : "----"  ?></p>
                         <p><?php echo $users['email']; ?></p>
                         <p> <?php echo $country = (!empty($users['place'])) ? $users['place'] : "---------"; ?></p>
                         <p> <?php echo $country = (!empty($users['country'])) ? $users['country'] : "---------"; ?></p>

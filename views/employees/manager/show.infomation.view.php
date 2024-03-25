@@ -32,21 +32,22 @@
                 </div>
                 <div class="information">
                     <div class="infor_left">
-                        <p>Position:</p>
                         <p>Role:</p>
+                        <p>Department:</p>
                         <p>Gmail:</p>
                         <p>Current Place:</p>
                         <p>Country:</p>
                     </div>
                     <div class="infor_right">
                         <p>
+                        <p><?= $users['role'] ?></p>
                             <?php
                             foreach ($positions as $position) {
                                 if ($userPositionID === $position['position_id']) {
                                     echo $position['position_name'];
                                 }
                             }?></p>
-                        <p><?= $users['role'] ?></p>
+                        <p><?= $users['position_name'] ?></p>
                         <p><?= $users['email'] ?></p>
                         <p><?= $users['place'] ?></p>
                         <p><?= $users['country'] ?></p>
