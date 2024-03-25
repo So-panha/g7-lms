@@ -54,11 +54,11 @@
         <ul class="list-group list-group-horizontal-lg">
             <!-- <li class="list-group-item text-center button-5"><a href="" class="text-white">All</a></li> -->
             <li class="list-group-item text-center button-5 active"><a href="" class="text-white">All</a></li>
-            <li class="list-group-item text-center button-6"><a href="/admin_employees_team" class="text-dark">Add Team</a></li>
+            <li class="list-group-item text-center button-6"><a href="/admin_employees_team" class="text-dark">View Team</a></li>
 
             <form action="" style="position: absolute;right:320px;">
                 <select class="form-control me-2" id="select-role">
-                    <option disabled selected>Employees Roles</option>
+                    <option disabled selected>Stuff Roles</option>
                     <option value="">All</option>
                     <option value="Manager">Manager</option>
                     <option value="Employee">Employees</option>
@@ -80,8 +80,8 @@
         $numberEmployees = count($users);
         ?>
 
-        <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Employees</div>
-        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add Employee</a>
+        <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Stuff</div>
+        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add New Stuff</a>
     </div>
     <!-- content -->
 
@@ -110,7 +110,7 @@
             }
         ?>
             <div class="user-card card shadow-sm bg-white text-center ctm-border-radius mr-2 ml-2 mt-4" id="main_card_user">
-                <a href="/information_user?id=<?php echo urlencode($id); ?>">
+                <a class="text-dark" href="/information_user?id=<?php echo urlencode($id); ?>">
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
                             <?php if ($gender == "Male") : ?>
@@ -123,6 +123,7 @@
                             <h5><b><?php echo strtoupper($name); ?></b></h5>
                             <input hidden type="text" value="<?= $user['role']; ?>">
                             <p><?php echo $positionName; ?></p>
+                            <p><?php echo strtoupper($user['role']); ?></p>
                             <input type="hidden" value="<?= $id ?>">
                         </div>
                     </div>
