@@ -1,6 +1,6 @@
 <div class="col-xl-9 col-lg-8  col-md-12">
   <form class="form_add_employee ctm-border-radius shadow-sm grow" method="POST" action="controllers/admin/admin.update.employee.controller.php">
-    <h2 style="font-family: 'Times New Roman', Times, serif; font-weight:bold;">Stuff details</h2>
+    <h2 style="font-family: 'Times New Roman', Times, serif; font-weight:bold;">Staff details</h2>
     <?php
     $user = getUser($user_id);
 

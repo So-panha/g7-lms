@@ -58,7 +58,7 @@
 
             <form action="" style="position: absolute;right:320px;">
                 <select class="form-control me-2" id="select-role">
-                    <option disabled selected>Stuff Roles</option>
+                    <option disabled selected>Staff Roles</option>
                     <option value="">All</option>
                     <option value="Manager">Manager</option>
                     <option value="Employee">Employees</option>
@@ -80,8 +80,8 @@
         $numberEmployees = count($users);
         ?>
 
-        <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Stuff</div>
-        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add New Stuff</a>
+        <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Staffs</div>
+        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add New Staff</a>
     </div>
     <!-- content -->
 
