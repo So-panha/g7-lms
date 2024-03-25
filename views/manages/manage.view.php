@@ -6,14 +6,14 @@
 								</div>
 							<?php foreach($allAdmin as $admin) :?>
 							<div class="row">
-								<div class="col-xl-6 col-lg-6 col-md-6 d-flex">
+								<div class="col-xl-12 col-lg-12 col-md-12 d-flex">
 									<div class="card ctm-border-radius shadow-sm grow flex-fill">
 										<div class="card-header">
 											<h4 class="card-title mb-0">Admin</h4>
 										</div>
 										<div class="card-body">
-											<p class="card-text">They can see and do everything with this app.</p>
-											<div class="mt-2">
+											<h5 class="card-text text-center">They can see and do everything like discript about them self or role on this app.</h5>
+											<div class="mt-4">
 												<span class="avatar" data-toggle="tooltip" data-placement="top" title="Richard Wilson"><img src="assets/images/profiles/<?= $admin['picture'] ?>" alt="Richard Wilson" class="img-fluid"></span>
 												<a href="#" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">Permissions</a>
 											</div>
