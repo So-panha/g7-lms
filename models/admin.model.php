@@ -73,11 +73,11 @@ function getUser(int $user_id): ?array
 }
 
 
-function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $place, string $manager, int $day_can_leave,string $picture): bool
+function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $role, string $position_id, string $manager, int $day_can_leave,string $picture): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id,place , picture, manager, day_can_leave)
-    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :place, :picture, :manager, :day_can_leave)");
+    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, role, position_id , picture, manager, day_can_leave)
+    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :role, :position_id, :picture, :manager, :day_can_leave)");
 
     $statement->execute([
         ':fname' => $fname,
@@ -86,10 +86,8 @@ function insertEmployee(string $fname, string $lname, string $password, string $
         ':email' => $email,
         ':sendInvite' => $sendInvite,
         ':gender' => $gender,
-        ':country' => $country,
         ':role' => $role,
         ':position_id' => $position_id,
-        ':place' => $place,
         ':picture' => $picture,
         ':manager' => $manager,
         ':day_can_leave' => $day_can_leave,

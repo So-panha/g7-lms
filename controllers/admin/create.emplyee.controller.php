@@ -22,10 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         && !empty($_POST['password'])
         && !empty($_POST['email'])
         && !empty($_POST['gender'])
-        && !empty($_POST['country'])
         && !empty($_POST['role'])
         && !empty($_POST['position'])
-        && !empty($_POST['place'])
+        && !empty($_POST['department'])
     ) {
         // Retrieve the values from the form
         $fname = $_POST['fname'];
@@ -34,10 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];
         $sendInvite = isset($_POST['send_invite']) ? $_POST['send_invite'] : '';
         $gender = $_POST['gender'];
-        $country = $_POST['country'];
         $role = $_POST['role'];
-        $position_id = $_POST['position'];
-        $place = $_POST['place'];
+        $depament_id = $_POST['department'];
+        $position = $_POST['position'];
         $manager = $_POST['manager'];
         $day_can_leave = 2;
 
@@ -46,12 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $lname = htmlspecialchars($lname);
         $password = htmlspecialchars($password);
         $email = htmlspecialchars($email);
+        $position = htmlspecialchars($position);
 
         // trim space data from form
         $fname = trim($fname);
         $Iname = trim($lname);
         $password = trim($password);
         $email = trim($email);
+        $position = trim($position);
 
         // if account no have manager
         if ($manager === null) {
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Insert employee data into the database
         if(!$isHasAcc){
-            $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $country, $role, $position_id, $place, $manager, $day_can_leave, $picture);
+            $insert = insertEmployee($fname, $lname, $pwdEncript, $email, $sendInvite, $gender, $role, $depament_id, $manager, $day_can_leave, $picture);
 
             // send to email by Gmail
             //Create an instance; passing `true` enables exceptions

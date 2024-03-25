@@ -30,24 +30,29 @@
       <input type="radio" id="gender" name="gender" value="female">
       <label for="female">Female</label><br>
     </div>
-    <!-- employee from -->
-    <label for="country">Place Born:</label>
-    <select class="country" name="country">
-      <option value="">Country of employee</option>
-      <option value="Cambodia">Cambodia</option>
-      <option value="English">English</option>
-      <option value="France">France</option>
-    </select>
+
     <!-- role employees -->
     <label for="role">Role:</label>
     <select class="roles" name="role">
       <option value="">Role</option>
       <option value="employee">Employee</option>
-      <option value="admin">Admin</option>
       <option value="manager">Manager</option>
     </select>
+
+
+     <!-- Title job -->
+     <label for="position">Department:</label>
+    <select class="position" name="department">
+      <option value="" disabled selected>Department</option>
+      <option value="1">IT</option>
+      <option value="2">PL</option>
+      <option value="3">English</option>
+      <option value="4">Tranning</option>
+      <option value="5">Socail development</option>
+    </select>
+
     <!-- manager -->
-    <label for="Manager">Manager</label><br>
+    <label for="Manager">Manager Of Departments</label><br>
     <div class="card-position">
       <div class="flex-row list-group list-group-horizontal-lg" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="active list-group-item" id="v-pills-home-tabs" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" onclick="filterManagers('IT')">IT</a>
@@ -57,15 +62,16 @@
         <a class="list-group-item" id="v-pills-home-tabs" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false" onclick="filterManagers('Social Development')">Social Development</a>
       </div>
     </div>
-
+     
     <select class="manager" name="manager" id="manager">
-      <option disabled selected>Manager</option>
+      <option disabled selected>Manager Of Departments</option>
     </select>
 
     <script>
       window.onload = function() {
         filterManagers('IT');
       };
+      
 
       function filterManagers(position) {
         var managers = <?php echo json_encode($managers); ?>;
@@ -83,45 +89,9 @@
       }
     </script>
 
-    <!-- Title job -->
-    <label for="position">Position:</label>
-    <select class="position" name="position">
-      <option value="">Possition</option>
-      <option value="1">IT</option>
-      <option value="2">PL</option>
-      <option value="3">English</option>
-      <option value="4">Tranning</option>
-      <option value="5">Socail development</option>
-    </select>
-    <!-- place employee -->
-    <label for="place">Place:</label>
-    <select class="roles" name="place">
-      <option value="">Place</option>
-      <option value="phnom Penh">Phnom Penh</option>
-      <option value="kampong cham">Kampong Cham</option>
-      <option value="prey veng">Prey Veng</option>
-      <option value="tbong khmom">Tbong Khmom</option>
-      <option value="stung treng">Stung Treng</option>
-      <option value="rattanakiri">Rattanakiri</option>
-      <option value="mondulkiri">Mondulkiri</option>
-      <option value="krate">Krate</option>
-      <option value="kampong chhnang">Kampong Chhnamg</option>
-      <option value="kandal">Kandal</option>
-      <option value="preak sihanouk">Preak Sihanouk</option>
-      <option value="kampong speu">Kampong Speu</option>
-      <option value="takeo">Takeo</option>
-      <option value="koh kong">Koh Kong</option>
-      <option value="kep">Kep</option>
-      <option value="siem reap">Siem Reap</option>
-      <option value="battambang">Battambang</option>
-      <option value="preah vihear">Preah Vihear</option>
-      <option value="bantey meanchey">Bangtey Meanchey</option>
-      <option value="kampong thom">Kampong Thom</option>
-      <option value="odor meanchey">Odor Meanchey</option>
-      <option value="pailin">Pailin</option>
-      <option value="pursat">Pursat</option>
-      <option value="svay rieng">Svay rieng</option>
-    </select>
+    <label for="Manager">Position</label><br>
+    <input type="text" class="fname" id="fname" name="position" placeholder="Fill position">
+
     <div class="button">
       <button type="submit" class="btn-form btn-warning" id="update_btn">Add employee</button>
     </div>
