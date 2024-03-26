@@ -24,15 +24,41 @@
             }, 4000);
         </script>
     <?php } ?>
+
+    <!--  Show if can create or not -->
+    <!-- Alert when it success for updating or not -->
+    <?php if (isset($_SESSION['createNew'])) { ?>
+        <?php if ($_SESSION['createNew'] == 'done') { ?>
+            <div class="alert alert-success alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Create account successfully</strong>
+            </div>
+        <?php } ?>
+        <?php if ($_SESSION['createNew'] == 'notDone') { ?>
+            <div class="alert alert-danger alert-dismissible grow" id="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Your email have been used already</strong>
+            </div>
+        <?php } ?>
+        <!-- remove session alert -->
+        <?php unset($_SESSION['createNew']) ?>
+        <!-- remove message -->
+        <script>
+            let createAlert = document.querySelector('.alert');
+            setTimeout(function() {
+                createAlert.remove();
+            }, 4000);
+        </script>
+    <?php } ?>
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white p-4 mb-4 card">
         <ul class="list-group list-group-horizontal-lg">
             <!-- <li class="list-group-item text-center button-5"><a href="" class="text-white">All</a></li> -->
             <li class="list-group-item text-center button-5 active"><a href="" class="text-white">All</a></li>
-            <li class="list-group-item text-center button-6"><a href="/admin_employees_team" class="text-dark">Add Team</a></li>
+            <li class="list-group-item text-center button-6"><a href="/admin_employees_team" class="text-dark">View Team</a></li>
 
             <form action="" style="position: absolute;right:320px;">
                 <select class="form-control me-2" id="select-role">
-                    <option disabled selected>Employees Roles</option>
+                    <option disabled selected>Staff Roles</option>
                     <option value="">All</option>
                     <option value="Manager">Manager</option>
                     <option value="Employee">Employees</option>
@@ -54,8 +80,8 @@
         $numberEmployees = count($users);
         ?>
 
-        <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Employees</div>
-        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add Employee</a>
+        <div class="p-2 bg-light"><?php echo $numberEmployees; ?> Staffs</div>
+        <a href="/add_employee" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add New Staff</a>
     </div>
     <!-- content -->
 
@@ -84,7 +110,7 @@
             }
         ?>
             <div class="user-card card shadow-sm bg-white text-center ctm-border-radius mr-2 ml-2 mt-4" id="main_card_user">
-                <a href="/information_user?id=<?php echo urlencode($id); ?>">
+                <a class="text-dark" href="/information_user?id=<?php echo urlencode($id); ?>">
                     <div class="user-info card-body" style="width:260px;">
                         <div class="user-avatar mb-4">
                             <?php if ($gender == "Male") : ?>
@@ -96,6 +122,7 @@
                         <div class="user-details">
                             <h5><b><?php echo strtoupper($name); ?></b></h5>
                             <input hidden type="text" value="<?= $user['role']; ?>">
+                            <p><?php echo strtoupper($user['role']); ?></p>
                             <p><?php echo $positionName; ?></p>
                             <input type="hidden" value="<?= $id ?>">
                         </div>
@@ -107,7 +134,7 @@
         <?php
         }
         ?>
-    <h2 style="display: none;" class="noData">No have data of the user</h2>
+        <h2 style="display: none;" class="noData">No have data of the user</h2>
     </div>
 </div>
 <!-- Script search bar and select -->
@@ -124,25 +151,25 @@
             } else {
                 countCard += 1;
                 user.style.display = 'none';
-                if(countCard == users.length){
+                if (countCard == users.length) {
                     document.querySelector('.noData').style.display = 'block';
                 }
             }
         });
     });
-    
-    document.getElementById('select-role').addEventListener('change',(e)=>{
+
+    document.getElementById('select-role').addEventListener('change', (e) => {
         countCard = 0;
         users.forEach(user => {
-            var roles = document.getElementById('select-role').value.toLocaleLowerCase();
-            let userName = user.children[0].children[0].children[1].children[1].value.toLocaleLowerCase();
+            var roles = document.getElementById('select-role').value.toLowerCase();
+            let userName = user.children[0].children[0].children[1].children[1].value.toLowerCase();
             if (userName.includes(roles) === true) {
                 user.style.display = 'block';
                 document.querySelector('.noData').style.display = 'none';
             } else {
                 user.style.display = 'none';
                 countCard += 1;
-                if(countCard == roles.length){
+                if (countCard == users.length) {
                     document.querySelector('.noData').style.display = 'block';
                 }
             }

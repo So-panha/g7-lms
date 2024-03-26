@@ -1,28 +1,16 @@
 <!-- Only allow for admin -->
 <?php if ($_SESSION['user']['role'] === 'admin') : ?>
 	<div class="card ctm-border-radius shadow-sm grow">
-		<div class="card-body">
-			<a href="javascript:void(0)" class="btn btn-theme button-1 ctm-border-radius text-white btn-block" data-toggle="modal" data-target="#add_event"><span><i class="fe fe-plus"></i></span> Create New</a>
-		</div>
 	</div>
 	<div class="card ctm-border-radius shadow-sm grow">
 		<div class="card-body">
 			<h4 class="card-title">Drag & Drop Event</h4>
 			<div id="calendar-events" class="mb-3">
-				<div class="calendar-events" data-class="bg-info"><i class="fa fa-circle text-info"></i> My Event One</div>
-				<div class="calendar-events" data-class="bg-success"><i class="fa fa-circle text-success"></i> My Event Two</div>
-				<div class="calendar-events" data-class="bg-danger"><i class="fa fa-circle text-danger"></i> My Event Three</div>
-				<div class="calendar-events" data-class="bg-warning"><i class="fa fa-circle text-warning"></i> My Event Four</div>
+				<div class="calendar-events" data-class="bg-info"><i class="fa fa-circle text-info"></i>Event holiday</div>
+				<div class="calendar-events" data-class="bg-success"><i class="fa fa-circle text-success"></i>Event meeting</div>
+				<div class="calendar-events" data-class="bg-danger"><i class="fa fa-circle text-danger"></i>Event celebraty</div>
+				<div class="calendar-events" data-class="bg-warning"><i class="fa fa-circle text-warning"></i>Event party</div>
 			</div>
-			<div class="checkbox  mb-3">
-				<input id="drop-remove" type="checkbox">
-				<label for="drop-remove">
-					Remove after drop
-				</label>
-			</div>
-			<a href="javascript:void(0)" data-toggle="modal" data-target="#add_new_event" class="btn mb-3 btn-theme text-white ctm-border-radius btn-block">
-				<i class="fa fa-plus"></i> Add Category
-			</a>
 		</div>
 	</div>
 	</aside>
@@ -147,3 +135,30 @@
 	</div>
 <?php endif; ?>
 <!-- /Add Category Modal -->
+
+
+
+
+<div class="modal fade" id="confirm-modal">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header d-flex justify-content-center bg-danger">
+				<h4 class="modal-title text-white">Are you sure to Change your event?</h4>
+				<button style="position:absolute;right:20px;border:none" type="button" class="btn-close bg-danger" id="cancel-icon" data-bs-dismiss="modal"><i class="fa fa-close text-white" style="font-size:20px"></i></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<p class="text-center">Click on button to confirm for deleting your event</p>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" data-bs-toggle="modal" id="cancel" class="btn btn-danger d-flex justify-content-center confirm-btn">Cancel</button>
+				<button type="button" data-bs-toggle="modal" id="confirm" class="btn btn-primary d-flex justify-content-center confirm-btn">Confirm</button>
+			</div>
+
+		</div>
+	</div>

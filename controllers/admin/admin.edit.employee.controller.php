@@ -6,4 +6,6 @@ require 'models/admin.model.php';
 $user_id = $_GET['id'] ? $_GET['id'] : null;
 $users = getUser($user_id);
 // request file view edit
+// Managers
+$managers = managers();
 require "views/admin/admin.edit.employee.view.php";

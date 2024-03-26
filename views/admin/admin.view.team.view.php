@@ -18,13 +18,23 @@
                     <td><?= $manager['role'] ?></td>
                     <td><?= $manager['position_name'] ?></td>
                 </tr> 
-                <?php foreach ($groupMembers as $member) : ?> <!-- employees -->
-                    <tr>
-                        <td scope="row"><img class="img-team" src="/assets/images/profiles/<?= $member['picture'] ?>"></td>
-                        <td><?= $member['fname'] . ' ' . $member['lname'] ?></td>
-                        <td><?= $member['role'] ?></td>
-                        <td><?= $member['position_name'] ?></td>
+                <?php if($manager['manager'] == 0):?>
+                    <?php foreach ($groupMemberManager as $member) : ?> <!-- employees -->
+                        <tr>
+                            <td scope="row"><img class="img-team" src="/assets/images/profiles/<?= $member['picture'] ?>"></td>
+                            <td><?= $member['fname'] . ' ' . $member['lname'] ?></td>
+                            <td><?= $member['role'] ?></td>
+                            <td><?= $member['position_name'] ?></td>
                     </tr> <?php endforeach; ?>
+                <?php else :?>
+                    <?php foreach ($groupMembers as $member) : ?> <!-- employees -->
+                        <tr>
+                            <td scope="row"><img class="img-team" src="/assets/images/profiles/<?= $member['picture'] ?>"></td>
+                            <td><?= $member['fname'] . ' ' . $member['lname'] ?></td>
+                            <td><?= $member['role'] ?></td>
+                            <td><?= $member['position_name'] ?></td>
+                    </tr> <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>

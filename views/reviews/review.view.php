@@ -97,7 +97,7 @@
 										let indexEnd = dayStart.search('/');
 
 										// Call the day leave back
-										let dayLeave = Number(dayEnd.slice(0,indexEnd) - Number(dayStart.slice(0,indexStart)));
+										let dayLeave = Number(dayEnd.slice(0, indexEnd) - Number(dayStart.slice(0, indexStart)));
 										// Call model
 										showModal(leaveID, tr, dayLeave)
 									})
@@ -109,121 +109,40 @@
 				<!--/Tab 1-->
 
 				<!-- Tab2-->
+
+				<!-- Cancel Leave History -->
 				<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 					<div class="employee-office-table">
-						<div class="table-responsive">
-							<table class="table custom-table table-hover">
+						<div class="table-responsive ">
+							<table class="table custom-table table-hover ml-5">
 								<thead>
 									<tr>
-										<th>Name</th>
-										<th>Created By</th>
-										<th>Scheduled For</th>
-										<th>Actions</th>
+										<th>Type Leave</th>
+										<th>Date Request</th>
+										<th>Reason</th>
+										<th>Start Leave</th>
+										<th>End Leave</th>
 									</tr>
 								</thead>
 								<tbody>
+									<?php foreach ($personalHistoryRequest as $cancelHistroy) : ?>
+										<?php if ($cancelHistroy['process'] == 'cancel') : ?>
+											<tr>
+												<td>
+													<?php foreach ($typeRequests as $typeRequest) {
 
-									<tr>
-										<td>Monthly Review</td>
-										<td>
-											<a href="employment.html" class="avatar"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-10.jpg"></a>
-											<h2><a href="employment.html"> Richard Wilson</a></h2>
-										</td>
-										<td>
-											Everyone
-										</td>
-										<td>
-											<div class="table-action">
-												<a href="edit-review.html" class="btn btn-sm btn-outline-success">
-													<span class="lnr lnr-pencil"></span> Edit
-												</a>
-												<a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
-													<span class="lnr lnr-trash"></span> Delete
-												</a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Employees Review</td>
-										<td>
-											<a href="employment.html" class="avatar"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-10.jpg"></a>
-											<h2><a href="employment.html"> Richard Wilson</a></h2>
-										</td>
-										<td>
-											Everyone
-										</td>
-										<td>
-											<div class="table-action">
-												<a href="edit-review.html" class="btn btn-sm btn-outline-success">
-													<span class="lnr lnr-pencil"></span> Edit
-												</a>
-												<a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
-													<span class="lnr lnr-trash"></span> Delete
-												</a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Employees Review</td>
-										<td>
-											<a href="employment.html" class="avatar"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-10.jpg"></a>
-											<h2><a href="employment.html"> Richard Wilson</a></h2>
-										</td>
-										<td>
-											Everyone
-										</td>
-										<td>
-											<div class="table-action">
-												<a href="edit-review.html" class="btn btn-sm btn-outline-success">
-													<span class="lnr lnr-pencil"></span> Edit
-												</a>
-												<a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
-													<span class="lnr lnr-trash"></span> Delete
-												</a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Employees Review</td>
-										<td>
-											<a href="employment.html" class="avatar"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-10.jpg"></a>
-											<h2><a href="employment.html"> Richard Wilson</a></h2>
-										</td>
-										<td>
-											Everyone
-										</td>
-										<td>
-											<div class="table-action">
-												<a href="edit-review.html" class="btn btn-sm btn-outline-success">
-													<span class="lnr lnr-pencil"></span> Edit
-												</a>
-												<a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
-													<span class="lnr lnr-trash"></span> Delete
-												</a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Employees Review</td>
-										<td>
-											<a href="employment.html" class="avatar"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-10.jpg"></a>
-											<h2><a href="employment.html"> Richard Wilson</a></h2>
-										</td>
-										<td>
-											Everyone
-										</td>
-										<td>
-											<div class="table-action">
-												<a href="edit-review.html" class="btn btn-sm btn-outline-success">
-													<span class="lnr lnr-pencil"></span> Edit
-												</a>
-												<a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete">
-													<span class="lnr lnr-trash"></span> Delete
-												</a>
-											</div>
-										</td>
-									</tr>
-
+														if ($request['type_leave'] === $typeRequest['type_leave_id']) {
+															echo $typeRequest['type_leave_name'];
+														}
+													} ?>
+												</td>
+												<td><?= $cancelHistroy['date_request'] ?></td>
+												<td><?= $cancelHistroy['reason'] ?></td>
+												<td><?= $cancelHistroy['start_leave'] ?></td>
+												<td><?= $cancelHistroy['end_leave'] ?></td>
+											</tr>
+										<?php endif; ?>
+									<?php endforeach; ?>
 								</tbody>
 							</table>
 						</div>
@@ -271,10 +190,10 @@
 				// Add action to button confirm
 				cancel_btn.addEventListener('click', function() {
 					// Function for call to back-end to remove
-						$.post("../../controllers/reviews/concel.controller.php", {
-							leave: leaveID,
-							backDay: backDay
-						});
+					$.post("../../controllers/reviews/concel.controller.php", {
+						leave: leaveID,
+						backDay: backDay
+					});
 					// Remove main leave
 					mainLeave.remove();
 					// Reset tr

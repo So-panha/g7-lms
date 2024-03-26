@@ -61,6 +61,9 @@
         <div class="login_btn">
             <button  class="btn_login">Log In</button>
         </div>
+        <div class="d-flex justify-content-center">
+            <a href="reset_password">Reset Password</a>
+        </div>
        
 
         <!-- script for change to see password or close password  -->

@@ -124,11 +124,13 @@
         </div>
 
         <div class="col-lg-6 d-flex">
-            <!-- Team Leads List -->
+            <!-- Team members List -->
             <div class="card flex-fill team-lead shadow-sm grow">
                 <div class="card-header">
                     <h4 class="card-title mb-0 d-inline-block">Members</h4>
+                    <?php if($_SESSION["user"]["role"] == "admin"):?>
                     <p class="dash-card float-right mb-0 text-primary">Team member</p>
+                    <?php endif;?>
                 </div>
                 <div class="card-body">
                     <?php for ($i = 0; $i < count($members); $i++) : ?>
@@ -151,7 +153,7 @@
                     <h4 class="card-title mb-0 d-inline-block">
                         Date Leave
                     </h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
+                    <a  href="#/" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
                 </div>
                 <div class="card-body recent-activ">
                     <div class="recent-comment">
@@ -163,7 +165,7 @@
                                 <a href="javascript:void(0)" class="dash-card text-danger">
                                     <div class="dash-card-container">
                                         <div class="dash-card-content mr-2">
-                                            <img src="assets/images/profiles/<?= $request['picture'] ?>"" alt=" User Avatar" class=" rounded-circle" width="40px" height="40px">
+                                            <img src="assets/images/profiles/<?= $request['picture'] ?>"alt=" User Avatar" class=" rounded-circle" width="40px" height="40px">
                                         </div>
                                         <div class="dash-card-content mr-2">
                                             <h6 class="mb-0"><?php echo strtoupper($request['fname']) ?></h6>

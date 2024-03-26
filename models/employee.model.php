@@ -206,21 +206,7 @@ function taken(string $taken, int $user_id): bool
 
     return $statement->rowCount() > 0;
 }
-// Catch infor of each member
-function inforOfMember($memberId)
-{
-    global $connection;
-    $query = "SELECT users.user_id, users.fname, users.lname, users.gender, users.email, users.place, users.amount,users.password ,users.sendInvite,users.role,users.country,position.position_name FROM users 
-    INNER JOIN position WHERE position.position_id = users.position_id AND users.user_id = :id";
-    $STMT = $connection->prepare($query);
-    $STMT->execute(
-        [
-            ':id' => $memberId
-        ]
-    );
 
-    return $STMT->fetch();
-}
 
 // Check id
 function getChecked($id): array

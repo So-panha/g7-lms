@@ -37,39 +37,110 @@
         /* on click on event */
         CalendarApp.prototype.onEventClick = function (calEvent, jsEvent, view) {
             var $this = this;
+
+            // Call date of time
+            let start = calEvent.start;
+            let end = calEvent.end;
+
+            var eventStart = new Date(start._i);
+            var eventEnd = new Date(end._i);
+
+            var hourStart = eventStart.getHours();
+            var minuteStart = eventStart.getMinutes();
+            var secondStart = eventStart.getSeconds();
+
+            var hourEnd = eventEnd.getHours();
+            var minuteEnd = eventEnd.getMinutes();
+            var secondEnd = eventEnd.getSeconds();
+
+            // Add leading zeros if necessary
+            var formattedTimeStart = [
+                hourStart.toString().padStart(2, "0"),
+                minuteStart.toString().padStart(2, "0"),
+                secondStart.toString().padStart(2, "0")
+            ].join(":");
+
+            var formattedTimeEnd = [
+                hourEnd.toString().padStart(2, "0"),
+                minuteEnd.toString().padStart(2, "0"),
+                secondEnd.toString().padStart(2, "0")
+            ].join(":");
+
+            // Form
             var form = $("<form></form>");
             form.append("<label>Change event name</label>");
             form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-append'><button type='submit' class='btn btn-success'><i class='fa fa-check'></i> Save</button></span></div>");
+            form.append("<label>Time event start</label>");
+            form.append("<div  class='input-group'><input id='eventStart' class='form-control' type=text value=" + formattedTimeStart + "></div>");
+            form.append("<label>Time event end</label>");
+            form.append("<div  class='input-group'><input id='eventEnd' class='form-control' type=text value=" + formattedTimeEnd + "></div>");
             $this.$modal.modal({
                 backdrop: 'static'
             });
+
             $this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
-                $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
-                    // catch event id 
-                    var event_id = calEvent._id;
-                    // Call to delete event in database
-                    $(document).ready(function () {
-                        $.post('controllers/calendars/delete.event.controller.php',
-                            {
-                                event_id: event_id,
-                            });
+                $('#confirm-modal').modal('show');
+                $('#confirm').click(() => {
+                    $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
+                        // catch event id 
+                        var event_id = calEvent._id;
+                        console.log(event_id);
+                        // Call to delete event in database
+                        $(document).ready(function () {
+                            $.post('controllers/calendars/delete.event.controller.php',
+                                {
+                                    event_id: event_id,
+                                });
+                        });
+                        return (ev._id == calEvent._id);
                     });
-                    return (ev._id == calEvent._id);
-                });
-                $this.$modal.modal('hide');
+                    $this.$modal.modal('hide');
+                    $('#confirm-modal').modal('hide');
+                })
+                // Concel btn
+                $('#cancel').click(() => {
+                    $('#confirm-modal').modal('hide');
+                })
+                $('#cancel-icon').click(() => {
+                    $('#confirm-modal').modal('hide');
+                })
+
             });
+
             // Update form of event
             $this.$modal.find('form').on('submit', function () {
                 calEvent.title = form.find("input[type=text]").val();
                 $this.$calendarObj.fullCalendar('updateEvent', calEvent);
                 // catch event id 
                 var event_id = calEvent._id;
+
+                let dayStart = calEvent.start;
+                let dayEnd = calEvent.end;
+
+                dayStart = start._i;
+                dayEnd = end._i;
+
+                dayStart = dayStart.substr(0, 10);
+                dayEnd = dayEnd.substr(0, 10);
+
+                // Time update format
+                var timeStart = $('#eventStart').val();
+                var timeEnd = $('#eventEnd').val();
+                console.log(timeStart);
+
+                var dateStart = `${dayStart} ${timeStart}`;
+                var dateEnd = `${dayEnd} ${timeEnd}`;
+
+
+
                 // Call to edit event in database
                 $(document).ready(function () {
                     $.post('controllers/calendars/edit.event.controller.php',
                         {
                             event_id: event_id,
-                            calEvent: calEvent.title
+                            calEvent: calEvent.title,
+                            start: dateStart,
+                            end: dateEnd
                         });
                 });
                 $this.$modal.modal('hide');
@@ -103,6 +174,7 @@
                 var title = form.find("input[name='title']").val();
                 var categoryClass = form.find("select[name='category'] option:checked").val();
                 if (title !== null && title.length != 0) {
+                    console.log(1);
 
                     // Set date and time for calendar
                     var startDateTime = start.format('YYYY-MM-DD HH:mm:ss');
@@ -117,21 +189,29 @@
                                 end: endDateTime,
                                 category: categoryClass,
                             });
-                        // for mock up
-                        $this.$calendarObj.fullCalendar('renderEvent', {
-                            title: title,
-                            start: start,
-                            end: end,
-                            allDay: false,
-                            className: categoryClass
-                        }, true);
+                        $.ajax({
+                            url: 'controllers/calendars/getId.controller.php',
+                            method: 'GET',
+                            async: true,
+                            success: function (response) {
+                                // Create mock up
+                                var id = JSON.parse(response).event_id;
+                                $this.$calendarObj.fullCalendar('renderEvent', {
+                                    id: id,
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                    allDay: false,
+                                    className: categoryClass
+                                }, true);
+                            }
+                        });
+                        $this.$modal.modal('hide');
                     });
-
-                    $this.$modal.modal('hide');
+                    return false;
                 } else {
                     alert('You have to give a title to your event');
                 }
-                return false;
             });
             $this.$calendarObj.fullCalendar('unselect');
         },

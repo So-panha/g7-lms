@@ -42,16 +42,27 @@ function deleteEvent(int $id): bool
 }
 
 // Function for editing event
-function editEvent(int $id, string $event_name): bool
+function editEvent(int $id, string $event_name, string $eventStart,string $eventEnd): bool
 {
     global $connection;
-    $query = 'UPDATE calendar SET event_name = :event_name WHERE event_id = :id';
+    $query = 'UPDATE calendar SET event_name = :event_name, event_start_date = :eventStart, event_end_date = :eventEnd WHERE event_id = :id';
     $STMT = $connection->prepare($query);
     $STMT->execute(
         [
             ':id' => $id,
-            ':event_name' => $event_name
+            ':event_name' => $event_name,
+            ':eventStart' => $eventStart,
+            ':eventEnd' => $eventEnd
         ]
     );
     return $STMT->rowCount()  < 0;
+}
+
+function getEventId() :array
+{
+    global $connection;
+    $query = 'SELECT event_id FROM calendar ORDER BY event_id DESC LIMIT 1';
+    $STMT = $connection->prepare($query);
+    $STMT->execute();
+    return $STMT->fetch();
 }

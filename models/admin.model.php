@@ -73,11 +73,11 @@ function getUser(int $user_id): ?array
 }
 
 
-function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $country, string $role, string $position_id, string $place, string $manager, int $day_can_leave): bool
+function insertEmployee(string $fname, string $lname, string $password, string $email, string $sendInvite, string $gender, string $role, string $position_id, string $manager, int $day_can_leave,string $picture, string $position_name): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, country, role, position_id,place , picture, manager, day_can_leave)
-    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :country, :role, :position_id, :place, :picture, :manager, :day_can_leave)");
+    $statement = $connection->prepare("INSERT INTO users (fname, lname, password, email, sendInvite, gender, role, position_id , picture, manager, day_can_leave, position_name)
+    VALUES (:fname, :lname, :password, :email, :sendInvite, :gender, :role, :position_id, :picture, :manager, :day_can_leave, :position_name)");
 
     $statement->execute([
         ':fname' => $fname,
@@ -86,11 +86,10 @@ function insertEmployee(string $fname, string $lname, string $password, string $
         ':email' => $email,
         ':sendInvite' => $sendInvite,
         ':gender' => $gender,
-        ':country' => $country,
         ':role' => $role,
         ':position_id' => $position_id,
-        ':place' => $place,
-        ':picture' => 'user.jpg',
+        ':position_name' => $position_name,
+        ':picture' => $picture,
         ':manager' => $manager,
         ':day_can_leave' => $day_can_leave,
     ]);
@@ -98,10 +97,10 @@ function insertEmployee(string $fname, string $lname, string $password, string $
     return $statement->rowCount() > 0;
 }
 
-function updateEmployee(int $user_id, string $fname, string $lname, string $password, string $email, bool $sendInvite, string $gender, string $country, string $role, int $position_id, string $place): bool
+function updateOwnAcc(int $user_id, string $fname, string $lname, string $password, string $email, bool $sendInvite, string $gender, string $country, string $role, int $position_id, string $place, string $manager): bool
 {
     global $connection;
-    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, sendInvite = :sendInvite, gender = :gender, country = :country, role = :role, position_id = :position_id, place = :place WHERE user_id = :id");
+    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, sendInvite = :sendInvite, gender = :gender, country = :country, role = :role, position_id = :position_id, place = :place, manager = :manager WHERE user_id = :id");
     $statement->execute([
         ':fname' => $fname,
         ':lname' => $lname,
@@ -113,6 +112,48 @@ function updateEmployee(int $user_id, string $fname, string $lname, string $pass
         ':role' => $role,
         ':position_id' => $position_id,
         ':place' => $place,
+        ':manager' => $manager,
+        ':id' => $user_id
+    ]);
+
+    return $statement->rowCount() > 0;
+}
+
+
+
+function updateEmployee(int $user_id, string $fname, string $lname, string $password, string $email, string $gender, string $role, int $position_id, string $manager, string $position_name): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, gender = :gender, role = :role, position_id = :position_id, manager = :manager, position_name = :position_name WHERE user_id = :id");
+    $statement->execute([
+        ':fname' => $fname,
+        ':lname' => $lname,
+        ':password' => $password,
+        ':email' => $email,
+        ':gender' => $gender,
+        ':role' => $role,
+        ':position_id' => $position_id,
+        ':manager' => $manager,
+        ':position_name' => $position_name,
+        ':id' => $user_id
+    ]);
+
+    return $statement->rowCount() > 0;
+}
+
+function updateHeaderManager(int $user_id, string $fname, string $lname, string $password, string $email, string $gender, string $role, int $position_id, string $position_name): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET fname = :fname, lname = :lname, password = :password, email = :email, gender = :gender, role = :role, position_id = :position_id, position_name = :position_name WHERE user_id = :id");
+    $statement->execute([
+        ':fname' => $fname,
+        ':lname' => $lname,
+        ':password' => $password,
+        ':email' => $email,
+        ':gender' => $gender,
+        ':role' => $role,
+        ':position_id' => $position_id,
+        ':position_name' => $position_name,
         ':id' => $user_id
     ]);
 
@@ -146,7 +187,7 @@ function positions(): array
 function managers(): array
 {
     global $connection;
-    $query = "SELECT users.user_id, users.fname, users.lname,users.role, users.picture, position.position_name FROM users INNER JOIN position WHERE users.position_id = position.position_id AND users.role = 'manager'";
+    $query = "SELECT users.user_id, users.fname, users.lname,users.role, users.picture, users.manager, position.position_name FROM users INNER JOIN position WHERE users.position_id = position.position_id AND users.role = 'manager'";
     $STMT = $connection->prepare($query);
     $STMT->execute();
 
@@ -203,7 +244,21 @@ function getChecked($id): array
 function groupPeople($managerId):array
 {
     global $connection;
-    $query = 'SELECT users.fname, users.lname,users.picture, users.role, position.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND manager=:manager';
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role,users.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND users.role != "manager" AND manager=:manager';
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ':manager' => $managerId
+        ]
+    );
+
+    return $STMT->fetchAll();
+}
+// Get team and members
+function groupPeopleManager($managerId):array
+{
+    global $connection;
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role, users.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND users.role != "employee" AND manager=:manager';
     $STMT = $connection->prepare($query);
     $STMT->execute(
         [
@@ -217,7 +272,7 @@ function groupPeople($managerId):array
 function Groupmanager($managerId):array
 {
     global $connection;
-    $query = 'SELECT users.fname, users.lname,users.picture, users.role, position.position_name FROM users INNER JOIN position WHERE position.position_id = users.position_id AND user_id=:user_id';
+    $query = 'SELECT users.fname, users.lname,users.picture, users.role, users.position_name, users.manager FROM users INNER JOIN position WHERE position.position_id = users.position_id AND user_id=:user_id';
     $STMT = $connection->prepare($query);
     $STMT->execute(
         [
@@ -226,4 +281,43 @@ function Groupmanager($managerId):array
     );
 
     return $STMT->fetch();
+}
+
+// Get total leave in each month
+function totalLeave(){
+    global $connection;
+    $query = 'SELECT start_leave, checked FROM request_leave';
+    $STMT = $connection->prepare($query);
+    $STMT->execute();
+    return $STMT->fetchAll();
+}
+
+// Check account when create a new
+function checkAcc(string $email) :bool
+{
+    global $connection;
+    $query = "SELECT user_id FROM users WHERE email = :email";
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ":email" => $email
+        ]
+        );
+    return $STMT->rowCount() > 0;
+}
+
+
+// Get admin
+// Check account when create a new
+function getAdmin() :array
+{
+    global $connection;
+    $query = "SELECT * FROM users WHERE role = :role";
+    $STMT = $connection->prepare($query);
+    $STMT->execute(
+        [
+            ":role" => "admin"
+        ]
+        );
+    return $STMT->fetchAll();
 }

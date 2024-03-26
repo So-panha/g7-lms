@@ -13,6 +13,30 @@
 
 <body>
     <div class=" grow col-xl-9 col-lg-8 col-md-12 grow ">
+        <!-- Alert when it success for updating or not -->
+        <?php if (isset($_SESSION['update'])) { ?>
+            <?php if ($_SESSION['update'] == 'Success') { ?>
+                <div class="alert alert-success alert-dismissible grow" id="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><?= $_SESSION['update'] . ' for update information of your employee!' ?></strong>
+                </div>
+            <?php } ?>
+            <?php if ($_SESSION['update'] == 'Unsuccess') { ?>
+                <div class="alert alert-danger alert-dismissible grow" id="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><?= $_SESSION['update'] . ' for update information of your employee please fill form before you submit!' ?></strong>
+                </div>
+            <?php } ?>
+            <!-- remove session alert -->
+            <?php unset($_SESSION['update']) ?>
+            <!-- remove message -->
+            <script>
+                let showALert = document.querySelector('.alert');
+                setTimeout(function() {
+                    showALert.remove();
+                }, 4000);
+            </script>
+        <?php } ?>
         <div class="background">
         </div>
         <?php
@@ -38,24 +62,27 @@
                 </div>
                 <div class="information">
                     <div class="infor_left">
-                        <p>Position:</p>
                         <p>Role:</p>
+                        <p>Department:</p>
+                        <p>Position:</p>
                         <p>Gmail:</p>
                         <p>Place:</p>
                         <p>Country:</p>
                     </div>
                     <div class="infor_right">
+                        <p><?php echo $user['role']; ?></p>
                         <p>
                             <?php
                             foreach ($positions as $position) {
                                 if ($userPositionID == $position['position_id']) {
                                     echo $position['position_name'];
                                 }
-                            } ?></p>
-                        <p><?php echo $user['role']; ?></p>
+                            } ?>
+                        </p>
+                        <p><?php echo $position = (!empty($users['position_name'])) ?  $users['position_name'] : "----"  ?></p>
                         <p><?php echo $user['email']; ?></p>
-                        <p><?php echo $user['place']; ?></p>
-                        <p><?php echo $user['country']; ?></p>
+                        <p> <?php echo $country = (!empty($user['place'])) ? $user['place'] : "---------"; ?></p>
+                        <p> <?php echo $country = (!empty($user['country'])) ? $user['country'] : "---------"; ?></p>
 
                     </div>
                 </div>
@@ -76,6 +103,7 @@
                 $('#fpicture').change(function() {
                     // Check if file is already upload
                     if ($('#fpicture') != null) {
+
                         // Check type of file that upload
                         if (this.files && this.files[0] && this.files[0].name.match(/\.(jpg|jpeg|png|gif)$/)) {
                             // Check size of file 
@@ -98,7 +126,7 @@
 
                 // Button cancel
                 $("#cancel").click(() => {
-                    $("#myModal").modal("hide");
+                    $("#myModal").moda("hide");
                 });
 
                 // Button confirm
@@ -109,6 +137,10 @@
                         })
                     }
                 })
+            }
+            //clear picture when cancel 
+            function clearInput() {
+                document.getElementById('fpicture').value = '';
             }
         </script>
 
@@ -132,7 +164,7 @@
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" data-bs-toggle="modal" id="cancel" class="btn btn-danger d-flex justify-content-center confirm-btn">Cancel</button>
+                        <button type="button" data-bs-toggle="modal" id="cancel" class="btn btn-danger d-flex justify-content-center confirm-btn" onclick="clearInput()">Cancel</button>
                         <button type="button" data-bs-toggle="modal" id="confirm" class="btn btn-primary d-flex justify-content-center confirm-btn">Confirm</button>
                     </div>
 

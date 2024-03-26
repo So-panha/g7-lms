@@ -73,7 +73,7 @@
 										$remainingLeaves = $day;
 									}
 									?>
-									<input type="text" class="form-control" value="<?= $remainingLeaves ?>" name="day">
+									<input disabled type="text" class="form-control" value="<?= $remainingLeaves ?>" name="day">
 								</div>
 							</div>
 						</div>
@@ -105,7 +105,7 @@
 							<div class="col-sm-12 leave-col">
 								<div class="form-group">
 									<label>Days have spent</label>
-									<input type="text" class="form-control" placeholder= <?= $user['taken'] ?> >
+									<input disabled type="text" class="form-control" placeholder= <?= $user['taken'] ?> >
 								</div>
 							</div>
 						</div>
