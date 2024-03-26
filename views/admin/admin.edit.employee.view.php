@@ -28,9 +28,9 @@
     <!-- gender -->
     <div class="gender">
       <label for="gender">Gender:</label>
-      <input type="radio" id="male" name="gender" value="male" <?php if ($user['gender'] === 'Male') echo 'checked'; ?>>
+      <input type="radio" id="male" name="gender" value="Male" <?php if ($user['gender'] === 'Male') echo 'checked'; ?>>
       <label for="male">Male</label><br>
-      <input type="radio" id="female" name="gender" value="female" <?php if ($user['gender'] === 'Female') echo 'checked'; ?>>
+      <input type="radio" id="female" name="gender" value="Female" <?php if ($user['gender'] === 'Female') echo 'checked'; ?>>
       <label for="female">Female</label><br>
     </div>
   
