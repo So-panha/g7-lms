@@ -35,9 +35,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Set new password
         if ($newPwd != '') {
-            // Prepare password
-            $password = htmlspecialchars($newPwd);
-            $password = trim($password);
+
+            function prepare($data){
+                // Prepare password
+                $data = trim($data);
+                $data = htmlspecialchars($data);
+                return $data;
+            }
+            $newPwd = prepare($data);
+            $email = prepare($email);
+            $fname = prepare($data);
+            $lname = prepare($data);
+            $position_name = prepare($data);
+
+
             // Encrpt password
             $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
 

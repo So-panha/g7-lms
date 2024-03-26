@@ -95,7 +95,7 @@
 
 
     <label for="posistion">Position</label><br>
-    <input type="text" class="fname" id="fname" name="position" placeholder="Fill position">
+    <input type="text" class="fname" id="fname" name="position" value="<?=  $user['position_name']   ?>" placeholder="Fill position">
     <div class="button">
       <button type="submit" class="btn-form btn-warning" id="update_btn">Update</button>
     </div>
