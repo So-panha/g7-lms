@@ -62,21 +62,24 @@
                 </div>
                 <div class="information">
                     <div class="infor_left">
-                        <p>Department:</p>
                         <p>Role:</p>
+                        <p>Department:</p>
+                        <p>Position:</p>
                         <p>Gmail:</p>
                         <p>Place:</p>
                         <p>Country:</p>
                     </div>
                     <div class="infor_right">
+                        <p><?php echo $user['role']; ?></p>
                         <p>
                             <?php
                             foreach ($positions as $position) {
                                 if ($userPositionID == $position['position_id']) {
                                     echo $position['position_name'];
                                 }
-                            } ?></p>
-                        <p><?php echo $user['role']; ?></p>
+                            } ?>
+                        </p>
+                        <p><?php echo $position = (!empty($users['position_name'])) ?  $users['position_name'] : "----"  ?></p>
                         <p><?php echo $user['email']; ?></p>
                         <p> <?php echo $country = (!empty($user['place'])) ? $user['place'] : "---------"; ?></p>
                         <p> <?php echo $country = (!empty($user['country'])) ? $user['country'] : "---------"; ?></p>

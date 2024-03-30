@@ -35,15 +35,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Set new password
         if ($newPwd != '') {
-            // Prepare password
-            $password = htmlspecialchars($newPwd);
-            $password = trim($password);
+
+            function prepare($data){
+                // Prepare password
+                $data = trim($data);
+                $data = htmlspecialchars($data);
+                return $data;
+            }
+            $newPwd = prepare($data);
+            $email = prepare($email);
+            $fname = prepare($data);
+            $lname = prepare($data);
+            $position_name = prepare($data);
+
+
             // Encrpt password
-            $pwdEncript = password_hash($password, PASSWORD_BCRYPT);
+            $pwdEncript = password_hash($newPwd, PASSWORD_BCRYPT);
 
             if ($manager != '') {
                 // Update password
-                updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $gender, $country, $role, $position_id, $place, $manager, $position_name);
+                updateEmployee($user_id, $fname, $lname, $pwdEncript, $email, $gender, $role, $position_id, $manager, $position_name);
                 $_SESSION['update'] = 'Success';
                 header('Location: /admin_employees');
                 exit;

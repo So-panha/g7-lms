@@ -3,7 +3,7 @@
     <div class="quicklink-sidebar-menu ctm-border-radius shadow-sm grow bg-white p-4 mb-4 card">
         <ul class="list-group list-group-horizontal-lg">
             <li class="list-group-item text-center button-6"><a href="admin_employees" class="text-dark">All</a></li>
-            <li class="list-group-item text-center button-5 active"><a href="" class="text-white">Add Team</a></li>
+            <li class="list-group-item text-center button-5 active"><a href="" class="text-white">Team</a></li>
         </ul>
     </div>
     <!-- header -->
